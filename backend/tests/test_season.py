@@ -3,6 +3,7 @@ from datetime import UTC, date, datetime, timedelta
 import pytest
 
 from matchiq.domain import Match, Snapshot, Team
+from matchiq.providers import complete_laliga_schedule
 from matchiq.season import forecast_at
 
 
@@ -81,3 +82,20 @@ def test_historical_matchday_ignores_later_scores(season):
 def test_incomplete_calendar_is_not_forecast(season):
     season.matches.pop()
     assert forecast_at(season, 0, season.fetched_at)["status"] == "calendar_unavailable"
+
+
+def test_verified_laliga_fixtures_fill_missing_pairs_only():
+    athletic, espanyol, rayo = [Team(id=f"football-data.org:{i}", name=name) for i, name in
+                                [(77, "Athletic Club"), (80, "Espanyol"), (87, "Rayo Vallecano")]]
+    existing = Match(id="original", competition="PD", home=espanyol, away=athletic,
+                     date=date(2027, 3, 21), status="date_only", source="football-data.org")
+    other = existing.model_copy(update={"id": "other", "home": rayo, "away": espanyol})
+    matches = [existing, other]
+    complete_laliga_schedule(matches, 2026)
+    complete_laliga_schedule(matches, 2026)
+    assert len(matches) == 4
+    assert [(match.home, match.away, match.matchday) for match in matches[2:]] == [
+        (rayo, athletic, 8), (athletic, espanyol, 13),
+    ]
+    assert all(match.score is None and match.schedule_source_url.startswith("https://www.laliga.com/")
+               for match in matches[2:])

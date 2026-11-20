@@ -96,6 +96,33 @@ def timed_match(source, competition, match_id, kickoff, home, away, score):
                  status="finished" if score is not None else "scheduled", score=score, source=source)
 
 
+def complete_laliga_schedule(matches, season):
+    if season != 2026:
+        return
+    teams = {team.id: team for match in matches for team in (match.home, match.away)}
+    pairs = {(match.home.id, match.away.id): match for match in matches}
+    official = (
+        (87, 77, 8, date(2026, 12, 9), None, "rayo-vallecano-athletic-club"),
+        (77, 80, 13, date(2026, 11, 21), datetime(2026, 11, 20, 20, tzinfo=UTC),
+         "athletic-club-rcd-espanyol-de-barcelona"),
+    )
+    for home, away, turn, day, kickoff, slug in official:
+        home_id, away_id = f"football-data.org:{home}", f"football-data.org:{away}"
+        if home_id not in teams or away_id not in teams:
+            continue
+        url = f"https://www.laliga.com/partido/temporada-2026-2027-laliga-ea-sports-{slug}-{turn}"
+        existing = pairs.get((home_id, away_id))
+        if existing is not None:
+            if existing.status == "date_only" and existing.date < day:
+                existing.date = day
+                existing.schedule_source_url = url
+            continue
+        matches.append(Match(id=f"laliga:2026:{home}:{away}", competition="PD", home=teams[home_id],
+                             away=teams[away_id], date=day, kickoff=kickoff,
+                             status="scheduled" if kickoff else "date_only", source="football-data.org",
+                             schedule_source_url=url, matchday=turn, stage="REGULAR_SEASON"))
+
+
 class FootballData:
     name: Source = "football-data.org"
 
@@ -112,14 +139,17 @@ class FootballData:
         matches = []
         for row in data["matches"]:
             status = row["status"]
-            if status not in {"FINISHED", "TIMED", "SCHEDULED", "POSTPONED", "IN_PLAY", "PAUSED", "SUSPENDED"}:
+            if status not in {"FINISHED", "TIMED", "SCHEDULED", "POSTPONED", "IN_PLAY", "PAUSED", "SUSPENDED",
+                              "EXTRA_TIME", "PENALTY_SHOOTOUT", "AWARDED"}:
                 continue
             home, away = row["homeTeam"], row["awayTeam"]
             if home["id"] is None or away["id"] is None:
                 continue
             score = None
-            if status == "FINISHED":
+            if status in {"FINISHED", "AWARDED"}:
                 goals = row["score"]["fullTime"]
+                if status == "AWARDED" and (goals["home"] is None or goals["away"] is None):
+                    continue
                 score = (goals["home"], goals["away"])
             match = timed_match(self.name, competition, row["id"], row["utcDate"],
                                        named_team(self.name, home["id"], home["name"]),
@@ -130,6 +160,8 @@ class FootballData:
                 match.status = "date_only"
                 match.kickoff = None
             matches.append(match)
+        if competition.code == "PD":
+            complete_laliga_schedule(matches, season)
         result = snapshot(competition, season, self.name, "https://www.football-data.org/", matches)
         if competition.open_file is not None or competition.code == "CL":
             try:

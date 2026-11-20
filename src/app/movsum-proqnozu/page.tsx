@@ -14,6 +14,7 @@ type Forecast = {
   season: number;
   source: string;
   fetched_at: string;
+  schedule_sources?: string[];
   trials: number;
   remaining: number;
   matchdays: number[];
@@ -127,7 +128,9 @@ export default async function SeasonForecast({ searchParams }: { searchParams: P
           </table>
         </div>
         <p className={styles.meta}>{en ? "Tiebreakers are approximated." : "Bərabər xal qaydaları təqribi tətbiq olunur."}{code === "CL" && (en ? " Tied knockout scores are resolved randomly." : "Pley-offda bərabər hesabın qalibi təsadüfi seçilir.")}</p>
-        <p className={styles.meta}>{data.source} · {fixtureDateTime(intlLocale).format(new Date(data.fetched_at))}</p>
+        <p className={styles.meta}>{data.source} · {fixtureDateTime(intlLocale).format(new Date(data.fetched_at))}
+          {data.schedule_sources?.map((url, index) => <span key={url}> · <a href={url}>LALIGA{data.schedule_sources!.length > 1 ? " " + (index + 1) : ""}</a></span>)}
+        </p>
       </section>
     </> : <p role="status" className="panel detail">{error}</p>}
   </div>;

@@ -23,6 +23,7 @@ class Match(BaseModel):
     source: Source
     matchday: int | None = Field(default=None, ge=1)
     stage: str | None = None
+    schedule_source_url: str | None = None
 
     @model_validator(mode="after")
     def validate_match(self):

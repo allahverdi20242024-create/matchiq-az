@@ -60,6 +60,9 @@ def forecast(serialized: str, day: int, as_of: datetime, trials: int, seed: int)
     available_days = [number for number in range(1, rounds + 1) if groups[number] == count // 2]
     response = {"source": snapshot.source, "fetched_at": snapshot.fetched_at, "season": snapshot.season,
                 "matchdays": available_days, "matchday": day, "trials": trials}
+    schedule_sources = sorted({match.schedule_source_url for match in matches if match.schedule_source_url})
+    if schedule_sources:
+        response["schedule_sources"] = schedule_sources
 
     if day and day not in available_days:
         return {**response, "status": "round_unavailable"}
