@@ -1,0 +1,717 @@
+[
+  {
+    "names": [
+      "FC Barcelona"
+    ],
+    "asset": "catalog-spain-barcelona",
+    "source": "https://football-logos.cc/spain/barcelona/"
+  },
+  {
+    "names": [
+      "Club Atlético de Madrid"
+    ],
+    "asset": "catalog-spain-atletico-madrid",
+    "source": "https://football-logos.cc/spain/atletico-madrid/"
+  },
+  {
+    "names": [
+      "Real Betis Balompié"
+    ],
+    "asset": "catalog-spain-real-betis",
+    "source": "https://football-logos.cc/spain/real-betis/"
+  },
+  {
+    "names": [
+      "Real Madrid CF"
+    ],
+    "asset": "catalog-spain-real-madrid",
+    "source": "https://football-logos.cc/spain/real-madrid/"
+  },
+  {
+    "names": [
+      "Sevilla FC"
+    ],
+    "asset": "catalog-spain-sevilla",
+    "source": "https://football-logos.cc/spain/sevilla/"
+  },
+  {
+    "names": [
+      "Deportivo Alavés"
+    ],
+    "asset": "catalog-spain-deportivo",
+    "source": "https://football-logos.cc/spain/deportivo/"
+  },
+  {
+    "names": [
+      "RC Deportivo La Coruña"
+    ],
+    "asset": "catalog-spain-deportivo-la-coruna",
+    "source": "https://football-logos.cc/spain/deportivo-la-coruna/"
+  },
+  {
+    "names": [
+      "Real Sociedad de Fútbol"
+    ],
+    "asset": "catalog-spain-real-sociedad",
+    "source": "https://football-logos.cc/spain/real-sociedad/"
+  },
+  {
+    "names": [
+      "Villarreal CF"
+    ],
+    "asset": "catalog-spain-villarreal",
+    "source": "https://football-logos.cc/spain/villarreal/"
+  },
+  {
+    "names": [
+      "Athletic Club"
+    ],
+    "asset": "catalog-spain-athletic-club",
+    "source": "https://football-logos.cc/spain/athletic-club/"
+  },
+  {
+    "names": [
+      "Getafe CF"
+    ],
+    "asset": "catalog-spain-getafe",
+    "source": "https://football-logos.cc/spain/getafe/"
+  },
+  {
+    "names": [
+      "Rayo Vallecano de Madrid"
+    ],
+    "asset": "catalog-spain-rayo-vallecano",
+    "source": "https://football-logos.cc/spain/rayo-vallecano/"
+  },
+  {
+    "names": [
+      "CA Osasuna"
+    ],
+    "asset": "catalog-spain-osasuna",
+    "source": "https://football-logos.cc/spain/osasuna/"
+  },
+  {
+    "names": [
+      "RC Celta de Vigo"
+    ],
+    "asset": "catalog-spain-celta",
+    "source": "https://football-logos.cc/spain/celta/"
+  },
+  {
+    "names": [
+      "RCD Espanyol de Barcelona"
+    ],
+    "asset": "catalog-spain-espanyol",
+    "source": "https://football-logos.cc/spain/espanyol/"
+  },
+  {
+    "names": [
+      "Real Racing Club de Santander"
+    ],
+    "asset": "catalog-spain-racing",
+    "source": "https://football-logos.cc/spain/racing/"
+  },
+  {
+    "names": [
+      "Levante UD"
+    ],
+    "asset": "catalog-spain-levante",
+    "source": "https://football-logos.cc/spain/levante/"
+  },
+  {
+    "names": [
+      "Elche CF"
+    ],
+    "asset": "catalog-spain-elche",
+    "source": "https://football-logos.cc/spain/elche/"
+  },
+  {
+    "names": [
+      "Valencia CF"
+    ],
+    "asset": "catalog-spain-valencia",
+    "source": "https://football-logos.cc/spain/valencia/"
+  },
+  {
+    "names": [
+      "Málaga CF"
+    ],
+    "asset": "catalog-spain-malaga",
+    "source": "https://football-logos.cc/spain/malaga/"
+  },
+  {
+    "names": [
+      "Manchester City FC"
+    ],
+    "asset": "catalog-england-manchester-city",
+    "source": "https://football-logos.cc/england/manchester-city/"
+  },
+  {
+    "names": [
+      "Arsenal FC"
+    ],
+    "asset": "catalog-england-arsenal",
+    "source": "https://football-logos.cc/england/arsenal/"
+  },
+  {
+    "names": [
+      "Brighton & Hove Albion FC"
+    ],
+    "asset": "catalog-england-brighton",
+    "source": "https://football-logos.cc/england/brighton/"
+  },
+  {
+    "names": [
+      "Brentford FC"
+    ],
+    "asset": "catalog-england-brentford",
+    "source": "https://football-logos.cc/england/brentford/"
+  },
+  {
+    "names": [
+      "Leeds United FC"
+    ],
+    "asset": "catalog-england-leeds-united",
+    "source": "https://football-logos.cc/england/leeds-united/"
+  },
+  {
+    "names": [
+      "Liverpool FC"
+    ],
+    "asset": "catalog-england-liverpool",
+    "source": "https://football-logos.cc/england/liverpool/"
+  },
+  {
+    "names": [
+      "Everton FC"
+    ],
+    "asset": "catalog-england-everton",
+    "source": "https://football-logos.cc/england/everton/"
+  },
+  {
+    "names": [
+      "Hull City AFC"
+    ],
+    "asset": "catalog-england-hull-city",
+    "source": "https://football-logos.cc/england/hull-city/"
+  },
+  {
+    "names": [
+      "Newcastle United FC"
+    ],
+    "asset": "catalog-england-newcastle",
+    "source": "https://football-logos.cc/england/newcastle/"
+  },
+  {
+    "names": [
+      "Chelsea FC"
+    ],
+    "asset": "catalog-england-chelsea",
+    "source": "https://football-logos.cc/england/chelsea/"
+  },
+  {
+    "names": [
+      "Ipswich Town FC"
+    ],
+    "asset": "catalog-england-ipswich",
+    "source": "https://football-logos.cc/england/ipswich/"
+  },
+  {
+    "names": [
+      "Manchester United FC"
+    ],
+    "asset": "catalog-england-manchester-united",
+    "source": "https://football-logos.cc/england/manchester-united/"
+  },
+  {
+    "names": [
+      "Nottingham Forest FC"
+    ],
+    "asset": "catalog-england-nottingham-forest",
+    "source": "https://football-logos.cc/england/nottingham-forest/"
+  },
+  {
+    "names": [
+      "Sunderland AFC"
+    ],
+    "asset": "catalog-england-sunderland",
+    "source": "https://football-logos.cc/england/sunderland/"
+  },
+  {
+    "names": [
+      "Crystal Palace FC"
+    ],
+    "asset": "catalog-england-crystal-palace",
+    "source": "https://football-logos.cc/england/crystal-palace/"
+  },
+  {
+    "names": [
+      "Aston Villa FC"
+    ],
+    "asset": "catalog-england-aston-villa",
+    "source": "https://football-logos.cc/england/aston-villa/"
+  },
+  {
+    "names": [
+      "AFC Bournemouth"
+    ],
+    "asset": "catalog-england-bournemouth",
+    "source": "https://football-logos.cc/england/bournemouth/"
+  },
+  {
+    "names": [
+      "Coventry City FC"
+    ],
+    "asset": "catalog-england-coventry-city",
+    "source": "https://football-logos.cc/england/coventry-city/"
+  },
+  {
+    "names": [
+      "Fulham FC"
+    ],
+    "asset": "catalog-england-fulham",
+    "source": "https://football-logos.cc/england/fulham/"
+  },
+  {
+    "names": [
+      "Tottenham Hotspur FC"
+    ],
+    "asset": "catalog-england-tottenham",
+    "source": "https://football-logos.cc/england/tottenham/"
+  },
+  {
+    "names": [
+      "AS Roma"
+    ],
+    "asset": "catalog-italy-roma",
+    "source": "https://football-logos.cc/italy/roma/"
+  },
+  {
+    "names": [
+      "SS Lazio"
+    ],
+    "asset": "catalog-italy-lazio",
+    "source": "https://football-logos.cc/italy/lazio/"
+  },
+  {
+    "names": [
+      "Cagliari Calcio"
+    ],
+    "asset": "catalog-italy-cagliari",
+    "source": "https://football-logos.cc/italy/cagliari/"
+  },
+  {
+    "names": [
+      "AC Milan"
+    ],
+    "asset": "catalog-italy-milan",
+    "source": "https://football-logos.cc/italy/milan/"
+  },
+  {
+    "names": [
+      "Frosinone Calcio"
+    ],
+    "asset": "catalog-italy-frosinone",
+    "source": "https://football-logos.cc/italy/frosinone/"
+  },
+  {
+    "names": [
+      "Como 1907"
+    ],
+    "asset": "catalog-italy-como-1907",
+    "source": "https://football-logos.cc/italy/como-1907/"
+  },
+  {
+    "names": [
+      "SSC Napoli"
+    ],
+    "asset": "catalog-italy-napoli",
+    "source": "https://football-logos.cc/italy/napoli/"
+  },
+  {
+    "names": [
+      "US Sassuolo Calcio"
+    ],
+    "asset": "catalog-italy-sassuolo",
+    "source": "https://football-logos.cc/italy/sassuolo/"
+  },
+  {
+    "names": [
+      "Atalanta BC"
+    ],
+    "asset": "catalog-italy-atalanta",
+    "source": "https://football-logos.cc/italy/atalanta/"
+  },
+  {
+    "names": [
+      "US Lecce"
+    ],
+    "asset": "catalog-italy-lecce",
+    "source": "https://football-logos.cc/italy/lecce/"
+  },
+  {
+    "names": [
+      "Udinese Calcio"
+    ],
+    "asset": "catalog-italy-udinese",
+    "source": "https://football-logos.cc/italy/udinese/"
+  },
+  {
+    "names": [
+      "Torino FC"
+    ],
+    "asset": "catalog-italy-torino",
+    "source": "https://football-logos.cc/italy/torino/"
+  },
+  {
+    "names": [
+      "Parma Calcio 1913"
+    ],
+    "asset": "catalog-italy-parma",
+    "source": "https://football-logos.cc/italy/parma/"
+  },
+  {
+    "names": [
+      "AC Monza"
+    ],
+    "asset": "catalog-italy-monza",
+    "source": "https://football-logos.cc/italy/monza/"
+  },
+  {
+    "names": [
+      "ACF Fiorentina"
+    ],
+    "asset": "catalog-italy-fiorentina",
+    "source": "https://football-logos.cc/italy/fiorentina/"
+  },
+  {
+    "names": [
+      "Bologna FC 1909"
+    ],
+    "asset": "catalog-italy-bologna",
+    "source": "https://football-logos.cc/italy/bologna/"
+  },
+  {
+    "names": [
+      "Genoa CFC"
+    ],
+    "asset": "catalog-italy-genoa",
+    "source": "https://football-logos.cc/italy/genoa/"
+  },
+  {
+    "names": [
+      "Venezia FC"
+    ],
+    "asset": "catalog-italy-venezia",
+    "source": "https://football-logos.cc/italy/venezia/"
+  },
+  {
+    "names": [
+      "SC Freiburg"
+    ],
+    "asset": "catalog-germany-freiburg",
+    "source": "https://football-logos.cc/germany/freiburg/"
+  },
+  {
+    "names": [
+      "FC Augsburg"
+    ],
+    "asset": "catalog-germany-augsburg",
+    "source": "https://football-logos.cc/germany/augsburg/"
+  },
+  {
+    "names": [
+      "Bayer 04 Leverkusen"
+    ],
+    "asset": "catalog-germany-bayer-leverkusen",
+    "source": "https://football-logos.cc/germany/bayer-leverkusen/"
+  },
+  {
+    "names": [
+      "1. FSV Mainz 05"
+    ],
+    "asset": "catalog-germany-mainz-05",
+    "source": "https://football-logos.cc/germany/mainz-05/"
+  },
+  {
+    "names": [
+      "SV 07 Elversberg"
+    ],
+    "asset": "catalog-germany-sv-elversberg",
+    "source": "https://football-logos.cc/germany/sv-elversberg/"
+  },
+  {
+    "names": [
+      "RB Leipzig"
+    ],
+    "asset": "catalog-germany-rb-leipzig",
+    "source": "https://football-logos.cc/germany/rb-leipzig/"
+  },
+  {
+    "names": [
+      "Eintracht Frankfurt"
+    ],
+    "asset": "catalog-germany-eintracht-frankfurt",
+    "source": "https://football-logos.cc/germany/eintracht-frankfurt/"
+  },
+  {
+    "names": [
+      "SC Paderborn 07"
+    ],
+    "asset": "catalog-germany-paderborn",
+    "source": "https://football-logos.cc/germany/paderborn/"
+  },
+  {
+    "names": [
+      "VfB Stuttgart"
+    ],
+    "asset": "catalog-germany-vfb-stuttgart",
+    "source": "https://football-logos.cc/germany/vfb-stuttgart/"
+  },
+  {
+    "names": [
+      "1. FC Union Berlin"
+    ],
+    "asset": "catalog-germany-union-berlin",
+    "source": "https://football-logos.cc/germany/union-berlin/"
+  },
+  {
+    "names": [
+      "Borussia Mönchengladbach"
+    ],
+    "asset": "catalog-germany-borussia-monchengladbach",
+    "source": "https://football-logos.cc/germany/borussia-monchengladbach/"
+  },
+  {
+    "names": [
+      "AS Monaco FC"
+    ],
+    "asset": "catalog-france-as-monaco",
+    "source": "https://football-logos.cc/france/as-monaco/"
+  },
+  {
+    "names": [
+      "Olympique Lyonnais"
+    ],
+    "asset": "catalog-france-lyon",
+    "source": "https://football-logos.cc/france/lyon/"
+  },
+  {
+    "names": [
+      "Paris FC"
+    ],
+    "asset": "catalog-france-paris-fc",
+    "source": "https://football-logos.cc/france/paris-fc/"
+  },
+  {
+    "names": [
+      "Lille OSC"
+    ],
+    "asset": "catalog-france-lille",
+    "source": "https://football-logos.cc/france/lille/"
+  },
+  {
+    "names": [
+      "Stade Rennais FC 1901"
+    ],
+    "asset": "catalog-france-rennes",
+    "source": "https://football-logos.cc/france/rennes/"
+  },
+  {
+    "names": [
+      "Paris Saint-Germain FC"
+    ],
+    "asset": "catalog-france-paris-saint-germain",
+    "source": "https://football-logos.cc/france/paris-saint-germain/"
+  },
+  {
+    "names": [
+      "Angers SCO"
+    ],
+    "asset": "catalog-france-angers",
+    "source": "https://football-logos.cc/france/angers/"
+  },
+  {
+    "names": [
+      "RC Strasbourg Alsace"
+    ],
+    "asset": "catalog-france-rc-strasbourg-alsace",
+    "source": "https://football-logos.cc/france/rc-strasbourg-alsace/"
+  },
+  {
+    "names": [
+      "Le Mans FC"
+    ],
+    "asset": "catalog-france-le-mans",
+    "source": "https://football-logos.cc/france/le-mans/"
+  },
+  {
+    "names": [
+      "AJ Auxerre"
+    ],
+    "asset": "catalog-france-auxerre",
+    "source": "https://football-logos.cc/france/auxerre/"
+  },
+  {
+    "names": [
+      "Stade Brestois 29"
+    ],
+    "asset": "catalog-france-brest",
+    "source": "https://football-logos.cc/france/brest/"
+  },
+  {
+    "names": [
+      "FC Lorient"
+    ],
+    "asset": "catalog-france-lorient",
+    "source": "https://football-logos.cc/france/lorient/"
+  },
+  {
+    "names": [
+      "Toulouse FC"
+    ],
+    "asset": "catalog-france-toulouse",
+    "source": "https://football-logos.cc/france/toulouse/"
+  },
+  {
+    "names": [
+      "OGC Nice"
+    ],
+    "asset": "catalog-france-nice",
+    "source": "https://football-logos.cc/france/nice/"
+  },
+  {
+    "names": [
+      "Racing Club de Lens"
+    ],
+    "asset": "catalog-france-rc-lens",
+    "source": "https://football-logos.cc/france/rc-lens/"
+  },
+  {
+    "names": [
+      "Araz-Naxçıvan PFK",
+      "Araz Naxçıvan",
+      "Araz Naxcivan"
+    ],
+    "asset": "catalog-azerbaijan-araz-naxcivan-pfk",
+    "source": "https://football-logos.cc/azerbaijan/araz-naxcivan-pfk/"
+  },
+  {
+    "names": [
+      "Qəbələ FK",
+      "Gabala SC",
+      "Qabala FK"
+    ],
+    "asset": "catalog-azerbaijan-gabala",
+    "source": "https://football-logos.cc/azerbaijan/gabala/"
+  },
+  {
+    "names": [
+      "İmişli FK",
+      "Imisli FK",
+      "Imisli"
+    ],
+    "asset": "catalog-azerbaijan-imisli",
+    "source": "https://football-logos.cc/azerbaijan/imisli/"
+  },
+  {
+    "names": [
+      "Kəpəz PFK",
+      "Kapaz",
+      "Kapaz PFK"
+    ],
+    "asset": "catalog-azerbaijan-kapaz",
+    "source": "https://football-logos.cc/azerbaijan/kapaz/"
+  },
+  {
+    "names": [
+      "Neftçi PFK",
+      "Neftchi Baku",
+      "Neftchi Baku PFC"
+    ],
+    "asset": "catalog-azerbaijan-neftci",
+    "source": "https://football-logos.cc/azerbaijan/neftci/"
+  },
+  {
+    "names": [
+      "Qarabağ FK",
+      "Qarabag FK",
+      "Qarabag"
+    ],
+    "asset": "catalog-azerbaijan-qarabag",
+    "source": "https://football-logos.cc/azerbaijan/qarabag/"
+  },
+  {
+    "names": [
+      "Sabah FK",
+      "Sabah FA",
+      "Sabah Baku"
+    ],
+    "asset": "catalog-azerbaijan-sabah",
+    "source": "https://football-logos.cc/azerbaijan/sabah/"
+  },
+  {
+    "names": [
+      "Şamaxı FK",
+      "Shamakhi FK",
+      "Shamakhi"
+    ],
+    "asset": "catalog-azerbaijan-samaxi",
+    "source": "https://football-logos.cc/azerbaijan/samaxi/"
+  },
+  {
+    "names": [
+      "Sumqayıt FK",
+      "Sumqayit FK",
+      "Sumqayit"
+    ],
+    "asset": "catalog-azerbaijan-sumqayit",
+    "source": "https://football-logos.cc/azerbaijan/sumqayit/"
+  },
+  {
+    "names": [
+      "Turan Tovuz PFK",
+      "Turan Tovuz"
+    ],
+    "asset": "catalog-azerbaijan-turan",
+    "source": "https://football-logos.cc/azerbaijan/turan/"
+  },
+  {
+    "names": [
+      "Zirə FK",
+      "Zira FK",
+      "Zira"
+    ],
+    "asset": "catalog-azerbaijan-zire",
+    "source": "https://football-logos.cc/azerbaijan/zire/"
+  },
+  {
+    "names": [
+      "Şəfa Bakı",
+      "Shafa Baku"
+    ],
+    "asset": "catalog-azerbaijan-shafa-baku",
+    "source": "https://football-logos.cc/azerbaijan/shafa-baku/"
+  },
+  {
+    "names": [
+      "Səbail FK",
+      "Sabail FK",
+      "Sabail"
+    ],
+    "asset": "catalog-azerbaijan-sabail",
+    "source": "https://football-logos.cc/azerbaijan/sabail/"
+  },
+  {
+    "names": [
+      "Karvan FK",
+      "Karvan"
+    ],
+    "asset": "catalog-azerbaijan-karvan",
+    "source": "https://football-logos.cc/azerbaijan/karvan/"
+  },
+  {
+    "code": "AZ",
+    "source": "https://football-logos.cc/azerbaijan/azerbaijan-premier-league/"
+  }
+]
