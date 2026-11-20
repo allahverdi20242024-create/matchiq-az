@@ -112,16 +112,24 @@ class FootballData:
         matches = []
         for row in data["matches"]:
             status = row["status"]
-            if status not in {"FINISHED", "TIMED"}:
+            if status not in {"FINISHED", "TIMED", "SCHEDULED", "POSTPONED", "IN_PLAY", "PAUSED", "SUSPENDED"}:
                 continue
             home, away = row["homeTeam"], row["awayTeam"]
+            if home["id"] is None or away["id"] is None:
+                continue
             score = None
             if status == "FINISHED":
                 goals = row["score"]["fullTime"]
                 score = (goals["home"], goals["away"])
-            matches.append(timed_match(self.name, competition, row["id"], row["utcDate"],
+            match = timed_match(self.name, competition, row["id"], row["utcDate"],
                                        named_team(self.name, home["id"], home["name"]),
-                                       named_team(self.name, away["id"], away["name"]), score))
+                                       named_team(self.name, away["id"], away["name"]), score)
+            match.stage = row.get("stage")
+            match.matchday = row.get("matchday") or None
+            if status in {"SCHEDULED", "POSTPONED"}:
+                match.status = "date_only"
+                match.kickoff = None
+            matches.append(match)
         result = snapshot(competition, season, self.name, "https://www.football-data.org/", matches)
         if competition.open_file is not None or competition.code == "CL":
             try:

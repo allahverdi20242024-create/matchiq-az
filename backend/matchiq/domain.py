@@ -21,6 +21,8 @@ class Match(BaseModel):
     status: Literal["scheduled", "date_only", "finished"]
     score: tuple[NonNegativeInt, NonNegativeInt] | None = None
     source: Source
+    matchday: int | None = Field(default=None, ge=1)
+    stage: str | None = None
 
     @model_validator(mode="after")
     def validate_match(self):

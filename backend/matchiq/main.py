@@ -15,6 +15,7 @@ from .domain import Feed
 from .evaluation import Evaluation, summarize
 from .fixture_detail import FixtureDetail, build_fixture_detail
 from .providers import BAKU, ApiFootball, FootballData, OpenFootball, ProviderHttp
+from .season import TEAM_COUNTS, forecast_at
 from .service import FixtureService, current_season, is_upcoming
 from .simulation import MAX_TRIALS, InsufficientResults, Simulation, estimate, sample
 from .simulation_cache import PostgresSimulationCache, SQLiteSimulationCache, simulation_cache_key
@@ -129,6 +130,20 @@ def create_app(*, service=None, synchronize=True, simulation_cache=None):
         except psycopg.Error:
             raise HTTPException(503, "Məlumat bazası müvəqqəti əlçatan deyil.") from None
         return await asyncio.to_thread(summarize, list(snapshots.values()), now.astimezone(BAKU).date(), season)
+
+    @app.get("/v1/season-forecast/{competition}")
+    async def season_forecast(competition: str, matchday: int = Query(0, ge=0, le=38)):
+        if competition not in TEAM_COUNTS:
+            raise HTTPException(404, "Turnir tapılmadı.")
+        now = datetime.now(UTC)
+        try:
+            snapshots = await app.state.service.store.load(current_season(now))
+        except psycopg.Error:
+            raise HTTPException(503, "Məlumat bazası müvəqqəti əlçatan deyil.") from None
+        snapshot = snapshots.get(competition)
+        if snapshot is None:
+            return {"status": "calendar_unavailable", "matchdays": []}
+        return await asyncio.to_thread(forecast_at, snapshot, matchday, now)
 
     @app.get("/v1/team-stats", response_model=Statistics)
     async def team_stats():

@@ -38,19 +38,26 @@ def estimate(snapshot: Snapshot, fixture: Match, now: datetime, today) -> tuple[
 
 
 def estimate_from_history(history: list[Match], fixture: Match) -> tuple[float, float]:
-    if len(history) < 12:
+    return rate_estimator(history)(fixture.home.id, fixture.away.id)
+
+
+def rate_estimator(history: list[Match], *, minimum_matches=12, minimum_team_results=MIN_TEAM_RESULTS):
+    if len(history) < minimum_matches:
         raise InsufficientResults
     history = sorted(history, key=lambda match: (match.date, match.id), reverse=True)
     goals = np.asarray([match.score for match in history], dtype=float)
     league_home, league_away = np.maximum(goals.mean(axis=0), 0.1)
 
+    @lru_cache(maxsize=None)
     def strength(team_id, home):
         appearances = [(index, match.home.id == team_id) for index, match in enumerate(history)
                        if team_id in (match.home.id, match.away.id)]
         preferred = [(index, at_home) for index, at_home in appearances if at_home == home]
         selected = (preferred if len(preferred) >= MIN_TEAM_RESULTS else appearances)[:12]
-        if len(selected) < MIN_TEAM_RESULTS:
+        if len(selected) < minimum_team_results:
             raise InsufficientResults
+        if not selected:
+            return (1.0, 1.0)
         weights = 0.88 ** np.arange(len(selected))
         ratios = []
         for position, (index, at_home) in enumerate(selected):
@@ -62,10 +69,13 @@ def estimate_from_history(history: list[Match], fixture: Match) -> tuple[float, 
                 weights[position] *= 0.5
         return (np.asarray(ratios).T @ weights + 3) / (weights.sum() + 3)
 
-    home_attack, home_defense = strength(fixture.home.id, True)
-    away_attack, away_defense = strength(fixture.away.id, False)
-    return (float(np.clip(league_home * home_attack * away_defense, 0.05, 8)),
-            float(np.clip(league_away * away_attack * home_defense, 0.05, 8)))
+    def rates(home_id, away_id):
+        home_attack, home_defense = strength(home_id, True)
+        away_attack, away_defense = strength(away_id, False)
+        return (float(np.clip(league_home * home_attack * away_defense, 0.05, 8)),
+                float(np.clip(league_away * away_attack * home_defense, 0.05, 8)))
+
+    return rates
 
 
 @lru_cache(maxsize=512)

@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSyncExternalStore } from "react";
-import { BookOpen, Calendar, CalendarDays, History, LayoutDashboard, UsersRound } from "lucide-react";
+import { BookOpen, Calendar, CalendarDays, History, LayoutDashboard, Trophy, UsersRound } from "lucide-react";
 
 const groups = [
   { title: "overview", links: [
@@ -16,6 +16,7 @@ const groups = [
   ] },
   { title: "analytics", links: [
     { href: "/real-komandalar", label: "teams", icon: UsersRound },
+    { href: "/movsum-proqnozu", label: "seasonForecast", icon: Trophy },
     { href: "/tarixce", label: "forecastHistory", icon: History },
     { href: "/metodologiya", label: "methodology", icon: BookOpen },
   ] },
