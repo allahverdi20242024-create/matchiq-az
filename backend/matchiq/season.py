@@ -82,7 +82,7 @@ def forecast(serialized: str, day: int, as_of: datetime, trials: int, seed: int)
     remaining = [match for match in matches if match.id not in history_ids]
     ids = sorted(teams)
     index = {team_id: position for position, team_id in enumerate(ids)}
-    points = np.zeros((count, trials), dtype=np.int16)
+    points = np.zeros((count, 1), dtype=np.int16)
     goals = np.zeros_like(points)
     conceded = np.zeros_like(points)
     away_goals = np.zeros_like(points)
@@ -91,23 +91,18 @@ def forecast(serialized: str, day: int, as_of: datetime, trials: int, seed: int)
     rng = np.random.default_rng(seed)
     try:
         rates = rate_estimator(history, minimum_matches=count // 2, minimum_team_results=0) if remaining or european else None
-        for match in history + remaining:
+        for match in history:
             home, away = index[match.home.id], index[match.away.id]
-            if match.id in history_ids:
-                scored, allowed = match.score
-                scored, allowed = np.asarray(scored), np.asarray(allowed)
-            else:
-                home_rate, away_rate = rates(ids[home], ids[away])
-                scored = rng.poisson(home_rate, trials)
-                allowed = rng.poisson(away_rate, trials)
+            scored, allowed = match.score
             goals[home] += scored
             goals[away] += allowed
             conceded[home] += allowed
             conceded[away] += scored
-            away_goals[away] += allowed
-            wins[home] += scored > allowed
-            wins[away] += allowed > scored
-            away_wins[away] += allowed > scored
+            if european:
+                away_goals[away] += allowed
+                wins[home] += scored > allowed
+                wins[away] += allowed > scored
+                away_wins[away] += allowed > scored
             points[home] += 3 * (scored > allowed) + (scored == allowed)
             points[away] += 3 * (allowed > scored) + (scored == allowed)
 
@@ -117,6 +112,30 @@ def forecast(serialized: str, day: int, as_of: datetime, trials: int, seed: int)
                 if row.team.id not in index or played[row.team.id] != row.played:
                     return {**response, "status": "calendar_unavailable"}
                 points[index[row.team.id]] += row.points - (3 * row.wins + row.draws)
+        points = points.repeat(trials, axis=1)
+        goals = goals.repeat(trials, axis=1)
+        conceded = conceded.repeat(trials, axis=1)
+        if european:
+            away_goals = away_goals.repeat(trials, axis=1)
+            wins = wins.repeat(trials, axis=1)
+            away_wins = away_wins.repeat(trials, axis=1)
+        for match in remaining:
+            home, away = index[match.home.id], index[match.away.id]
+            home_rate, away_rate = rates(ids[home], ids[away])
+            scored = rng.poisson(home_rate, trials).astype(np.int16)
+            allowed = rng.poisson(away_rate, trials).astype(np.int16)
+            home_win, away_win, draw = scored > allowed, allowed > scored, scored == allowed
+            goals[home] += scored
+            goals[away] += allowed
+            conceded[home] += allowed
+            conceded[away] += scored
+            if european:
+                away_goals[away] += allowed
+                wins[home] += home_win
+                wins[away] += away_win
+                away_wins[away] += away_win
+            points[home] += 3 * home_win.astype(np.int16) + draw
+            points[away] += 3 * away_win.astype(np.int16) + draw
         keys = [rng.random(points.shape)]
         if european:
             keys.extend((-away_wins, -wins, -away_goals))
@@ -134,7 +153,10 @@ def forecast(serialized: str, day: int, as_of: datetime, trials: int, seed: int)
         return {**response, "status": "results_unavailable"}
 
     probabilities = np.bincount(champion, minlength=count) / trials
-    rankings = np.argsort(order, axis=0).mean(axis=1) + 1
+    rank_totals = np.zeros(count, dtype=np.int64)
+    for position, teams_at_position in enumerate(order, 1):
+        rank_totals += position * np.bincount(teams_at_position, minlength=count)
+    rankings = rank_totals / trials
     rows = [{"team": teams[ids[i]], "champion": float(probabilities[i]), "position": float(rankings[i]),
              "points": float(points[i].mean())} for i in range(count)]
     rows.sort(key=lambda row: (-row["champion"], row["position"]))

@@ -4,6 +4,7 @@ import { ClubLabel, LeagueLabel } from "@/components/club-crest";
 import { getPreferences } from "@/lib/preferences";
 import { fixtureDateTime } from "@/lib/real-fixtures";
 import styles from "./season.module.css";
+import { SeasonForm } from "./season-form";
 
 const leagues = ["PL", "PD", "SA", "BL1", "FL1", "CL"];
 type Team = { id: string; name: string };
@@ -26,7 +27,8 @@ async function loadForecast(code: string, day: number, trials?: number): Promise
     const url = new URL("/v1/season-forecast/" + code, process.env.MATCHIQ_API_URL || "http://127.0.0.1:8000");
     url.searchParams.set("matchday", String(day));
     if (trials !== undefined) url.searchParams.set("trials", String(trials));
-    const response = await fetch(url, { cache: "no-store", signal: AbortSignal.timeout(10_000) });
+    const timeout = trials !== undefined && trials > 10_000 ? 25_000 : 10_000;
+    const response = await fetch(url, { cache: "no-store", signal: AbortSignal.timeout(timeout) });
     return response.ok ? await response.json() : null;
   } catch {
     return null;
@@ -98,7 +100,7 @@ export default async function SeasonForecast({ searchParams }: { searchParams: P
         <LeagueLabel code={league} />
       </Link>)}
     </nav>
-    <form action="/movsum-proqnozu" className={styles.controls}>
+    <SeasonForm submit={en ? "Simulate" : "Simulyasiya et"} pendingLabel={en ? "Simulating…" : "Hesablanır…"}>
       <input type="hidden" name="liqa" value={code} />
       <label htmlFor="matchday">{en ? "Matchday" : "Tur"}</label>
       <select id="matchday" name="tur" key={code + day} defaultValue={day}>
@@ -108,8 +110,7 @@ export default async function SeasonForecast({ searchParams }: { searchParams: P
       <label htmlFor="season-trials">{en ? "Simulation count" : "Sınaq sayı"}</label>
       <input id="season-trials" name="say" type="number" min="1" max="100000" step="1" required
         key={code + ":" + (validTrials ?? "")} defaultValue={validTrials ?? 10_000} />
-      <button className="button primary">{en ? "Simulate" : "Simulyasiya et"}</button>
-    </form>
+    </SeasonForm>
     {data?.status === "ok" ? <>
       {code === "CL" && data.bracket[3]?.[0]?.teams && <Bracket forecast={data} en={en} />}
       <section className="panel detail">
