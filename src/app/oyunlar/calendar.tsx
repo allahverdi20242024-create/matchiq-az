@@ -5,7 +5,7 @@ import Form from "next/form";
 import { ClubCrest, LeagueLabel } from "@/components/club-crest";
 import { Badge } from "@/components/ui/badge";
 import { bakuDate } from "@/lib/demo";
-import { fixtureDateOnly, loadFixtureFeed, realMatchPath } from "@/lib/real-fixtures";
+import { competitionName, fixtureDateOnly, loadFixtureFeed, realMatchPath } from "@/lib/real-fixtures";
 import type { RealMatch } from "@/lib/real-fixtures";
 
 const titles = { "bu-gun": "todaySMatches", sabah: "tomorrowSMatches", gelecek: "upcomingMatches" } as const;
@@ -50,7 +50,9 @@ function validDate(value: string | string[] | undefined): value is string {
   return Number.isFinite(date.getTime()) && dateKey(date) === value;
 }
 
-export async function Calendar({ period, date }: { period?: Period; date?: string | string[] }) {
+export async function Calendar({ period, date, league }: {
+  period?: Period; date?: string | string[]; league?: string | string[];
+}) {
   const { t } = await getPreferences();
   const now = new Date();
   const today = dateKey(bakuDate(now));
@@ -60,17 +62,26 @@ export async function Calendar({ period, date }: { period?: Period; date?: strin
   const view = upcoming ? "upcoming" : selected === today ? "today" : selected === tomorrow ? "tomorrow"
     : selected > today ? "upcoming" : "results";
   const feed = await loadFixtureFeed(view);
+  const competitions = feed?.competitions ?? [];
+  const selectedLeague = competitions.find(({ competition }) => competition === league)?.competition ?? "";
   const through = dateKey(bakuDate(now, 6));
-  const groups = feed?.competitions.map((group) => ({
+  const groups = competitions.filter((group) => !selectedLeague || group.competition === selectedLeague).map((group) => ({
     ...group, matches: group.matches.filter((match) => upcoming ? match.date <= through : match.date === selected),
-  })).filter((group) => group.matches.length > 0) ?? [];
+  })).filter((group) => group.matches.length > 0);
 
   return <>
     <div className="heading calendar-heading">
       <h1>{period ? t[titles[period]] : t.fixtureSchedule}</h1>
-      <Form action="/oyunlar" className="calendar-filter" key={selected}>
+      <Form action="/oyunlar" className="calendar-filter" key={selected + ":" + selectedLeague}>
         <label htmlFor="fixture-date">{t.fixtureDate}</label>
         <input id="fixture-date" type="date" name="tarix" required defaultValue={selected} />
+        <label className="sr-only" htmlFor="fixture-league">{t.competitionSelection}</label>
+        <select id="fixture-league" name="liqa" defaultValue={selectedLeague}>
+          <option value="">{t.allLeagues}</option>
+          {competitions.map(({ competition }) => <option key={competition} value={competition}>
+            {competitionName(competition, t)}
+          </option>)}
+        </select>
         <button type="submit" className="primary">{t.showFixtures}</button>
       </Form>
     </div>

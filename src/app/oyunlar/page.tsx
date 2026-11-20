@@ -1,8 +1,8 @@
 import { Calendar } from "./calendar";
 
 export default async function FixturesCalendar({ searchParams }: {
-  searchParams: Promise<{ tarix?: string | string[] }>;
+  searchParams: Promise<{ tarix?: string | string[]; liqa?: string | string[] }>;
 }) {
-  const { tarix } = await searchParams;
-  return <Calendar date={tarix} />;
+  const { tarix, liqa } = await searchParams;
+  return <Calendar date={tarix} league={liqa} />;
 }

@@ -299,7 +299,7 @@ footer span { padding: 0 5px; color: var(--green); }
 .calendar-heading { flex-wrap: wrap; }
 .calendar-filter { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
 .calendar-filter label { color: var(--muted); font-size: .85rem; font-weight: 650; }
-.calendar-filter input {
+.calendar-filter input, .calendar-filter select {
   padding: 7px 9px;
   border: 1px solid var(--line);
   border-radius: 8px;
