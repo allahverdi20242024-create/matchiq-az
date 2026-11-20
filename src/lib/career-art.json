@@ -2,131 +2,131 @@
   "flags": {
     "Algeria": {
       "source": "https://www.countryflags.com/flag-of-algeria/",
-      "src": "https://countryflags.nl/wp-content/uploads/countryflags/algerije/flag-webp-xs.webp?v=6aa82293-cc0"
+      "index": 0
     },
     "Argentina": {
       "source": "https://www.countryflags.com/flag-of-argentina/",
-      "src": "https://countryflags.nl/wp-content/uploads/countryflags/argentinie/flag-webp-xs.webp?v=6aa82176-e34"
+      "index": 1
     },
     "Australia": {
       "source": "https://www.countryflags.com/flag-of-australia/",
-      "src": "https://countryflags.nl/wp-content/uploads/countryflags/australie/flag-webp-xs.webp?v=6aa8202c-e04"
+      "index": 2
     },
     "Belgium": {
       "source": "https://www.countryflags.com/flag-of-belgium/",
-      "src": "https://countryflags.nl/wp-content/uploads/countryflags/belgie/flag-webp-xs.webp?v=6aa8202c-6c"
+      "index": 3
     },
     "Brazil": {
       "source": "https://www.countryflags.com/flag-of-brazil/",
-      "src": "https://countryflags.nl/wp-content/uploads/countryflags/brazilie/flag-webp-xs.webp?v=6aa8202c-1a38"
+      "index": 4
     },
     "Bulgaria": {
       "source": "https://www.countryflags.com/flag-of-bulgaria/",
-      "src": "https://countryflags.nl/wp-content/uploads/countryflags/bulgarije/flag-webp-xs.webp?v=6aa8202f-80"
+      "index": 5
     },
     "Denmark": {
       "source": "https://www.countryflags.com/flag-of-denmark/",
-      "src": "https://countryflags.nl/wp-content/uploads/countryflags/denemarken/flag-webp-xs.webp?v=6aa8352f-d6"
+      "index": 6
     },
     "Egypt": {
       "source": "https://www.countryflags.com/flag-of-egypt/",
-      "src": "https://countryflags.nl/wp-content/uploads/countryflags/egypte/flag-webp-xs.webp?v=6aa8204e-db8"
+      "index": 7
     },
     "England": {
       "source": "https://www.countryflags.com/flag-of-england/",
-      "src": "https://countryflags.nl/wp-content/uploads/countryflags/engeland/flag-webp-xs.webp?v=6aa82285-4c"
+      "index": 8
     },
     "Finland": {
       "source": "https://www.countryflags.com/flag-of-finland/",
-      "src": "https://countryflags.nl/wp-content/uploads/countryflags/finland/flag-webp-xs.webp?v=6aa8352f-da"
+      "index": 9
     },
     "France": {
       "source": "https://www.countryflags.com/flag-of-france/",
-      "src": "https://www.countryflags.com/wp-content/plugins/countryflags-com-core/assets/current-flags/fr.svg"
+      "index": 10
     },
     "Gabon": {
       "source": "https://www.countryflags.com/flag-of-gabon/",
-      "src": "https://countryflags.nl/wp-content/uploads/countryflags/gabon/flag-webp-xs.webp?v=6aa822b5-80"
+      "index": 11
     },
     "Germany": {
       "source": "https://www.countryflags.com/flag-of-germany/",
-      "src": "https://countryflags.nl/wp-content/uploads/countryflags/duitsland/flag-webp-xs.webp?v=6aa8202c-6a"
+      "index": 12
     },
     "Ghana": {
       "source": "https://www.countryflags.com/flag-of-ghana/",
-      "src": "https://countryflags.nl/wp-content/uploads/countryflags/ghana/flag-webp-xs.webp?v=6aa82294-512"
+      "index": 13
     },
     "Italy": {
       "source": "https://www.countryflags.com/flag-of-italy/",
-      "src": "https://countryflags.nl/wp-content/uploads/countryflags/italie/flag-webp-xs.webp?v=6aa8202c-70"
+      "index": 14
     },
     "Ivory Coast": {
       "source": "https://www.countryflags.com/flag-of-ivory-coast/",
-      "src": "https://countryflags.nl/wp-content/uploads/countryflags/ivoorkust/flag-webp-xs.webp?v=6aa82294-6a"
+      "index": 15
     },
     "Japan": {
       "source": "https://www.countryflags.com/flag-of-japan/",
-      "src": "https://countryflags.nl/wp-content/uploads/countryflags/japan/flag-webp-xs.webp?v=6aa8202c-51c"
+      "index": 16
     },
     "Morocco": {
       "source": "https://www.countryflags.com/flag-of-morocco/",
-      "src": "https://countryflags.nl/wp-content/uploads/countryflags/marokko/flag-webp-xs.webp?v=6aa82293-4f2"
+      "index": 17
     },
     "Netherlands": {
       "source": "https://www.countryflags.com/flag-of-netherlands/",
-      "src": "https://countryflags.nl/wp-content/uploads/countryflags/nederland/flag-webp-xs.webp?v=6aa8202c-72"
+      "index": 18
     },
     "Nigeria": {
       "source": "https://www.countryflags.com/flag-of-nigeria/",
-      "src": "https://countryflags.nl/wp-content/uploads/countryflags/nigeria/flag-webp-xs.webp?v=6aa8204d-50"
+      "index": 19
     },
     "Norway": {
       "source": "https://www.countryflags.com/flag-of-norway/",
-      "src": "https://countryflags.nl/wp-content/uploads/countryflags/noorwegen/flag-webp-xs.webp?v=6aa8352f-156"
+      "index": 20
     },
     "Peru": {
       "source": "https://www.countryflags.com/flag-of-peru/",
-      "src": "https://countryflags.nl/wp-content/uploads/countryflags/peru/flag-webp-xs.webp?v=6aa833de-56"
+      "index": 21
     },
     "Poland": {
       "source": "https://www.countryflags.com/flag-of-poland/",
-      "src": "https://countryflags.nl/wp-content/uploads/countryflags/polen/flag-webp-xs.webp?v=6aa833de-5c"
+      "index": 22
     },
     "Portugal": {
       "source": "https://www.countryflags.com/flag-of-portugal/",
-      "src": "https://countryflags.nl/wp-content/uploads/countryflags/portugal/flag-webp-xs.webp?v=6aa82298-21c0"
+      "index": 23
     },
     "Romania": {
       "source": "https://www.countryflags.com/flag-of-romania/",
-      "src": "https://countryflags.nl/wp-content/uploads/countryflags/roemenie/flag-webp-xs.webp?v=6aa8350c-70"
+      "index": 24
     },
     "Senegal": {
       "source": "https://www.countryflags.com/flag-of-senegal/",
-      "src": "https://countryflags.nl/wp-content/uploads/countryflags/senegal/flag-webp-xs.webp?v=6aa82298-38e"
+      "index": 25
     },
     "Serbia": {
       "source": "https://www.countryflags.com/flag-of-serbia/",
-      "src": "https://countryflags.nl/wp-content/uploads/countryflags/servie/flag-webp-xs.webp?v=6aa8352f-33b4"
+      "index": 26
     },
     "South Korea": {
       "source": "https://www.countryflags.com/flag-of-south-korea/",
-      "src": "https://countryflags.nl/wp-content/uploads/countryflags/zuid-korea/flag-webp-xs.webp?v=6aa82286-117e"
+      "index": 27
     },
     "Spain": {
       "source": "https://www.countryflags.com/flag-of-spain/",
-      "src": "https://countryflags.nl/wp-content/uploads/countryflags/spanje/flag-webp-xs.webp?v=6aa8202c-1ccc"
+      "index": 28
     },
     "United States": {
       "source": "https://www.countryflags.com/flag-of-united-states/",
-      "src": "https://countryflags.nl/wp-content/uploads/countryflags/verenigde-staten/flag-webp-xs.webp?v=6aa8202c-157c"
+      "index": 29
     },
     "Uruguay": {
       "source": "https://www.countryflags.com/flag-of-uruguay/",
-      "src": "https://countryflags.nl/wp-content/uploads/countryflags/uruguay/flag-webp-xs.webp?v=6aa83585-164e"
+      "index": 30
     },
     "Wales": {
       "source": "https://www.countryflags.com/flag-of-wales/",
-      "src": "https://countryflags.nl/wp-content/uploads/countryflags/wales/flag-webp-xs.webp?v=6aa834ed-d1e"
+      "index": 31
     }
   },
   "clubs": {

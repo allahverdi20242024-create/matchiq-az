@@ -1,15 +1,18 @@
 .game { max-width: 54rem; margin-block: 1.25rem; display: grid; gap: 1rem; }
-.top, .actions, .guess { display: flex; align-items: center; gap: .75rem; flex-wrap: wrap; }
+.top, .actions { display: flex; align-items: center; gap: .75rem; flex-wrap: wrap; }
 .top { justify-content: space-between; }
 .top span, .clubs small { color: var(--muted); }
 .clubs { display: grid; grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr)); gap: .6rem; margin: 0; padding: 0; list-style: none; }
 .clubs li { display: grid; gap: .35rem; padding: .65rem .8rem; border: 1px solid var(--line); border-radius: .65rem; }
-.guess input, .actions select, .actions button:not(:global(.primary)) { border: 1px solid var(--line); border-radius: .55rem; padding: .55rem .75rem; background: var(--panel); color: inherit; }
-.guess input { flex: 1 1 14rem; min-width: 0; }
+.actions select, .actions button:not(:global(.primary)), .options button { border: 1px solid var(--line); border-radius: .55rem; padding: .55rem .75rem; background: var(--panel); color: inherit; }
+.options { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr)); gap: .6rem; }
+.options button { min-height: 3rem; text-align: left; font-weight: 600; }
+.options button:hover:not(:disabled) { border-color: var(--green); }
+.options button:disabled { opacity: .6; text-decoration: line-through; }
 .actions button { display: inline-flex; align-items: center; gap: .4rem; }
 .actions button:disabled { opacity: .45; }
 .feedback:empty { display: none; }
 .feedback p, .score { display: flex; align-items: center; gap: .35rem; }
-.flag { width: 1.5rem; height: 1.05rem; object-fit: contain; }
+.flag { width: 1.5rem; height: 1rem; flex: none; background-image: url("/career-flags.webp"); background-size: 800% 400%; background-repeat: no-repeat; }
 .artCredit { color: var(--muted); font-size: .8rem; }
 .reveal { display: grid; gap: .5rem; }
