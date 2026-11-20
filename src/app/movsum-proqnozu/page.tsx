@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Trophy } from "lucide-react";
+import Image from "next/image";
 import { ClubLabel, LeagueLabel } from "@/components/club-crest";
 import { getPreferences } from "@/lib/preferences";
 import { fixtureDateTime } from "@/lib/real-fixtures";
@@ -7,7 +7,7 @@ import styles from "./season.module.css";
 
 const leagues = ["PL", "PD", "SA", "BL1", "FL1", "CL"];
 type Team = { id: string; name: string };
-type Tie = [Team, Team];
+type Tie = { teams: [Team, Team]; score: [number, number]; winner_id: string };
 type Forecast = {
   status: string;
   season: number;
@@ -21,15 +21,23 @@ type Forecast = {
   scenario_champion: Team;
 };
 
-async function loadForecast(code: string, day: number): Promise<Forecast | null> {
+async function loadForecast(code: string, day: number, trials?: number): Promise<Forecast | null> {
   try {
     const url = new URL("/v1/season-forecast/" + code, process.env.MATCHIQ_API_URL || "http://127.0.0.1:8000");
     url.searchParams.set("matchday", String(day));
+    if (trials !== undefined) url.searchParams.set("trials", String(trials));
     const response = await fetch(url, { cache: "no-store", signal: AbortSignal.timeout(10_000) });
     return response.ok ? await response.json() : null;
   } catch {
     return null;
   }
+}
+
+function TieCard({ tie }: { tie: Tie }) {
+  return <div className={styles.tie}>{tie.teams.map((team, index) =>
+    <div className={styles.tieTeam} key={team.id} data-winner={team.id === tie.winner_id}>
+      <ClubLabel name={team.name} /><b>{tie.score[index]}</b>
+    </div>)}</div>;
 }
 
 function Bracket({ forecast, en }: { forecast: Forecast; en: boolean }) {
@@ -40,23 +48,21 @@ function Bracket({ forecast, en }: { forecast: Forecast; en: boolean }) {
     return <div key={round} className={styles.column}>
       <h3>{columns[round]}</h3>
       <div className={styles.ties}>
-        {(right ? ties.slice(half) : ties.slice(0, half)).map(([a, b]) =>
-          <div className={styles.tie} key={a.id + b.id}>
-            <ClubLabel name={a.name} /><ClubLabel name={b.name} />
-          </div>)}
+        {(right ? ties.slice(half) : ties.slice(0, half)).map(tie =>
+          <TieCard key={tie.teams[0].id} tie={tie} />)}
       </div>
     </div>;
   }
   return <section className={styles.bracket} aria-labelledby="bracket-title">
     <h2 id="bracket-title">{en ? "Champions League bracket" : "Çempionlar Liqasının turnir ağacı"}</h2>
-    <p>{en ? "One simulated scenario" : "Simulyasiyadan bir ssenari"}</p>
+    <p>{en ? "Simulated scores · Two-leg aggregate before the final" : "Simulyasiya hesabları · Finala qədər iki oyunun ümumi hesabı"}</p>
     <div className={styles.scroll} tabIndex={0} role="region" aria-label={en ? "Knockout bracket" : "Pley-off ağacı"}>
       <div className={styles.tree}>
         <div className={styles.side}>{[0, 1, 2].map(round => stage(round))}</div>
         <div className={styles.final}>
-          <Trophy aria-hidden="true" />
+          <Image className={styles.trophy} src="/champions-league-trophy.png" width={650} height={665} alt="" />
           <h3>Final</h3>
-          <div className={styles.tie}>{forecast.bracket[3][0].map(team => <ClubLabel key={team.id} name={team.name} />)}</div>
+          <TieCard tie={forecast.bracket[3][0]} />
           <small>{en ? "Scenario winner" : "Ssenarinin qalibi"}</small>
           <ClubLabel name={forecast.scenario_champion.name} />
         </div>
@@ -66,11 +72,13 @@ function Bracket({ forecast, en }: { forecast: Forecast; en: boolean }) {
   </section>;
 }
 
-export default async function SeasonForecast({ searchParams }: { searchParams: Promise<{ liqa?: string; tur?: string }> }) {
-  const { liqa, tur } = await searchParams;
+export default async function SeasonForecast({ searchParams }: { searchParams: Promise<{ liqa?: string; tur?: string; say?: string }> }) {
+  const { liqa, tur, say } = await searchParams;
   const code = leagues.find(item => item === liqa) ?? "PL";
   const day = typeof tur === "string" && /^(?:[1-9]|[1-3][0-9])$/.test(tur) ? Math.min(38, Number(tur)) : 0;
-  const [{ t, intlLocale }, data] = await Promise.all([getPreferences(), loadForecast(code, day)]);
+  const trials = typeof say === "string" && /^[1-9]\d{0,5}$/.test(say) ? Number(say) : undefined;
+  const validTrials = trials !== undefined && trials <= 100_000 ? trials : undefined;
+  const [{ t, intlLocale }, data] = await Promise.all([getPreferences(), loadForecast(code, day, validTrials)]);
   const en = intlLocale.toLowerCase().startsWith("en");
   const percent = new Intl.NumberFormat(intlLocale, { style: "percent", maximumFractionDigits: 2 });
   const decimal = new Intl.NumberFormat(intlLocale, { maximumFractionDigits: 1 });
@@ -97,10 +105,13 @@ export default async function SeasonForecast({ searchParams }: { searchParams: P
         <option value="0">{en ? "Latest results" : "Son nəticələr"}</option>
         {data?.matchdays.map(round => <option value={round} key={round}>{en ? `After matchday ${round}` : `${round}-ci turdan sonra`}</option>)}
       </select>
+      <label htmlFor="season-trials">{en ? "Simulation count" : "Sınaq sayı"}</label>
+      <input id="season-trials" name="say" type="number" min="1" max="100000" step="1" required
+        key={code + ":" + (validTrials ?? "")} defaultValue={validTrials ?? 10_000} />
       <button className="button primary">{en ? "Simulate" : "Simulyasiya et"}</button>
     </form>
     {data?.status === "ok" ? <>
-      {code === "CL" && <Bracket forecast={data} en={en} />}
+      {code === "CL" && data.bracket[3]?.[0]?.teams && <Bracket forecast={data} en={en} />}
       <section className="panel detail">
         <h2>{en ? "Title chances" : "Çempionluq ehtimalları"}</h2>
         <p className={styles.meta}>{data.season}/{data.season + 1} · {decimal.format(data.trials)} {en ? "simulations" : "simulyasiya"} · {data.remaining} {code === "CL" ? (en ? "league-phase fixtures left" : "qalan liqa mərhələsi oyunu") : (en ? "fixtures left" : "qalan oyun")}</p>

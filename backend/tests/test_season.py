@@ -47,9 +47,24 @@ def test_complete_season_and_bracket(season):
     if season.competition == "CL":
         assert list(map(len, forecast["bracket"])) == [8, 4, 2, 1]
         for previous, following in zip(forecast["bracket"], forecast["bracket"][1:]):
-            for (first, second), (a, b) in zip(following, zip(previous[::2], previous[1::2])):
-                assert first in a and second in b
-        assert forecast["scenario_champion"] in forecast["bracket"][-1][0]
+            for tie, (a, b) in zip(following, zip(previous[::2], previous[1::2])):
+                assert [team.id for team in tie["teams"]] == [a["winner_id"], b["winner_id"]]
+        assert forecast["scenario_champion"].id == forecast["bracket"][-1][0]["winner_id"]
+        for stage in forecast["bracket"]:
+            for tie in stage:
+                a, b = tie["score"]
+                assert min(a, b) >= 0
+                if a != b:
+                    assert tie["winner_id"] == tie["teams"][int(b > a)].id
+
+
+def test_requested_trial_count_changes_probability_resolution(season):
+    for trials in (1, 37):
+        data = forecast_at(season, 0, season.fetched_at, trials)
+        assert data["trials"] == trials
+        probabilities = [row["champion"] for row in data["teams"]]
+        assert sum(probabilities) == pytest.approx(1)
+        assert all(value * trials == pytest.approx(round(value * trials)) for value in probabilities)
 
 
 def test_historical_matchday_ignores_later_scores(season):

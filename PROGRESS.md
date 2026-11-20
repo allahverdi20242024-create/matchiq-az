@@ -2,7 +2,7 @@
 
 ## Tamamlanmış işlər
 
-- Mövsüm proqnozu bölməsi. Son nəticələrdən və ya seçilən tamamlanmış turdan başlayaraq qalan təqvim 10 000 dəfə simulyasiya olunur. Çempionlar Liqası üçün bir simulyasiya ssenarisi loqolu turnir ağacında göstərilir.
+- Mövsüm proqnozu bölməsi. Son nəticələrdən və ya seçilən tamamlanmış turdan başlayaraq qalan təqvim istifadəçinin seçdiyi 1–100 000 sınaqla simulyasiya olunur. Çempionlar Liqası ağacında iki oyunun ümumi hesabları, finalın hesabı və kubok şəkli göstərilir.
 - Tam təqvim yoxlanmadıqda proqnoz verilmir. Çempionlar Liqasının faktiki pley-off cütləri açıqlandıqdan sonra həmin cütlərlə canlı proqnoz hələ dəstəklənmir. Keçmiş tur proqnozları matç nəticələrindən hesablanır və keçmiş inzibati xal dəyişikliklərini əhatə etmir.
 
 - Azərbaycan dilində idarə paneli, oyun siyahıları, oyun təhlili, komanda statistikası, tarixçə və metodologiya üçün nümayiş interfeysi.

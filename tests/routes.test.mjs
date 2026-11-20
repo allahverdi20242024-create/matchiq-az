@@ -44,7 +44,7 @@ const pages = [
   ["/oyun/xezer-zirve", "Oyun təhlili", 'href="/komandalar/xezer"'],
   ["/komandalar/xezer", "Xəzər FK", "Son beş oyunun forması"],
   ["/real-komandalar", "Real komanda statistikası", "Real komanda statistikası"],
-  ["/movsum-proqnozu", "Mövsüm proqnozu", 'name="tur"'],
+  ["/movsum-proqnozu", "Mövsüm proqnozu", 'name="say"'],
   ["/tarixce", "Proqnoz tarixçəsi", "Modelin tarixi sınağı"],
   ["/metodologiya", "Model metodologiyası", "100 000"],
 ];

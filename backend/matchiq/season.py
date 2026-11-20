@@ -2,6 +2,7 @@ from collections import Counter
 from datetime import datetime, timedelta
 from functools import lru_cache
 from itertools import permutations
+from secrets import randbits
 
 import numpy as np
 
@@ -10,7 +11,7 @@ from .providers import BAKU
 from .simulation import InsufficientResults, rate_estimator
 
 TEAM_COUNTS = {"PL": 20, "PD": 20, "SA": 20, "BL1": 18, "FL1": 18, "CL": 36}
-PATHS = 10_000
+DEFAULT_TRIALS = 10_000
 
 
 def knockout(order, matrix, rng):
@@ -23,26 +24,27 @@ def knockout(order, matrix, rng):
         pairs.append(order[rank + swap, columns])
         pairs.append(order[rank + 1 - swap, columns])
 
-    def winners(home, away, neutral=False):
+    def play(home, away, neutral=False):
         h1, a1 = matrix[home, away].T
         a2, h2 = matrix[away, home].T
         factor = 0.5 if neutral else 1.0
-        delta = rng.poisson((h1 + h2) * factor) - rng.poisson((a1 + a2) * factor)
-        return np.where((delta > 0) | ((delta == 0) & (rng.random(trials) < 0.5)), home, away)
+        home_goals = rng.poisson((h1 + h2) * factor)
+        away_goals = rng.poisson((a1 + a2) * factor)
+        winner = np.where((home_goals > away_goals) |
+                          ((home_goals == away_goals) & (rng.random(trials) < 0.5)), home, away)
+        return home, away, home_goals, away_goals, winner
 
     playoff = [(pairs[a], pairs[b]) for a, b in
                [(14, 16), (15, 17), (12, 18), (13, 19), (10, 20), (11, 21), (8, 22), (9, 23)]]
-    round16 = [(pairs[index], winners(*match)) for index, match in enumerate(playoff)]
-    quarters = [(winners(*round16[a]), winners(*round16[b])) for a, b in [(0, 6), (2, 4), (1, 7), (3, 5)]]
-    semis = [(winners(*quarters[a]), winners(*quarters[b])) for a, b in [(0, 1), (2, 3)]]
-    final = [(winners(*semis[0]), winners(*semis[1]))]
-    champion = winners(*final[0], neutral=True)
+    round16 = [play(pairs[index], play(*match)[-1]) for index, match in enumerate(playoff)]
+    quarters = [play(round16[a][-1], round16[b][-1]) for a, b in [(0, 6), (2, 4), (1, 7), (3, 5)]]
+    semis = [play(quarters[a][-1], quarters[b][-1]) for a, b in [(0, 1), (2, 3)]]
+    final = [play(semis[0][-1], semis[1][-1], neutral=True)]
     ordered_16 = [round16[index] for index in (0, 6, 2, 4, 1, 7, 3, 5)]
-    return champion, [ordered_16, quarters, semis, final]
+    return final[0][-1], [ordered_16, quarters, semis, final]
 
 
-@lru_cache(maxsize=24)
-def forecast(serialized: str, day: int, as_of: datetime):
+def forecast(serialized: str, day: int, as_of: datetime, trials: int, seed: int):
     snapshot = Snapshot.model_validate_json(serialized)
     code = snapshot.competition
     european = code == "CL"
@@ -57,7 +59,7 @@ def forecast(serialized: str, day: int, as_of: datetime):
     dates = {match.matchday: match.date for match in sorted(known, key=lambda match: match.date)}
     available_days = [number for number in range(1, rounds + 1) if groups[number] == count // 2]
     response = {"source": snapshot.source, "fetched_at": snapshot.fetched_at, "season": snapshot.season,
-                "matchdays": available_days, "matchday": day, "trials": PATHS}
+                "matchdays": available_days, "matchday": day, "trials": trials}
 
     if day and day not in available_days:
         return {**response, "status": "round_unavailable"}
@@ -80,13 +82,13 @@ def forecast(serialized: str, day: int, as_of: datetime):
     remaining = [match for match in matches if match.id not in history_ids]
     ids = sorted(teams)
     index = {team_id: position for position, team_id in enumerate(ids)}
-    points = np.zeros((count, PATHS), dtype=np.int16)
+    points = np.zeros((count, trials), dtype=np.int16)
     goals = np.zeros_like(points)
     conceded = np.zeros_like(points)
     away_goals = np.zeros_like(points)
     wins = np.zeros_like(points)
     away_wins = np.zeros_like(points)
-    rng = np.random.default_rng(173 + day)
+    rng = np.random.default_rng(seed)
     try:
         rates = rate_estimator(history, minimum_matches=count // 2, minimum_team_results=0) if remaining or european else None
         for match in history + remaining:
@@ -96,8 +98,8 @@ def forecast(serialized: str, day: int, as_of: datetime):
                 scored, allowed = np.asarray(scored), np.asarray(allowed)
             else:
                 home_rate, away_rate = rates(ids[home], ids[away])
-                scored = rng.poisson(home_rate, PATHS)
-                allowed = rng.poisson(away_rate, PATHS)
+                scored = rng.poisson(home_rate, trials)
+                allowed = rng.poisson(away_rate, trials)
             goals[home] += scored
             goals[away] += allowed
             conceded[home] += allowed
@@ -131,16 +133,29 @@ def forecast(serialized: str, day: int, as_of: datetime):
     except InsufficientResults:
         return {**response, "status": "results_unavailable"}
 
-    probabilities = np.bincount(champion, minlength=count) / PATHS
+    probabilities = np.bincount(champion, minlength=count) / trials
     rankings = np.argsort(order, axis=0).mean(axis=1) + 1
     rows = [{"team": teams[ids[i]], "champion": float(probabilities[i]), "position": float(rankings[i]),
              "points": float(points[i].mean())} for i in range(count)]
     rows.sort(key=lambda row: (-row["champion"], row["position"]))
-    bracket = [[[teams[ids[a[0]]], teams[ids[b[0]]]] for a, b in stage] for stage in stages]
+    bracket = [
+        [{"teams": [teams[ids[a[0]]], teams[ids[b[0]]]], "score": [int(ga[0]), int(gb[0])],
+          "winner_id": ids[winner[0]]} for a, b, ga, gb, winner in stage]
+        for stage in stages
+    ]
     return {**response, "status": "ok", "remaining": len(remaining), "teams": rows, "bracket": bracket,
             "scenario_champion": teams[ids[champion[0]]] if european else None}
 
 
-def forecast_at(snapshot: Snapshot, day: int, now: datetime):
+@lru_cache(maxsize=24)
+def default_forecast(serialized: str, day: int, as_of: datetime):
+    return forecast(serialized, day, as_of, DEFAULT_TRIALS, 173 + day)
+
+
+def forecast_at(snapshot: Snapshot, day: int, now: datetime, trials: int | None = None):
     # Completed results can only come from this snapshot. Reject impossible future kickoffs.
-    return forecast(snapshot.model_dump_json(), day, min(now, snapshot.fetched_at + timedelta(seconds=1)))
+    serialized = snapshot.model_dump_json()
+    as_of = min(now, snapshot.fetched_at + timedelta(seconds=1))
+    if trials is None:
+        return default_forecast(serialized, day, as_of)
+    return forecast(serialized, day, as_of, trials, randbits(64))

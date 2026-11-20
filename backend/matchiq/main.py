@@ -10,6 +10,7 @@ from typing import Literal
 import httpx
 import psycopg
 from fastapi import FastAPI, HTTPException, Query
+from starlette.concurrency import run_in_threadpool
 
 from .domain import Feed
 from .evaluation import Evaluation, summarize
@@ -32,6 +33,7 @@ def create_app(*, service=None, synchronize=True, simulation_cache=None):
     async def lifespan(app):
         async with httpx.AsyncClient(timeout=12) as client:
             app.state.simulation_cache = simulation_cache
+            app.state.season_slot = asyncio.Semaphore(1)
             if service is None:
                 dsn = os.getenv("DATABASE_URL")
                 if app.state.simulation_cache is None:
@@ -132,7 +134,8 @@ def create_app(*, service=None, synchronize=True, simulation_cache=None):
         return await asyncio.to_thread(summarize, list(snapshots.values()), now.astimezone(BAKU).date(), season)
 
     @app.get("/v1/season-forecast/{competition}")
-    async def season_forecast(competition: str, matchday: int = Query(0, ge=0, le=38)):
+    async def season_forecast(competition: str, matchday: int = Query(0, ge=0, le=38),
+                              trials: int | None = Query(None, ge=1, le=MAX_TRIALS)):
         if competition not in TEAM_COUNTS:
             raise HTTPException(404, "Turnir tapılmadı.")
         now = datetime.now(UTC)
@@ -143,7 +146,8 @@ def create_app(*, service=None, synchronize=True, simulation_cache=None):
         snapshot = snapshots.get(competition)
         if snapshot is None:
             return {"status": "calendar_unavailable", "matchdays": []}
-        return await asyncio.to_thread(forecast_at, snapshot, matchday, now)
+        async with app.state.season_slot:
+            return await run_in_threadpool(forecast_at, snapshot, matchday, now, trials)
 
     @app.get("/v1/team-stats", response_model=Statistics)
     async def team_stats():
