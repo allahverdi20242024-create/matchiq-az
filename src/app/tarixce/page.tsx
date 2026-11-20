@@ -57,7 +57,7 @@ export default async function HistoryPage() {
     </section> : <div className="method-grid">
       <section className="panel detail">
         <div className="fixture-meta"><h2>{t.modelAndBaselineForecast}</h2><Badge>{data.model_version}</Badge></div>
-        <p className="muted">{data.season}/{data.season + 1}{" " + t.season + " "}{data.count}{" " + t.matchCountSuffix + " "}{data.sources.join(", ")}</p>
+        <p className="muted">{data.season}/{data.season + 1}{" " + t.season + " "}{data.count}{" "}{t.matches}</p>
         <dl className="data-list">
           <div><dt>{t.brierScoreModelBaseline}</dt><dd>{decimal(intlLocale).format(data.model.brier)} / {decimal(intlLocale).format(data.baseline.brier)}</dd></div>
           <div><dt>{t.logLossModelBaseline}</dt><dd>{decimal(intlLocale).format(data.model.log_loss)} / {decimal(intlLocale).format(data.baseline.log_loss)}</dd></div>

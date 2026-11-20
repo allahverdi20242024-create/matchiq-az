@@ -1,6 +1,6 @@
 import { getPreferences } from "@/lib/preferences";
 import Link from "next/link";
-import { championsLeagueRules, championsLeagueZone, qualificationSource, standingsRules, standingsZone } from "@/lib/standings-zones";
+import { championsLeagueZone, standingsRules, standingsZone } from "@/lib/standings-zones";
 import { ClubCrest, ClubLabel, LeagueLabel } from "@/components/club-crest";
 import { competitionName } from "@/lib/real-fixtures";
 import { Badge } from "@/components/ui/badge";
@@ -19,12 +19,8 @@ type Result = { match_id: string; date: string; opponent: Team; venue: "home" | 
 type TeamStats = { team: Team; total: RecordLine; home: RecordLine; away: RecordLine; recent: Result[] };
 type Competition = {
   competition: string;
-  source: string;
-  source_url: string;
-  fetched_at: string;
   stale: boolean;
-  completed_matches: number;
-  standings?: { fetched_at: string; rows: {
+  standings?: { rows: {
     team: Team; position: number; played: number; wins: number; draws: number; losses: number;
     goal_difference: number; points: number;
   }[] } | null;
@@ -32,9 +28,6 @@ type Competition = {
 };
 type Statistics = { season: number; unavailable: string[]; competitions: Competition[] };
 
-const timestamp = (locale: string) => new Intl.DateTimeFormat(locale, {
-  dateStyle: "medium", timeStyle: "short", timeZone: "Asia/Baku",
-});
 const calendarDate = (locale: string) => new Intl.DateTimeFormat(locale, {
   dateStyle: "medium", timeZone: "UTC",
 });
@@ -93,7 +86,7 @@ async function TeamDetails({ stats }: { stats: TeamStats }) {
 }
 
 async function LeagueTable({ league, season }: { league: Competition; season?: number }) {
-  const { t, intlLocale } = await getPreferences();
+  const { t } = await getPreferences();
   const { standings } = league;
   if (!standings) return <>
     <p className="muted mb-3">{t.standingsUnavailable}</p>
@@ -110,13 +103,7 @@ async function LeagueTable({ league, season }: { league: Competition; season?: n
   const serieATie = league.competition === "SA" && row17 !== undefined && row18 !== undefined && row17.points === row18.points;
   const teamsWithResults = new Set(league.teams.map((row) => row.team.id));
   return <>
-    <h2 id="league-table">{t.verifiedStandings}</h2>
-    <p className="muted mb-3"><a href={league.source_url}>{league.source}</a> · <time dateTime={standings.fetched_at}>{timestamp(intlLocale).format(new Date(standings.fetched_at))}</time></p>
-    {championsLeague && <p className="muted mb-3 text-sm">{t.zoneProjection} · <a href={championsLeagueRules}>{t.leaguePhaseRules}</a></p>}
-    {rules && <div className="muted mb-3 text-sm">
-      {t.zoneProjection} · <a href={qualificationSource}>{t.uefaAccessList}</a>{" · "}<a href={rules.source}>{t.relegationRules}</a>
-    </div>}
-    <div className="overflow-x-auto" tabIndex={0} role="region" aria-labelledby="league-table">
+    <div className="overflow-x-auto" tabIndex={0} role="region" aria-labelledby="competition-title">
       <table className="w-full min-w-[32rem] border-collapse text-sm">
         <thead><tr className="border-b border-[var(--line)] text-right">
           {[t.team, t.played, t.win, t.draw, t.loss, t.goalDifference, t.points, ...(showZones ? [t.standingsZone] : [])].map((label, index) =>
@@ -146,7 +133,7 @@ export async function generateMetadata() {
 export default async function TeamsPage({ searchParams }: {
   searchParams: Promise<{ liqa?: string; komanda?: string }>;
 }) {
-  const { t, intlLocale } = await getPreferences();
+  const { t } = await getPreferences();
   const [params, data] = await Promise.all([searchParams, loadStatistics()]);
   const unavailable = data?.unavailable.filter((code) => code !== "AZ") ?? [];
   const league = params.liqa
@@ -164,12 +151,11 @@ export default async function TeamsPage({ searchParams }: {
     {unavailable.length > 0 && <p className="muted source">{t.dataUnavailable}{" "}{unavailable.map((code) => competitionName(code, t)).join(", ")}.</p>}
     {!league ? <section className="panel empty source"><h2>{data ? t.noDataFoundForThisCompetition : t.dataServiceUnavailable}</h2></section> : <>
       <section className="panel detail source">
-        <div className="fixture-meta"><h2><LeagueLabel code={league.competition} /></h2>
-          <Badge>{league.stale ? t.staleData : t.realResults}</Badge></div>
-        {league.competition === "CL" && <p className="mb-2 text-sm">
-          <a href="https://www.uefa.com/uefachampionsleague/news/022d-0e1636f1244a-c916aa410dad-1000--champions-league-anthem/">{t.listenToAnthem}</a>
-        </p>}
-        <p className="muted mb-3">{data?.season}/{(data?.season ?? 0) + 1} · {league.completed_matches}{" " + t.completedMatches + " "}<a href={league.source_url}>{league.source}</a> · <time dateTime={league.fetched_at}>{timestamp(intlLocale).format(new Date(league.fetched_at))}</time></p>
+        <div className="fixture-meta mb-3">
+          <h2 id="competition-title"><LeagueLabel code={league.competition} /></h2>
+          <span>{data?.season}/{(data?.season ?? 0) + 1}</span>
+          {league.stale && <Badge>{t.staleData}</Badge>}
+        </div>
         {params.komanda && <Link href={teamLink(league.competition)}>{t.returnToTeamList}</Link>}
         {league.teams.length === 0 && !league.standings ? <p className="muted">{t.theSourceHasNoCompletedMatches}</p> :
           !params.komanda && <LeagueTable league={league} season={data?.season} />}

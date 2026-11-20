@@ -40,7 +40,15 @@ export default async function Layout({ children }: Readonly<{ children: React.Re
             </div>
           </header>
           <main id="main" className="content">{children}</main>
-          <footer><div className="site-footer"><strong>MatchIQ AZ</strong><CrestCredits /></div></footer>
+          <footer>
+            <div className="site-footer">
+              <strong>MatchIQ AZ</strong>
+              <p>{t.dataSources}{" "}<a className="underline" href="https://www.football-data.org/">football-data.org</a>
+                {" · "}<a className="underline" href="https://github.com/openfootball/football.json">OpenFootball</a>
+              </p>
+              <CrestCredits />
+            </div>
+          </footer>
         </div>
       </div>
     </LanguageContext>

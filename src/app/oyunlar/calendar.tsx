@@ -5,7 +5,7 @@ import Form from "next/form";
 import { ClubCrest, LeagueLabel } from "@/components/club-crest";
 import { Badge } from "@/components/ui/badge";
 import { bakuDate } from "@/lib/demo";
-import { fixtureDateOnly, fixtureDateTime, loadFixtureFeed, realMatchPath } from "@/lib/real-fixtures";
+import { fixtureDateOnly, loadFixtureFeed, realMatchPath } from "@/lib/real-fixtures";
 import type { RealMatch } from "@/lib/real-fixtures";
 
 const titles = { "bu-gun": "todaySMatches", sabah: "tomorrowSMatches", gelecek: "upcomingMatches" } as const;
@@ -51,7 +51,7 @@ function validDate(value: string | string[] | undefined): value is string {
 }
 
 export async function Calendar({ period, date }: { period?: Period; date?: string | string[] }) {
-  const { t, intlLocale } = await getPreferences();
+  const { t } = await getPreferences();
   const now = new Date();
   const today = dateKey(bakuDate(now));
   const tomorrow = dateKey(bakuDate(now, 1));
@@ -83,7 +83,6 @@ export async function Calendar({ period, date }: { period?: Period; date?: strin
         return <section className="calendar-group" key={group.competition}>
           <div className="section-heading">
             <h2><LeagueLabel code={group.competition} /></h2>
-            <p className="muted text-sm">{t.sourceWithColon}{" "}<a className="underline" href={group.source_url}>{group.source}</a> · <time dateTime={group.fetched_at}>{fixtureDateTime(intlLocale).format(new Date(group.fetched_at))}</time></p>
           </div>
           <div className="match-grid">{group.matches.map((match) =>
             <CalendarCard match={match} competition={group.competition} key={match.id} stale={group.stale} now={now} showDate={upcoming} />)}</div>

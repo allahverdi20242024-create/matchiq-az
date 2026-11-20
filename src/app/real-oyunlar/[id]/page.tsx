@@ -67,7 +67,7 @@ export default async function RealMatchPage({ params, searchParams }: {
     <section className="panel detail-hero">
       <div className="fixture-meta">
         <LeagueLabel code={match.competition} />
-        <Badge>{detail.stale ? t.staleData : match.score ? t.finished : t.realData}</Badge>
+        {(detail.stale || match.score) && <Badge>{detail.stale ? t.staleData : t.finished}</Badge>}
       </div>
       <div className="fixture-teams">
         <div><ClubCrest name={match.home.name} /><Link href={teamUrl(match.home.id)}>{match.home.name}</Link></div>
@@ -78,7 +78,7 @@ export default async function RealMatchPage({ params, searchParams }: {
         </div>
         <div><ClubCrest name={match.away.name} /><Link href={teamUrl(match.away.id)}>{match.away.name}</Link></div>
       </div>
-      <p className="muted text-sm">{t.source}{" "}<a href={detail.source_url}>{detail.source}</a>{" " + t.updated + " "}<time dateTime={detail.fetched_at}>{fixtureDateTime(intlLocale).format(new Date(detail.fetched_at))}</time></p>
+      <p className="muted text-sm">{t.updatedWithoutSeparator}{" "}<time dateTime={detail.fetched_at}>{fixtureDateTime(intlLocale).format(new Date(detail.fetched_at))}</time></p>
     </section>
     {detail.can_simulate ? <SimulationPanel showFixturePicker={false} action={realMatchPath(match.id)} matchId={match.id} rawTrials={sinaq}
       groups={[{ code: match.competition, label: competitionName(match.competition, t),

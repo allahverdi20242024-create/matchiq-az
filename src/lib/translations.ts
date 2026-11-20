@@ -1,4 +1,6 @@
 export const az = {
+  dataSources: "Məlumat mənbələri",
+  updatedWithoutSeparator: "Yenilənib",
   searchFixtures: "Komanda və ya liqa axtar",
   noFixtureSearchResults: "Uyğun oyun tapılmadı",
   loading: "Məlumat yüklənir",
@@ -95,7 +97,6 @@ export const az = {
   roundOf16Zone: "1/8 final",
   knockoutPlayoffZone: "Pley-off",
   eliminationZone: "Mübarizəni dayandırır",
-  listenToAnthem: "Himni UEFA-da dinlə",
   uefaAccessList: "UEFA 2027/28 iştirak qaydaları",
   relegationRules: "Liqa qaydaları",
   championsLeague: "Çempionlar Liqası",
@@ -199,6 +200,8 @@ export const az = {
 };
 
 export const en: Record<keyof typeof az, string> = {
+  dataSources: "Data sources",
+  updatedWithoutSeparator: "Updated",
   searchFixtures: "Search teams or leagues",
   noFixtureSearchResults: "No matching fixtures",
   loading: "Loading",
@@ -295,7 +298,6 @@ export const en: Record<keyof typeof az, string> = {
   roundOf16Zone: "Round of 16",
   knockoutPlayoffZone: "Knockout play-off",
   eliminationZone: "Elimination",
-  listenToAnthem: "Listen to the anthem on UEFA.com",
   uefaAccessList: "UEFA 2027/28 access list",
   relegationRules: "League rules",
   championsLeague: "Champions League",

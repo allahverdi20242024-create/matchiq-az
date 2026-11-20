@@ -38,8 +38,7 @@ export default async function RealFixtures({ searchParams }: {
       <div className="method-grid source">
         {feed.competitions.map((group) => <section className="panel detail" key={group.competition}>
           <div className="fixture-meta"><h2><LeagueLabel code={group.competition} /></h2>
-            <Badge>{group.stale ? t.staleData : t.realData}</Badge></div>
-          <p className="muted">{t.sourceWithColon}{" "}<a href={group.source_url}>{group.source}</a>{" " + t.retrieved + " "}<time dateTime={group.fetched_at}>{dateTime(intlLocale).format(new Date(group.fetched_at))}</time></p>
+            {group.stale && <Badge>{t.staleData}</Badge>}</div>
           {group.matches.length === 0 ? <p className="muted">{t.noMatchesInThisSection}</p> : <dl className="data-list">
             {group.matches.slice(0, 8).map((match) => <div key={match.id}>
               <dt><Link className="flex flex-wrap items-center gap-1.5" href={realMatchPath(match.id)}><ClubLabel name={match.home.name} /> <span aria-hidden="true">–</span> <ClubLabel name={match.away.name} /></Link></dt>
@@ -50,7 +49,6 @@ export default async function RealFixtures({ searchParams }: {
               </dd>
             </div>)}
           </dl>}
-          {group.matches.length > 8 && <p className="muted">{t.showingTheFirst8Matches}</p>}
         </section>)}
       </div>
     </>}
