@@ -1,6 +1,6 @@
 import { getPreferences } from "@/lib/preferences";
 import Link from "next/link";
-import { qualificationSource, standingsRules, standingsZone } from "@/lib/standings-zones";
+import { championsLeagueRules, championsLeagueZone, qualificationSource, standingsRules, standingsZone } from "@/lib/standings-zones";
 import { ClubCrest, ClubLabel, LeagueLabel } from "@/components/club-crest";
 import { competitionName } from "@/lib/real-fixtures";
 import { Badge } from "@/components/ui/badge";
@@ -103,6 +103,8 @@ async function LeagueTable({ league, season }: { league: Competition; season?: n
   </>;
 
   const rules = standingsRules(league.competition, season, standings.rows.length);
+  const championsLeague = league.competition === "CL" && standings.rows.length === 36;
+  const showZones = championsLeague || Boolean(rules);
   const row17 = standings.rows.find((row) => row.position === 17);
   const row18 = standings.rows.find((row) => row.position === 18);
   const serieATie = league.competition === "SA" && row17 !== undefined && row18 !== undefined && row17.points === row18.points;
@@ -110,24 +112,25 @@ async function LeagueTable({ league, season }: { league: Competition; season?: n
   return <>
     <h2 id="league-table">{t.verifiedStandings}</h2>
     <p className="muted mb-3"><a href={league.source_url}>{league.source}</a> · <time dateTime={standings.fetched_at}>{timestamp(intlLocale).format(new Date(standings.fetched_at))}</time></p>
+    {championsLeague && <p className="muted mb-3 text-sm">{t.zoneProjection} · <a href={championsLeagueRules}>{t.leaguePhaseRules}</a></p>}
     {rules && <div className="muted mb-3 text-sm">
       {t.zoneProjection} · <a href={qualificationSource}>{t.uefaAccessList}</a>{" · "}<a href={rules.source}>{t.relegationRules}</a>
     </div>}
     <div className="overflow-x-auto" tabIndex={0} role="region" aria-labelledby="league-table">
       <table className="w-full min-w-[32rem] border-collapse text-sm">
         <thead><tr className="border-b border-[var(--line)] text-right">
-          {[t.team, t.played, t.win, t.draw, t.loss, t.goalDifference, t.points, ...(rules ? [t.standingsZone] : [])].map((label, index) =>
+          {[t.team, t.played, t.win, t.draw, t.loss, t.goalDifference, t.points, ...(showZones ? [t.standingsZone] : [])].map((label, index) =>
             <th className={index === 0 ? "px-2 py-2 text-left" : "px-2 py-2"} scope="col" key={label}>{label}</th>)}
         </tr></thead>
         <tbody>{standings.rows.map(({ team, position, played, wins, draws, losses, goal_difference, points }) => {
-          const zone = rules && standingsZone(rules, position, serieATie);
+          const zone = championsLeague ? championsLeagueZone(position) : rules && standingsZone(rules, position, serieATie);
           return <tr key={team.id} className="border-b border-[var(--line)] text-right">
             <th scope="row" className="px-2 py-2 text-left"><span className="muted mr-2">{position}</span>{teamsWithResults.has(team.id)
               ? <Link href={teamLink(league.competition, team.id)}><ClubLabel name={team.name} /></Link>
               : <ClubLabel name={team.name} />}</th>
             <td className="px-2">{played}</td><td className="px-2">{wins}</td><td className="px-2">{draws}</td>
             <td className="px-2">{losses}</td><td className="px-2">{goal_difference}</td><td className="px-2 font-bold">{points}</td>
-            {rules && <td className="px-2 whitespace-nowrap">{zone ? <span className="standings-zone" data-zone={zone}>{zone === "conferenceLeague" && league.competition === "PL" ? t.conditionalConferenceLeague : t[zone]}</span> : "—"}</td>}
+            {showZones && <td className="px-2 whitespace-nowrap">{zone ? <span className="standings-zone" data-zone={zone}>{zone === "conferenceLeague" && league.competition === "PL" ? t.conditionalConferenceLeague : t[zone]}</span> : "—"}</td>}
           </tr>;
         })}</tbody>
       </table>
@@ -163,6 +166,9 @@ export default async function TeamsPage({ searchParams }: {
       <section className="panel detail source">
         <div className="fixture-meta"><h2><LeagueLabel code={league.competition} /></h2>
           <Badge>{league.stale ? t.staleData : t.realResults}</Badge></div>
+        {league.competition === "CL" && <p className="mb-2 text-sm">
+          <a href="https://www.uefa.com/uefachampionsleague/news/022d-0e1636f1244a-c916aa410dad-1000--champions-league-anthem/">{t.listenToAnthem}</a>
+        </p>}
         <p className="muted mb-3">{data?.season}/{(data?.season ?? 0) + 1} · {league.completed_matches}{" " + t.completedMatches + " "}<a href={league.source_url}>{league.source}</a> · <time dateTime={league.fetched_at}>{timestamp(intlLocale).format(new Date(league.fetched_at))}</time></p>
         {params.komanda && <Link href={teamLink(league.competition)}>{t.returnToTeamList}</Link>}
         {league.teams.length === 0 && !league.standings ? <p className="muted">{t.theSourceHasNoCompletedMatches}</p> :

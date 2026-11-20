@@ -306,3 +306,7 @@ footer span { padding: 0 5px; color: var(--green); }
   background: var(--panel);
   color: var(--ink);
 }
+
+.standings-zone[data-zone="roundOf16Zone"] { --zone-color: var(--green); }
+.standings-zone[data-zone="knockoutPlayoffZone"] { --zone-color: #6b92f5; }
+.standings-zone[data-zone="eliminationZone"] { --zone-color: #ef6b7e; }

@@ -123,7 +123,7 @@ class FootballData:
                                        named_team(self.name, home["id"], home["name"]),
                                        named_team(self.name, away["id"], away["name"]), score))
         result = snapshot(competition, season, self.name, "https://www.football-data.org/", matches)
-        if competition.open_file is not None:
+        if competition.open_file is not None or competition.code == "CL":
             try:
                 result.standings = await self.fetch_standings(competition, season)
             except (ProviderError, KeyError, ValueError, TypeError):
@@ -136,7 +136,12 @@ class FootballData:
         data = await self.http.get(url, params={"season": season}, headers={"X-Auth-Token": self.token})
         if data["competition"]["code"] != competition.code or date.fromisoformat(data["season"]["startDate"]).year != season:
             raise ProviderError("standings_scope_mismatch")
-        tables = [table for table in data["standings"] if table["type"] == "TOTAL" and not table.get("group")]
+        totals = [table for table in data["standings"] if table["type"] == "TOTAL"]
+        if competition.code == "CL":
+            tables = [table for table in totals if len(table["table"]) == 36
+                      and all(0 <= row["playedGames"] <= 8 for row in table["table"])]
+        else:
+            tables = [table for table in totals if not table.get("group")]
         if len(tables) != 1:
             raise ProviderError("standings_table_unavailable")
         rows = []

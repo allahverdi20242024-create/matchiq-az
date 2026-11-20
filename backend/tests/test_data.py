@@ -173,3 +173,27 @@ def test_provider_standings_preserve_position_and_adjusted_points():
         assert row.points == 25 and row.team.id == "football-data.org:1"
 
     asyncio.run(run())
+
+def test_champions_league_accepts_only_full_league_phase_table():
+    def handler(request):
+        assert request.url.path == "/v4/competitions/CL/standings"
+        rows = [{
+            "position": position, "team": {"id": position, "name": f"Club {position}"},
+            "playedGames": 4, "won": 2, "draw": 1, "lost": 1,
+            "goalDifference": 1, "points": 7,
+        } for position in range(1, 37)]
+        return httpx.Response(200, json={
+            "competition": {"code": "CL"}, "season": {"startDate": "2026-09-08"},
+            "standings": [
+                {"type": "TOTAL", "group": "Group A", "table": rows[:4]},
+                {"type": "TOTAL", "group": "League Phase", "table": rows[::-1]},
+            ],
+        })
+
+    async def run():
+        competition = next(item for item in COMPETITIONS if item.code == "CL")
+        async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+            standings = await FootballData(ProviderHttp(client, 0), "test-key").fetch_standings(competition, 2026)
+        assert [row.position for row in standings.rows] == list(range(1, 37))
+
+    asyncio.run(run())

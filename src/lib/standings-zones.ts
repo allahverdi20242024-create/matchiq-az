@@ -1,3 +1,11 @@
+export const championsLeagueRules = "https://documents.uefa.com/r/Regulations-of-the-UEFA-Champions-League-2026/27/Article-17-Match-system-league-phase-Online";
+
+export function championsLeagueZone(position: number) {
+  if (position <= 8) return "roundOf16Zone";
+  if (position <= 24) return "knockoutPlayoffZone";
+  return "eliminationZone";
+}
+
 export const qualificationSource = "https://editorial.uefa.com/resources/02a9-218cd2086a08-882d0ce02937-1000/20260909_circular_2026_54_en.zip";
 
 const leagues = {
