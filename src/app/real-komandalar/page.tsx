@@ -133,6 +133,7 @@ export default async function TeamsPage({ searchParams }: {
 }) {
   const { t, intlLocale } = await getPreferences();
   const [params, data] = await Promise.all([searchParams, loadStatistics()]);
+  const unavailable = data?.unavailable.filter((code) => code !== "AZ") ?? [];
   const league = params.liqa
     ? data?.competitions.find((item) => item.competition === params.liqa)
     : data?.competitions.find((item) => item.teams.length > 0) ?? data?.competitions[0];
@@ -145,7 +146,7 @@ export default async function TeamsPage({ searchParams }: {
         <LeagueLabel code={item.competition} />
       </Link>)}
     </nav>}
-    {data && data.unavailable.length > 0 && <p className="muted source">{t.dataUnavailable}{" "}{data.unavailable.map((code) => competitionName(code, t)).join(", ")}.</p>}
+    {unavailable.length > 0 && <p className="muted source">{t.dataUnavailable}{" "}{unavailable.map((code) => competitionName(code, t)).join(", ")}.</p>}
     {!league ? <section className="panel empty source"><h2>{data ? t.noDataFoundForThisCompetition : t.dataServiceUnavailable}</h2></section> : <>
       <section className="panel detail source">
         <div className="fixture-meta"><h2><LeagueLabel code={league.competition} /></h2>
