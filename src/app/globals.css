@@ -280,3 +280,18 @@ footer span { padding: 0 5px; color: var(--green); }
 @media (max-width: 760px) {
   .preference-group button { min-width: 44px; min-height: 44px; }
 }
+
+.standings-zone {
+  display: inline-block;
+  border-inline-start: 3px solid var(--zone-color, var(--line));
+  border-radius: 4px;
+  padding: 2px 7px;
+  background: color-mix(in srgb, var(--zone-color, var(--line)) 12%, var(--panel));
+  font-size: .75rem;
+}
+.standings-zone[data-zone="championsLeague"],
+.standings-zone[data-zone="championsQualifying"] { --zone-color: #6b92f5; }
+.standings-zone[data-zone="europaLeague"] { --zone-color: #e39345; }
+.standings-zone[data-zone="conferenceLeague"] { --zone-color: var(--green); }
+.standings-zone[data-zone="relegationZone"] { --zone-color: #ef6b7e; }
+.standings-zone[data-zone="relegationPlayoff"] { --zone-color: #d8ad51; }

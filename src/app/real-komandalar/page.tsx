@@ -1,5 +1,6 @@
 import { getPreferences } from "@/lib/preferences";
 import Link from "next/link";
+import { qualificationSource, standingsRules, standingsZone } from "@/lib/standings-zones";
 import { ClubCrest, ClubLabel, LeagueLabel } from "@/components/club-crest";
 import { competitionName } from "@/lib/real-fixtures";
 import { Badge } from "@/components/ui/badge";
@@ -91,33 +92,46 @@ async function TeamDetails({ stats }: { stats: TeamStats }) {
   </section>;
 }
 
-async function LeagueTable({ league }: { league: Competition }) {
+async function LeagueTable({ league, season }: { league: Competition; season?: number }) {
   const { t, intlLocale } = await getPreferences();
   const { standings } = league;
   if (!standings) return <>
     <p className="muted mb-3">{t.standingsUnavailable}</p>
     <ul className="space-y-2">
-    {league.teams.map((row) => <li key={row.team.id}><Link href={teamLink(league.competition, row.team.id)}><ClubLabel name={row.team.name} /></Link></li>)}
+      {league.teams.map((row) => <li key={row.team.id}><Link href={teamLink(league.competition, row.team.id)}><ClubLabel name={row.team.name} /></Link></li>)}
     </ul>
   </>;
 
+  const rules = standingsRules(league.competition, season, standings.rows.length);
+  const row17 = standings.rows.find((row) => row.position === 17);
+  const row18 = standings.rows.find((row) => row.position === 18);
+  const serieATie = league.competition === "SA" && row17 !== undefined && row18 !== undefined && row17.points === row18.points;
   const teamsWithResults = new Set(league.teams.map((row) => row.team.id));
   return <>
     <h2 id="league-table">{t.verifiedStandings}</h2>
     <p className="muted mb-3"><a href={league.source_url}>{league.source}</a> · <time dateTime={standings.fetched_at}>{timestamp(intlLocale).format(new Date(standings.fetched_at))}</time></p>
+    {rules && <div className="muted mb-3 text-sm">
+      <p>{t.standingsZoneExplanation}</p>
+      {league.competition === "PL" && <p>{t.englandConferenceNote}</p>}
+      <p className="mt-1"><a href={qualificationSource}>{t.uefaAccessList}</a>{" · "}<a href={rules.source}>{t.relegationRules}</a></p>
+    </div>}
     <div className="overflow-x-auto" tabIndex={0} role="region" aria-labelledby="league-table">
       <table className="w-full min-w-[32rem] border-collapse text-sm">
         <thead><tr className="border-b border-[var(--line)] text-right">
-          {[t.team, t.played, t.win, t.draw, t.loss, t.goalDifference, t.points].map((label, index) =>
+          {[t.team, t.played, t.win, t.draw, t.loss, t.goalDifference, t.points, ...(rules ? [t.standingsZone] : [])].map((label, index) =>
             <th className={index === 0 ? "px-2 py-2 text-left" : "px-2 py-2"} scope="col" key={label}>{label}</th>)}
         </tr></thead>
-        <tbody>{standings.rows.map(({ team, position, played, wins, draws, losses, goal_difference, points }) => <tr key={team.id} className="border-b border-[var(--line)] text-right">
-          <th scope="row" className="px-2 py-2 text-left"><span className="muted mr-2">{position}</span>{teamsWithResults.has(team.id)
-            ? <Link href={teamLink(league.competition, team.id)}><ClubLabel name={team.name} /></Link>
-            : <ClubLabel name={team.name} />}</th>
-          <td className="px-2">{played}</td><td className="px-2">{wins}</td><td className="px-2">{draws}</td>
-          <td className="px-2">{losses}</td><td className="px-2">{goal_difference}</td><td className="px-2 font-bold">{points}</td>
-        </tr>)}</tbody>
+        <tbody>{standings.rows.map(({ team, position, played, wins, draws, losses, goal_difference, points }) => {
+          const zone = rules && standingsZone(rules, position, serieATie);
+          return <tr key={team.id} className="border-b border-[var(--line)] text-right">
+            <th scope="row" className="px-2 py-2 text-left"><span className="muted mr-2">{position}</span>{teamsWithResults.has(team.id)
+              ? <Link href={teamLink(league.competition, team.id)}><ClubLabel name={team.name} /></Link>
+              : <ClubLabel name={team.name} />}</th>
+            <td className="px-2">{played}</td><td className="px-2">{wins}</td><td className="px-2">{draws}</td>
+            <td className="px-2">{losses}</td><td className="px-2">{goal_difference}</td><td className="px-2 font-bold">{points}</td>
+            {rules && <td className="px-2 whitespace-nowrap">{zone ? <span className="standings-zone" data-zone={zone}>{t[zone]}</span> : "—"}</td>}
+          </tr>;
+        })}</tbody>
       </table>
     </div>
   </>;
@@ -154,7 +168,7 @@ export default async function TeamsPage({ searchParams }: {
         <p className="muted mb-3">{data?.season}/{(data?.season ?? 0) + 1} · {league.completed_matches}{" " + t.completedMatches + " "}<a href={league.source_url}>{league.source}</a> · <time dateTime={league.fetched_at}>{timestamp(intlLocale).format(new Date(league.fetched_at))}</time></p>
         {params.komanda && <Link href={teamLink(league.competition)}>{t.returnToTeamList}</Link>}
         {league.teams.length === 0 && !league.standings ? <p className="muted">{t.theSourceHasNoCompletedMatches}</p> :
-          !params.komanda && <LeagueTable league={league} />}
+          !params.komanda && <LeagueTable league={league} season={data?.season} />}
       </section>
       {params.komanda && <div className="source">{selected ? <TeamDetails stats={selected} /> : <section className="panel empty"><h2>{t.teamNotFound}</h2></section>}</div>}
     </>}

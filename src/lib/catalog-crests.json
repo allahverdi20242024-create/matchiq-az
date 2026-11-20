@@ -713,5 +713,118 @@
   {
     "code": "AZ",
     "source": "https://football-logos.cc/azerbaijan/azerbaijan-premier-league/"
+  },
+  {
+    "names": [
+      "Club Brugge KV",
+      "Club Brugge"
+    ],
+    "asset": "uefa-club-brugge",
+    "source": "https://www.uefa.com/uefachampionsleague/clubs/50043--club-brugge/"
+  },
+  {
+    "names": [
+      "FC Porto",
+      "Porto"
+    ],
+    "asset": "uefa-porto",
+    "source": "https://www.uefa.com/uefachampionsleague/clubs/50064--porto/"
+  },
+  {
+    "names": [
+      "FK Bodø/Glimt",
+      "Bodø/Glimt",
+      "Bodo/Glimt"
+    ],
+    "asset": "uefa-bodo-glimt",
+    "source": "https://www.uefa.com/uefachampionsleague/clubs/59333--bodo-glimt/"
+  },
+  {
+    "names": [
+      "FK Shakhtar Donetsk",
+      "FC Shakhtar Donetsk",
+      "Shakhtar Donetsk"
+    ],
+    "asset": "uefa-shakhtar",
+    "source": "https://www.uefa.com/uefachampionsleague/clubs/52707--shakhtar/"
+  },
+  {
+    "names": [
+      "Fenerbahçe SK",
+      "Fenerbahçe"
+    ],
+    "asset": "uefa-fenerbahce",
+    "source": "https://www.uefa.com/uefachampionsleague/clubs/52692--fenerbahce/"
+  },
+  {
+    "names": [
+      "Feyenoord Rotterdam",
+      "Feyenoord"
+    ],
+    "asset": "uefa-feyenoord",
+    "source": "https://www.uefa.com/uefachampionsleague/clubs/52749--feyenoord/"
+  },
+  {
+    "names": [
+      "Galatasaray SK",
+      "Galatasaray"
+    ],
+    "asset": "uefa-galatasaray",
+    "source": "https://www.uefa.com/uefachampionsleague/clubs/50067--galatasaray/"
+  },
+  {
+    "names": [
+      "LASK Linz",
+      "LASK"
+    ],
+    "asset": "uefa-lask",
+    "source": "https://www.uefa.com/uefachampionsleague/clubs/63405--lask/"
+  },
+  {
+    "names": [
+      "PAE AEK",
+      "AEK Athens"
+    ],
+    "asset": "uefa-aek-athens",
+    "source": "https://www.uefa.com/uefachampionsleague/clubs/50129--aek-athens/"
+  },
+  {
+    "names": [
+      "PSV",
+      "PSV Eindhoven"
+    ],
+    "asset": "uefa-psv",
+    "source": "https://www.uefa.com/uefachampionsleague/clubs/50062--psv/"
+  },
+  {
+    "names": [
+      "SK Slavia Praha",
+      "Slavia Prague"
+    ],
+    "asset": "uefa-slavia-praha",
+    "source": "https://www.uefa.com/uefachampionsleague/clubs/52498--slavia-praha/"
+  },
+  {
+    "names": [
+      "Sporting Clube de Portugal",
+      "Sporting CP"
+    ],
+    "asset": "uefa-sporting-cp",
+    "source": "https://www.uefa.com/uefachampionsleague/clubs/50149--sporting-cp/"
+  },
+  {
+    "names": [
+      "Viking FK"
+    ],
+    "asset": "uefa-viking",
+    "source": "https://www.uefa.com/uefachampionsleague/clubs/52319--viking/"
+  },
+  {
+    "names": [
+      "ŠK Slovan Bratislava",
+      "Slovan Bratislava"
+    ],
+    "asset": "uefa-s-bratislava",
+    "source": "https://www.uefa.com/uefachampionsleague/clubs/52797--s-bratislava/"
   }
 ]

@@ -101,6 +101,7 @@ export async function CrestCredits() {
     {catalog.length > 0 && <p className="mt-2">
       {t.someClubAndCompetitionLogosComeFrom}{" "}<a href="https://football-logos.cc/">football-logos.cc</a>{t.logosAreDisplayedForIdentification}{" "}<a href="https://football-logos.cc/license/">{t.termsOfUse}</a>
     </p>}
+    <p className="mt-2">{t.uefaCrestCredit}{" "}<a href="https://www.uefa.com/uefachampionsleague/clubs/">UEFA.com</a></p>
     <div className="crest-credit-grid">
       <section><h2>{t.clubs}</h2><CreditList entries={clubs} /></section>
       <section><h2>{t.competitions}</h2><CreditList entries={leagueEntries} /></section>
