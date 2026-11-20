@@ -88,3 +88,54 @@ test("the old team list redirects to real teams", async () => {
   assert.equal(response.status, 307);
   assert.equal(response.headers.get("location"), "/real-komandalar");
 });
+
+test("language and theme changes persist across routes and support switching back", async () => {
+  const cookies = new Map();
+  const pathname = "/real-oyunlar?nov=neticeler";
+  async function request(path, options = {}) {
+    const cookie = [...cookies].map(([key, value]) => key + "=" + value).join("; ");
+    const response = await fetch(baseUrl + path, {
+      ...options,
+      headers: { origin: baseUrl, ...(cookie ? { cookie } : {}) },
+      signal: AbortSignal.timeout(8000),
+    });
+    for (const header of response.headers.getSetCookie()) {
+      const [pair] = header.split(";");
+      const separator = pair.indexOf("=");
+      cookies.set(pair.slice(0, separator), pair.slice(separator + 1));
+    }
+    assert.equal(response.status, 200);
+    return response.text();
+  }
+
+  async function choose(html, name, value) {
+    const form = [...html.matchAll(/<form\b[^>]*>([\s\S]*?)<\/form>/g)]
+      .find(([, markup]) => markup.includes(`name="${name}"`));
+    assert.ok(form, name);
+    const [action] = form[1].match(/\$ACTION_ID_[a-z0-9]+/) ?? [];
+    assert.ok(action);
+    const body = new FormData();
+    body.set(action, "");
+    body.set(name, value);
+    return request(pathname, { method: "POST", body });
+  }
+
+  let html = await request(pathname);
+  assert.match(html, /<html lang="az" data-theme="dark"/);
+  html = await choose(html, "language", "en");
+  assert.match(html, /<html lang="en" data-theme="dark"/);
+  assert.match(html, /<h1>Real fixtures<\/h1>/);
+  assert.match(html, /aria-current="page"[^>]*>Recent results<\/a>/);
+  html = await choose(html, "theme", "light");
+  assert.match(html, /<html lang="en" data-theme="light"/);
+
+  const home = await request("/");
+  assert.match(home, /<html lang="en" data-theme="light"/);
+  assert.match(home, /<h1>Dashboard<\/h1>/);
+  assert.match(await request("/oyun/xezer-zirve"), /Most likely scores/);
+
+  html = await choose(html, "language", "az");
+  assert.match(html, /<html lang="az" data-theme="light"/);
+  html = await choose(html, "theme", "dark");
+  assert.match(html, /<html lang="az" data-theme="dark"/);
+});

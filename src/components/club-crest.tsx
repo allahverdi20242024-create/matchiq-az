@@ -1,7 +1,8 @@
+import { getPreferences } from "@/lib/preferences";
 import Image from "next/image";
 import { Trophy } from "lucide-react";
 import catalogImages from "@/lib/catalog-crests.json";
-import { competitionNames } from "@/lib/real-fixtures";
+import { competitionName } from "@/lib/real-fixtures";
 
 type CrestCredit = { author: string; source?: string; license?: string };
 type ClubAsset = CrestCredit & { names: readonly string[]; asset: string; light?: boolean };
@@ -68,7 +69,8 @@ export function ClubLabel({ name }: { name: string }) {
   return <span className="crest-label"><ClubCrest name={name} size="small" /><span>{name}</span></span>;
 }
 
-export function LeagueLabel({ code }: { code: string }) {
+export async function LeagueLabel({ code }: { code: string }) {
+  const { t } = await getPreferences();
   const league = leagues[code];
   const hasLogo = Boolean(league) || catalogLeagues.has(code);
   return <span className="crest-label">
@@ -76,31 +78,32 @@ export function LeagueLabel({ code }: { code: string }) {
       {hasLogo ? <Image src={"/league-crests/" + code.toLowerCase() + ".webp"} width={24} height={24} unoptimized alt="" />
         : <Trophy size={16} />}
     </span>
-    <span>{competitionNames[code] ?? code}</span>
+    <span>{competitionName(code, t)}</span>
   </span>;
 }
 
-function CreditList({ entries }: { entries: CrestCredit[] | readonly CrestCredit[] }) {
+async function CreditList({ entries }: { entries: CrestCredit[] | readonly CrestCredit[] }) {
+  const { t } = await getPreferences();
   return <ul className="mt-2 space-y-1">
     {entries.map((item) => <li key={item.source ?? item.author}>
-      {item.source ? <a href={item.source}>{item.author} · Wikimedia Commons</a> : <>{item.author} · İstifadəçinin təqdim etdiyi loqo</>}
-      {item.license ? <> · <a href={item.license}>CC BY-SA 4.0</a></> : item.source && " · İctimai mülkiyyət"}
-      {" · WebP formatına çevrilib"}
+      {item.source ? <a href={item.source}>{item.author} · Wikimedia Commons</a> : <>{item.author}{" "}{t.userProvidedLogo}</>}
+      {item.license ? <> · <a href={item.license}>CC BY-SA 4.0</a></> : item.source && " " + t.creditPublicDomain}
+      {" " + t.convertedToWebp}
     </li>)}
   </ul>;
 }
 
-export function CrestCredits() {
+export async function CrestCredits() {
+  const { t } = await getPreferences();
   const leagueEntries = Object.values(leagues).filter((item): item is CrestCredit => item !== undefined);
   return <details className="crest-credits">
-    <summary>Loqo mənbələri və lisenziyaları</summary>
+    <summary>{t.logoSourcesAndLicences}</summary>
     {catalog.length > 0 && <p className="mt-2">
-      Klub və yarış loqolarının bir hissəsi <a href="https://football-logos.cc/">football-logos.cc</a> kataloqundandır.
-      Loqolar komandaları tanıtmaq üçün göstərilir. <a href="https://football-logos.cc/license/">İstifadə şərtləri</a>
+      {t.someClubAndCompetitionLogosComeFrom}{" "}<a href="https://football-logos.cc/">football-logos.cc</a>{t.logosAreDisplayedForIdentification}{" "}<a href="https://football-logos.cc/license/">{t.termsOfUse}</a>
     </p>}
     <div className="crest-credit-grid">
-      <section><h2>Klublar</h2><CreditList entries={clubs} /></section>
-      <section><h2>Yarışlar</h2><CreditList entries={leagueEntries} /></section>
+      <section><h2>{t.clubs}</h2><CreditList entries={clubs} /></section>
+      <section><h2>{t.competitions}</h2><CreditList entries={leagueEntries} /></section>
     </div>
   </details>;
 }

@@ -28,13 +28,15 @@
 
 - GitHub Actions üçün frontend, PostgreSQL 17 və Docker Compose yoxlamaları əlavə edildi. Render Free üçün backend konfiqurasiyası hazırlandı.
 
+- Azərbaycan və ingilis dili, açıq və tünd görünüş seçimləri əlavə edildi. Seçimlər səhifələr arasında və yeniləmədən sonra saxlanılır.
+
 ## Cari vəziyyət
 
 OpenFootball vasitəsilə beş Avropa liqasının real məlumatı yerli API və veb səhifəsində yoxlanılıb. Azərbaycan Premyer Liqası və Çempionlar Liqası açarsız rejimdə əlçatan görünmür. Demo səhifələrinin ehtimalları simulyasiya nəticəsi deyil.
 
 ## Yoxlama
 
-Python üzrə 19 test, Next.js üzrə 15 test, ESLint, TypeScript və istehsal yığımı. Yerli HTTP yoxlaması real oyun və nəticə sorğularını əhatə etdi.
+Python üzrə 19 test, Next.js üzrə 16 test, ESLint, TypeScript və istehsal yığımı. Yerli HTTP yoxlaması real oyun və nəticə sorğularını əhatə etdi.
 
 ## Məlum məhdudiyyətlər
 

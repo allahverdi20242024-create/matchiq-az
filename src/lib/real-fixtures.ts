@@ -1,12 +1,10 @@
-export const competitionNames: Readonly<Record<string, string>> = {
-  AZ: "Azərbaycan Premyer Liqası",
-  PL: "İngiltərə Premyer Liqası",
-  PD: "La Liqa",
-  SA: "A Seriyası",
-  BL1: "Bundesliqa",
-  FL1: "Liqa 1",
-  CL: "UEFA Çempionlar Liqası",
-};
+import type { az, en } from "./translations";
+
+const competitionNameKeys = { AZ: "azerbaijanPremierLeague", PL: "premierLeague", PD: "laLiga", SA: "serieA", BL1: "bundesliga", FL1: "ligue1", CL: "uefaChampionsLeague" } as const;
+
+export function competitionName(code: string, t: typeof az | typeof en) {
+  return Object.hasOwn(competitionNameKeys, code) ? t[competitionNameKeys[code as keyof typeof competitionNameKeys]] : code;
+}
 
 export type RealMatch = {
   id: string;
@@ -41,11 +39,11 @@ export async function loadFixtureFeed(view: "upcoming" | "results" | "today" | "
   }
 }
 
-export const fixtureDateTime = new Intl.DateTimeFormat("az-AZ", {
-  timeZone: "Asia/Baku", dateStyle: "medium", timeStyle: "short",
+export const fixtureDateTime = (locale: string) => new Intl.DateTimeFormat(locale, {
+  timeZone: "Asia/Baku", dateStyle: "medium", timeStyle: "short", hour12: false,
 });
 
-export const fixtureDateOnly = new Intl.DateTimeFormat("az-AZ", { timeZone: "UTC", dateStyle: "medium" });
+export const fixtureDateOnly = (locale: string) => new Intl.DateTimeFormat(locale, { timeZone: "UTC", dateStyle: "medium" });
 
 type FixtureDetail = {
   match: RealMatch;

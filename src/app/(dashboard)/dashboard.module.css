@@ -12,7 +12,7 @@
   box-shadow: inset 0 1px 0 #a1f6cf10, 0 22px 45px #020a0840;
 }
 
-.heroContent { position: relative; max-width: 570px; }
+.heroContent { color: #edf3fa; position: relative; max-width: 570px; }
 .heroContent h2 {
   max-width: 12ch;
   font-size: clamp(2.7rem, 5.6vw, 5.4rem);
@@ -87,7 +87,7 @@
   display: flex; align-items: center; gap: 12px; padding: 13px;
   transition: background .16s, border-color .16s;
 }
-.quickLink:hover { background: #192526; border-color: #356250; }
+.quickLink:hover { background: var(--accent-bg); border-color: var(--accent-border); }
 .quickLink strong, .quickLink small { display: block; }
 .quickLink strong { font-size: .9rem; line-height: 1.25; }
 .quickLink small { color: var(--muted); font-size: .78rem; margin-top: 4px; }
@@ -97,7 +97,7 @@
 .matchNames { display: grid; gap: 4px; padding: 8px 0 5px; line-height: 1.2; overflow-wrap: anywhere; }
 .realCard time { color: var(--muted); font-size: .83rem; }
 .timeNote { color: var(--muted); font-size: .75rem; }
-.allLink { width: fit-content; color: #8ce9b5; font-size: .875rem; font-weight: 650; }
+.allLink { width: fit-content; color: var(--accent-link); font-size: .875rem; font-weight: 650; }
 .allLink:hover { text-decoration: underline; }
 .realCard .allLink { margin-top: 5px; }
 .demo { margin-top: 34px; }

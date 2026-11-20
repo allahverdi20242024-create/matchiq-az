@@ -1,10 +1,9 @@
-import type { Metadata } from "next";
+import { getPreferences } from "@/lib/preferences";
 import Link from "next/link";
 import { ClubCrest, ClubLabel, LeagueLabel } from "@/components/club-crest";
-import { competitionNames as names } from "@/lib/real-fixtures";
+import { competitionName } from "@/lib/real-fixtures";
 import { Badge } from "@/components/ui/badge";
 
-export const metadata: Metadata = { title: "Real komanda statistikası" };
 
 type RecordLine = {
   played: number;
@@ -29,10 +28,10 @@ type Competition = {
 };
 type Statistics = { season: number; unavailable: string[]; competitions: Competition[] };
 
-const timestamp = new Intl.DateTimeFormat("az-AZ", {
+const timestamp = (locale: string) => new Intl.DateTimeFormat(locale, {
   dateStyle: "medium", timeStyle: "short", timeZone: "Asia/Baku",
 });
-const calendarDate = new Intl.DateTimeFormat("az-AZ", {
+const calendarDate = (locale: string) => new Intl.DateTimeFormat(locale, {
   dateStyle: "medium", timeZone: "UTC",
 });
 
@@ -54,32 +53,34 @@ function teamLink(competition: string, team?: string) {
   return "/real-komandalar?" + query;
 }
 
-function VenueRecord({ title, stats }: { title: string; stats: RecordLine }) {
+async function VenueRecord({ title, stats }: { title: string; stats: RecordLine }) {
+  const { t } = await getPreferences();
   return <section className="panel detail">
     <h3 className="mb-2 font-bold">{title}</h3>
     <dl className="data-list">
-      <div><dt>Oyun</dt><dd>{stats.played}</dd></div>
-      <div><dt>Qələbə / heç-heçə / məğlubiyyət</dt><dd>{stats.wins} / {stats.draws} / {stats.losses}</dd></div>
-      <div><dt>Vurulan / buraxılan qol</dt><dd>{stats.goals_for} / {stats.goals_against}</dd></div>
+      <div><dt>{t.played}</dt><dd>{stats.played}</dd></div>
+      <div><dt>{t.winsDrawsLosses}</dt><dd>{stats.wins} / {stats.draws} / {stats.losses}</dd></div>
+      <div><dt>{t.goalsForAgainst}</dt><dd>{stats.goals_for} / {stats.goals_against}</dd></div>
     </dl>
   </section>;
 }
 
-function TeamDetails({ stats }: { stats: TeamStats }) {
+async function TeamDetails({ stats }: { stats: TeamStats }) {
+  const { t, intlLocale } = await getPreferences();
   return <section aria-labelledby="team-title" className="method-grid">
     <h2 id="team-title" className="crest-label"><ClubCrest name={stats.team.name} />{stats.team.name}</h2>
     <div className="detail-grid">
-      <VenueRecord title="Ev oyunları" stats={stats.home} />
-      <VenueRecord title="Səfər oyunları" stats={stats.away} />
+      <VenueRecord title={t.homeMatches} stats={stats.home} />
+      <VenueRecord title={t.awayMatches} stats={stats.away} />
     </div>
     <section className="panel detail">
-      <h3 className="mb-2 font-bold">Son {stats.recent.length} nəticə</h3>
+      <h3 className="mb-2 font-bold">{t.last}{" "}{stats.recent.length}{" "}{t.results}</h3>
       <dl className="data-list">
         {stats.recent.map((match) => <div key={match.match_id}>
-          <dt><ClubLabel name={match.opponent.name} /> · {match.venue === "home" ? "Ev" : "Səfər"}<br />
-            <time dateTime={match.date}>{calendarDate.format(new Date(match.date))}</time></dt>
+          <dt><ClubLabel name={match.opponent.name} /> · {match.venue === "home" ? t.home : t.away}<br />
+            <time dateTime={match.date}>{calendarDate(intlLocale).format(new Date(match.date))}</time></dt>
           <dd>{match.scored}:{match.conceded}<br />
-            {match.scored > match.conceded ? "Qələbə" : match.scored === match.conceded ? "Heç-heçə" : "Məğlubiyyət"}
+            {match.scored > match.conceded ? t.win : match.scored === match.conceded ? t.draw : t.loss}
           </dd>
         </div>)}
       </dl>
@@ -87,21 +88,22 @@ function TeamDetails({ stats }: { stats: TeamStats }) {
   </section>;
 }
 
-function LeagueTable({ league }: { league: Competition }) {
+async function LeagueTable({ league }: { league: Competition }) {
+  const { t } = await getPreferences();
   if (!league.provisional_table) return <ul className="space-y-2">
     {league.teams.map((row) => <li key={row.team.id}><Link href={teamLink(league.competition, row.team.id)}><ClubLabel name={row.team.name} /></Link></li>)}
   </ul>;
 
   return <>
-    <h2 id="league-table">Nəticələrdən hesablanan cədvəl</h2>
-    <p className="muted mb-3">Xal, top fərqi və vurulan qola görə sıralanır. Mənbədə çatışmayan nəticələr və inzibati xal dəyişiklikləri cədvəldə yer almaya bilər.</p>
+    <h2 id="league-table">{t.standingsCalculatedFromResults}</h2>
+    <p className="muted mb-3">{t.standingsExplanation}</p>
     <div className="overflow-x-auto" tabIndex={0} role="region" aria-labelledby="league-table">
       <table className="w-full min-w-[32rem] border-collapse text-sm">
-        <thead><tr className="border-b border-slate-700 text-right">
-          {["Komanda", "Oyun", "Qələbə", "Heç-heçə", "Məğlubiyyət", "Top fərqi", "Xal"].map((label, index) =>
+        <thead><tr className="border-b border-[var(--line)] text-right">
+          {[t.team, t.played, t.win, t.draw, t.loss, t.goalDifference, t.points].map((label, index) =>
             <th className={index === 0 ? "px-2 py-2 text-left" : "px-2 py-2"} scope="col" key={label}>{label}</th>)}
         </tr></thead>
-        <tbody>{league.teams.map(({ team, total, points }) => <tr key={team.id} className="border-b border-slate-800 text-right">
+        <tbody>{league.teams.map(({ team, total, points }) => <tr key={team.id} className="border-b border-[var(--line)] text-right">
           <th scope="row" className="px-2 py-2 text-left"><Link href={teamLink(league.competition, team.id)}><ClubLabel name={team.name} /></Link></th>
           <td className="px-2">{total.played}</td><td className="px-2">{total.wins}</td><td className="px-2">{total.draws}</td>
           <td className="px-2">{total.losses}</td><td className="px-2">{total.goals_for - total.goals_against}</td><td className="px-2 font-bold">{points}</td>
@@ -111,33 +113,39 @@ function LeagueTable({ league }: { league: Competition }) {
   </>;
 }
 
+export async function generateMetadata() {
+  const { t } = await getPreferences();
+  return { title: t.realTeamStatistics };
+}
+
 export default async function TeamsPage({ searchParams }: {
   searchParams: Promise<{ liqa?: string; komanda?: string }>;
 }) {
+  const { t, intlLocale } = await getPreferences();
   const [params, data] = await Promise.all([searchParams, loadStatistics()]);
   const league = params.liqa
     ? data?.competitions.find((item) => item.competition === params.liqa)
     : data?.competitions.find((item) => item.teams.length > 0) ?? data?.competitions[0];
   const selected = league?.teams.find((row) => row.team.id === params.komanda);
   return <>
-    <div className="heading"><div><h1>Real komanda statistikası</h1><p>Ev və səfər göstəriciləri, son nəticələr və liqa cədvəli</p></div></div>
-    {data && <nav className="tabs flex-wrap" aria-label="Yarış seçimi">
+    <div className="heading"><div><h1>{t.realTeamStatistics}</h1><p>{t.homeAndAwayRecordsRecentResultsAnd}</p></div></div>
+    {data && <nav className="tabs flex-wrap" aria-label={t.competitionSelection}>
       {data.competitions.map((item) => <Link key={item.competition} href={teamLink(item.competition)}
         aria-current={league?.competition === item.competition ? "page" : undefined}>
         <LeagueLabel code={item.competition} />
       </Link>)}
     </nav>}
-    {data && data.unavailable.length > 0 && <p className="muted source">Məlumat əlçatan deyil: {data.unavailable.map((code) => names[code] ?? code).join(", ")}.</p>}
-    {!league ? <section className="panel empty source"><h2>{data ? "Yarış üzrə məlumat tapılmadı" : "Məlumat xidməti əlçatan deyil"}</h2></section> : <>
+    {data && data.unavailable.length > 0 && <p className="muted source">{t.dataUnavailable}{" "}{data.unavailable.map((code) => competitionName(code, t)).join(", ")}.</p>}
+    {!league ? <section className="panel empty source"><h2>{data ? t.noDataFoundForThisCompetition : t.dataServiceUnavailable}</h2></section> : <>
       <section className="panel detail source">
         <div className="fixture-meta"><h2><LeagueLabel code={league.competition} /></h2>
-          <Badge>{league.stale ? "Köhnəlmiş məlumat" : "Real nəticələr"}</Badge></div>
-        <p className="muted mb-3">{data?.season}/{(data?.season ?? 0) + 1} · {league.completed_matches} tamamlanmış oyun · <a href={league.source_url}>{league.source}</a> · <time dateTime={league.fetched_at}>{timestamp.format(new Date(league.fetched_at))}</time></p>
-        {params.komanda && <Link href={teamLink(league.competition)}>Komanda siyahısına qayıt</Link>}
-        {league.teams.length === 0 ? <p className="muted">Mənbədə tamamlanmış oyun yoxdur.</p> :
+          <Badge>{league.stale ? t.staleData : t.realResults}</Badge></div>
+        <p className="muted mb-3">{data?.season}/{(data?.season ?? 0) + 1} · {league.completed_matches}{" " + t.completedMatches + " "}<a href={league.source_url}>{league.source}</a> · <time dateTime={league.fetched_at}>{timestamp(intlLocale).format(new Date(league.fetched_at))}</time></p>
+        {params.komanda && <Link href={teamLink(league.competition)}>{t.returnToTeamList}</Link>}
+        {league.teams.length === 0 ? <p className="muted">{t.theSourceHasNoCompletedMatches}</p> :
           !params.komanda && <LeagueTable league={league} />}
       </section>
-      {params.komanda && <div className="source">{selected ? <TeamDetails stats={selected} /> : <section className="panel empty"><h2>Komanda tapılmadı</h2></section>}</div>}
+      {params.komanda && <div className="source">{selected ? <TeamDetails stats={selected} /> : <section className="panel empty"><h2>{t.teamNotFound}</h2></section>}</div>}
     </>}
   </>;
 }

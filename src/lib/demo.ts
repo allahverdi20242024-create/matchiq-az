@@ -45,10 +45,10 @@ export function kickoff(fixture: Fixture, now = new Date()) {
   return new Date(bakuDate(now, fixture.day).toISOString().slice(0, 10) + "T" + fixture.time + ":00+04:00");
 }
 
-export function formatDate(date: Date) {
-  return new Intl.DateTimeFormat("az-AZ", { day: "numeric", month: "long", timeZone }).format(date);
+export function formatDate(date: Date, locale = "az-AZ") {
+  return new Intl.DateTimeFormat(locale, { day: "numeric", month: "long", timeZone }).format(date);
 }
 
-export function formatDecimal(value: number) {
-  return new Intl.NumberFormat("az-AZ", { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value);
+export function formatDecimal(value: number, locale = "az-AZ") {
+  return new Intl.NumberFormat(locale, { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value);
 }
