@@ -7,6 +7,8 @@ import { Badge } from "@/components/ui/badge";
 import { competitionName, fixtureDateOnly, fixtureDateTime, loadFixtureDetail, realMatchPath } from "@/lib/real-fixtures";
 import type { RealMatch } from "@/lib/real-fixtures";
 import { SimulationPanel } from "../simulation";
+import { Suspense } from "react";
+import { AiForecast } from "./ai-forecast";
 
 
 async function TeamForm({ team, matches }: { team: RealMatch["home"]; matches: RealMatch[] }) {
@@ -87,6 +89,9 @@ export default async function RealMatchPage({ params, searchParams }: {
         <p className="muted">{match.score || match.kickoff ? t.simulationClosed
           : t.simulationKickoffPending}</p>
       </section>}
+    {detail.can_simulate && <Suspense fallback={<div className="panel detail" aria-busy="true"><div className="skeleton h-24" /></div>}>
+      <AiForecast id={match.id} />
+    </Suspense>}
     <section className="source" aria-labelledby="recent-form">
       <h2 id="recent-form" className="mb-2">{t.recentResults}</h2>
       

@@ -2,6 +2,8 @@
 
 ## Tamamlanmış işlər
 
+- Oyun səhifəsində əvvəlki real nəticələrlə avtomatik öyrənən modelin və Puassonun oyunöncəsi ehtimalları yanaşı göstərilir. Xronoloji sınaq üçün ayrılmış oyunlarda hər iki model eyni nəticələrlə Brier göstəricisi və loqarifmik itki üzrə müqayisə olunur.
+
 - Mövsüm proqnozu bölməsi. Son nəticələrdən və ya seçilən tamamlanmış turdan başlayaraq qalan təqvim istifadəçinin seçdiyi 1–100 000 sınaqla simulyasiya olunur. Çempionlar Liqası ağacında iki oyunun ümumi hesabları, finalın hesabı və kubok şəkli göstərilir.
 - Tam təqvim yoxlanmadıqda proqnoz verilmir. Çempionlar Liqasının faktiki pley-off cütləri açıqlandıqdan sonra həmin cütlərlə canlı proqnoz hələ dəstəklənmir. Keçmiş tur proqnozları matç nəticələrindən hesablanır və keçmiş inzibati xal dəyişikliklərini əhatə etmir.
 

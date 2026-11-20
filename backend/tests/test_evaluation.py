@@ -5,6 +5,7 @@ import numpy as np
 
 from matchiq.domain import Match, Snapshot, Team
 from matchiq.evaluation import metrics, poisson_probabilities, replay, summarize
+from matchiq.learning import forecast, train
 
 
 def sample_snapshot(n):
@@ -55,3 +56,20 @@ def test_summary_gates_scores_and_calibrates_all_outcomes():
     assert enough.model and enough.baseline
     assert sum(bucket.count for bucket in enough.calibration) == 3 * enough.count
     assert len(enough.recent) == 10
+
+
+def test_learned_model_uses_earlier_results_and_scores_the_same_holdout():
+    snapshot = sample_snapshot(240)
+    now = datetime(2026, 11, 20, tzinfo=UTC)
+    fixture = snapshot.matches[-1].model_copy(update={
+        "id": "future", "date": date(2026, 12, 1), "status": "date_only", "score": None,
+    })
+    assert train((sample_snapshot(100).model_dump_json(),), now.date()) is None
+    trained = forecast({"PL": snapshot}, snapshot, fixture, now)
+    assert trained.comparison.count >= 50
+    assert trained.comparison.end < now.date()
+    assert isclose(sum(trained.learned), 1)
+    assert isclose(sum(trained.poisson), 1)
+    future_result = fixture.model_copy(update={"score": (9, 0), "status": "finished"})
+    updated = snapshot.model_copy(update={"matches": snapshot.matches + [future_result]})
+    assert forecast({"PL": updated}, updated, fixture, now) == trained

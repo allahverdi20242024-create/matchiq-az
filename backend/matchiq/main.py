@@ -15,6 +15,7 @@ from starlette.concurrency import run_in_threadpool
 from .domain import Feed
 from .evaluation import Evaluation, summarize
 from .fixture_detail import FixtureDetail, build_fixture_detail
+from .learning import LearnedForecast, forecast as learned_forecast
 from .providers import BAKU, ApiFootball, FootballData, OpenFootball, ProviderHttp
 from .season import TEAM_COUNTS, forecast_at
 from .service import FixtureService, current_season, is_upcoming
@@ -132,6 +133,23 @@ def create_app(*, service=None, synchronize=True, simulation_cache=None):
         except psycopg.Error:
             raise HTTPException(503, "Məlumat bazası müvəqqəti əlçatan deyil.") from None
         return await asyncio.to_thread(summarize, list(snapshots.values()), now.astimezone(BAKU).date(), season)
+
+    @app.get("/v1/ai-forecast/{fixture_id}", response_model=LearnedForecast | None)
+    async def ai_forecast(fixture_id: str):
+        now = datetime.now(UTC)
+        try:
+            snapshots = await app.state.service.store.load(current_season(now))
+        except psycopg.Error:
+            raise HTTPException(503, "Məlumat bazası müvəqqəti əlçatan deyil.") from None
+        for snapshot in snapshots.values():
+            fixture = next((match for match in snapshot.matches
+                            if match.id == fixture_id and is_upcoming(match, now)), None)
+            if fixture is not None:
+                try:
+                    return await run_in_threadpool(learned_forecast, snapshots, snapshot, fixture, now)
+                except InsufficientResults:
+                    return None
+        raise HTTPException(404, "Qarşıdakı oyun tapılmadı.")
 
     @app.get("/v1/season-forecast/{competition}")
     async def season_forecast(competition: str, matchday: int = Query(0, ge=0, le=38),
