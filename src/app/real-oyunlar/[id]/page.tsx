@@ -62,7 +62,7 @@ export default async function RealMatchPage({ params, searchParams }: {
   const teamUrl = (teamId: string) => "/real-komandalar?" + new URLSearchParams({ liqa: match.competition, komanda: teamId });
 
   return <>
-    <div className="heading"><div><h1>{t.realMatchAnalysis}</h1><p>{t.matchInformationRecentResultsAndStatisticalForecast}</p></div>
+    <div className="heading"><div><h1>{t.realMatchAnalysis}</h1></div>
       <Link className="tabs px-3 py-2 text-sm" href="/real-oyunlar">{t.realFixtures}</Link></div>
     <section className="panel detail-hero">
       <div className="fixture-meta">
@@ -90,7 +90,7 @@ export default async function RealMatchPage({ params, searchParams }: {
       </section>}
     <section className="source" aria-labelledby="recent-form">
       <h2 id="recent-form" className="mb-2">{t.recentResults}</h2>
-      <p className="muted mb-3">{t.teamFormDescription}</p>
+      
       <div className="detail-grid">
         <TeamForm team={match.home} matches={detail.recent_home} />
         <TeamForm team={match.away} matches={detail.recent_away} />

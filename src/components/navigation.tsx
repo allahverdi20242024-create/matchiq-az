@@ -6,15 +6,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSyncExternalStore } from "react";
-import { BookOpen, Calendar, CalendarDays, Clock3, History, LayoutDashboard, UsersRound } from "lucide-react";
+import { BookOpen, Calendar, CalendarDays, History, LayoutDashboard, UsersRound } from "lucide-react";
 
 const groups = [
   { title: "overview", links: [
     { href: "/", label: "dashboard", icon: LayoutDashboard },
     { href: "/real-oyunlar", label: "realFixtures", icon: CalendarDays },
-    { href: "/oyunlar/bu-gun", label: "todaySMatches", icon: Calendar },
-    { href: "/oyunlar/sabah", label: "tomorrowSMatches", icon: Clock3 },
-    { href: "/oyunlar/gelecek", label: "upcomingMatches", icon: CalendarDays },
+    { href: "/oyunlar", label: "fixtureSchedule", icon: Calendar },
   ] },
   { title: "analytics", links: [
     { href: "/real-komandalar", label: "teams", icon: UsersRound },

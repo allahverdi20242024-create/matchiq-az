@@ -38,12 +38,12 @@ after(async () => {
 
 const pages = [
   ["/", "İdarə paneli", 'href="/oyun/xezer-zirve"'],
-  ["/oyunlar/bu-gun", "Bu günün oyunları", "Real oyun təqvimi"],
-  ["/oyunlar/sabah", "Sabahın oyunları", "Real oyun təqvimi"],
-  ["/oyunlar/gelecek", "Qarşıdakı oyunlar", "Növbəti 7 günün real oyun təqvimi"],
+  ["/oyunlar/bu-gun", "Bu günün oyunları", 'name="tarix"'],
+  ["/oyunlar/sabah", "Sabahın oyunları", 'name="tarix"'],
+  ["/oyunlar/gelecek", "Qarşıdakı oyunlar", 'name="tarix"'],
   ["/oyun/xezer-zirve", "Oyun təhlili", 'href="/komandalar/xezer"'],
   ["/komandalar/xezer", "Xəzər FK", "Son beş oyunun forması"],
-  ["/real-komandalar", "Real komanda statistikası", "Ev və səfər göstəriciləri"],
+  ["/real-komandalar", "Real komanda statistikası", "Real komanda statistikası"],
   ["/tarixce", "Proqnoz tarixçəsi", "Modelin tarixi sınağı"],
   ["/metodologiya", "Model metodologiyası", "100 000"],
 ];
@@ -138,4 +138,14 @@ test("language and theme changes persist across routes and support switching bac
   assert.match(html, /<html lang="az" data-theme="light"/);
   html = await choose(html, "theme", "dark");
   assert.match(html, /<html lang="az" data-theme="dark"/);
+});
+
+test("the calendar accepts a date through one navigation link", async () => {
+  const response = await fetch(baseUrl + "/oyunlar?tarix=2026-11-21", { signal: AbortSignal.timeout(5000) });
+  const page = (await response.text()).replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "");
+  assert.equal(response.status, 200);
+  assert.match(page, /<h1>Oyun cədvəli<\/h1>/);
+  assert.match(page, /<input[^>]+type="date"[^>]+value="2026-11-21"/);
+  assert.match(page, /href="\/oyunlar"/);
+  assert.doesNotMatch(page, /href="\/oyunlar\/(bu-gun|sabah|gelecek)"/);
 });

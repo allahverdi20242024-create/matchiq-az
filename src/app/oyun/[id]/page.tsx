@@ -16,7 +16,7 @@ export default async function Analysis({ params }: { params: Promise<{ id: strin
   await connection();
   const date = kickoff(fixture);
   return <>
-    <div className="heading"><div><h1>{t.matchAnalysis}</h1><p>{t.demoMatchStatistics}</p></div></div>
+    <div className="heading"><div><h1>{t.matchAnalysis}</h1></div></div>
     <section className="panel detail-hero">
       <div className="fixture-meta"><span><Trophy size={16} /> {t.demoLeague}</span><Badge><FlaskConical size={13} />{" "}{t.demo}</Badge></div>
       <div className="fixture-teams">
@@ -40,7 +40,7 @@ export default async function Analysis({ params }: { params: Promise<{ id: strin
       </dl></section>
       <section className="panel detail"><h2>{t.formOverTheLastFiveMatches}</h2><dl className="data-list">
         {[fixture.home, fixture.away].map((team) => <div key={team.id}><dt>{team.name}</dt><dd><Form team={team} /></dd></div>)}
-      </dl><p className="muted">{t.wWinDDrawLLoss}</p></section>
+      </dl></section>
     </div>
     <section className="panel detail source"><h2>{t.dataAndModel}</h2><dl className="data-list">
       <div><dt>{t.source}</dt><dd>{t.localDemoData}</dd></div>

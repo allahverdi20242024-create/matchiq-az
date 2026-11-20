@@ -9,9 +9,9 @@ import { fixtureDateOnly, fixtureDateTime, loadFixtureFeed, realMatchPath } from
 import styles from "./dashboard.module.css";
 
 const quickLinks = [
-  { title: "monteCarloSimulation", description: "trialCountRange", href: "/real-oyunlar#simulation-title", icon: Activity },
-  { title: "teamStatistics", description: "formHomeAndAwayResults", href: "/real-komandalar", icon: UsersRound },
-  { title: "modelBacktesting", description: "brierScoreAndCalibration", href: "/tarixce", icon: ChartNoAxesCombined },
+  { title: "monteCarloSimulation", href: "/real-oyunlar#simulation-title", icon: Activity },
+  { title: "teamStatistics", href: "/real-komandalar", icon: UsersRound },
+  { title: "modelBacktesting", href: "/tarixce", icon: ChartNoAxesCombined },
 ] as const;
 
 function Pitch() {
@@ -39,22 +39,22 @@ export default async function Home() {
     .slice(0, 3) ?? [];
 
   return <>
-    <div className="heading"><div><h1>{t.dashboard}</h1><p>{t.fixtureScheduleAndStatisticalForecasts}</p></div>
+    <div className="heading"><div><h1>{t.dashboard}</h1></div>
       <span className="date-tag"><CalendarDays size={16} aria-hidden="true" />{formatDate(bakuDate(now), intlLocale)}</span></div>
 
     <section className={styles.hero}>
       <Pitch />
       <div className={styles.heroContent}>
         <h2>{t.heroStart} <em>{t.heroEmphasis}</em>{locale === "az" ? " " : ""}{t.heroEnd}</h2>
-        <p>{t.heroDescription}</p>
+        
         <Link className="primary" href="/real-oyunlar"><CalendarDays size={18} aria-hidden="true" />{" "}{t.exploreRealFixtures}</Link>
       </div>
     </section>
 
     <nav className={styles.quickLinks} aria-label={t.analyticsSections}>
-      {quickLinks.map(({ title, description, href, icon: Icon }) => <Link className={styles.quickLink} key={href} href={href}>
+      {quickLinks.map(({ title, href, icon: Icon }) => <Link className={styles.quickLink} key={href} href={href}>
         <span className="stat-icon"><Icon size={19} aria-hidden="true" /></span>
-        <span><strong>{t[title]}</strong><small>{t[description]}</small></span>
+        <span><strong>{t[title]}</strong></span>
       </Link>)}
     </nav>
 

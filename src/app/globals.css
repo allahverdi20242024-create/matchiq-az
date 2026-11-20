@@ -295,3 +295,14 @@ footer span { padding: 0 5px; color: var(--green); }
 .standings-zone[data-zone="conferenceLeague"] { --zone-color: var(--green); }
 .standings-zone[data-zone="relegationZone"] { --zone-color: #ef6b7e; }
 .standings-zone[data-zone="relegationPlayoff"] { --zone-color: #d8ad51; }
+
+.calendar-heading { flex-wrap: wrap; }
+.calendar-filter { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.calendar-filter label { color: var(--muted); font-size: .85rem; font-weight: 650; }
+.calendar-filter input {
+  padding: 7px 9px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  color: var(--ink);
+}

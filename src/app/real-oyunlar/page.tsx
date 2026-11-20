@@ -19,7 +19,7 @@ export default async function RealFixtures({ searchParams }: {
   const view = params.nov === "neticeler" ? "results" : "upcoming";
   const feed = await loadFixtureFeed(view);
   return <>
-    <div className="heading"><div><h1>{t.realFixtures}</h1><p>{t.footballFixturesAndResultsFromDataProviders}</p></div></div>
+    <div className="heading"><div><h1>{t.realFixtures}</h1></div></div>
     <div className="section-heading">
       <nav className="tabs" aria-label={t.fixtureView}>
         <Link href="/real-oyunlar" aria-current={view === "upcoming" ? "page" : undefined}>{t.upcomingMatches}</Link>

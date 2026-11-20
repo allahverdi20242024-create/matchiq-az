@@ -62,11 +62,11 @@ export default async function HistoryPage() {
           <div><dt>{t.brierScoreModelBaseline}</dt><dd>{decimal(intlLocale).format(data.model.brier)} / {decimal(intlLocale).format(data.baseline.brier)}</dd></div>
           <div><dt>{t.logLossModelBaseline}</dt><dd>{decimal(intlLocale).format(data.model.log_loss)} / {decimal(intlLocale).format(data.baseline.log_loss)}</dd></div>
         </dl>
-        <p className="muted">{t.lowerIsBetterTheBaselineUsesWin}</p>
+        
       </section>
       <section className="panel detail">
         <h2>{t.probabilityCalibration}</h2>
-        <p className="muted">{t.forecastProbabilitiesAreComparedWithObservedFrequencies}</p>
+        
         <dl className="data-list">
           {data.calibration.map((bin, index) => <div key={bin.outcome + index}>
             <dt>{labels[outcomeIndex[bin.outcome]]} · {bin.count}{" "}{t.matches}</dt>
@@ -76,7 +76,7 @@ export default async function HistoryPage() {
       </section>
       <section className="panel detail">
         <h2>{t.latestBacktests}</h2>
-        <p className="muted">{t.theseForecastsWereCalculatedRetrospectivelyEachBacktest}</p>
+        
         <dl className="data-list">
           {data.recent.map((match) => <div key={match.competition + match.fixture_id}>
             <dt className="history-match"><LeagueLabel code={match.competition} /><span className="history-teams"><ClubLabel name={match.home} /> <span aria-hidden="true">–</span> <ClubLabel name={match.away} /></span><time dateTime={match.cutoff}>{date(intlLocale).format(new Date(match.cutoff))}</time></dt>

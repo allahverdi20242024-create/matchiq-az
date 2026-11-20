@@ -111,9 +111,7 @@ async function LeagueTable({ league, season }: { league: Competition; season?: n
     <h2 id="league-table">{t.verifiedStandings}</h2>
     <p className="muted mb-3"><a href={league.source_url}>{league.source}</a> · <time dateTime={standings.fetched_at}>{timestamp(intlLocale).format(new Date(standings.fetched_at))}</time></p>
     {rules && <div className="muted mb-3 text-sm">
-      <p>{t.standingsZoneExplanation}</p>
-      {league.competition === "PL" && <p>{t.englandConferenceNote}</p>}
-      <p className="mt-1"><a href={qualificationSource}>{t.uefaAccessList}</a>{" · "}<a href={rules.source}>{t.relegationRules}</a></p>
+      {t.zoneProjection} · <a href={qualificationSource}>{t.uefaAccessList}</a>{" · "}<a href={rules.source}>{t.relegationRules}</a>
     </div>}
     <div className="overflow-x-auto" tabIndex={0} role="region" aria-labelledby="league-table">
       <table className="w-full min-w-[32rem] border-collapse text-sm">
@@ -129,7 +127,7 @@ async function LeagueTable({ league, season }: { league: Competition; season?: n
               : <ClubLabel name={team.name} />}</th>
             <td className="px-2">{played}</td><td className="px-2">{wins}</td><td className="px-2">{draws}</td>
             <td className="px-2">{losses}</td><td className="px-2">{goal_difference}</td><td className="px-2 font-bold">{points}</td>
-            {rules && <td className="px-2 whitespace-nowrap">{zone ? <span className="standings-zone" data-zone={zone}>{t[zone]}</span> : "—"}</td>}
+            {rules && <td className="px-2 whitespace-nowrap">{zone ? <span className="standings-zone" data-zone={zone}>{zone === "conferenceLeague" && league.competition === "PL" ? t.conditionalConferenceLeague : t[zone]}</span> : "—"}</td>}
           </tr>;
         })}</tbody>
       </table>
@@ -153,7 +151,7 @@ export default async function TeamsPage({ searchParams }: {
     : data?.competitions.find((item) => item.teams.length > 0) ?? data?.competitions[0];
   const selected = league?.teams.find((row) => row.team.id === params.komanda);
   return <>
-    <div className="heading"><div><h1>{t.realTeamStatistics}</h1><p>{t.homeAndAwayRecordsRecentResultsAnd}</p></div></div>
+    <div className="heading"><div><h1>{t.realTeamStatistics}</h1></div></div>
     {data && <nav className="tabs flex-wrap" aria-label={t.competitionSelection}>
       {data.competitions.map((item) => <Link key={item.competition} href={teamLink(item.competition)}
         aria-current={league?.competition === item.competition ? "page" : undefined}>

@@ -64,7 +64,6 @@ export async function SimulationPanel({ groups, matchId, rawTrials, action = "/r
 
   return <section className="panel detail source" aria-labelledby="simulation-title">
     <h2 id="simulation-title">{t.monteCarloSimulation}</h2>
-    <p className="muted">{showFixturePicker ? t.simulationPickerInstructions : t.chooseTheNumberOfTrials}{" "}{t.simulationSampleSizeNote}</p>
     {groups.length === 0 ? <p className="muted">{t.simulationNoFixtures}</p> :
       <Form action={action} className={showFixturePicker ? "mt-4 grid items-end gap-3 sm:grid-cols-[minmax(0,1fr)_10rem_auto]" : "mt-4 flex flex-wrap items-end gap-3"}>
         {showFixturePicker && <label className="grid min-w-0 gap-1">{t.match}
