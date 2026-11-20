@@ -4,7 +4,8 @@ import { OutcomeChart } from "@/components/outcome-chart";
 import { fixtureDateTime } from "@/lib/real-fixtures";
 import { ClubLabel, LeagueLabel } from "@/components/club-crest";
 
-import { FixturePicker, type FixtureGroup } from "./fixture-picker";
+import type { FixtureGroup } from "@/lib/fixture-search";
+import { FixturePicker } from "./fixture-picker";
 
 export const maxTrials = 100_000;
 

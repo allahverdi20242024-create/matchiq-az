@@ -3,11 +3,9 @@
 import { useId, useState } from "react";
 import { usePreferences } from "@/components/preferences-context";
 
-type FixtureChoice = { id: string; home: string; away: string };
-export type FixtureGroup = { code: string; label: string; choices: FixtureChoice[] };
+import { filterFixtureGroups, type FixtureGroup } from "@/lib/fixture-search";
 
 const fieldStyle = "min-w-0 w-full rounded-lg border border-[var(--line)] bg-[var(--side)] p-2";
-const normalize = (value: string) => value.toLowerCase().normalize("NFKD").replace(/\p{M}/gu, "").replaceAll("ı", "i");
 
 export function FixturePicker({ groups, initialChoice }: { groups: FixtureGroup[]; initialChoice: string }) {
   const { t } = usePreferences();
@@ -15,20 +13,24 @@ export function FixturePicker({ groups, initialChoice }: { groups: FixtureGroup[
   const matchId = useId();
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState(initialChoice);
-  const terms = normalize(query).trim().split(/\s+/).filter(Boolean);
-  const filtered = terms.length ? groups.map((group) => ({
-    ...group,
-    choices: group.choices.filter(({ home, away }) => {
-      const name = normalize(home + " " + away + " " + group.label);
-      return terms.every((term) => name.includes(term));
-    }),
-  })).filter((group) => group.choices.length > 0) : groups;
+  const filtered = filterFixtureGroups(groups, query);
+  const suggestions = query.trim() ? filtered.flatMap(({ label, choices }) =>
+    choices.map((choice) => ({ ...choice, label }))).slice(0, 8) : [];
   const visibleSelection = filtered.some((group) => group.choices.some(({ id }) => id === selected)) ? selected : "";
 
   return <div className="grid min-w-0 gap-2">
     <label className="sr-only" htmlFor={searchId}>{t.searchFixtures}</label>
     <input id={searchId} type="search" className={fieldStyle} placeholder={t.searchFixtures} value={query}
       onChange={(event) => setQuery(event.target.value)} />
+    {suggestions.length > 0 && <ul className="max-h-56 overflow-y-auto rounded-lg border border-[var(--line)] bg-[var(--side)]">
+      {suggestions.map(({ id, home, away, label }) => <li key={id}>
+        <button type="button" className="block w-full px-3 py-2 text-left hover:bg-[var(--panel)]"
+          onClick={() => { setSelected(id); setQuery(""); }}>
+          <span className="block">{home} – {away}</span>
+          <small className="muted">{label}</small>
+        </button>
+      </li>)}
+    </ul>}
     <label className="grid min-w-0 gap-1" htmlFor={matchId}>{t.match}
       <select id={matchId} required name="oyun" className={fieldStyle} value={visibleSelection}
         onChange={(event) => setSelected(event.target.value)}>
