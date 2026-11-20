@@ -90,7 +90,7 @@ export default async function RealMatchPage({ params, searchParams }: {
           : t.simulationKickoffPending}</p>
       </section>}
     {detail.can_simulate && <Suspense fallback={<div className="panel detail" aria-busy="true"><div className="skeleton h-24" /></div>}>
-      <AiForecast id={match.id} />
+      <AiForecast id={match.id} home={match.home.name} away={match.away.name} />
     </Suspense>}
     <section className="source" aria-labelledby="recent-form">
       <h2 id="recent-form" className="mb-2">{t.recentResults}</h2>
