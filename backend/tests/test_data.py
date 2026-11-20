@@ -197,3 +197,32 @@ def test_champions_league_accepts_only_full_league_phase_table():
         assert [row.position for row in standings.rows] == list(range(1, 37))
 
     asyncio.run(run())
+
+def test_pending_leagues_are_not_reported_as_unavailable_during_sync():
+    async def run():
+        started = asyncio.Event()
+        release = asyncio.Event()
+
+        async def handler(request):
+            if request.url.path.endswith("en.1.json"):
+                started.set()
+                await release.wait()
+                return httpx.Response(200, json=OPEN_FIXTURES)
+            return httpx.Response(404)
+
+        async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+            service = FixtureService(MemoryStore(), [OpenFootball(ProviderHttp(client, 0))], 14400)
+            sync = asyncio.create_task(service.sync(2026))
+            await asyncio.wait_for(started.wait(), timeout=2)
+            now = datetime(2026, 11, 20, tzinfo=UTC)
+            pending = await service.feed(2026, now, "results")
+            release.set()
+            await sync
+            completed = await service.feed(2026, now, "results")
+        assert "PL" in pending.syncing and "PL" not in pending.unavailable
+        assert "AZ" in pending.unavailable and "AZ" not in pending.syncing
+        assert not completed.syncing
+        assert any(item.competition == "PL" for item in completed.competitions)
+        assert "FL1" in completed.unavailable
+
+    asyncio.run(run())

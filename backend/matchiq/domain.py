@@ -92,4 +92,5 @@ class Feed(BaseModel):
     generated_at: datetime
     season: int
     unavailable: list[str]
+    syncing: list[str] = Field(default_factory=list)
     competitions: list[CompetitionFeed]

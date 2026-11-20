@@ -61,6 +61,7 @@ class CompetitionStats(BaseModel):
 class Statistics(BaseModel):
     season: int
     unavailable: list[str]
+    syncing: list[str] = Field(default_factory=list)
     competitions: list[CompetitionStats]
 
 
@@ -88,5 +89,5 @@ def summarize_competition(feed: CompetitionFeed) -> CompetitionStats:
 
 
 def summarize_teams(feed: Feed) -> Statistics:
-    return Statistics(season=feed.season, unavailable=feed.unavailable,
+    return Statistics(season=feed.season, unavailable=feed.unavailable, syncing=feed.syncing,
                       competitions=[summarize_competition(item) for item in feed.competitions])

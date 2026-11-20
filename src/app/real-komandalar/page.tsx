@@ -1,6 +1,7 @@
 import { MatchResult } from "@/components/match-result";
 import { getPreferences } from "@/lib/preferences";
 import Link from "next/link";
+import { LiveRefresh } from "./live-refresh";
 import { TeamSearch } from "./team-search";
 import { championsLeagueZone, standingsRules, standingsZone } from "@/lib/standings-zones";
 import { ClubCrest, ClubLabel, LeagueLabel } from "@/components/club-crest";
@@ -28,7 +29,7 @@ type Competition = {
   }[] } | null;
   teams: TeamStats[];
 };
-type Statistics = { season: number; unavailable: string[]; competitions: Competition[] };
+type Statistics = { season: number; unavailable: string[]; syncing?: string[]; competitions: Competition[] };
 
 const calendarDate = (locale: string) => new Intl.DateTimeFormat(locale, {
   dateStyle: "medium", timeZone: "UTC",
@@ -136,6 +137,8 @@ export default async function TeamsPage({ searchParams }: {
   const { t } = await getPreferences();
   const [params, data] = await Promise.all([searchParams, loadStatistics()]);
   const unavailable = data?.unavailable.filter((code) => code !== "AZ") ?? [];
+  const syncing = data?.syncing ?? [];
+  const competitionCodes = [...(data?.competitions.map(({ competition }) => competition) ?? []), ...syncing];
   const league = params.liqa
     ? data?.competitions.find((item) => item.competition === params.liqa)
     : data?.competitions.find((item) => item.teams.length > 0) ?? data?.competitions[0];
@@ -149,14 +152,15 @@ export default async function TeamsPage({ searchParams }: {
   return <>
     <div className="heading"><div><h1>{t.realTeamStatistics}</h1></div></div>
     {searchableTeams.length > 0 && <TeamSearch teams={searchableTeams} />}
-    {data && <nav className="tabs flex-wrap" aria-label={t.competitionSelection}>
-      {data.competitions.map((item) => <Link key={item.competition} href={teamLink(item.competition)}
-        aria-current={league?.competition === item.competition ? "page" : undefined}>
-        <LeagueLabel code={item.competition} />
+    {competitionCodes.length > 0 && <nav className="tabs flex-wrap" aria-label={t.competitionSelection}>
+      {competitionCodes.map((code) => <Link key={code} href={teamLink(code)}
+        aria-current={(params.liqa ?? league?.competition) === code ? "page" : undefined}>
+        <LeagueLabel code={code} />
       </Link>)}
     </nav>}
+    {(syncing.length > 0 || !data) && <LiveRefresh label={data ? t.competitionsSyncing : t.loading} timeoutLabel={t.refreshThePageInAMoment} />}
     {unavailable.length > 0 && <p className="muted source">{t.dataUnavailable}{" "}{unavailable.map((code) => competitionName(code, t)).join(", ")}.</p>}
-    {!league ? <section className="panel empty source"><h2>{data ? t.noDataFoundForThisCompetition : t.dataServiceUnavailable}</h2></section> : <>
+    {!league ? data && syncing.length === 0 && <section className="panel empty source"><h2>{t.noDataFoundForThisCompetition}</h2></section> : <>
       <section className="panel detail source">
         <div className="fixture-meta mb-3">
           <h2 id="competition-title"><LeagueLabel code={league.competition} /></h2>

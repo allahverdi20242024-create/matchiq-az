@@ -1,4 +1,5 @@
 export const az = {
+  competitionsSyncing: "Liqalar yenilənir",
   previousDay: "Əvvəlki gün",
   nextDay: "Növbəti gün",
   dailyFixtures: "Günün oyunları",
@@ -207,6 +208,7 @@ export const az = {
 };
 
 export const en: Record<keyof typeof az, string> = {
+  competitionsSyncing: "Updating competitions",
   previousDay: "Previous day",
   nextDay: "Next day",
   dailyFixtures: "Matches by date",
