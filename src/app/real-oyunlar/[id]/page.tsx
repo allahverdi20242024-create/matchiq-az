@@ -1,3 +1,4 @@
+import { MatchResult } from "@/components/match-result";
 import { getPreferences } from "@/lib/preferences";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -23,9 +24,7 @@ async function TeamForm({ team, matches }: { team: RealMatch["home"]; matches: R
           return <div key={match.id}>
             <dt><ClubLabel name={opponent.name} /><br />
               <time dateTime={match.date}>{fixtureDateOnly(intlLocale).format(new Date(match.date))}</time> · {home ? t.home : t.away}</dt>
-            <dd><strong>{scored}:{conceded}</strong><br />
-              <span className="muted">{scored > conceded ? t.win : scored === conceded ? t.draw : t.loss}</span>
-            </dd>
+            <MatchResult scored={scored} conceded={conceded} />
           </div>;
         })}
       </dl>}

@@ -1,3 +1,4 @@
+import { MatchResult } from "@/components/match-result";
 import { getPreferences } from "@/lib/preferences";
 import Link from "next/link";
 import { TeamSearch } from "./team-search";
@@ -77,9 +78,7 @@ async function TeamDetails({ stats }: { stats: TeamStats }) {
         {stats.recent.map((match) => <div key={match.match_id}>
           <dt><ClubLabel name={match.opponent.name} /> · {match.venue === "home" ? t.home : t.away}<br />
             <time dateTime={match.date}>{calendarDate(intlLocale).format(new Date(match.date))}</time></dt>
-          <dd>{match.scored}:{match.conceded}<br />
-            {match.scored > match.conceded ? t.win : match.scored === match.conceded ? t.draw : t.loss}
-          </dd>
+          <MatchResult scored={match.scored} conceded={match.conceded} />
         </div>)}
       </dl>
     </section>
