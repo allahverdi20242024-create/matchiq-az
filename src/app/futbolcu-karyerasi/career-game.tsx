@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Globe2, Lightbulb, RotateCcw, Trophy } from "lucide-react";
 import { ClubLabel } from "@/components/crest-icons";
 import careerArt from "@/lib/career-art.json";
+import archiveArt from "@/lib/career-archive-crests.json";
 import dataset from "../../../football-careers.json";
 import styles from "./career.module.css";
 
@@ -15,6 +16,9 @@ const levels = ["easy", "medium", "hard", "all"] as const;
 type Level = (typeof levels)[number];
 const flags: Record<string, { index: number }> = careerArt.flags;
 const crests: Record<string, { src: string }> = careerArt.clubs;
+const archiveCrests: Record<string, { index: number; source: string }> = archiveArt;
+const reserveClubs = new Set(["Bryne 2", "Molde 2", "Sevilla Atlético", "Tallinna Kalev Juunior"]);
+const unusedSpell = "Durgapur Vox Champions"; // The league folded before Okocha made an appearance.
 
 function CountryFlag({ country }: { country: string }) {
   const art = flags[country];
@@ -26,7 +30,13 @@ function CountryFlag({ country }: { country: string }) {
 
 function CareerClub({ name }: { name: string }) {
   const [failed, setFailed] = useState(false);
+  const archive = archiveCrests[name];
   const art = crests[name];
+  if (archive) return <span className="crest-label">
+    <span className={styles.archiveCrest} aria-hidden="true"
+      style={{ backgroundPosition: `${(archive.index % 6) * 20}% ${Math.floor(archive.index / 6) * 25}%` }} />
+    <span>{name}</span>
+  </span>;
   if (!art || failed) return <ClubLabel name={name} />;
   return <span className="crest-label">
     <span className="club-crest" data-size="small" data-surface="light" aria-hidden="true">
@@ -55,6 +65,8 @@ function drawQuestions(level: Level): Question[] {
 
 function Round({ question, en, next }: { question: Question; en: boolean; next: (points: number) => void }) {
   const { player, options } = question;
+  const career = player.clubs.filter(club => !reserveClubs.has(club.name) && club.name !== unusedSpell);
+  const archiveSources = [...new Set(career.map(club => club.name))].filter(name => Object.hasOwn(archiveCrests, name));
   const [wrong, setWrong] = useState<string[]>([]);
   const [hintCount, setHintCount] = useState(0);
   const [points, setPoints] = useState<number | null>(null);
@@ -73,7 +85,7 @@ function Round({ question, en, next }: { question: Question; en: boolean; next: 
 
   return <>
     <ol className={styles.clubs} aria-label={en ? "Club career" : "Klub karyerası"}>
-      {player.clubs.map((club, index) => <li key={index}>
+      {career.map((club, index) => <li key={index}>
         <CareerClub name={club.name} />
         <small>{club.fromYear}{club.toYear !== club.fromYear && `–${club.toYear ?? (en ? "present" : "indi")}`}{club.loan && (en ? " · Loan" : " · İcarə")}</small>
       </li>)}
@@ -103,6 +115,10 @@ function Round({ question, en, next }: { question: Question; en: boolean; next: 
         </a>)}
       </div>
     </div>}
+    {archiveSources.length > 0 && <details className={styles.artCredit}>
+      <summary>{en ? "Additional logo sources" : "Əlavə loqo mənbələri"}</summary>
+      <ul>{archiveSources.map(name => <li key={name}><a href={archiveCrests[name].source}>{name}</a></li>)}</ul>
+    </details>}
   </>;
 }
 

@@ -14,5 +14,6 @@
 .feedback:empty { display: none; }
 .feedback p, .score { display: flex; align-items: center; gap: .35rem; }
 .flag { width: 1.5rem; height: 1rem; flex: none; background-image: url("/career-flags.webp"); background-size: 800% 400%; background-repeat: no-repeat; }
+.archiveCrest { width: 1.5rem; height: 1.5rem; flex: none; border-radius: .25rem; background: #eff3f5 url("/career-archive-crests.webp") no-repeat; background-size: 600% 500%; }
 .artCredit { color: var(--muted); font-size: .8rem; }
 .reveal { display: grid; gap: .5rem; }
