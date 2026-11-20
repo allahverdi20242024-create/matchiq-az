@@ -33,7 +33,7 @@ export default async function RealFixtures({ searchParams }: {
         .map((group) => ({
           code: group.competition,
           label: competitionName(group.competition, t),
-          choices: group.matches.filter((match, index) => index < 8 || match.id === params.oyun).map((match) => ({ id: match.id, home: match.home.name, away: match.away.name })),
+          choices: group.matches.map((match) => ({ id: match.id, home: match.home.name, away: match.away.name })),
         }))} />}
       <div className="method-grid source">
         {feed.competitions.map((group) => <section className="panel detail" key={group.competition}>

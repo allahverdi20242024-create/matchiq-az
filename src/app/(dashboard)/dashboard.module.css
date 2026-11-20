@@ -21,7 +21,7 @@
 }
 .heroContent em { color: #86f6bc; font-style: normal; }
 .heroContent p { max-width: 330px; color: #c0d8cf; margin: 18px 0 23px; }
-.heroContent a { min-height: 46px; padding-inline: 16px; }
+.heroContent a { margin-top: 18px; min-height: 46px; padding-inline: 16px; }
 
 .pitchVisual {
   position: absolute;
@@ -100,8 +100,6 @@
 .allLink { width: fit-content; color: var(--accent-link); font-size: .875rem; font-weight: 650; }
 .allLink:hover { text-decoration: underline; }
 .realCard .allLink { margin-top: 5px; }
-.demo { margin-top: 34px; }
-.demo > span { margin-bottom: 8px; }
 
 @media (max-width: 1120px) {
   .quickLink { align-items: flex-start; }

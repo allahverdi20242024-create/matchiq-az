@@ -1,4 +1,6 @@
 export const az = {
+  searchFixtures: "Komanda və ya liqa axtar",
+  noFixtureSearchResults: "Uyğun oyun tapılmadı",
   loading: "Məlumat yüklənir",
   monteCarloSimulation: "Monte Karlo simulyasiyası",
   trialCountRange: "1–100 000 sınaq seç",
@@ -192,6 +194,8 @@ export const az = {
 };
 
 export const en: Record<keyof typeof az, string> = {
+  searchFixtures: "Search teams or leagues",
+  noFixtureSearchResults: "No matching fixtures",
   loading: "Loading",
   monteCarloSimulation: "Monte Carlo simulation",
   trialCountRange: "Choose 1–100,000 trials",

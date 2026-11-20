@@ -4,10 +4,10 @@ import { OutcomeChart } from "@/components/outcome-chart";
 import { fixtureDateTime } from "@/lib/real-fixtures";
 import { ClubLabel, LeagueLabel } from "@/components/club-crest";
 
+import { FixturePicker, type FixtureGroup } from "./fixture-picker";
+
 export const maxTrials = 100_000;
 
-type Choice = { id: string; home: string; away: string };
-type Group = { code: string; label: string; choices: Choice[] };
 type Result = {
   trials: number;
   model_version: string;
@@ -43,7 +43,7 @@ async function simulate(matchId: string, trials: number): Promise<Result | strin
 }
 
 export async function SimulationPanel({ groups, matchId, rawTrials, action = "/real-oyunlar", showFixturePicker = true }: {
-  groups: Group[];
+  groups: FixtureGroup[];
   action?: string;
   showFixturePicker?: boolean;
   matchId?: string | string[];
@@ -66,14 +66,7 @@ export async function SimulationPanel({ groups, matchId, rawTrials, action = "/r
     <h2 id="simulation-title">{t.monteCarloSimulation}</h2>
     {groups.length === 0 ? <p className="muted">{t.simulationNoFixtures}</p> :
       <Form action={action} className={showFixturePicker ? "mt-4 grid items-end gap-3 sm:grid-cols-[minmax(0,1fr)_10rem_auto]" : "mt-4 flex flex-wrap items-end gap-3"}>
-        {showFixturePicker && <label className="grid min-w-0 gap-1">{t.match}
-          <select required name="oyun" defaultValue={choice?.id ?? ""} className="min-w-0 rounded-lg border border-[var(--line)] bg-[var(--side)] p-2">
-            <option value="" disabled>{t.selectAMatch}</option>
-            {groups.map((group) => <optgroup key={group.label} label={group.label}>
-              {group.choices.map((item) => <option value={item.id} key={item.id}>{item.home} – {item.away}</option>)}
-            </optgroup>)}
-          </select>
-        </label>}
+        {showFixturePicker && <FixturePicker key={choice?.id} groups={groups} initialChoice={choice?.id ?? ""} />}
         <label className="grid gap-1">{t.numberOfTrials}
           <input type="number" name="sinaq" min={1} max={maxTrials} step={1} required defaultValue={validTrials ? trials : maxTrials} className="min-w-0 rounded-lg border border-[var(--line)] bg-[var(--side)] p-2" />
         </label>

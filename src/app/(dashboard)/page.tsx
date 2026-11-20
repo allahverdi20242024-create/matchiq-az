@@ -1,8 +1,7 @@
 import { getPreferences } from "@/lib/preferences";
 import Link from "next/link";
-import { Activity, CalendarDays, ChartNoAxesCombined, FlaskConical, UsersRound } from "lucide-react";
+import { Activity, CalendarDays, ChartNoAxesCombined, UsersRound } from "lucide-react";
 import { ClubLabel, LeagueLabel } from "@/components/club-crest";
-import { FixtureList } from "@/components/matches";
 import { Badge } from "@/components/ui/badge";
 import { bakuDate, formatDate } from "@/lib/demo";
 import { fixtureDateOnly, fixtureDateTime, loadFixtureFeed, realMatchPath } from "@/lib/real-fixtures";
@@ -46,7 +45,7 @@ export default async function Home() {
       <Pitch />
       <div className={styles.heroContent}>
         <h2>{t.heroStart} <em>{t.heroEmphasis}</em>{locale === "az" ? " " : ""}{t.heroEnd}</h2>
-        
+
         <Link className="primary" href="/real-oyunlar"><CalendarDays size={18} aria-hidden="true" />{" "}{t.exploreRealFixtures}</Link>
       </div>
     </section>
@@ -76,9 +75,5 @@ export default async function Home() {
       </div> : <div className="panel detail muted">{feed ? t.noUpcomingFixtures : t.fixtureServiceUnavailable}</div>}
     </section>
 
-    <div className={styles.demo}>
-      <Badge><FlaskConical size={13} aria-hidden="true" />{" "}{t.demoData}</Badge>
-      <FixtureList period="bu-gun" now={now} title={t.demoFixtures} showTabs={false} />
-    </div>
   </>;
 }
