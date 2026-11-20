@@ -1,9 +1,11 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import Image from "next/image";
 import { Globe2, Lightbulb, RotateCcw, Trophy } from "lucide-react";
 import { ClubLabel } from "@/components/crest-icons";
 import { normalizeSearch } from "@/lib/search-text";
+import careerArt from "@/lib/career-art.json";
 import dataset from "../../../football-careers.json";
 import styles from "./career.module.css";
 
@@ -11,6 +13,28 @@ type Player = (typeof dataset.players)[number];
 const roundsPerGame = 5;
 const levels = ["easy", "medium", "hard", "all"] as const;
 type Level = (typeof levels)[number];
+const flags: Record<string, { src: string }> = careerArt.flags;
+const crests: Record<string, { src: string }> = careerArt.clubs;
+
+function CountryFlag({ country }: { country: string }) {
+  const [failed, setFailed] = useState(false);
+  const art = flags[country];
+  return art && !failed
+    ? <Image className={styles.flag} src={art.src} unoptimized alt="" width={24} height={17} onError={() => setFailed(true)} />
+    : <Globe2 size={15} aria-hidden="true" />;
+}
+
+function CareerClub({ name }: { name: string }) {
+  const [failed, setFailed] = useState(false);
+  const art = crests[name];
+  if (!art || failed) return <ClubLabel name={name} />;
+  return <span className="crest-label">
+    <span className="club-crest" data-size="small" data-surface="light" aria-hidden="true">
+      <Image src={art.src} unoptimized alt="" width={22} height={22} onError={() => setFailed(true)} />
+    </span>
+    <span>{name}</span>
+  </span>;
+}
 
 function drawPlayers(level: Level) {
   const pool = dataset.players.filter(player => level === "all" || player.difficulty === level);
@@ -45,7 +69,7 @@ function Round({ player, en, next }: { player: Player; en: boolean; next: (point
   return <>
     <ol className={styles.clubs} aria-label={en ? "Club career" : "Klub karyerası"}>
       {player.clubs.map((club, index) => <li key={index}>
-        <ClubLabel name={club.name} />
+        <CareerClub name={club.name} />
         <small>{club.fromYear}{club.toYear !== club.fromYear && `–${club.toYear ?? (en ? "present" : "indi")}`}{club.loan && (en ? " · Loan" : " · İcarə")}</small>
       </li>)}
     </ol>
@@ -62,7 +86,7 @@ function Round({ player, en, next }: { player: Player; en: boolean; next: (point
         <button type="button" onClick={() => setPoints(0)}>{en ? "Reveal answer" : "Cavabı göstər"}</button>
       </div>
       <div role="status" className={styles.feedback}>
-        {hintCount > 0 && <p><Globe2 size={15} aria-hidden="true" /> {en ? player.countryEn : player.countryAz}
+        {hintCount > 0 && <p><CountryFlag country={player.countryEn} /> {en ? player.countryEn : player.countryAz}
           {hintCount === 2 && ` · ${en ? player.positionEn : player.positionAz}`}</p>}
         {misses > 0 && <p>{en ? `Try again. ${3 - misses} attempts left.` : `Yenidən yoxla. Qalan cəhd sayı: ${3 - misses}.`}</p>}
       </div>
@@ -114,5 +138,9 @@ export function CareerGame({ en }: { en: boolean }) {
         </button>
       </div>
     </>}
+    <footer className={styles.artCredit}>
+      {en ? "Club logos" : "Klub loqoları"} · <a href="https://football-logos.cc/">football-logos.cc</a>
+      {" · "}{en ? "Flags" : "Bayraqlar"} · <a href="https://www.countryflags.com/">Countryflags.com</a>
+    </footer>
   </section>;
 }

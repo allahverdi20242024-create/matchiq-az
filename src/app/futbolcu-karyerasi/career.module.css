@@ -10,4 +10,6 @@
 .actions button:disabled { opacity: .45; }
 .feedback:empty { display: none; }
 .feedback p, .score { display: flex; align-items: center; gap: .35rem; }
+.flag { width: 1.5rem; height: 1.05rem; object-fit: contain; }
+.artCredit { color: var(--muted); font-size: .8rem; }
 .reveal { display: grid; gap: .5rem; }
