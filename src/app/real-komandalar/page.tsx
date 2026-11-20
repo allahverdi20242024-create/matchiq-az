@@ -15,7 +15,7 @@ type RecordLine = {
 };
 type Team = { id: string; name: string };
 type Result = { match_id: string; date: string; opponent: Team; venue: "home" | "away"; scored: number; conceded: number };
-type TeamStats = { team: Team; total: RecordLine; home: RecordLine; away: RecordLine; points: number; recent: Result[] };
+type TeamStats = { team: Team; total: RecordLine; home: RecordLine; away: RecordLine; recent: Result[] };
 type Competition = {
   competition: string;
   source: string;
@@ -23,7 +23,10 @@ type Competition = {
   fetched_at: string;
   stale: boolean;
   completed_matches: number;
-  provisional_table: boolean;
+  standings?: { fetched_at: string; rows: {
+    team: Team; position: number; played: number; wins: number; draws: number; losses: number;
+    goal_difference: number; points: number;
+  }[] } | null;
   teams: TeamStats[];
 };
 type Statistics = { season: number; unavailable: string[]; competitions: Competition[] };
@@ -89,24 +92,31 @@ async function TeamDetails({ stats }: { stats: TeamStats }) {
 }
 
 async function LeagueTable({ league }: { league: Competition }) {
-  const { t } = await getPreferences();
-  if (!league.provisional_table) return <ul className="space-y-2">
+  const { t, intlLocale } = await getPreferences();
+  const { standings } = league;
+  if (!standings) return <>
+    <p className="muted mb-3">{t.standingsUnavailable}</p>
+    <ul className="space-y-2">
     {league.teams.map((row) => <li key={row.team.id}><Link href={teamLink(league.competition, row.team.id)}><ClubLabel name={row.team.name} /></Link></li>)}
-  </ul>;
+    </ul>
+  </>;
 
+  const teamsWithResults = new Set(league.teams.map((row) => row.team.id));
   return <>
-    <h2 id="league-table">{t.standingsCalculatedFromResults}</h2>
-    <p className="muted mb-3">{t.standingsExplanation}</p>
+    <h2 id="league-table">{t.verifiedStandings}</h2>
+    <p className="muted mb-3"><a href={league.source_url}>{league.source}</a> · <time dateTime={standings.fetched_at}>{timestamp(intlLocale).format(new Date(standings.fetched_at))}</time></p>
     <div className="overflow-x-auto" tabIndex={0} role="region" aria-labelledby="league-table">
       <table className="w-full min-w-[32rem] border-collapse text-sm">
         <thead><tr className="border-b border-[var(--line)] text-right">
           {[t.team, t.played, t.win, t.draw, t.loss, t.goalDifference, t.points].map((label, index) =>
             <th className={index === 0 ? "px-2 py-2 text-left" : "px-2 py-2"} scope="col" key={label}>{label}</th>)}
         </tr></thead>
-        <tbody>{league.teams.map(({ team, total, points }) => <tr key={team.id} className="border-b border-[var(--line)] text-right">
-          <th scope="row" className="px-2 py-2 text-left"><Link href={teamLink(league.competition, team.id)}><ClubLabel name={team.name} /></Link></th>
-          <td className="px-2">{total.played}</td><td className="px-2">{total.wins}</td><td className="px-2">{total.draws}</td>
-          <td className="px-2">{total.losses}</td><td className="px-2">{total.goals_for - total.goals_against}</td><td className="px-2 font-bold">{points}</td>
+        <tbody>{standings.rows.map(({ team, position, played, wins, draws, losses, goal_difference, points }) => <tr key={team.id} className="border-b border-[var(--line)] text-right">
+          <th scope="row" className="px-2 py-2 text-left"><span className="muted mr-2">{position}</span>{teamsWithResults.has(team.id)
+            ? <Link href={teamLink(league.competition, team.id)}><ClubLabel name={team.name} /></Link>
+            : <ClubLabel name={team.name} />}</th>
+          <td className="px-2">{played}</td><td className="px-2">{wins}</td><td className="px-2">{draws}</td>
+          <td className="px-2">{losses}</td><td className="px-2">{goal_difference}</td><td className="px-2 font-bold">{points}</td>
         </tr>)}</tbody>
       </table>
     </div>
@@ -142,7 +152,7 @@ export default async function TeamsPage({ searchParams }: {
           <Badge>{league.stale ? t.staleData : t.realResults}</Badge></div>
         <p className="muted mb-3">{data?.season}/{(data?.season ?? 0) + 1} · {league.completed_matches}{" " + t.completedMatches + " "}<a href={league.source_url}>{league.source}</a> · <time dateTime={league.fetched_at}>{timestamp(intlLocale).format(new Date(league.fetched_at))}</time></p>
         {params.komanda && <Link href={teamLink(league.competition)}>{t.returnToTeamList}</Link>}
-        {league.teams.length === 0 ? <p className="muted">{t.theSourceHasNoCompletedMatches}</p> :
+        {league.teams.length === 0 && !league.standings ? <p className="muted">{t.theSourceHasNoCompletedMatches}</p> :
           !params.komanda && <LeagueTable league={league} />}
       </section>
       {params.komanda && <div className="source">{selected ? <TeamDetails stats={selected} /> : <section className="panel empty"><h2>{t.teamNotFound}</h2></section>}</div>}

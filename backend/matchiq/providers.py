@@ -8,7 +8,7 @@ from zoneinfo import ZoneInfo
 
 import httpx
 
-from .domain import Match, Snapshot, Source, Team
+from .domain import Match, Snapshot, Source, StandingRow, Standings, Team
 
 BAKU = ZoneInfo("Asia/Baku")
 
@@ -122,7 +122,31 @@ class FootballData:
             matches.append(timed_match(self.name, competition, row["id"], row["utcDate"],
                                        named_team(self.name, home["id"], home["name"]),
                                        named_team(self.name, away["id"], away["name"]), score))
-        return snapshot(competition, season, self.name, "https://www.football-data.org/", matches)
+        result = snapshot(competition, season, self.name, "https://www.football-data.org/", matches)
+        if competition.open_file is not None:
+            try:
+                result.standings = await self.fetch_standings(competition, season)
+            except (ProviderError, KeyError, ValueError, TypeError):
+                # A standings outage must not discard a valid fixture feed.
+                pass
+        return result
+
+    async def fetch_standings(self, competition, season):
+        url = f"https://api.football-data.org/v4/competitions/{competition.code}/standings"
+        data = await self.http.get(url, params={"season": season}, headers={"X-Auth-Token": self.token})
+        if data["competition"]["code"] != competition.code or date.fromisoformat(data["season"]["startDate"]).year != season:
+            raise ProviderError("standings_scope_mismatch")
+        tables = [table for table in data["standings"] if table["type"] == "TOTAL" and not table.get("group")]
+        if len(tables) != 1:
+            raise ProviderError("standings_table_unavailable")
+        rows = []
+        for row in tables[0]["table"]:
+            team = row["team"]
+            rows.append(StandingRow(team=named_team(self.name, team["id"], team["name"]),
+                                    position=row["position"], played=row["playedGames"],
+                                    wins=row["won"], draws=row["draw"], losses=row["lost"],
+                                    goal_difference=row["goalDifference"], points=row["points"]))
+        return Standings(fetched_at=datetime.now(UTC), rows=sorted(rows, key=lambda row: row.position))
 
 
 class OpenFootball:

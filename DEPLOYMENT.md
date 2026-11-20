@@ -30,3 +30,7 @@ GitHub Actions frontend yoxlamalarını, PostgreSQL 17 ilə saxlanma və paralel
 Backend üçün `render.yaml` faylı Render Free xidmətini müəyyən edir. Render layihəsini qoşarkən ayrıca Supabase PostgreSQL bağlantısını `DATABASE_URL` kimi xidmətin məxfi dəyişənlərində saxlayın. Supabase-in IPv4 dəstəkli sessiya pooler-i istifadə edilə bilər. Vercel layihəsinə repozitoriyanı Next.js formatında qoşun və `MATCHIQ_API_URL` dəyişəninə backend-in HTTPS ünvanını yazın. Futbol provayder açarları yalnız backend mühitinə əlavə edilir.
 
 Render Free xidməti boş qaldıqda yatıma keçir. Yatım ərzində planlı sinxronlaşdırma işləmir və ilk sorğu xidmətin oyanmasını gözləyə bilər. Render-in pulsuz PostgreSQL bazası 30 gündən sonra bitdiyi üçün davamlı saxlanma üçün ayrıca PostgreSQL bağlantısı nəzərdə tutulur.
+
+## Liqa cədvəlləri
+
+`FOOTBALL_DATA_TOKEN` qoşulanda İngiltərə Premyer Liqası, La Liqa, A Seriyası, Bundesliqa və Liqa 1 üçün cədvəl football-data.org-un mövsüm üzrə ümumi cədvəlindən götürülür. Mənbə cədvəli təqdim etmədikdə komanda nəticələri görünür, xal cədvəli isə əlçatan kimi göstərilmir.

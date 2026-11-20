@@ -151,3 +151,25 @@ def test_today_and_tomorrow_include_date_only_matches_across_baku_midnight():
             assert [fixture.id for fixture in feed.competitions[0].matches] == [expected]
 
     asyncio.run(run())
+
+def test_provider_standings_preserve_position_and_adjusted_points():
+    def handler(request):
+        assert request.url.path == "/v4/competitions/PL/standings"
+        assert request.url.params["season"] == "2026"
+        return httpx.Response(200, json={
+            "competition": {"code": "PL"}, "season": {"startDate": "2026-08-15"},
+            "standings": [{"type": "TOTAL", "group": None, "table": [{
+                "position": 1, "team": {"id": 1, "name": "Example FC"},
+                "playedGames": 10, "won": 9, "draw": 0, "lost": 1,
+                "goalDifference": 10, "points": 25,
+            }]}],
+        })
+
+    async def run():
+        async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+            standings = await FootballData(ProviderHttp(client, 0), "test-key").fetch_standings(PL, 2026)
+        row = standings.rows[0]
+        assert row.position == 1 and row.played == 10
+        assert row.points == 25 and row.team.id == "football-data.org:1"
+
+    asyncio.run(run())

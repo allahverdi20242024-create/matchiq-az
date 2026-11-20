@@ -33,6 +33,32 @@ class Match(BaseModel):
         return self
 
 
+class StandingRow(BaseModel):
+    team: Team
+    position: int = Field(ge=1)
+    played: NonNegativeInt
+    wins: NonNegativeInt
+    draws: NonNegativeInt
+    losses: NonNegativeInt
+    goal_difference: int
+    points: int
+
+
+class Standings(BaseModel):
+    fetched_at: AwareDatetime
+    rows: list[StandingRow] = Field(min_length=1)
+
+    @model_validator(mode="after")
+    def validate_rows(self):
+        if sorted(row.position for row in self.rows) != list(range(1, len(self.rows) + 1)):
+            raise ValueError("invalid standings positions")
+        if len({row.team.id for row in self.rows}) != len(self.rows):
+            raise ValueError("duplicate standings teams")
+        if any(row.played != row.wins + row.draws + row.losses for row in self.rows):
+            raise ValueError("inconsistent standings totals")
+        return self
+
+
 class Snapshot(BaseModel):
     competition: str
     season: int
@@ -40,6 +66,7 @@ class Snapshot(BaseModel):
     source_url: str
     fetched_at: AwareDatetime
     matches: list[Match]
+    standings: Standings | None = None
 
     @model_validator(mode="after")
     def validate_matches(self):
@@ -58,6 +85,7 @@ class CompetitionFeed(BaseModel):
     fetched_at: AwareDatetime
     stale: bool
     matches: list[Match]
+    standings: Standings | None = None
 
 
 class Feed(BaseModel):

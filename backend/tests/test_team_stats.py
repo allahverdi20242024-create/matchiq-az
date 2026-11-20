@@ -19,10 +19,10 @@ def test_table_and_venue_totals_use_completed_results():
                                     match(2, a, b, (2, 0)), match(1, b, c, (1, 0))])
     summary = summarize_competition(feed)
     assert summary.completed_matches == 3
-    assert summary.stale and summary.provisional_table
+    assert summary.stale and summary.standings is None
     assert [row.team.id for row in summary.teams] == ["A", "B", "C"]
     row = summary.teams[0]
-    assert row.points == 4 and row.total.played == 2
+    assert row.total.played == 2
     assert row.home.wins == 1 and row.away.draws == 1
     assert row.home.goals_for == 2 and row.away.goals_against == 1
     assert [result.match_id for result in row.recent] == ["3", "2"]
@@ -33,5 +33,5 @@ def test_cup_has_stats_but_no_combined_league_table():
                            source_url="https://example.com", fetched_at=datetime.now(UTC),
                            stale=False, matches=[])
     summary = summarize_competition(feed)
-    assert not summary.provisional_table
+    assert summary.standings is None
     assert not summary.teams
