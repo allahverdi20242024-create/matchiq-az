@@ -37,7 +37,7 @@ after(async () => {
 });
 
 const pages = [
-  ["/", "İdarə paneli", "Qarşıdakı real oyunlar"],
+  ["/", "İdarə paneli", "Günün oyunları"],
   ["/oyunlar/bu-gun", "Bu günün oyunları", 'name="tarix"'],
   ["/oyunlar/sabah", "Sabahın oyunları", 'name="tarix"'],
   ["/oyunlar/gelecek", "Qarşıdakı oyunlar", 'name="tarix"'],
@@ -57,8 +57,8 @@ for (const [path, heading, expected] of pages) {
     assert.ok(html.includes("<h1>" + heading + "</h1>"));
     if (path === "/") {
       assert.doesNotMatch(html, /Nümayiş məlumatları|href="\/oyun\/xezer-zirve"/);
-      assert.ok(html.includes("Qarşıdakı real oyunlar"));
-      assert.ok(html.includes("Real oyunlara bax"));
+      assert.ok(html.includes("Günün oyunları"));
+      assert.ok(html.includes('name="tarix"'));
     }
     assert.ok(html.includes(expected));
   });

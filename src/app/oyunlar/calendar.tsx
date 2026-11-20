@@ -6,6 +6,7 @@ import { ClubCrest, LeagueLabel } from "@/components/club-crest";
 import { Badge } from "@/components/ui/badge";
 import { bakuDate } from "@/lib/demo";
 import { competitionName, fixtureDateOnly, loadFixtureFeed, realMatchPath } from "@/lib/real-fixtures";
+import { dateKey, fixtureView, validDate } from "@/lib/fixture-date";
 import type { RealMatch } from "@/lib/real-fixtures";
 
 const titles = { "bu-gun": "todaySMatches", sabah: "tomorrowSMatches", gelecek: "upcomingMatches" } as const;
@@ -42,14 +43,6 @@ async function CalendarCard({ match, competition, stale, now, showDate }: {
 
 type Period = keyof typeof titles;
 
-const dateKey = (date: Date) => date.toISOString().slice(0, 10);
-
-function validDate(value: string | string[] | undefined): value is string {
-  if (typeof value !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
-  const date = new Date(value);
-  return Number.isFinite(date.getTime()) && dateKey(date) === value;
-}
-
 export async function Calendar({ period, date, league }: {
   period?: Period; date?: string | string[]; league?: string | string[];
 }) {
@@ -59,8 +52,7 @@ export async function Calendar({ period, date, league }: {
   const tomorrow = dateKey(bakuDate(now, 1));
   const selected = validDate(date) ? date : period === "sabah" ? tomorrow : today;
   const upcoming = period === "gelecek" && date === undefined;
-  const view = upcoming ? "upcoming" : selected === today ? "today" : selected === tomorrow ? "tomorrow"
-    : selected > today ? "upcoming" : "results";
+  const view = upcoming ? "upcoming" : fixtureView(selected, today, tomorrow);
   const feed = await loadFixtureFeed(view);
   const competitions = feed?.competitions ?? [];
   const selectedLeague = competitions.find(({ competition }) => competition === league)?.competition ?? "";

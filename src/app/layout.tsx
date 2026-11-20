@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Clock3, Languages, Moon, Sun } from "lucide-react";
+import { Clock3, Moon, Sun } from "lucide-react";
 import { CrestCredits } from "@/components/club-crest";
 import { Navigation } from "@/components/navigation";
 import { LanguageContext } from "@/components/preferences-context";
@@ -28,12 +28,11 @@ export default async function Layout({ children }: Readonly<{ children: React.Re
             <span>{t.footballAnalytics}</span>
             <div className="topbar-controls">
               <span className="timezone"><Clock3 size={15} aria-hidden="true" /> {t.bakuTime}</span>
-              <form action={changeLanguage} className="preference-group" aria-label={t.language}>
-                <Languages size={15} aria-hidden="true" />
+              <form action={changeLanguage} className="preference-group language-switch" aria-label={t.language}>
                 <button type="submit" name="language" value="az" lang="az" aria-label="Azərbaycan dili" aria-pressed={locale === "az"}>AZ</button>
                 <button type="submit" name="language" value="en" lang="en" aria-label="English" aria-pressed={locale === "en"}>EN</button>
               </form>
-              <form action={changeTheme} className="preference-group" aria-label={t.appearance}>
+              <form action={changeTheme} className="preference-group theme-switch" aria-label={t.appearance}>
                 <button type="submit" name="theme" value="light" aria-label={t.light} title={t.light} aria-pressed={theme === "light"}><Sun size={16} aria-hidden="true" /></button>
                 <button type="submit" name="theme" value="dark" aria-label={t.dark} title={t.dark} aria-pressed={theme === "dark"}><Moon size={16} aria-hidden="true" /></button>
               </form>

@@ -46,3 +46,21 @@
   .quickLinks { grid-template-columns: minmax(0, 1fr); }
   .team { font-size: .83rem; }
 }
+
+.dateControls { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; }
+.dateArrow {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+}
+.dateArrow:hover { color: var(--accent-link); background: var(--accent-bg); }
+.score, .rowScore { color: var(--ink); font-weight: 800; font-variant-numeric: tabular-nums; }
+.score { font-size: clamp(1.35rem, 3vw, 2rem); }
+.rowScore { font-size: .9rem; }
+.fullDay { display: inline-block; margin-top: 10px; color: var(--accent-link); font-size: .85rem; font-weight: 700; }
+.fullDay:hover { text-decoration: underline; }

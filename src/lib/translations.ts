@@ -1,4 +1,8 @@
 export const az = {
+  previousDay: "Əvvəlki gün",
+  nextDay: "Növbəti gün",
+  dailyFixtures: "Günün oyunları",
+  fullDayFixtures: "Bütün oyunlara bax",
   dataSources: "Məlumat mənbələri",
   updatedWithoutSeparator: "Yenilənib",
   searchFixtures: "Komanda və ya liqa axtar",
@@ -203,6 +207,10 @@ export const az = {
 };
 
 export const en: Record<keyof typeof az, string> = {
+  previousDay: "Previous day",
+  nextDay: "Next day",
+  dailyFixtures: "Matches by date",
+  fullDayFixtures: "See all matches",
   dataSources: "Data sources",
   updatedWithoutSeparator: "Updated",
   searchFixtures: "Search teams or leagues",
