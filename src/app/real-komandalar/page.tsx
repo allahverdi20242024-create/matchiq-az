@@ -1,5 +1,6 @@
 import { getPreferences } from "@/lib/preferences";
 import Link from "next/link";
+import { TeamSearch } from "./team-search";
 import { championsLeagueZone, standingsRules, standingsZone } from "@/lib/standings-zones";
 import { ClubCrest, ClubLabel, LeagueLabel } from "@/components/club-crest";
 import { competitionName } from "@/lib/real-fixtures";
@@ -140,8 +141,15 @@ export default async function TeamsPage({ searchParams }: {
     ? data?.competitions.find((item) => item.competition === params.liqa)
     : data?.competitions.find((item) => item.teams.length > 0) ?? data?.competitions[0];
   const selected = league?.teams.find((row) => row.team.id === params.komanda);
+  const searchableTeams = data?.competitions.flatMap(({ competition, teams }) => {
+    const label = competitionName(competition, t);
+    return teams.map(({ team }) => ({
+      name: team.name, competition, label, href: teamLink(competition, team.id),
+    }));
+  }) ?? [];
   return <>
     <div className="heading"><div><h1>{t.realTeamStatistics}</h1></div></div>
+    {searchableTeams.length > 0 && <TeamSearch teams={searchableTeams} />}
     {data && <nav className="tabs flex-wrap" aria-label={t.competitionSelection}>
       {data.competitions.map((item) => <Link key={item.competition} href={teamLink(item.competition)}
         aria-current={league?.competition === item.competition ? "page" : undefined}>
