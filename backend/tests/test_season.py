@@ -1,10 +1,21 @@
 from datetime import UTC, date, datetime, timedelta
 
 import pytest
+import numpy as np
 
 from matchiq.domain import Match, Snapshot, Team
 from matchiq.providers import complete_laliga_schedule
-from matchiq.season import forecast_at
+from matchiq.season import draw_goals, forecast_at, poisson_goal_cdf
+
+
+@pytest.mark.parametrize("rate", [0.05, 1.3, 3.5, 8.0])
+def test_goal_lookup_matches_full_inverse_cdf(rate):
+    seed = 41
+    sample = draw_goals(rate, 100_000, np.random.default_rng(seed))
+    uniforms = np.random.default_rng(seed).random(100_000)
+    expected = poisson_goal_cdf(rate).searchsorted(uniforms, side="right")
+    np.testing.assert_array_equal(sample, expected)
+    assert sample.mean() == pytest.approx(rate, abs=0.03)
 
 
 @pytest.fixture(params=["PL", "CL"])

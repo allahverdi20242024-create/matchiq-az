@@ -2,6 +2,7 @@ from collections import Counter
 from datetime import datetime, timedelta
 from functools import lru_cache
 from itertools import permutations
+from math import exp
 from secrets import randbits
 
 import numpy as np
@@ -12,6 +13,35 @@ from .simulation import InsufficientResults, rate_estimator
 
 TEAM_COUNTS = {"PL": 20, "PD": 20, "SA": 20, "BL1": 18, "FL1": 18, "CL": 36}
 DEFAULT_TRIALS = 10_000
+POISSON_LOOKUP_SIZE = 1024
+POISSON_LOOKUP_EDGES = np.arange(POISSON_LOOKUP_SIZE) / POISSON_LOOKUP_SIZE
+
+
+def poisson_goal_cdf(rate: float):
+    mass = exp(-rate)
+    cumulative = mass
+    values = [cumulative]
+    # Fixture goal rates are capped at 8. Keep the tail through floating-point precision.
+    for goals in range(1, 49):
+        mass *= rate / goals
+        cumulative += mass
+        values.append(min(cumulative, 1.0))
+    values[-1] = 1.0
+    return np.asarray(values)
+
+
+def draw_goals(rate: float, trials: int, rng):
+    cdf = poisson_goal_cdf(rate)
+    lookup = cdf.searchsorted(POISSON_LOOKUP_EDGES, side="right").astype(np.int16)
+    uniforms = rng.random(trials)
+    bins = (uniforms * POISSON_LOOKUP_SIZE).astype(np.int32)
+    goals = lookup[bins]
+    goals += uniforms >= cdf[goals]
+    # A lookup bin can span several CDF thresholds, so finish those draws exactly.
+    unresolved = uniforms >= cdf[goals]
+    if unresolved.any():
+        goals[unresolved] = cdf.searchsorted(uniforms[unresolved], side="right")
+    return goals
 
 
 def knockout(order, matrix, rng):
@@ -125,8 +155,8 @@ def forecast(serialized: str, day: int, as_of: datetime, trials: int, seed: int)
         for match in remaining:
             home, away = index[match.home.id], index[match.away.id]
             home_rate, away_rate = rates(ids[home], ids[away])
-            scored = rng.poisson(home_rate, trials).astype(np.int16)
-            allowed = rng.poisson(away_rate, trials).astype(np.int16)
+            scored = draw_goals(home_rate, trials, rng)
+            allowed = draw_goals(away_rate, trials, rng)
             home_win, away_win, draw = scored > allowed, allowed > scored, scored == allowed
             goals[home] += scored
             goals[away] += allowed
