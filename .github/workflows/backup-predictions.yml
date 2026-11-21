@@ -1,0 +1,52 @@
+name: Back up prediction archive
+
+on:
+  schedule:
+    - cron: '41 23 * * 6'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: matchiq-archive-backup
+  cancel-in-progress: false
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@v5
+        with:
+          ref: fc212bb14c0b95140bf311eb3e8da3e5e75404a5
+          path: exporter
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+      - name: Install exporter dependencies
+        run: python -m pip install -r exporter/backend/requirements.txt
+      - name: Export and verify full archive
+        env:
+          DATABASE_URL: ${{ secrets.MATCHIQ_ARCHIVE_DATABASE_URL }}
+          PYTHONPATH: exporter/backend
+        run: python -m matchiq.archive_backup export "$RUNNER_TEMP/prediction-history.json"
+      - name: Encrypt backup
+        run: |
+          set -euo pipefail
+          export GNUPGHOME="$(mktemp -d)"
+          gpg --batch --import .github/matchiq-backup-public.asc
+          gpg --batch --trust-model always --recipient EE67A6D8E6608EB96BBF5875C522045EA830EFC1 \
+            --output "$RUNNER_TEMP/prediction-history.json.gpg" --encrypt "$RUNNER_TEMP/prediction-history.json"
+          test -s "$RUNNER_TEMP/prediction-history.json.gpg"
+          rm -- "$RUNNER_TEMP/prediction-history.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: matchiq-archive-${{ github.run_id }}
+          path: ${{ runner.temp }}/prediction-history.json.gpg
+          if-no-files-found: error
+          retention-days: 90
