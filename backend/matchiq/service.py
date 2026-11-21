@@ -100,5 +100,5 @@ class FixtureService:
             competitions.append(CompetitionFeed(competition=item.competition, source=item.source,
                                                 source_url=item.source_url, fetched_at=item.fetched_at,
                                                 stale=now - item.fetched_at >= STALE_AFTER, matches=matches,
-                                                standings=item.standings if view == "results" else None))
+                                                standings=item.standings))
         return Feed(generated_at=now, season=season, unavailable=unavailable, syncing=syncing, competitions=competitions)

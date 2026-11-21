@@ -64,3 +64,4 @@
 .rowScore { font-size: .9rem; }
 .fullDay { display: inline-block; margin-top: 10px; color: var(--accent-link); font-size: .85rem; font-weight: 700; }
 .fullDay:hover { text-decoration: underline; }
+.featureReason { color: var(--muted); font-size: .8rem; }

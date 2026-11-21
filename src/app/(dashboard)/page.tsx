@@ -28,8 +28,20 @@ export default async function Home({ searchParams }: {
   const feed = await loadFixtureFeed(fixtureView(selected, today, dateKey(bakuDate(now, 1))));
   const fixtures = feed?.competitions.flatMap((group) => group.matches
     .filter((match) => match.date === selected)
-    .map((match) => ({ ...match, competition: group.competition, stale: group.stale })))
+    .map((match) => {
+      const rows = group.standings?.rows;
+      const home = rows?.find(row => row.team.id === match.home.id);
+      const away = rows?.find(row => row.team.id === match.away.id);
+      const fixture = { ...match, competition: group.competition, stale: group.stale };
+      if (selected < today || match.score || group.stale || (match.kickoff && Date.parse(match.kickoff) <= now.getTime())
+        || !home || !away || Math.min(home.played, away.played) < 5) {
+        return { ...fixture, priority: 0 };
+      }
+      const rank = Math.max(home.position, away.position);
+      return { ...fixture, priority: rank <= 2 ? 2 : rank <= 4 ? 1 : 0 };
+    }))
     .sort((a, b) => Number(Boolean(a.score)) - Number(Boolean(b.score))
+      || b.priority - a.priority
       || (a.kickoff ?? "~").localeCompare(b.kickoff ?? "~")) ?? [];
   const [featured, ...nextMatches] = fixtures.slice(0, 5);
   const dateOnly = fixtureDateOnly(intlLocale);
@@ -72,6 +84,7 @@ export default async function Home({ searchParams }: {
             </div>
             <div className={styles.team}><ClubCrest name={featured.away.name} /><strong>{featured.away.name}</strong></div>
           </div>
+          {featured.priority > 0 && <p className={styles.featureReason}>{featured.priority === 2 ? t.leadersMeet : t.topFourMeet}</p>}
           <div className={styles.actions}>
             <Link className="primary" href={realMatchPath(featured.id)}>{t.matchAnalysis}</Link>
             <Link className={styles.allLink} href={calendarUrl}>{t.fixtureSchedule}</Link>
@@ -80,7 +93,9 @@ export default async function Home({ searchParams }: {
         {nextMatches.length > 0 && <ul className={styles.matchList}>
           {nextMatches.map((match) => <li key={match.competition + match.id}>
             <Link href={realMatchPath(match.id)} className={styles.matchRow}>
-              <span className={styles.matchNames}><ClubLabel name={match.home.name} /><ClubLabel name={match.away.name} /></span>
+              <span className={styles.matchNames}><ClubLabel name={match.home.name} /><ClubLabel name={match.away.name} />
+                {match.priority > 0 && <small className={styles.featureReason}>{match.priority === 2 ? t.leadersMeet : t.topFourMeet}</small>}
+              </span>
               <span className={styles.rowTime}>
                 {match.score ? <strong className={styles.rowScore}>{match.score.join(" : ")}</strong>
                   : <time dateTime={match.kickoff ?? match.date}>{(match.kickoff ? dateTime : dateOnly).format(new Date(match.kickoff ?? match.date))}</time>}

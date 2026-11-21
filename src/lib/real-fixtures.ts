@@ -23,6 +23,7 @@ type CompetitionFeed = {
   fetched_at: string;
   stale: boolean;
   matches: RealMatch[];
+  standings?: { rows: { team: { id: string }; position: number; played: number }[] } | null;
 };
 
 type Feed = { competitions: CompetitionFeed[]; unavailable: string[] };
