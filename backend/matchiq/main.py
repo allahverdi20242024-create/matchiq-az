@@ -163,7 +163,8 @@ def create_app(*, service=None, synchronize=True, simulation_cache=None):
             raise HTTPException(503, "Məlumat bazası müvəqqəti əlçatan deyil.") from None
         snapshot = snapshots.get(competition)
         if snapshot is None:
-            return {"status": "calendar_unavailable", "matchdays": []}
+            pending = competition in app.state.service.pending_competitions
+            return {"status": "syncing" if pending else "calendar_unavailable", "matchdays": []}
         async with app.state.season_slot:
             return await run_in_threadpool(forecast_at, snapshot, matchday, now, trials)
 

@@ -1,10 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
+import { unstable_cache } from "next/cache";
 import { ClubLabel, LeagueLabel } from "@/components/club-crest";
 import { getPreferences } from "@/lib/preferences";
 import { fixtureDateTime } from "@/lib/real-fixtures";
 import styles from "./season.module.css";
 import { SeasonForm } from "./season-form";
+import { LiveRefresh } from "../real-komandalar/live-refresh";
 
 const leagues = ["PL", "PD", "SA", "BL1", "FL1", "CL"];
 type Team = { id: string; name: string };
@@ -34,6 +36,35 @@ async function loadForecast(code: string, day: number, trials?: number): Promise
   } catch {
     return null;
   }
+}
+
+class ForecastUnavailable extends Error {
+  constructor(readonly forecast: Forecast | null) {
+    super("Season forecast unavailable");
+  }
+}
+
+const cachedLatestForecast = unstable_cache(async (code: string, season: number) => {
+  const result = await loadForecast(code, 0);
+  if (result?.season !== season || !["ok", "draw_available"].includes(result.status)) {
+    throw new ForecastUnavailable(result);
+  }
+  return result;
+}, ["season-forecast-latest-v1"], { revalidate: 60 });
+
+async function getForecast(code: string, day: number, trials?: number) {
+  if (day || trials !== undefined) return loadForecast(code, day, trials);
+  const baku = new Date(Date.now() + 4 * 3600_000);
+  const season = baku.getUTCFullYear() - Number(baku.getUTCMonth() < 6);
+  try {
+    return await cachedLatestForecast(code, season);
+  } catch (error) {
+    return error instanceof ForecastUnavailable ? error.forecast : loadForecast(code, day);
+  }
+}
+
+function isStaleForecast(forecast: Forecast | null) {
+  return forecast?.status === "ok" && Date.now() - Date.parse(forecast.fetched_at) >= 8 * 3600_000;
 }
 
 function TieCard({ tie }: { tie: Tie }) {
@@ -81,10 +112,11 @@ export default async function SeasonForecast({ searchParams }: { searchParams: P
   const day = typeof tur === "string" && /^(?:[1-9]|[1-3][0-9])$/.test(tur) ? Math.min(38, Number(tur)) : 0;
   const trials = typeof say === "string" && /^[1-9]\d{0,5}$/.test(say) ? Number(say) : undefined;
   const validTrials = trials !== undefined && trials <= 100_000 ? trials : undefined;
-  const [{ t, intlLocale }, data] = await Promise.all([getPreferences(), loadForecast(code, day, validTrials)]);
+  const [{ t, intlLocale }, data] = await Promise.all([getPreferences(), getForecast(code, day, validTrials)]);
   const en = intlLocale.toLowerCase().startsWith("en");
   const percent = new Intl.NumberFormat(intlLocale, { style: "percent", maximumFractionDigits: 2 });
   const decimal = new Intl.NumberFormat(intlLocale, { maximumFractionDigits: 1 });
+  const stale = isStaleForecast(data);
   const error = data?.status === "results_unavailable"
     ? (en ? "More completed matches are needed." : "Proqnoz üçün daha çox tamamlanmış oyun lazımdır.")
     : data?.status === "round_unavailable"
@@ -113,6 +145,10 @@ export default async function SeasonForecast({ searchParams }: { searchParams: P
         key={code + ":" + (validTrials ?? "")} defaultValue={validTrials ?? 10_000} />
     </SeasonForm>
     {data?.status === "ok" ? <>
+      {stale && <p className="panel detail" role="status">
+        {en ? "Showing the last available forecast." : "Son əlçatan proqnoz göstərilir."}
+        {" · "}{fixtureDateTime(intlLocale).format(new Date(data.fetched_at))}
+      </p>}
       {code === "CL" && data.bracket[3]?.[0]?.teams && <Bracket forecast={data} en={en} />}
       <section className="panel detail">
         <h2>{en ? "Title chances" : "Çempionluq ehtimalları"}</h2>
@@ -132,6 +168,10 @@ export default async function SeasonForecast({ searchParams }: { searchParams: P
           {data.schedule_sources?.map((url, index) => <span key={url}> · <a href={url}>LALIGA{data.schedule_sources!.length > 1 ? " " + (index + 1) : ""}</a></span>)}
         </p>
       </section>
-    </> : <p role="status" className="panel detail">{error}</p>}
+    </> : data?.status === "syncing" || (!data && validTrials === undefined) ?
+      <LiveRefresh key={code + ":" + day + ":" + validTrials}
+        label={en ? "Preparing the forecast. This page will update automatically." : "Proqnoz hazırlanır. Səhifə avtomatik yenilənəcək."}
+        timeoutLabel={en ? "The forecast is still unavailable. Refresh the page to try again." : "Proqnoz hələ əlçatan deyil. Yenidən yoxlamaq üçün səhifəni yenilə."} />
+      : <p role="status" className="panel detail">{error}</p>}
   </div>;
 }

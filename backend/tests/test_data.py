@@ -123,6 +123,9 @@ def test_empty_api_and_bad_query():
         assert response.json()["competitions"] == []
         assert "AZ" in response.json()["unavailable"]
         assert client.get("/v1/fixtures?view=demo").status_code == 422
+        assert client.get("/v1/season-forecast/CL").json()["status"] == "calendar_unavailable"
+        service.pending_competitions.add("CL")
+        assert client.get("/v1/season-forecast/CL").json()["status"] == "syncing"
 
 
 def test_season_rollover_uses_baku_clock():
