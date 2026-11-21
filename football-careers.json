@@ -1,0 +1,5757 @@
+{
+  "verifiedOn": "2026-11-21",
+  "players": [
+    {
+      "id": "cristiano-ronaldo",
+      "name": "Cristiano Ronaldo",
+      "acceptedAnswers": [
+        "Cristiano Ronaldo",
+        "Cristiano Ronaldo dos Santos Aveiro"
+      ],
+      "difficulty": "easy",
+      "countryAz": "Portuqaliya",
+      "countryEn": "Portugal",
+      "positionAz": "Hücumçu",
+      "positionEn": "Forward",
+      "clubs": [
+        {
+          "name": "Sporting CP",
+          "fromYear": 2002,
+          "toYear": 2003,
+          "loan": false
+        },
+        {
+          "name": "Manchester United",
+          "fromYear": 2003,
+          "toYear": 2009,
+          "loan": false
+        },
+        {
+          "name": "Real Madrid",
+          "fromYear": 2009,
+          "toYear": 2018,
+          "loan": false
+        },
+        {
+          "name": "Juventus",
+          "fromYear": 2018,
+          "toYear": 2021,
+          "loan": false
+        },
+        {
+          "name": "Manchester United",
+          "fromYear": 2021,
+          "toYear": 2022,
+          "loan": false
+        },
+        {
+          "name": "Al-Nassr",
+          "fromYear": 2023,
+          "toYear": null,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Cristiano_Ronaldo",
+        "https://www.wikidata.org/wiki/Q11571#P54"
+      ]
+    },
+    {
+      "id": "lionel-messi",
+      "name": "Lionel Messi",
+      "acceptedAnswers": [
+        "Lionel Messi",
+        "Lionel Andrés Messi",
+        "Lionel Andres Messi"
+      ],
+      "difficulty": "easy",
+      "countryAz": "Argentina",
+      "countryEn": "Argentina",
+      "positionAz": "Hücumçu",
+      "positionEn": "Forward",
+      "clubs": [
+        {
+          "name": "Barcelona",
+          "fromYear": 2004,
+          "toYear": 2021,
+          "loan": false
+        },
+        {
+          "name": "Paris Saint-Germain",
+          "fromYear": 2021,
+          "toYear": 2023,
+          "loan": false
+        },
+        {
+          "name": "Inter Miami",
+          "fromYear": 2023,
+          "toYear": null,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Lionel_Messi"
+      ]
+    },
+    {
+      "id": "neymar",
+      "name": "Neymar",
+      "acceptedAnswers": [
+        "Neymar",
+        "Neymar da Silva Santos Júnior",
+        "Neymar da Silva Santos Junior"
+      ],
+      "difficulty": "easy",
+      "countryAz": "Braziliya",
+      "countryEn": "Brazil",
+      "positionAz": "Yarımmüdafiəçi",
+      "positionEn": "Midfielder",
+      "clubs": [
+        {
+          "name": "Santos",
+          "fromYear": 2009,
+          "toYear": 2013,
+          "loan": false
+        },
+        {
+          "name": "Barcelona",
+          "fromYear": 2013,
+          "toYear": 2017,
+          "loan": false
+        },
+        {
+          "name": "Paris Saint-Germain",
+          "fromYear": 2017,
+          "toYear": 2023,
+          "loan": false
+        },
+        {
+          "name": "Al-Hilal",
+          "fromYear": 2023,
+          "toYear": 2025,
+          "loan": false
+        },
+        {
+          "name": "Santos",
+          "fromYear": 2025,
+          "toYear": null,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Neymar",
+        "https://www.wikidata.org/wiki/Q142794#P54"
+      ]
+    },
+    {
+      "id": "ronaldinho",
+      "name": "Ronaldinho",
+      "acceptedAnswers": [
+        "Ronaldinho",
+        "Ronaldo de Assis Moreira"
+      ],
+      "difficulty": "easy",
+      "countryAz": "Braziliya",
+      "countryEn": "Brazil",
+      "positionAz": "Yarımmüdafiəçi",
+      "positionEn": "Midfielder",
+      "clubs": [
+        {
+          "name": "Grêmio",
+          "fromYear": 1998,
+          "toYear": 2001,
+          "loan": false
+        },
+        {
+          "name": "Paris Saint-Germain",
+          "fromYear": 2001,
+          "toYear": 2003,
+          "loan": false
+        },
+        {
+          "name": "Barcelona",
+          "fromYear": 2003,
+          "toYear": 2008,
+          "loan": false
+        },
+        {
+          "name": "AC Milan",
+          "fromYear": 2008,
+          "toYear": 2011,
+          "loan": false
+        },
+        {
+          "name": "Flamengo",
+          "fromYear": 2011,
+          "toYear": 2012,
+          "loan": false
+        },
+        {
+          "name": "Atlético Mineiro",
+          "fromYear": 2012,
+          "toYear": 2014,
+          "loan": false
+        },
+        {
+          "name": "Querétaro",
+          "fromYear": 2014,
+          "toYear": 2015,
+          "loan": false
+        },
+        {
+          "name": "Fluminense",
+          "fromYear": 2015,
+          "toYear": 2015,
+          "loan": false
+        },
+        {
+          "name": "Ravenna",
+          "fromYear": 2026,
+          "toYear": null,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Ronaldinho"
+      ]
+    },
+    {
+      "id": "ronaldo",
+      "name": "Ronaldo",
+      "acceptedAnswers": [
+        "Ronaldo",
+        "Ronaldo Luís Nazário de Lima",
+        "Ronaldo Luis Nazario de Lima"
+      ],
+      "difficulty": "easy",
+      "countryAz": "Braziliya",
+      "countryEn": "Brazil",
+      "positionAz": "Hücumçu",
+      "positionEn": "Forward",
+      "clubs": [
+        {
+          "name": "Cruzeiro",
+          "fromYear": 1993,
+          "toYear": 1994,
+          "loan": false
+        },
+        {
+          "name": "PSV",
+          "fromYear": 1994,
+          "toYear": 1996,
+          "loan": false
+        },
+        {
+          "name": "Barcelona",
+          "fromYear": 1996,
+          "toYear": 1997,
+          "loan": false
+        },
+        {
+          "name": "Inter Milan",
+          "fromYear": 1997,
+          "toYear": 2002,
+          "loan": false
+        },
+        {
+          "name": "Real Madrid",
+          "fromYear": 2002,
+          "toYear": 2007,
+          "loan": false
+        },
+        {
+          "name": "AC Milan",
+          "fromYear": 2007,
+          "toYear": 2008,
+          "loan": false
+        },
+        {
+          "name": "Corinthians",
+          "fromYear": 2009,
+          "toYear": 2011,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Ronaldo_(Brazilian_footballer)"
+      ]
+    },
+    {
+      "id": "diego-maradona",
+      "name": "Diego Maradona",
+      "acceptedAnswers": [
+        "Diego Maradona",
+        "Diego Armando Maradona"
+      ],
+      "difficulty": "easy",
+      "countryAz": "Argentina",
+      "countryEn": "Argentina",
+      "positionAz": "Yarımmüdafiəçi",
+      "positionEn": "Midfielder",
+      "clubs": [
+        {
+          "name": "Argentinos Juniors",
+          "fromYear": 1976,
+          "toYear": 1981,
+          "loan": false
+        },
+        {
+          "name": "Boca Juniors",
+          "fromYear": 1981,
+          "toYear": 1982,
+          "loan": false
+        },
+        {
+          "name": "Barcelona",
+          "fromYear": 1982,
+          "toYear": 1984,
+          "loan": false
+        },
+        {
+          "name": "Napoli",
+          "fromYear": 1984,
+          "toYear": 1991,
+          "loan": false
+        },
+        {
+          "name": "Sevilla",
+          "fromYear": 1992,
+          "toYear": 1993,
+          "loan": false
+        },
+        {
+          "name": "Newell's Old Boys",
+          "fromYear": 1993,
+          "toYear": 1994,
+          "loan": false
+        },
+        {
+          "name": "Boca Juniors",
+          "fromYear": 1995,
+          "toYear": 1997,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Diego_Maradona",
+        "https://www.wikidata.org/wiki/Q17515#P54"
+      ]
+    },
+    {
+      "id": "zinedine-zidane",
+      "name": "Zinedine Zidane",
+      "acceptedAnswers": [
+        "Zinedine Zidane",
+        "Zinedine Yazid Zidane"
+      ],
+      "difficulty": "easy",
+      "countryAz": "Fransa",
+      "countryEn": "France",
+      "positionAz": "Yarımmüdafiəçi",
+      "positionEn": "Midfielder",
+      "clubs": [
+        {
+          "name": "Cannes",
+          "fromYear": 1989,
+          "toYear": 1992,
+          "loan": false
+        },
+        {
+          "name": "Bordeaux",
+          "fromYear": 1992,
+          "toYear": 1996,
+          "loan": false
+        },
+        {
+          "name": "Juventus",
+          "fromYear": 1996,
+          "toYear": 2001,
+          "loan": false
+        },
+        {
+          "name": "Real Madrid",
+          "fromYear": 2001,
+          "toYear": 2006,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Zinedine_Zidane"
+      ]
+    },
+    {
+      "id": "thierry-henry",
+      "name": "Thierry Henry",
+      "acceptedAnswers": [
+        "Thierry Henry",
+        "Thierry Daniel Henry"
+      ],
+      "difficulty": "easy",
+      "countryAz": "Fransa",
+      "countryEn": "France",
+      "positionAz": "Hücumçu",
+      "positionEn": "Forward",
+      "clubs": [
+        {
+          "name": "Monaco",
+          "fromYear": 1994,
+          "toYear": 1999,
+          "loan": false
+        },
+        {
+          "name": "Juventus",
+          "fromYear": 1999,
+          "toYear": 1999,
+          "loan": false
+        },
+        {
+          "name": "Arsenal",
+          "fromYear": 1999,
+          "toYear": 2007,
+          "loan": false
+        },
+        {
+          "name": "Barcelona",
+          "fromYear": 2007,
+          "toYear": 2010,
+          "loan": false
+        },
+        {
+          "name": "New York Red Bulls",
+          "fromYear": 2010,
+          "toYear": 2014,
+          "loan": false
+        },
+        {
+          "name": "Arsenal",
+          "fromYear": 2012,
+          "toYear": 2012,
+          "loan": true
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Thierry_Henry",
+        "https://www.wikidata.org/wiki/Q45901#P54",
+        "https://fr.uefa.com/uefachampionsleague/news/025e-0fa0d57e677e-7f8cc8dece8a-1000--henry-la-competition-par-dessus-tout/"
+      ]
+    },
+    {
+      "id": "robert-lewandowski",
+      "name": "Robert Lewandowski",
+      "acceptedAnswers": [
+        "Robert Lewandowski"
+      ],
+      "difficulty": "easy",
+      "countryAz": "Polşa",
+      "countryEn": "Poland",
+      "positionAz": "Hücumçu",
+      "positionEn": "Forward",
+      "clubs": [
+        {
+          "name": "Delta Warsaw",
+          "fromYear": 2005,
+          "toYear": 2005,
+          "loan": false
+        },
+        {
+          "name": "Znicz Pruszków",
+          "fromYear": 2006,
+          "toYear": 2008,
+          "loan": false
+        },
+        {
+          "name": "Lech Poznań",
+          "fromYear": 2008,
+          "toYear": 2010,
+          "loan": false
+        },
+        {
+          "name": "Borussia Dortmund",
+          "fromYear": 2010,
+          "toYear": 2014,
+          "loan": false
+        },
+        {
+          "name": "Bayern Munich",
+          "fromYear": 2014,
+          "toYear": 2022,
+          "loan": false
+        },
+        {
+          "name": "Barcelona",
+          "fromYear": 2022,
+          "toYear": 2026,
+          "loan": false
+        },
+        {
+          "name": "Chicago Fire",
+          "fromYear": 2026,
+          "toYear": null,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Robert_Lewandowski"
+      ]
+    },
+    {
+      "id": "gareth-bale",
+      "name": "Gareth Bale",
+      "acceptedAnswers": [
+        "Gareth Bale",
+        "Gareth Frank Bale"
+      ],
+      "difficulty": "easy",
+      "countryAz": "Uels",
+      "countryEn": "Wales",
+      "positionAz": "Cinah oyunçusu",
+      "positionEn": "Winger",
+      "clubs": [
+        {
+          "name": "Southampton",
+          "fromYear": 2006,
+          "toYear": 2007,
+          "loan": false
+        },
+        {
+          "name": "Tottenham Hotspur",
+          "fromYear": 2007,
+          "toYear": 2013,
+          "loan": false
+        },
+        {
+          "name": "Real Madrid",
+          "fromYear": 2013,
+          "toYear": 2022,
+          "loan": false
+        },
+        {
+          "name": "Tottenham Hotspur",
+          "fromYear": 2020,
+          "toYear": 2021,
+          "loan": true
+        },
+        {
+          "name": "Los Angeles FC",
+          "fromYear": 2022,
+          "toYear": 2023,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Gareth_Bale",
+        "https://www.wikidata.org/wiki/Q184586#P54"
+      ]
+    },
+    {
+      "id": "karim-benzema",
+      "name": "Karim Benzema",
+      "acceptedAnswers": [
+        "Karim Benzema",
+        "Karim Mostafa Benzema"
+      ],
+      "difficulty": "easy",
+      "countryAz": "Fransa",
+      "countryEn": "France",
+      "positionAz": "Hücumçu",
+      "positionEn": "Forward",
+      "clubs": [
+        {
+          "name": "Lyon",
+          "fromYear": 2004,
+          "toYear": 2009,
+          "loan": false
+        },
+        {
+          "name": "Real Madrid",
+          "fromYear": 2009,
+          "toYear": 2023,
+          "loan": false
+        },
+        {
+          "name": "Al-Ittihad",
+          "fromYear": 2023,
+          "toYear": 2026,
+          "loan": false
+        },
+        {
+          "name": "Al-Hilal",
+          "fromYear": 2026,
+          "toYear": 2026,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Karim_Benzema"
+      ]
+    },
+    {
+      "id": "erling-haaland",
+      "name": "Erling Haaland",
+      "acceptedAnswers": [
+        "Erling Haaland",
+        "Erling Braut Haaland"
+      ],
+      "difficulty": "easy",
+      "countryAz": "Norveç",
+      "countryEn": "Norway",
+      "positionAz": "Hücumçu",
+      "positionEn": "Forward",
+      "clubs": [
+        {
+          "name": "Bryne 2",
+          "fromYear": 2015,
+          "toYear": 2016,
+          "loan": false
+        },
+        {
+          "name": "Bryne",
+          "fromYear": 2016,
+          "toYear": 2017,
+          "loan": false
+        },
+        {
+          "name": "Molde 2",
+          "fromYear": 2017,
+          "toYear": 2018,
+          "loan": false
+        },
+        {
+          "name": "Molde",
+          "fromYear": 2017,
+          "toYear": 2019,
+          "loan": false
+        },
+        {
+          "name": "Red Bull Salzburg",
+          "fromYear": 2019,
+          "toYear": 2020,
+          "loan": false
+        },
+        {
+          "name": "Borussia Dortmund",
+          "fromYear": 2020,
+          "toYear": 2022,
+          "loan": false
+        },
+        {
+          "name": "Manchester City",
+          "fromYear": 2022,
+          "toYear": null,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Erling_Haaland"
+      ]
+    },
+    {
+      "id": "kylian-mbappe",
+      "name": "Kylian Mbappé",
+      "acceptedAnswers": [
+        "Kylian Mbappé",
+        "Kylian Mbappé Lottin",
+        "Kylian Mbappe",
+        "Kylian Mbappe Lottin"
+      ],
+      "difficulty": "easy",
+      "countryAz": "Fransa",
+      "countryEn": "France",
+      "positionAz": "Hücumçu",
+      "positionEn": "Forward",
+      "clubs": [
+        {
+          "name": "Monaco",
+          "fromYear": 2015,
+          "toYear": 2018,
+          "loan": false
+        },
+        {
+          "name": "Paris Saint-Germain",
+          "fromYear": 2017,
+          "toYear": 2018,
+          "loan": true
+        },
+        {
+          "name": "Paris Saint-Germain",
+          "fromYear": 2018,
+          "toYear": 2024,
+          "loan": false
+        },
+        {
+          "name": "Real Madrid",
+          "fromYear": 2024,
+          "toYear": null,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Kylian_Mbapp%C3%A9",
+        "https://www.wikidata.org/wiki/Q21621995#P54"
+      ]
+    },
+    {
+      "id": "mohamed-salah",
+      "name": "Mohamed Salah",
+      "acceptedAnswers": [
+        "Mohamed Salah",
+        "Mohamed Salah Hamed Mahrous Ghaly"
+      ],
+      "difficulty": "easy",
+      "countryAz": "Misir",
+      "countryEn": "Egypt",
+      "positionAz": "Cinah oyunçusu",
+      "positionEn": "Winger",
+      "clubs": [
+        {
+          "name": "Al-Mokawloon",
+          "fromYear": 2010,
+          "toYear": 2012,
+          "loan": false
+        },
+        {
+          "name": "Basel",
+          "fromYear": 2012,
+          "toYear": 2014,
+          "loan": false
+        },
+        {
+          "name": "Chelsea",
+          "fromYear": 2014,
+          "toYear": 2016,
+          "loan": false
+        },
+        {
+          "name": "Fiorentina",
+          "fromYear": 2015,
+          "toYear": 2015,
+          "loan": true
+        },
+        {
+          "name": "Roma",
+          "fromYear": 2015,
+          "toYear": 2016,
+          "loan": true
+        },
+        {
+          "name": "Roma",
+          "fromYear": 2016,
+          "toYear": 2017,
+          "loan": false
+        },
+        {
+          "name": "Liverpool",
+          "fromYear": 2017,
+          "toYear": 2026,
+          "loan": false
+        },
+        {
+          "name": "Trabzonspor",
+          "fromYear": 2026,
+          "toYear": null,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Mohamed_Salah",
+        "https://www.wikidata.org/wiki/Q1354960#P54"
+      ]
+    },
+    {
+      "id": "eden-hazard",
+      "name": "Eden Hazard",
+      "acceptedAnswers": [
+        "Eden Hazard",
+        "Eden Michael Walter Lucien Hazard"
+      ],
+      "difficulty": "easy",
+      "countryAz": "Belçika",
+      "countryEn": "Belgium",
+      "positionAz": "Yarımmüdafiəçi",
+      "positionEn": "Midfielder",
+      "clubs": [
+        {
+          "name": "Lille",
+          "fromYear": 2007,
+          "toYear": 2012,
+          "loan": false
+        },
+        {
+          "name": "Chelsea",
+          "fromYear": 2012,
+          "toYear": 2019,
+          "loan": false
+        },
+        {
+          "name": "Real Madrid",
+          "fromYear": 2019,
+          "toYear": 2023,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Eden_Hazard"
+      ]
+    },
+    {
+      "id": "wayne-rooney",
+      "name": "Wayne Rooney",
+      "acceptedAnswers": [
+        "Wayne Rooney",
+        "Wayne Mark Rooney"
+      ],
+      "difficulty": "easy",
+      "countryAz": "İngiltərə",
+      "countryEn": "England",
+      "positionAz": "Yarımmüdafiəçi",
+      "positionEn": "Midfielder",
+      "clubs": [
+        {
+          "name": "Everton",
+          "fromYear": 2002,
+          "toYear": 2004,
+          "loan": false
+        },
+        {
+          "name": "Manchester United",
+          "fromYear": 2004,
+          "toYear": 2017,
+          "loan": false
+        },
+        {
+          "name": "Everton",
+          "fromYear": 2017,
+          "toYear": 2018,
+          "loan": false
+        },
+        {
+          "name": "D.C. United",
+          "fromYear": 2018,
+          "toYear": 2019,
+          "loan": false
+        },
+        {
+          "name": "Derby County",
+          "fromYear": 2020,
+          "toYear": 2021,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Wayne_Rooney",
+        "https://www.wikidata.org/wiki/Q266613#P54"
+      ]
+    },
+    {
+      "id": "frank-lampard",
+      "name": "Frank Lampard",
+      "acceptedAnswers": [
+        "Frank Lampard",
+        "Frank James Lampard"
+      ],
+      "difficulty": "easy",
+      "countryAz": "İngiltərə",
+      "countryEn": "England",
+      "positionAz": "Yarımmüdafiəçi",
+      "positionEn": "Midfielder",
+      "clubs": [
+        {
+          "name": "West Ham United",
+          "fromYear": 1995,
+          "toYear": 2001,
+          "loan": false
+        },
+        {
+          "name": "Swansea City",
+          "fromYear": 1995,
+          "toYear": 1996,
+          "loan": true
+        },
+        {
+          "name": "Chelsea",
+          "fromYear": 2001,
+          "toYear": 2014,
+          "loan": false
+        },
+        {
+          "name": "Manchester City",
+          "fromYear": 2014,
+          "toYear": 2015,
+          "loan": false
+        },
+        {
+          "name": "New York City FC",
+          "fromYear": 2015,
+          "toYear": 2016,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Frank_Lampard",
+        "https://www.wikidata.org/wiki/Q41533#P54"
+      ]
+    },
+    {
+      "id": "gianluigi-buffon",
+      "name": "Gianluigi Buffon",
+      "acceptedAnswers": [
+        "Gianluigi Buffon"
+      ],
+      "difficulty": "easy",
+      "countryAz": "İtaliya",
+      "countryEn": "Italy",
+      "positionAz": "Qapıçı",
+      "positionEn": "Goalkeeper",
+      "clubs": [
+        {
+          "name": "Parma",
+          "fromYear": 1995,
+          "toYear": 2001,
+          "loan": false
+        },
+        {
+          "name": "Juventus",
+          "fromYear": 2001,
+          "toYear": 2018,
+          "loan": false
+        },
+        {
+          "name": "Paris Saint-Germain",
+          "fromYear": 2018,
+          "toYear": 2019,
+          "loan": false
+        },
+        {
+          "name": "Juventus",
+          "fromYear": 2019,
+          "toYear": 2021,
+          "loan": false
+        },
+        {
+          "name": "Parma",
+          "fromYear": 2021,
+          "toYear": 2023,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Gianluigi_Buffon",
+        "https://www.wikidata.org/wiki/Q68060#P54"
+      ]
+    },
+    {
+      "id": "sergio-ramos",
+      "name": "Sergio Ramos",
+      "acceptedAnswers": [
+        "Sergio Ramos",
+        "Sergio Ramos García",
+        "Sergio Ramos Garcia"
+      ],
+      "difficulty": "easy",
+      "countryAz": "İspaniya",
+      "countryEn": "Spain",
+      "positionAz": "Müdafiəçi",
+      "positionEn": "Defender",
+      "clubs": [
+        {
+          "name": "Sevilla Atlético",
+          "fromYear": 2003,
+          "toYear": 2004,
+          "loan": false
+        },
+        {
+          "name": "Sevilla",
+          "fromYear": 2004,
+          "toYear": 2005,
+          "loan": false
+        },
+        {
+          "name": "Real Madrid",
+          "fromYear": 2005,
+          "toYear": 2021,
+          "loan": false
+        },
+        {
+          "name": "Paris Saint-Germain",
+          "fromYear": 2021,
+          "toYear": 2023,
+          "loan": false
+        },
+        {
+          "name": "Sevilla",
+          "fromYear": 2023,
+          "toYear": 2024,
+          "loan": false
+        },
+        {
+          "name": "Monterrey",
+          "fromYear": 2025,
+          "toYear": 2025,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Sergio_Ramos",
+        "https://www.wikidata.org/wiki/Q483309#P54"
+      ]
+    },
+    {
+      "id": "fabio-cannavaro",
+      "name": "Fabio Cannavaro",
+      "acceptedAnswers": [
+        "Fabio Cannavaro"
+      ],
+      "difficulty": "easy",
+      "countryAz": "İtaliya",
+      "countryEn": "Italy",
+      "positionAz": "Müdafiəçi",
+      "positionEn": "Defender",
+      "clubs": [
+        {
+          "name": "Napoli",
+          "fromYear": 1991,
+          "toYear": 1995,
+          "loan": false
+        },
+        {
+          "name": "Parma",
+          "fromYear": 1995,
+          "toYear": 2002,
+          "loan": false
+        },
+        {
+          "name": "Inter Milan",
+          "fromYear": 2002,
+          "toYear": 2004,
+          "loan": false
+        },
+        {
+          "name": "Juventus",
+          "fromYear": 2004,
+          "toYear": 2006,
+          "loan": false
+        },
+        {
+          "name": "Real Madrid",
+          "fromYear": 2006,
+          "toYear": 2009,
+          "loan": false
+        },
+        {
+          "name": "Juventus",
+          "fromYear": 2009,
+          "toYear": 2010,
+          "loan": false
+        },
+        {
+          "name": "Al Ahli Dubai",
+          "fromYear": 2010,
+          "toYear": 2011,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Fabio_Cannavaro",
+        "https://www.wikidata.org/wiki/Q102027#P54"
+      ]
+    },
+    {
+      "id": "roberto-carlos",
+      "name": "Roberto Carlos",
+      "acceptedAnswers": [
+        "Roberto Carlos",
+        "Roberto Carlos da Silva Rocha"
+      ],
+      "difficulty": "easy",
+      "countryAz": "Braziliya",
+      "countryEn": "Brazil",
+      "positionAz": "Müdafiəçi",
+      "positionEn": "Defender",
+      "clubs": [
+        {
+          "name": "União São João",
+          "fromYear": 1991,
+          "toYear": 1993,
+          "loan": false
+        },
+        {
+          "name": "Atlético Mineiro",
+          "fromYear": 1992,
+          "toYear": 1993,
+          "loan": true
+        },
+        {
+          "name": "Palmeiras",
+          "fromYear": 1993,
+          "toYear": 1995,
+          "loan": false
+        },
+        {
+          "name": "Inter Milan",
+          "fromYear": 1995,
+          "toYear": 1996,
+          "loan": false
+        },
+        {
+          "name": "Real Madrid",
+          "fromYear": 1996,
+          "toYear": 2007,
+          "loan": false
+        },
+        {
+          "name": "Fenerbahçe",
+          "fromYear": 2007,
+          "toYear": 2009,
+          "loan": false
+        },
+        {
+          "name": "Corinthians",
+          "fromYear": 2010,
+          "toYear": 2011,
+          "loan": false
+        },
+        {
+          "name": "Anzhi Makhachkala",
+          "fromYear": 2011,
+          "toYear": 2012,
+          "loan": false
+        },
+        {
+          "name": "Delhi Dynamos",
+          "fromYear": 2015,
+          "toYear": 2016,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Roberto_Carlos",
+        "https://www.wikidata.org/wiki/Q429039#P54"
+      ]
+    },
+    {
+      "id": "luis-figo",
+      "name": "Luís Figo",
+      "acceptedAnswers": [
+        "Luís Figo",
+        "Luís Filipe Madeira Caeiro Figo",
+        "Luis Figo",
+        "Luis Filipe Madeira Caeiro Figo"
+      ],
+      "difficulty": "easy",
+      "countryAz": "Portuqaliya",
+      "countryEn": "Portugal",
+      "positionAz": "Cinah oyunçusu",
+      "positionEn": "Winger",
+      "clubs": [
+        {
+          "name": "Sporting CP",
+          "fromYear": 1989,
+          "toYear": 1995,
+          "loan": false
+        },
+        {
+          "name": "Barcelona",
+          "fromYear": 1995,
+          "toYear": 2000,
+          "loan": false
+        },
+        {
+          "name": "Real Madrid",
+          "fromYear": 2000,
+          "toYear": 2005,
+          "loan": false
+        },
+        {
+          "name": "Inter Milan",
+          "fromYear": 2005,
+          "toYear": 2009,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Lu%C3%ADs_Figo"
+      ]
+    },
+    {
+      "id": "raul-gonzalez",
+      "name": "Raúl González",
+      "acceptedAnswers": [
+        "Raúl González",
+        "Raúl González Blanco",
+        "Raul Gonzalez",
+        "Raul Gonzalez Blanco"
+      ],
+      "difficulty": "easy",
+      "countryAz": "İspaniya",
+      "countryEn": "Spain",
+      "positionAz": "Yarımmüdafiəçi",
+      "positionEn": "Midfielder",
+      "clubs": [
+        {
+          "name": "Real Madrid",
+          "fromYear": 1994,
+          "toYear": 2010,
+          "loan": false
+        },
+        {
+          "name": "Schalke 04",
+          "fromYear": 2010,
+          "toYear": 2012,
+          "loan": false
+        },
+        {
+          "name": "Al Sadd",
+          "fromYear": 2012,
+          "toYear": 2014,
+          "loan": false
+        },
+        {
+          "name": "New York Cosmos",
+          "fromYear": 2014,
+          "toYear": 2015,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Ra%C3%BAl_(footballer)"
+      ]
+    },
+    {
+      "id": "fernando-torres",
+      "name": "Fernando Torres",
+      "acceptedAnswers": [
+        "Fernando Torres",
+        "Fernando José Torres Sanz",
+        "Fernando Jose Torres Sanz"
+      ],
+      "difficulty": "easy",
+      "countryAz": "İspaniya",
+      "countryEn": "Spain",
+      "positionAz": "Hücumçu",
+      "positionEn": "Forward",
+      "clubs": [
+        {
+          "name": "Atlético Madrid",
+          "fromYear": 2001,
+          "toYear": 2007,
+          "loan": false
+        },
+        {
+          "name": "Liverpool",
+          "fromYear": 2007,
+          "toYear": 2011,
+          "loan": false
+        },
+        {
+          "name": "Chelsea",
+          "fromYear": 2011,
+          "toYear": 2015,
+          "loan": false
+        },
+        {
+          "name": "AC Milan",
+          "fromYear": 2014,
+          "toYear": 2015,
+          "loan": true
+        },
+        {
+          "name": "AC Milan",
+          "fromYear": 2015,
+          "toYear": 2016,
+          "loan": false
+        },
+        {
+          "name": "Atlético Madrid",
+          "fromYear": 2015,
+          "toYear": 2016,
+          "loan": true
+        },
+        {
+          "name": "Atlético Madrid",
+          "fromYear": 2016,
+          "toYear": 2018,
+          "loan": false
+        },
+        {
+          "name": "Sagan Tosu",
+          "fromYear": 2018,
+          "toYear": 2019,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Fernando_Torres",
+        "https://www.wikidata.org/wiki/Q42731#P54"
+      ]
+    },
+    {
+      "id": "didier-drogba",
+      "name": "Didier Drogba",
+      "acceptedAnswers": [
+        "Didier Drogba",
+        "Didier Yves Drogba Tébily",
+        "Didier Yves Drogba Tebily"
+      ],
+      "difficulty": "easy",
+      "countryAz": "Fil Dişi Sahili",
+      "countryEn": "Ivory Coast",
+      "positionAz": "Hücumçu",
+      "positionEn": "Forward",
+      "clubs": [
+        {
+          "name": "Le Mans",
+          "fromYear": 1998,
+          "toYear": 2002,
+          "loan": false
+        },
+        {
+          "name": "Guingamp",
+          "fromYear": 2002,
+          "toYear": 2003,
+          "loan": false
+        },
+        {
+          "name": "Marseille",
+          "fromYear": 2003,
+          "toYear": 2004,
+          "loan": false
+        },
+        {
+          "name": "Chelsea",
+          "fromYear": 2004,
+          "toYear": 2012,
+          "loan": false
+        },
+        {
+          "name": "Shanghai Shenhua",
+          "fromYear": 2012,
+          "toYear": 2013,
+          "loan": false
+        },
+        {
+          "name": "Galatasaray",
+          "fromYear": 2013,
+          "toYear": 2014,
+          "loan": false
+        },
+        {
+          "name": "Chelsea",
+          "fromYear": 2014,
+          "toYear": 2015,
+          "loan": false
+        },
+        {
+          "name": "Montreal Impact",
+          "fromYear": 2015,
+          "toYear": 2016,
+          "loan": false
+        },
+        {
+          "name": "Phoenix Rising",
+          "fromYear": 2017,
+          "toYear": 2018,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Didier_Drogba",
+        "https://www.wikidata.org/wiki/Q48892#P54"
+      ]
+    },
+    {
+      "id": "franck-ribery",
+      "name": "Franck Ribéry",
+      "acceptedAnswers": [
+        "Franck Ribéry",
+        "Franck Henry Pierre Ribéry",
+        "Franck Ribery",
+        "Franck Henry Pierre Ribery"
+      ],
+      "difficulty": "easy",
+      "countryAz": "Fransa",
+      "countryEn": "France",
+      "positionAz": "Cinah oyunçusu",
+      "positionEn": "Winger",
+      "clubs": [
+        {
+          "name": "Boulogne",
+          "fromYear": 2000,
+          "toYear": 2002,
+          "loan": false
+        },
+        {
+          "name": "Alès",
+          "fromYear": 2002,
+          "toYear": 2003,
+          "loan": false
+        },
+        {
+          "name": "Brest",
+          "fromYear": 2003,
+          "toYear": 2004,
+          "loan": false
+        },
+        {
+          "name": "Metz",
+          "fromYear": 2004,
+          "toYear": 2005,
+          "loan": false
+        },
+        {
+          "name": "Galatasaray",
+          "fromYear": 2005,
+          "toYear": 2005,
+          "loan": false
+        },
+        {
+          "name": "Marseille",
+          "fromYear": 2005,
+          "toYear": 2007,
+          "loan": false
+        },
+        {
+          "name": "Bayern Munich",
+          "fromYear": 2007,
+          "toYear": 2019,
+          "loan": false
+        },
+        {
+          "name": "Fiorentina",
+          "fromYear": 2019,
+          "toYear": 2021,
+          "loan": false
+        },
+        {
+          "name": "Salernitana",
+          "fromYear": 2021,
+          "toYear": 2022,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Franck_Rib%C3%A9ry"
+      ]
+    },
+    {
+      "id": "cesc-fabregas",
+      "name": "Cesc Fàbregas",
+      "acceptedAnswers": [
+        "Cesc Fàbregas",
+        "Francesc Fàbregas Soler",
+        "Cesc Fabregas",
+        "Francesc Fabregas Soler"
+      ],
+      "difficulty": "easy",
+      "countryAz": "İspaniya",
+      "countryEn": "Spain",
+      "positionAz": "Yarımmüdafiəçi",
+      "positionEn": "Midfielder",
+      "clubs": [
+        {
+          "name": "Arsenal",
+          "fromYear": 2003,
+          "toYear": 2011,
+          "loan": false
+        },
+        {
+          "name": "Barcelona",
+          "fromYear": 2011,
+          "toYear": 2014,
+          "loan": false
+        },
+        {
+          "name": "Chelsea",
+          "fromYear": 2014,
+          "toYear": 2019,
+          "loan": false
+        },
+        {
+          "name": "Monaco",
+          "fromYear": 2019,
+          "toYear": 2022,
+          "loan": false
+        },
+        {
+          "name": "Como",
+          "fromYear": 2022,
+          "toYear": 2023,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Cesc_F%C3%A0bregas"
+      ]
+    },
+    {
+      "id": "son-heung-min",
+      "name": "Son Heung-min",
+      "acceptedAnswers": [
+        "Son Heung-min"
+      ],
+      "difficulty": "easy",
+      "countryAz": "Cənubi Koreya",
+      "countryEn": "South Korea",
+      "positionAz": "Hücumçu",
+      "positionEn": "Forward",
+      "clubs": [
+        {
+          "name": "Hamburger SV",
+          "fromYear": 2010,
+          "toYear": 2013,
+          "loan": false
+        },
+        {
+          "name": "Bayer Leverkusen",
+          "fromYear": 2013,
+          "toYear": 2015,
+          "loan": false
+        },
+        {
+          "name": "Tottenham Hotspur",
+          "fromYear": 2015,
+          "toYear": 2025,
+          "loan": false
+        },
+        {
+          "name": "Los Angeles FC",
+          "fromYear": 2025,
+          "toYear": null,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Son_Heung-min"
+      ]
+    },
+    {
+      "id": "paulo-dybala",
+      "name": "Paulo Dybala",
+      "acceptedAnswers": [
+        "Paulo Dybala",
+        "Paulo Exequiel Dybala"
+      ],
+      "difficulty": "easy",
+      "countryAz": "Argentina",
+      "countryEn": "Argentina",
+      "positionAz": "Yarımmüdafiəçi",
+      "positionEn": "Midfielder",
+      "clubs": [
+        {
+          "name": "Instituto",
+          "fromYear": 2011,
+          "toYear": 2012,
+          "loan": false
+        },
+        {
+          "name": "Palermo",
+          "fromYear": 2012,
+          "toYear": 2015,
+          "loan": false
+        },
+        {
+          "name": "Juventus",
+          "fromYear": 2015,
+          "toYear": 2022,
+          "loan": false
+        },
+        {
+          "name": "Roma",
+          "fromYear": 2022,
+          "toYear": null,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Paulo_Dybala"
+      ]
+    },
+    {
+      "id": "michael-owen",
+      "name": "Michael Owen",
+      "acceptedAnswers": [
+        "Michael Owen",
+        "Michael James Owen"
+      ],
+      "difficulty": "easy",
+      "countryAz": "İngiltərə",
+      "countryEn": "England",
+      "positionAz": "Hücumçu",
+      "positionEn": "Forward",
+      "clubs": [
+        {
+          "name": "Liverpool",
+          "fromYear": 1996,
+          "toYear": 2004,
+          "loan": false
+        },
+        {
+          "name": "Real Madrid",
+          "fromYear": 2004,
+          "toYear": 2005,
+          "loan": false
+        },
+        {
+          "name": "Newcastle United",
+          "fromYear": 2005,
+          "toYear": 2009,
+          "loan": false
+        },
+        {
+          "name": "Manchester United",
+          "fromYear": 2009,
+          "toYear": 2012,
+          "loan": false
+        },
+        {
+          "name": "Stoke City",
+          "fromYear": 2012,
+          "toYear": 2013,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Michael_Owen"
+      ]
+    },
+    {
+      "id": "ruud-van-nistelrooy",
+      "name": "Ruud van Nistelrooy",
+      "acceptedAnswers": [
+        "Ruud van Nistelrooy",
+        "Rutgerus Johannes Martinus van Nistelrooij"
+      ],
+      "difficulty": "easy",
+      "countryAz": "Niderland",
+      "countryEn": "Netherlands",
+      "positionAz": "Hücumçu",
+      "positionEn": "Forward",
+      "clubs": [
+        {
+          "name": "Den Bosch",
+          "fromYear": 1993,
+          "toYear": 1997,
+          "loan": false
+        },
+        {
+          "name": "Heerenveen",
+          "fromYear": 1997,
+          "toYear": 1998,
+          "loan": false
+        },
+        {
+          "name": "PSV Eindhoven",
+          "fromYear": 1998,
+          "toYear": 2001,
+          "loan": false
+        },
+        {
+          "name": "Manchester United",
+          "fromYear": 2001,
+          "toYear": 2006,
+          "loan": false
+        },
+        {
+          "name": "Real Madrid",
+          "fromYear": 2006,
+          "toYear": 2010,
+          "loan": false
+        },
+        {
+          "name": "Hamburger SV",
+          "fromYear": 2010,
+          "toYear": 2011,
+          "loan": false
+        },
+        {
+          "name": "Málaga",
+          "fromYear": 2011,
+          "toYear": 2012,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Ruud_van_Nistelrooy"
+      ]
+    },
+    {
+      "id": "dennis-bergkamp",
+      "name": "Dennis Bergkamp",
+      "acceptedAnswers": [
+        "Dennis Bergkamp",
+        "Dennis Nicolaas Maria Bergkamp"
+      ],
+      "difficulty": "easy",
+      "countryAz": "Niderland",
+      "countryEn": "Netherlands",
+      "positionAz": "Yarımmüdafiəçi",
+      "positionEn": "Midfielder",
+      "clubs": [
+        {
+          "name": "Ajax",
+          "fromYear": 1986,
+          "toYear": 1993,
+          "loan": false
+        },
+        {
+          "name": "Inter Milan",
+          "fromYear": 1993,
+          "toYear": 1995,
+          "loan": false
+        },
+        {
+          "name": "Arsenal",
+          "fromYear": 1995,
+          "toYear": 2006,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Dennis_Bergkamp"
+      ]
+    },
+    {
+      "id": "patrick-vieira",
+      "name": "Patrick Vieira",
+      "acceptedAnswers": [
+        "Patrick Vieira",
+        "Patrick Paul Vieira"
+      ],
+      "difficulty": "easy",
+      "countryAz": "Fransa",
+      "countryEn": "France",
+      "positionAz": "Yarımmüdafiəçi",
+      "positionEn": "Midfielder",
+      "clubs": [
+        {
+          "name": "Cannes",
+          "fromYear": 1993,
+          "toYear": 1995,
+          "loan": false
+        },
+        {
+          "name": "AC Milan",
+          "fromYear": 1995,
+          "toYear": 1996,
+          "loan": false
+        },
+        {
+          "name": "Arsenal",
+          "fromYear": 1996,
+          "toYear": 2005,
+          "loan": false
+        },
+        {
+          "name": "Juventus",
+          "fromYear": 2005,
+          "toYear": 2006,
+          "loan": false
+        },
+        {
+          "name": "Inter Milan",
+          "fromYear": 2006,
+          "toYear": 2010,
+          "loan": false
+        },
+        {
+          "name": "Manchester City",
+          "fromYear": 2010,
+          "toYear": 2011,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Patrick_Vieira"
+      ]
+    },
+    {
+      "id": "claude-makelele",
+      "name": "Claude Makélélé",
+      "acceptedAnswers": [
+        "Claude Makélélé",
+        "Claude Makélélé Sinda",
+        "Claude Makelele",
+        "Claude Makelele Sinda"
+      ],
+      "difficulty": "easy",
+      "countryAz": "Fransa",
+      "countryEn": "France",
+      "positionAz": "Yarımmüdafiəçi",
+      "positionEn": "Midfielder",
+      "clubs": [
+        {
+          "name": "Nantes",
+          "fromYear": 1991,
+          "toYear": 1997,
+          "loan": false
+        },
+        {
+          "name": "Marseille",
+          "fromYear": 1997,
+          "toYear": 1998,
+          "loan": false
+        },
+        {
+          "name": "Celta Vigo",
+          "fromYear": 1998,
+          "toYear": 2000,
+          "loan": false
+        },
+        {
+          "name": "Real Madrid",
+          "fromYear": 2000,
+          "toYear": 2003,
+          "loan": false
+        },
+        {
+          "name": "Chelsea",
+          "fromYear": 2003,
+          "toYear": 2008,
+          "loan": false
+        },
+        {
+          "name": "Paris Saint-Germain",
+          "fromYear": 2008,
+          "toYear": 2011,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Claude_Mak%C3%A9l%C3%A9l%C3%A9"
+      ]
+    },
+    {
+      "id": "miroslav-klose",
+      "name": "Miroslav Klose",
+      "acceptedAnswers": [
+        "Miroslav Klose",
+        "Mirosław Marian Klose",
+        "Miroslaw Marian Klose"
+      ],
+      "difficulty": "easy",
+      "countryAz": "Almaniya",
+      "countryEn": "Germany",
+      "positionAz": "Hücumçu",
+      "positionEn": "Forward",
+      "clubs": [
+        {
+          "name": "FC 08 Homburg",
+          "fromYear": 1998,
+          "toYear": 1999,
+          "loan": false
+        },
+        {
+          "name": "1. FC Kaiserslautern",
+          "fromYear": 1999,
+          "toYear": 2004,
+          "loan": false
+        },
+        {
+          "name": "Werder Bremen",
+          "fromYear": 2004,
+          "toYear": 2007,
+          "loan": false
+        },
+        {
+          "name": "Bayern Munich",
+          "fromYear": 2007,
+          "toYear": 2011,
+          "loan": false
+        },
+        {
+          "name": "Lazio",
+          "fromYear": 2011,
+          "toYear": 2016,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Miroslav_Klose"
+      ]
+    },
+    {
+      "id": "diego-forlan",
+      "name": "Diego Forlán",
+      "acceptedAnswers": [
+        "Diego Forlán",
+        "Diego Martín Forlán Corazo",
+        "Diego Forlan",
+        "Diego Martin Forlan Corazo"
+      ],
+      "difficulty": "medium",
+      "countryAz": "Uruqvay",
+      "countryEn": "Uruguay",
+      "positionAz": "Hücumçu",
+      "positionEn": "Forward",
+      "clubs": [
+        {
+          "name": "Independiente",
+          "fromYear": 1997,
+          "toYear": 2002,
+          "loan": false
+        },
+        {
+          "name": "Manchester United",
+          "fromYear": 2002,
+          "toYear": 2004,
+          "loan": false
+        },
+        {
+          "name": "Villarreal",
+          "fromYear": 2004,
+          "toYear": 2007,
+          "loan": false
+        },
+        {
+          "name": "Atlético Madrid",
+          "fromYear": 2007,
+          "toYear": 2011,
+          "loan": false
+        },
+        {
+          "name": "Inter Milan",
+          "fromYear": 2011,
+          "toYear": 2012,
+          "loan": false
+        },
+        {
+          "name": "Internacional",
+          "fromYear": 2012,
+          "toYear": 2014,
+          "loan": false
+        },
+        {
+          "name": "Cerezo Osaka",
+          "fromYear": 2014,
+          "toYear": 2015,
+          "loan": false
+        },
+        {
+          "name": "Peñarol",
+          "fromYear": 2015,
+          "toYear": 2016,
+          "loan": false
+        },
+        {
+          "name": "Mumbai City",
+          "fromYear": 2016,
+          "toYear": 2016,
+          "loan": false
+        },
+        {
+          "name": "Kitchee",
+          "fromYear": 2018,
+          "toYear": 2018,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Diego_Forl%C3%A1n"
+      ]
+    },
+    {
+      "id": "javier-mascherano",
+      "name": "Javier Mascherano",
+      "acceptedAnswers": [
+        "Javier Mascherano",
+        "Javier Alejandro Mascherano"
+      ],
+      "difficulty": "medium",
+      "countryAz": "Argentina",
+      "countryEn": "Argentina",
+      "positionAz": "Yarımmüdafiəçi",
+      "positionEn": "Midfielder",
+      "clubs": [
+        {
+          "name": "River Plate",
+          "fromYear": 2003,
+          "toYear": 2005,
+          "loan": false
+        },
+        {
+          "name": "Corinthians",
+          "fromYear": 2005,
+          "toYear": 2006,
+          "loan": false
+        },
+        {
+          "name": "West Ham United",
+          "fromYear": 2006,
+          "toYear": 2007,
+          "loan": false
+        },
+        {
+          "name": "Liverpool",
+          "fromYear": 2007,
+          "toYear": 2010,
+          "loan": false
+        },
+        {
+          "name": "Barcelona",
+          "fromYear": 2010,
+          "toYear": 2018,
+          "loan": false
+        },
+        {
+          "name": "Hebei China Fortune",
+          "fromYear": 2018,
+          "toYear": 2019,
+          "loan": false
+        },
+        {
+          "name": "Estudiantes",
+          "fromYear": 2019,
+          "toYear": 2020,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Javier_Mascherano"
+      ]
+    },
+    {
+      "id": "javier-saviola",
+      "name": "Javier Saviola",
+      "acceptedAnswers": [
+        "Javier Saviola",
+        "Javier Pedro Saviola Fernández",
+        "Javier Pedro Saviola Fernandez"
+      ],
+      "difficulty": "medium",
+      "countryAz": "Argentina",
+      "countryEn": "Argentina",
+      "positionAz": "Hücumçu",
+      "positionEn": "Forward",
+      "clubs": [
+        {
+          "name": "River Plate",
+          "fromYear": 1998,
+          "toYear": 2001,
+          "loan": false
+        },
+        {
+          "name": "Barcelona",
+          "fromYear": 2001,
+          "toYear": 2007,
+          "loan": false
+        },
+        {
+          "name": "Monaco",
+          "fromYear": 2004,
+          "toYear": 2005,
+          "loan": true
+        },
+        {
+          "name": "Sevilla",
+          "fromYear": 2005,
+          "toYear": 2006,
+          "loan": true
+        },
+        {
+          "name": "Real Madrid",
+          "fromYear": 2007,
+          "toYear": 2009,
+          "loan": false
+        },
+        {
+          "name": "Benfica",
+          "fromYear": 2009,
+          "toYear": 2012,
+          "loan": false
+        },
+        {
+          "name": "Málaga",
+          "fromYear": 2012,
+          "toYear": 2013,
+          "loan": false
+        },
+        {
+          "name": "Olympiacos",
+          "fromYear": 2013,
+          "toYear": 2014,
+          "loan": false
+        },
+        {
+          "name": "Verona",
+          "fromYear": 2014,
+          "toYear": 2015,
+          "loan": false
+        },
+        {
+          "name": "River Plate",
+          "fromYear": 2015,
+          "toYear": 2016,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Javier_Saviola",
+        "https://www.wikidata.org/wiki/Q186071#P54"
+      ]
+    },
+    {
+      "id": "carlos-tevez",
+      "name": "Carlos Tevez",
+      "acceptedAnswers": [
+        "Carlos Tevez",
+        "Carlos Alberto Martínez",
+        "Carlos Alberto Martinez"
+      ],
+      "difficulty": "medium",
+      "countryAz": "Argentina",
+      "countryEn": "Argentina",
+      "positionAz": "Hücumçu",
+      "positionEn": "Forward",
+      "clubs": [
+        {
+          "name": "Boca Juniors",
+          "fromYear": 2001,
+          "toYear": 2004,
+          "loan": false
+        },
+        {
+          "name": "Corinthians",
+          "fromYear": 2005,
+          "toYear": 2006,
+          "loan": false
+        },
+        {
+          "name": "West Ham United",
+          "fromYear": 2006,
+          "toYear": 2009,
+          "loan": false
+        },
+        {
+          "name": "Manchester United",
+          "fromYear": 2007,
+          "toYear": 2009,
+          "loan": true
+        },
+        {
+          "name": "Manchester City",
+          "fromYear": 2009,
+          "toYear": 2013,
+          "loan": false
+        },
+        {
+          "name": "Juventus",
+          "fromYear": 2013,
+          "toYear": 2015,
+          "loan": false
+        },
+        {
+          "name": "Boca Juniors",
+          "fromYear": 2015,
+          "toYear": 2016,
+          "loan": false
+        },
+        {
+          "name": "Shanghai Shenhua",
+          "fromYear": 2016,
+          "toYear": 2018,
+          "loan": false
+        },
+        {
+          "name": "Boca Juniors",
+          "fromYear": 2018,
+          "toYear": 2021,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Carlos_Tevez",
+        "https://www.wikidata.org/wiki/Q50600#P54"
+      ]
+    },
+    {
+      "id": "sergio-aguero",
+      "name": "Sergio Agüero",
+      "acceptedAnswers": [
+        "Sergio Agüero",
+        "Sergio Leonel Agüero del Castillo",
+        "Sergio Aguero",
+        "Sergio Leonel Aguero del Castillo"
+      ],
+      "difficulty": "medium",
+      "countryAz": "Argentina",
+      "countryEn": "Argentina",
+      "positionAz": "Hücumçu",
+      "positionEn": "Forward",
+      "clubs": [
+        {
+          "name": "Independiente",
+          "fromYear": 2003,
+          "toYear": 2006,
+          "loan": false
+        },
+        {
+          "name": "Atlético Madrid",
+          "fromYear": 2006,
+          "toYear": 2011,
+          "loan": false
+        },
+        {
+          "name": "Manchester City",
+          "fromYear": 2011,
+          "toYear": 2021,
+          "loan": false
+        },
+        {
+          "name": "Barcelona",
+          "fromYear": 2021,
+          "toYear": 2021,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Sergio_Ag%C3%BCero"
+      ]
+    },
+    {
+      "id": "javier-zanetti",
+      "name": "Javier Zanetti",
+      "acceptedAnswers": [
+        "Javier Zanetti",
+        "Javier Adelmar Zanetti"
+      ],
+      "difficulty": "medium",
+      "countryAz": "Argentina",
+      "countryEn": "Argentina",
+      "positionAz": "Yarımmüdafiəçi",
+      "positionEn": "Midfielder",
+      "clubs": [
+        {
+          "name": "Talleres",
+          "fromYear": 1992,
+          "toYear": 1993,
+          "loan": false
+        },
+        {
+          "name": "Banfield",
+          "fromYear": 1993,
+          "toYear": 1995,
+          "loan": false
+        },
+        {
+          "name": "Inter Milan",
+          "fromYear": 1995,
+          "toYear": 2014,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Javier_Zanetti"
+      ]
+    },
+    {
+      "id": "fernando-redondo",
+      "name": "Fernando Redondo",
+      "acceptedAnswers": [
+        "Fernando Redondo",
+        "Fernando Carlos Redondo Neri"
+      ],
+      "difficulty": "medium",
+      "countryAz": "Argentina",
+      "countryEn": "Argentina",
+      "positionAz": "Yarımmüdafiəçi",
+      "positionEn": "Midfielder",
+      "clubs": [
+        {
+          "name": "Argentinos Juniors",
+          "fromYear": 1985,
+          "toYear": 1990,
+          "loan": false
+        },
+        {
+          "name": "Tenerife",
+          "fromYear": 1990,
+          "toYear": 1994,
+          "loan": false
+        },
+        {
+          "name": "Real Madrid",
+          "fromYear": 1994,
+          "toYear": 2000,
+          "loan": false
+        },
+        {
+          "name": "AC Milan",
+          "fromYear": 2000,
+          "toYear": 2004,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Fernando_Redondo"
+      ]
+    },
+    {
+      "id": "juan-pablo-sorin",
+      "name": "Juan Pablo Sorín",
+      "acceptedAnswers": [
+        "Juan Pablo Sorín",
+        "Juan Pablo Sorin"
+      ],
+      "difficulty": "medium",
+      "countryAz": "Argentina",
+      "countryEn": "Argentina",
+      "positionAz": "Yarımmüdafiəçi",
+      "positionEn": "Midfielder",
+      "clubs": [
+        {
+          "name": "Argentinos Juniors",
+          "fromYear": 1994,
+          "toYear": 1995,
+          "loan": false
+        },
+        {
+          "name": "Juventus",
+          "fromYear": 1995,
+          "toYear": 1996,
+          "loan": false
+        },
+        {
+          "name": "River Plate",
+          "fromYear": 1996,
+          "toYear": 1999,
+          "loan": false
+        },
+        {
+          "name": "Cruzeiro",
+          "fromYear": 2000,
+          "toYear": 2004,
+          "loan": false
+        },
+        {
+          "name": "Lazio",
+          "fromYear": 2002,
+          "toYear": 2003,
+          "loan": true
+        },
+        {
+          "name": "Barcelona",
+          "fromYear": 2003,
+          "toYear": 2003,
+          "loan": true
+        },
+        {
+          "name": "Paris Saint-Germain",
+          "fromYear": 2003,
+          "toYear": 2004,
+          "loan": true
+        },
+        {
+          "name": "Villarreal",
+          "fromYear": 2004,
+          "toYear": 2006,
+          "loan": false
+        },
+        {
+          "name": "Hamburger SV",
+          "fromYear": 2006,
+          "toYear": 2008,
+          "loan": false
+        },
+        {
+          "name": "Cruzeiro",
+          "fromYear": 2008,
+          "toYear": 2009,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Juan_Pablo_Sor%C3%ADn",
+        "https://www.wikidata.org/wiki/Q220746#P54"
+      ]
+    },
+    {
+      "id": "pablo-aimar",
+      "name": "Pablo Aimar",
+      "acceptedAnswers": [
+        "Pablo Aimar",
+        "Pablo César Aimar",
+        "Pablo Cesar Aimar"
+      ],
+      "difficulty": "medium",
+      "countryAz": "Argentina",
+      "countryEn": "Argentina",
+      "positionAz": "Yarımmüdafiəçi",
+      "positionEn": "Midfielder",
+      "clubs": [
+        {
+          "name": "River Plate",
+          "fromYear": 1996,
+          "toYear": 2000,
+          "loan": false
+        },
+        {
+          "name": "Valencia",
+          "fromYear": 2001,
+          "toYear": 2006,
+          "loan": false
+        },
+        {
+          "name": "Zaragoza",
+          "fromYear": 2006,
+          "toYear": 2008,
+          "loan": false
+        },
+        {
+          "name": "Benfica",
+          "fromYear": 2008,
+          "toYear": 2013,
+          "loan": false
+        },
+        {
+          "name": "Johor Darul Ta'zim",
+          "fromYear": 2013,
+          "toYear": 2014,
+          "loan": false
+        },
+        {
+          "name": "River Plate",
+          "fromYear": 2015,
+          "toYear": 2015,
+          "loan": false
+        },
+        {
+          "name": "Estudiantes Río Cuarto",
+          "fromYear": 2018,
+          "toYear": 2018,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Pablo_Aimar",
+        "https://www.wikidata.org/wiki/Q130215#P54"
+      ]
+    },
+    {
+      "id": "roberto-ayala",
+      "name": "Roberto Ayala",
+      "acceptedAnswers": [
+        "Roberto Ayala",
+        "Roberto Fabián Ayala",
+        "Roberto Fabian Ayala"
+      ],
+      "difficulty": "medium",
+      "countryAz": "Argentina",
+      "countryEn": "Argentina",
+      "positionAz": "Müdafiəçi",
+      "positionEn": "Defender",
+      "clubs": [
+        {
+          "name": "Ferro Carril Oeste",
+          "fromYear": 1991,
+          "toYear": 1993,
+          "loan": false
+        },
+        {
+          "name": "River Plate",
+          "fromYear": 1993,
+          "toYear": 1995,
+          "loan": false
+        },
+        {
+          "name": "Napoli",
+          "fromYear": 1995,
+          "toYear": 1998,
+          "loan": false
+        },
+        {
+          "name": "Milan",
+          "fromYear": 1998,
+          "toYear": 2000,
+          "loan": false
+        },
+        {
+          "name": "Valencia",
+          "fromYear": 2000,
+          "toYear": 2007,
+          "loan": false
+        },
+        {
+          "name": "Real Zaragoza",
+          "fromYear": 2007,
+          "toYear": 2010,
+          "loan": false
+        },
+        {
+          "name": "Racing Club",
+          "fromYear": 2010,
+          "toYear": 2011,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Roberto_Ayala"
+      ]
+    },
+    {
+      "id": "esteban-cambiasso",
+      "name": "Esteban Cambiasso",
+      "acceptedAnswers": [
+        "Esteban Cambiasso",
+        "Esteban Matías Cambiasso Deleau",
+        "Esteban Matias Cambiasso Deleau"
+      ],
+      "difficulty": "medium",
+      "countryAz": "Argentina",
+      "countryEn": "Argentina",
+      "positionAz": "Yarımmüdafiəçi",
+      "positionEn": "Midfielder",
+      "clubs": [
+        {
+          "name": "Independiente",
+          "fromYear": 1998,
+          "toYear": 2001,
+          "loan": false
+        },
+        {
+          "name": "River Plate",
+          "fromYear": 2001,
+          "toYear": 2002,
+          "loan": false
+        },
+        {
+          "name": "Real Madrid",
+          "fromYear": 2002,
+          "toYear": 2004,
+          "loan": false
+        },
+        {
+          "name": "Inter Milan",
+          "fromYear": 2004,
+          "toYear": 2014,
+          "loan": false
+        },
+        {
+          "name": "Leicester City",
+          "fromYear": 2014,
+          "toYear": 2015,
+          "loan": false
+        },
+        {
+          "name": "Olympiacos",
+          "fromYear": 2015,
+          "toYear": 2017,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Esteban_Cambiasso"
+      ]
+    },
+    {
+      "id": "gheorghe-hagi",
+      "name": "Gheorghe Hagi",
+      "acceptedAnswers": [
+        "Gheorghe Hagi"
+      ],
+      "difficulty": "medium",
+      "countryAz": "Rumıniya",
+      "countryEn": "Romania",
+      "positionAz": "Yarımmüdafiəçi",
+      "positionEn": "Midfielder",
+      "clubs": [
+        {
+          "name": "FC Constanța",
+          "fromYear": 1982,
+          "toYear": 1983,
+          "loan": false
+        },
+        {
+          "name": "Sportul Studențesc",
+          "fromYear": 1983,
+          "toYear": 1986,
+          "loan": false
+        },
+        {
+          "name": "Steaua București",
+          "fromYear": 1986,
+          "toYear": 1990,
+          "loan": false
+        },
+        {
+          "name": "Real Madrid",
+          "fromYear": 1990,
+          "toYear": 1992,
+          "loan": false
+        },
+        {
+          "name": "Brescia",
+          "fromYear": 1992,
+          "toYear": 1994,
+          "loan": false
+        },
+        {
+          "name": "Barcelona",
+          "fromYear": 1994,
+          "toYear": 1996,
+          "loan": false
+        },
+        {
+          "name": "Galatasaray",
+          "fromYear": 1996,
+          "toYear": 2001,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Gheorghe_Hagi"
+      ]
+    },
+    {
+      "id": "michael-laudrup",
+      "name": "Michael Laudrup",
+      "acceptedAnswers": [
+        "Michael Laudrup"
+      ],
+      "difficulty": "medium",
+      "countryAz": "Danimarka",
+      "countryEn": "Denmark",
+      "positionAz": "Yarımmüdafiəçi",
+      "positionEn": "Midfielder",
+      "clubs": [
+        {
+          "name": "KB",
+          "fromYear": 1981,
+          "toYear": 1981,
+          "loan": false
+        },
+        {
+          "name": "Brøndby",
+          "fromYear": 1982,
+          "toYear": 1983,
+          "loan": false
+        },
+        {
+          "name": "Lazio",
+          "fromYear": 1983,
+          "toYear": 1985,
+          "loan": false
+        },
+        {
+          "name": "Juventus",
+          "fromYear": 1985,
+          "toYear": 1989,
+          "loan": false
+        },
+        {
+          "name": "Barcelona",
+          "fromYear": 1989,
+          "toYear": 1994,
+          "loan": false
+        },
+        {
+          "name": "Real Madrid",
+          "fromYear": 1994,
+          "toYear": 1996,
+          "loan": false
+        },
+        {
+          "name": "Vissel Kobe",
+          "fromYear": 1996,
+          "toYear": 1997,
+          "loan": false
+        },
+        {
+          "name": "Ajax",
+          "fromYear": 1997,
+          "toYear": 1998,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Michael_Laudrup"
+      ]
+    },
+    {
+      "id": "brian-laudrup",
+      "name": "Brian Laudrup",
+      "acceptedAnswers": [
+        "Brian Laudrup"
+      ],
+      "difficulty": "medium",
+      "countryAz": "Danimarka",
+      "countryEn": "Denmark",
+      "positionAz": "Yarımmüdafiəçi",
+      "positionEn": "Midfielder",
+      "clubs": [
+        {
+          "name": "Brøndby",
+          "fromYear": 1986,
+          "toYear": 1989,
+          "loan": false
+        },
+        {
+          "name": "Bayer Uerdingen",
+          "fromYear": 1989,
+          "toYear": 1990,
+          "loan": false
+        },
+        {
+          "name": "Bayern Munich",
+          "fromYear": 1990,
+          "toYear": 1992,
+          "loan": false
+        },
+        {
+          "name": "Fiorentina",
+          "fromYear": 1992,
+          "toYear": 1994,
+          "loan": false
+        },
+        {
+          "name": "Milan",
+          "fromYear": 1993,
+          "toYear": 1994,
+          "loan": true
+        },
+        {
+          "name": "Rangers",
+          "fromYear": 1994,
+          "toYear": 1998,
+          "loan": false
+        },
+        {
+          "name": "Chelsea",
+          "fromYear": 1998,
+          "toYear": 1998,
+          "loan": false
+        },
+        {
+          "name": "Copenhagen",
+          "fromYear": 1998,
+          "toYear": 1999,
+          "loan": false
+        },
+        {
+          "name": "Ajax",
+          "fromYear": 1999,
+          "toYear": 2000,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Brian_Laudrup",
+        "https://www.wikidata.org/wiki/Q212854#P54"
+      ]
+    },
+    {
+      "id": "jari-litmanen",
+      "name": "Jari Litmanen",
+      "acceptedAnswers": [
+        "Jari Litmanen",
+        "Jari Olavi Litmanen"
+      ],
+      "difficulty": "medium",
+      "countryAz": "Finlandiya",
+      "countryEn": "Finland",
+      "positionAz": "Yarımmüdafiəçi",
+      "positionEn": "Midfielder",
+      "clubs": [
+        {
+          "name": "Reipas",
+          "fromYear": 1987,
+          "toYear": 1990,
+          "loan": false
+        },
+        {
+          "name": "HJK",
+          "fromYear": 1991,
+          "toYear": 1991,
+          "loan": false
+        },
+        {
+          "name": "MyPa",
+          "fromYear": 1992,
+          "toYear": 1992,
+          "loan": false
+        },
+        {
+          "name": "Ajax",
+          "fromYear": 1992,
+          "toYear": 1999,
+          "loan": false
+        },
+        {
+          "name": "Barcelona",
+          "fromYear": 1999,
+          "toYear": 2001,
+          "loan": false
+        },
+        {
+          "name": "Liverpool",
+          "fromYear": 2001,
+          "toYear": 2002,
+          "loan": false
+        },
+        {
+          "name": "Ajax",
+          "fromYear": 2002,
+          "toYear": 2004,
+          "loan": false
+        },
+        {
+          "name": "Lahti",
+          "fromYear": 2004,
+          "toYear": 2004,
+          "loan": false
+        },
+        {
+          "name": "Hansa Rostock",
+          "fromYear": 2005,
+          "toYear": 2005,
+          "loan": false
+        },
+        {
+          "name": "Malmö FF",
+          "fromYear": 2005,
+          "toYear": 2007,
+          "loan": false
+        },
+        {
+          "name": "Fulham",
+          "fromYear": 2008,
+          "toYear": 2008,
+          "loan": false
+        },
+        {
+          "name": "Lahti",
+          "fromYear": 2008,
+          "toYear": 2010,
+          "loan": false
+        },
+        {
+          "name": "HJK",
+          "fromYear": 2011,
+          "toYear": 2011,
+          "loan": false
+        },
+        {
+          "name": "Tallinna Kalev Juunior",
+          "fromYear": 2025,
+          "toYear": null,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Jari_Litmanen",
+        "https://www.wikidata.org/wiki/Q209650#P54"
+      ]
+    },
+    {
+      "id": "predrag-mijatovic",
+      "name": "Predrag Mijatović",
+      "acceptedAnswers": [
+        "Predrag Mijatović",
+        "Predrag Mijatovic"
+      ],
+      "difficulty": "medium",
+      "countryAz": "Serbiya və Monteneqro",
+      "countryEn": "Serbia and Montenegro",
+      "positionAz": "Hücumçu",
+      "positionEn": "Forward",
+      "clubs": [
+        {
+          "name": "Budućnost Titograd",
+          "fromYear": 1987,
+          "toYear": 1989,
+          "loan": false
+        },
+        {
+          "name": "Partizan",
+          "fromYear": 1990,
+          "toYear": 1993,
+          "loan": false
+        },
+        {
+          "name": "Valencia",
+          "fromYear": 1993,
+          "toYear": 1996,
+          "loan": false
+        },
+        {
+          "name": "Real Madrid",
+          "fromYear": 1996,
+          "toYear": 1999,
+          "loan": false
+        },
+        {
+          "name": "Fiorentina",
+          "fromYear": 1999,
+          "toYear": 2002,
+          "loan": false
+        },
+        {
+          "name": "Levante",
+          "fromYear": 2002,
+          "toYear": 2003,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Predrag_Mijatovi%C4%87"
+      ]
+    },
+    {
+      "id": "dejan-stankovic",
+      "name": "Dejan Stanković",
+      "acceptedAnswers": [
+        "Dejan Stanković",
+        "Dejan Stankovic"
+      ],
+      "difficulty": "medium",
+      "countryAz": "Serbiya",
+      "countryEn": "Serbia",
+      "positionAz": "Yarımmüdafiəçi",
+      "positionEn": "Midfielder",
+      "clubs": [
+        {
+          "name": "Red Star Belgrade",
+          "fromYear": 1995,
+          "toYear": 1998,
+          "loan": false
+        },
+        {
+          "name": "Lazio",
+          "fromYear": 1998,
+          "toYear": 2004,
+          "loan": false
+        },
+        {
+          "name": "Inter Milan",
+          "fromYear": 2004,
+          "toYear": 2013,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Dejan_Stankovi%C4%87"
+      ]
+    },
+    {
+      "id": "sinisa-mihajlovic",
+      "name": "Siniša Mihajlović",
+      "acceptedAnswers": [
+        "Siniša Mihajlović",
+        "Sinisa Mihajlovic"
+      ],
+      "difficulty": "medium",
+      "countryAz": "Serbiya və Monteneqro",
+      "countryEn": "Serbia and Montenegro",
+      "positionAz": "Müdafiəçi",
+      "positionEn": "Defender",
+      "clubs": [
+        {
+          "name": "Borovo",
+          "fromYear": 1986,
+          "toYear": 1988,
+          "loan": false
+        },
+        {
+          "name": "Vojvodina",
+          "fromYear": 1988,
+          "toYear": 1990,
+          "loan": false
+        },
+        {
+          "name": "Red Star Belgrade",
+          "fromYear": 1990,
+          "toYear": 1992,
+          "loan": false
+        },
+        {
+          "name": "Roma",
+          "fromYear": 1992,
+          "toYear": 1994,
+          "loan": false
+        },
+        {
+          "name": "Sampdoria",
+          "fromYear": 1994,
+          "toYear": 1998,
+          "loan": false
+        },
+        {
+          "name": "Lazio",
+          "fromYear": 1998,
+          "toYear": 2004,
+          "loan": false
+        },
+        {
+          "name": "Inter Milan",
+          "fromYear": 2004,
+          "toYear": 2006,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Sini%C5%A1a_Mihajlovi%C4%87"
+      ]
+    },
+    {
+      "id": "nemanja-vidic",
+      "name": "Nemanja Vidić",
+      "acceptedAnswers": [
+        "Nemanja Vidić",
+        "Nemanja Vidic"
+      ],
+      "difficulty": "medium",
+      "countryAz": "Serbiya",
+      "countryEn": "Serbia",
+      "positionAz": "Müdafiəçi",
+      "positionEn": "Defender",
+      "clubs": [
+        {
+          "name": "Red Star Belgrade",
+          "fromYear": 2000,
+          "toYear": 2004,
+          "loan": false
+        },
+        {
+          "name": "Spartak Subotica",
+          "fromYear": 2000,
+          "toYear": 2001,
+          "loan": true
+        },
+        {
+          "name": "Spartak Moscow",
+          "fromYear": 2004,
+          "toYear": 2006,
+          "loan": false
+        },
+        {
+          "name": "Manchester United",
+          "fromYear": 2006,
+          "toYear": 2014,
+          "loan": false
+        },
+        {
+          "name": "Inter Milan",
+          "fromYear": 2014,
+          "toYear": 2016,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Nemanja_Vidi%C4%87",
+        "https://www.wikidata.org/wiki/Q163564#P54"
+      ]
+    },
+    {
+      "id": "branislav-ivanovic",
+      "name": "Branislav Ivanović",
+      "acceptedAnswers": [
+        "Branislav Ivanović",
+        "Branislav Ivanovic"
+      ],
+      "difficulty": "medium",
+      "countryAz": "Serbiya",
+      "countryEn": "Serbia",
+      "positionAz": "Müdafiəçi",
+      "positionEn": "Defender",
+      "clubs": [
+        {
+          "name": "Srem",
+          "fromYear": 2002,
+          "toYear": 2004,
+          "loan": false
+        },
+        {
+          "name": "OFK Beograd",
+          "fromYear": 2004,
+          "toYear": 2006,
+          "loan": false
+        },
+        {
+          "name": "Lokomotiv Moscow",
+          "fromYear": 2006,
+          "toYear": 2008,
+          "loan": false
+        },
+        {
+          "name": "Chelsea",
+          "fromYear": 2008,
+          "toYear": 2017,
+          "loan": false
+        },
+        {
+          "name": "Zenit Saint Petersburg",
+          "fromYear": 2017,
+          "toYear": 2020,
+          "loan": false
+        },
+        {
+          "name": "West Bromwich Albion",
+          "fromYear": 2020,
+          "toYear": 2021,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Branislav_Ivanovi%C4%87"
+      ]
+    },
+    {
+      "id": "dimitar-berbatov",
+      "name": "Dimitar Berbatov",
+      "acceptedAnswers": [
+        "Dimitar Berbatov",
+        "Dimitar Ivanov Berbatov"
+      ],
+      "difficulty": "medium",
+      "countryAz": "Bolqarıstan",
+      "countryEn": "Bulgaria",
+      "positionAz": "Hücumçu",
+      "positionEn": "Forward",
+      "clubs": [
+        {
+          "name": "CSKA Sofia",
+          "fromYear": 1998,
+          "toYear": 2001,
+          "loan": false
+        },
+        {
+          "name": "Bayer Leverkusen",
+          "fromYear": 2001,
+          "toYear": 2006,
+          "loan": false
+        },
+        {
+          "name": "Tottenham Hotspur",
+          "fromYear": 2006,
+          "toYear": 2008,
+          "loan": false
+        },
+        {
+          "name": "Manchester United",
+          "fromYear": 2008,
+          "toYear": 2012,
+          "loan": false
+        },
+        {
+          "name": "Fulham",
+          "fromYear": 2012,
+          "toYear": 2014,
+          "loan": false
+        },
+        {
+          "name": "Monaco",
+          "fromYear": 2014,
+          "toYear": 2015,
+          "loan": false
+        },
+        {
+          "name": "PAOK",
+          "fromYear": 2015,
+          "toYear": 2016,
+          "loan": false
+        },
+        {
+          "name": "Kerala Blasters",
+          "fromYear": 2017,
+          "toYear": 2018,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Dimitar_Berbatov"
+      ]
+    },
+    {
+      "id": "yaya-toure",
+      "name": "Yaya Touré",
+      "acceptedAnswers": [
+        "Yaya Touré",
+        "Gnégnéri Yaya Touré",
+        "Yaya Toure",
+        "Gnegneri Yaya Toure"
+      ],
+      "difficulty": "medium",
+      "countryAz": "Fil Dişi Sahili",
+      "countryEn": "Ivory Coast",
+      "positionAz": "Yarımmüdafiəçi",
+      "positionEn": "Midfielder",
+      "clubs": [
+        {
+          "name": "Beveren",
+          "fromYear": 2001,
+          "toYear": 2003,
+          "loan": false
+        },
+        {
+          "name": "Metalurh Donetsk",
+          "fromYear": 2003,
+          "toYear": 2005,
+          "loan": false
+        },
+        {
+          "name": "Olympiacos",
+          "fromYear": 2005,
+          "toYear": 2006,
+          "loan": false
+        },
+        {
+          "name": "Monaco",
+          "fromYear": 2006,
+          "toYear": 2007,
+          "loan": false
+        },
+        {
+          "name": "Barcelona",
+          "fromYear": 2007,
+          "toYear": 2010,
+          "loan": false
+        },
+        {
+          "name": "Manchester City",
+          "fromYear": 2010,
+          "toYear": 2018,
+          "loan": false
+        },
+        {
+          "name": "Olympiacos",
+          "fromYear": 2018,
+          "toYear": 2018,
+          "loan": false
+        },
+        {
+          "name": "Qingdao Huanghai",
+          "fromYear": 2019,
+          "toYear": 2019,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Yaya_Tour%C3%A9",
+        "https://www.wikidata.org/wiki/Q184277#P54"
+      ]
+    },
+    {
+      "id": "kolo-toure",
+      "name": "Kolo Touré",
+      "acceptedAnswers": [
+        "Kolo Touré",
+        "Kolo Abib Touré",
+        "Kolo Toure",
+        "Kolo Abib Toure"
+      ],
+      "difficulty": "medium",
+      "countryAz": "Fil Dişi Sahili",
+      "countryEn": "Ivory Coast",
+      "positionAz": "Müdafiəçi",
+      "positionEn": "Defender",
+      "clubs": [
+        {
+          "name": "ASEC Mimosas",
+          "fromYear": 1999,
+          "toYear": 2002,
+          "loan": false
+        },
+        {
+          "name": "Arsenal",
+          "fromYear": 2002,
+          "toYear": 2009,
+          "loan": false
+        },
+        {
+          "name": "Manchester City",
+          "fromYear": 2009,
+          "toYear": 2013,
+          "loan": false
+        },
+        {
+          "name": "Liverpool",
+          "fromYear": 2013,
+          "toYear": 2016,
+          "loan": false
+        },
+        {
+          "name": "Celtic",
+          "fromYear": 2016,
+          "toYear": 2017,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Kolo_Tour%C3%A9"
+      ]
+    },
+    {
+      "id": "michael-essien",
+      "name": "Michael Essien",
+      "acceptedAnswers": [
+        "Michael Essien"
+      ],
+      "difficulty": "medium",
+      "countryAz": "Qana",
+      "countryEn": "Ghana",
+      "positionAz": "Yarımmüdafiəçi",
+      "positionEn": "Midfielder",
+      "clubs": [
+        {
+          "name": "Bastia",
+          "fromYear": 2000,
+          "toYear": 2003,
+          "loan": false
+        },
+        {
+          "name": "Lyon",
+          "fromYear": 2003,
+          "toYear": 2005,
+          "loan": false
+        },
+        {
+          "name": "Chelsea",
+          "fromYear": 2005,
+          "toYear": 2014,
+          "loan": false
+        },
+        {
+          "name": "Real Madrid",
+          "fromYear": 2012,
+          "toYear": 2013,
+          "loan": true
+        },
+        {
+          "name": "AC Milan",
+          "fromYear": 2014,
+          "toYear": 2015,
+          "loan": false
+        },
+        {
+          "name": "Panathinaikos",
+          "fromYear": 2015,
+          "toYear": 2016,
+          "loan": false
+        },
+        {
+          "name": "Persib Bandung",
+          "fromYear": 2017,
+          "toYear": 2018,
+          "loan": false
+        },
+        {
+          "name": "Sabail",
+          "fromYear": 2019,
+          "toYear": 2020,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Michael_Essien",
+        "https://www.wikidata.org/wiki/Q969520#P54"
+      ]
+    },
+    {
+      "id": "jay-jay-okocha",
+      "name": "Jay-Jay Okocha",
+      "acceptedAnswers": [
+        "Jay-Jay Okocha",
+        "Augustine Azuka Okocha"
+      ],
+      "difficulty": "medium",
+      "countryAz": "Nigeriya",
+      "countryEn": "Nigeria",
+      "positionAz": "Yarımmüdafiəçi",
+      "positionEn": "Midfielder",
+      "clubs": [
+        {
+          "name": "Borussia Neunkirchen",
+          "fromYear": 1990,
+          "toYear": 1992,
+          "loan": false
+        },
+        {
+          "name": "Eintracht Frankfurt",
+          "fromYear": 1992,
+          "toYear": 1996,
+          "loan": false
+        },
+        {
+          "name": "Fenerbahçe",
+          "fromYear": 1996,
+          "toYear": 1998,
+          "loan": false
+        },
+        {
+          "name": "Paris Saint-Germain",
+          "fromYear": 1998,
+          "toYear": 2002,
+          "loan": false
+        },
+        {
+          "name": "Bolton Wanderers",
+          "fromYear": 2002,
+          "toYear": 2006,
+          "loan": false
+        },
+        {
+          "name": "Qatar SC",
+          "fromYear": 2006,
+          "toYear": 2007,
+          "loan": false
+        },
+        {
+          "name": "Hull City",
+          "fromYear": 2007,
+          "toYear": 2008,
+          "loan": false
+        },
+        {
+          "name": "Durgapur Vox Champions",
+          "fromYear": 2012,
+          "toYear": 2012,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Jay-Jay_Okocha"
+      ]
+    },
+    {
+      "id": "nwankwo-kanu",
+      "name": "Nwankwo Kanu",
+      "acceptedAnswers": [
+        "Nwankwo Kanu",
+        "Nwankwo Christian Kanu"
+      ],
+      "difficulty": "medium",
+      "countryAz": "Nigeriya",
+      "countryEn": "Nigeria",
+      "positionAz": "Hücumçu",
+      "positionEn": "Forward",
+      "clubs": [
+        {
+          "name": "Iwuanyanwu Nationale",
+          "fromYear": 1992,
+          "toYear": 1993,
+          "loan": false
+        },
+        {
+          "name": "Ajax",
+          "fromYear": 1993,
+          "toYear": 1996,
+          "loan": false
+        },
+        {
+          "name": "Inter Milan",
+          "fromYear": 1996,
+          "toYear": 1999,
+          "loan": false
+        },
+        {
+          "name": "Arsenal",
+          "fromYear": 1999,
+          "toYear": 2004,
+          "loan": false
+        },
+        {
+          "name": "West Bromwich Albion",
+          "fromYear": 2004,
+          "toYear": 2006,
+          "loan": false
+        },
+        {
+          "name": "Portsmouth",
+          "fromYear": 2006,
+          "toYear": 2012,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Nwankwo_Kanu"
+      ]
+    },
+    {
+      "id": "yakubu",
+      "name": "Yakubu",
+      "acceptedAnswers": [
+        "Yakubu",
+        "Yakubu Ayegbeni"
+      ],
+      "difficulty": "medium",
+      "countryAz": "Nigeriya",
+      "countryEn": "Nigeria",
+      "positionAz": "Hücumçu",
+      "positionEn": "Forward",
+      "clubs": [
+        {
+          "name": "Julius Berger",
+          "fromYear": 1998,
+          "toYear": 1999,
+          "loan": false
+        },
+        {
+          "name": "Maccabi Haifa",
+          "fromYear": 1999,
+          "toYear": 2003,
+          "loan": false
+        },
+        {
+          "name": "Hapoel Kfar Saba",
+          "fromYear": 1999,
+          "toYear": 2000,
+          "loan": true
+        },
+        {
+          "name": "Portsmouth",
+          "fromYear": 2003,
+          "toYear": 2003,
+          "loan": true
+        },
+        {
+          "name": "Portsmouth",
+          "fromYear": 2003,
+          "toYear": 2005,
+          "loan": false
+        },
+        {
+          "name": "Middlesbrough",
+          "fromYear": 2005,
+          "toYear": 2007,
+          "loan": false
+        },
+        {
+          "name": "Everton",
+          "fromYear": 2007,
+          "toYear": 2011,
+          "loan": false
+        },
+        {
+          "name": "Leicester City",
+          "fromYear": 2011,
+          "toYear": 2011,
+          "loan": true
+        },
+        {
+          "name": "Blackburn Rovers",
+          "fromYear": 2011,
+          "toYear": 2012,
+          "loan": false
+        },
+        {
+          "name": "Guangzhou R&F",
+          "fromYear": 2012,
+          "toYear": 2013,
+          "loan": false
+        },
+        {
+          "name": "Al-Rayyan",
+          "fromYear": 2014,
+          "toYear": 2015,
+          "loan": false
+        },
+        {
+          "name": "Reading",
+          "fromYear": 2015,
+          "toYear": 2015,
+          "loan": false
+        },
+        {
+          "name": "Kayserispor",
+          "fromYear": 2015,
+          "toYear": 2016,
+          "loan": false
+        },
+        {
+          "name": "Coventry City",
+          "fromYear": 2017,
+          "toYear": 2017,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Yakubu_(footballer)",
+        "https://www.wikidata.org/wiki/Q202410#P54"
+      ]
+    },
+    {
+      "id": "sadio-mane",
+      "name": "Sadio Mané",
+      "acceptedAnswers": [
+        "Sadio Mané",
+        "Sadio Mane"
+      ],
+      "difficulty": "medium",
+      "countryAz": "Seneqal",
+      "countryEn": "Senegal",
+      "positionAz": "Cinah oyunçusu",
+      "positionEn": "Winger",
+      "clubs": [
+        {
+          "name": "Metz",
+          "fromYear": 2011,
+          "toYear": 2012,
+          "loan": false
+        },
+        {
+          "name": "Red Bull Salzburg",
+          "fromYear": 2012,
+          "toYear": 2014,
+          "loan": false
+        },
+        {
+          "name": "Southampton",
+          "fromYear": 2014,
+          "toYear": 2016,
+          "loan": false
+        },
+        {
+          "name": "Liverpool",
+          "fromYear": 2016,
+          "toYear": 2022,
+          "loan": false
+        },
+        {
+          "name": "Bayern Munich",
+          "fromYear": 2022,
+          "toYear": 2023,
+          "loan": false
+        },
+        {
+          "name": "Al-Nassr",
+          "fromYear": 2023,
+          "toYear": null,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Sadio_Man%C3%A9"
+      ]
+    },
+    {
+      "id": "riyad-mahrez",
+      "name": "Riyad Mahrez",
+      "acceptedAnswers": [
+        "Riyad Mahrez",
+        "Riyad Karim Mahrez"
+      ],
+      "difficulty": "medium",
+      "countryAz": "Əlcəzair",
+      "countryEn": "Algeria",
+      "positionAz": "Cinah oyunçusu",
+      "positionEn": "Winger",
+      "clubs": [
+        {
+          "name": "Quimper",
+          "fromYear": 2009,
+          "toYear": 2010,
+          "loan": false
+        },
+        {
+          "name": "Le Havre",
+          "fromYear": 2011,
+          "toYear": 2014,
+          "loan": false
+        },
+        {
+          "name": "Leicester City",
+          "fromYear": 2014,
+          "toYear": 2018,
+          "loan": false
+        },
+        {
+          "name": "Manchester City",
+          "fromYear": 2018,
+          "toYear": 2023,
+          "loan": false
+        },
+        {
+          "name": "Al-Ahli",
+          "fromYear": 2023,
+          "toYear": 2026,
+          "loan": false
+        },
+        {
+          "name": "Al-Shamal",
+          "fromYear": 2026,
+          "toYear": null,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Riyad_Mahrez"
+      ]
+    },
+    {
+      "id": "pierre-emerick-aubameyang",
+      "name": "Pierre-Emerick Aubameyang",
+      "acceptedAnswers": [
+        "Pierre-Emerick Aubameyang",
+        "Pierre-Emerick Emiliano François Aubameyang",
+        "Pierre-Emerick Emiliano Francois Aubameyang"
+      ],
+      "difficulty": "medium",
+      "countryAz": "Qabon",
+      "countryEn": "Gabon",
+      "positionAz": "Hücumçu",
+      "positionEn": "Forward",
+      "clubs": [
+        {
+          "name": "AC Milan",
+          "fromYear": 2008,
+          "toYear": 2011,
+          "loan": false
+        },
+        {
+          "name": "Dijon",
+          "fromYear": 2008,
+          "toYear": 2009,
+          "loan": true
+        },
+        {
+          "name": "Lille",
+          "fromYear": 2009,
+          "toYear": 2010,
+          "loan": true
+        },
+        {
+          "name": "Monaco",
+          "fromYear": 2010,
+          "toYear": 2011,
+          "loan": true
+        },
+        {
+          "name": "Saint-Étienne",
+          "fromYear": 2011,
+          "toYear": 2013,
+          "loan": false
+        },
+        {
+          "name": "Borussia Dortmund",
+          "fromYear": 2013,
+          "toYear": 2018,
+          "loan": false
+        },
+        {
+          "name": "Arsenal",
+          "fromYear": 2018,
+          "toYear": 2022,
+          "loan": false
+        },
+        {
+          "name": "Barcelona",
+          "fromYear": 2022,
+          "toYear": 2022,
+          "loan": false
+        },
+        {
+          "name": "Chelsea",
+          "fromYear": 2022,
+          "toYear": 2023,
+          "loan": false
+        },
+        {
+          "name": "Marseille",
+          "fromYear": 2023,
+          "toYear": 2024,
+          "loan": false
+        },
+        {
+          "name": "Al-Qadsiah",
+          "fromYear": 2024,
+          "toYear": 2025,
+          "loan": false
+        },
+        {
+          "name": "Marseille",
+          "fromYear": 2025,
+          "toYear": 2026,
+          "loan": false
+        },
+        {
+          "name": "Deportivo A Coruña",
+          "fromYear": 2026,
+          "toYear": null,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Pierre-Emerick_Aubameyang",
+        "https://www.wikidata.org/wiki/Q44977#P54"
+      ]
+    },
+    {
+      "id": "hakim-ziyech",
+      "name": "Hakim Ziyech",
+      "acceptedAnswers": [
+        "Hakim Ziyech"
+      ],
+      "difficulty": "medium",
+      "countryAz": "Mərakeş",
+      "countryEn": "Morocco",
+      "positionAz": "Yarımmüdafiəçi",
+      "positionEn": "Midfielder",
+      "clubs": [
+        {
+          "name": "Heerenveen",
+          "fromYear": 2012,
+          "toYear": 2014,
+          "loan": false
+        },
+        {
+          "name": "Twente",
+          "fromYear": 2014,
+          "toYear": 2016,
+          "loan": false
+        },
+        {
+          "name": "Ajax",
+          "fromYear": 2016,
+          "toYear": 2020,
+          "loan": false
+        },
+        {
+          "name": "Chelsea",
+          "fromYear": 2020,
+          "toYear": 2023,
+          "loan": false
+        },
+        {
+          "name": "Galatasaray",
+          "fromYear": 2023,
+          "toYear": 2025,
+          "loan": false
+        },
+        {
+          "name": "Al-Duhail",
+          "fromYear": 2025,
+          "toYear": 2025,
+          "loan": false
+        },
+        {
+          "name": "Wydad",
+          "fromYear": 2025,
+          "toYear": 2026,
+          "loan": false
+        },
+        {
+          "name": "Botafogo",
+          "fromYear": 2026,
+          "toYear": null,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Hakim_Ziyech"
+      ]
+    },
+    {
+      "id": "medhi-benatia",
+      "name": "Medhi Benatia",
+      "acceptedAnswers": [
+        "Medhi Benatia",
+        "Medhi Amine El Mouttaqi Benatia"
+      ],
+      "difficulty": "medium",
+      "countryAz": "Mərakeş",
+      "countryEn": "Morocco",
+      "positionAz": "Müdafiəçi",
+      "positionEn": "Defender",
+      "clubs": [
+        {
+          "name": "Marseille",
+          "fromYear": 2006,
+          "toYear": 2008,
+          "loan": false
+        },
+        {
+          "name": "Tours",
+          "fromYear": 2006,
+          "toYear": 2007,
+          "loan": true
+        },
+        {
+          "name": "Lorient",
+          "fromYear": 2007,
+          "toYear": 2008,
+          "loan": true
+        },
+        {
+          "name": "Clermont",
+          "fromYear": 2008,
+          "toYear": 2010,
+          "loan": false
+        },
+        {
+          "name": "Udinese",
+          "fromYear": 2010,
+          "toYear": 2013,
+          "loan": false
+        },
+        {
+          "name": "Roma",
+          "fromYear": 2013,
+          "toYear": 2014,
+          "loan": false
+        },
+        {
+          "name": "Bayern Munich",
+          "fromYear": 2014,
+          "toYear": 2017,
+          "loan": false
+        },
+        {
+          "name": "Juventus",
+          "fromYear": 2016,
+          "toYear": 2017,
+          "loan": true
+        },
+        {
+          "name": "Juventus",
+          "fromYear": 2017,
+          "toYear": 2019,
+          "loan": false
+        },
+        {
+          "name": "Al-Duhail",
+          "fromYear": 2019,
+          "toYear": 2021,
+          "loan": false
+        },
+        {
+          "name": "Fatih Karagümrük",
+          "fromYear": 2021,
+          "toYear": 2021,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Medhi_Benatia",
+        "https://www.wikidata.org/wiki/Q462779#P54"
+      ]
+    },
+    {
+      "id": "kalidou-koulibaly",
+      "name": "Kalidou Koulibaly",
+      "acceptedAnswers": [
+        "Kalidou Koulibaly"
+      ],
+      "difficulty": "medium",
+      "countryAz": "Seneqal",
+      "countryEn": "Senegal",
+      "positionAz": "Müdafiəçi",
+      "positionEn": "Defender",
+      "clubs": [
+        {
+          "name": "Metz",
+          "fromYear": 2010,
+          "toYear": 2012,
+          "loan": false
+        },
+        {
+          "name": "Genk",
+          "fromYear": 2012,
+          "toYear": 2014,
+          "loan": false
+        },
+        {
+          "name": "Napoli",
+          "fromYear": 2014,
+          "toYear": 2022,
+          "loan": false
+        },
+        {
+          "name": "Chelsea",
+          "fromYear": 2022,
+          "toYear": 2023,
+          "loan": false
+        },
+        {
+          "name": "Al-Hilal",
+          "fromYear": 2023,
+          "toYear": null,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Kalidou_Koulibaly"
+      ]
+    },
+    {
+      "id": "christian-pulisic",
+      "name": "Christian Pulisic",
+      "acceptedAnswers": [
+        "Christian Pulisic",
+        "Christian Mate Pulisic"
+      ],
+      "difficulty": "medium",
+      "countryAz": "ABŞ",
+      "countryEn": "United States",
+      "positionAz": "Yarımmüdafiəçi",
+      "positionEn": "Midfielder",
+      "clubs": [
+        {
+          "name": "Borussia Dortmund",
+          "fromYear": 2016,
+          "toYear": 2019,
+          "loan": false
+        },
+        {
+          "name": "Chelsea",
+          "fromYear": 2019,
+          "toYear": 2023,
+          "loan": false
+        },
+        {
+          "name": "AC Milan",
+          "fromYear": 2023,
+          "toYear": null,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Christian_Pulisic"
+      ]
+    },
+    {
+      "id": "brad-friedel",
+      "name": "Brad Friedel",
+      "acceptedAnswers": [
+        "Brad Friedel",
+        "Bradley Howard Friedel"
+      ],
+      "difficulty": "medium",
+      "countryAz": "ABŞ",
+      "countryEn": "United States",
+      "positionAz": "Qapıçı",
+      "positionEn": "Goalkeeper",
+      "clubs": [
+        {
+          "name": "Brøndby",
+          "fromYear": 1995,
+          "toYear": 1995,
+          "loan": false
+        },
+        {
+          "name": "Galatasaray",
+          "fromYear": 1995,
+          "toYear": 1996,
+          "loan": false
+        },
+        {
+          "name": "Columbus Crew",
+          "fromYear": 1996,
+          "toYear": 1997,
+          "loan": false
+        },
+        {
+          "name": "Liverpool",
+          "fromYear": 1997,
+          "toYear": 2000,
+          "loan": false
+        },
+        {
+          "name": "Blackburn Rovers",
+          "fromYear": 2000,
+          "toYear": 2008,
+          "loan": false
+        },
+        {
+          "name": "Aston Villa",
+          "fromYear": 2008,
+          "toYear": 2011,
+          "loan": false
+        },
+        {
+          "name": "Tottenham Hotspur",
+          "fromYear": 2011,
+          "toYear": 2015,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Brad_Friedel"
+      ]
+    },
+    {
+      "id": "mark-viduka",
+      "name": "Mark Viduka",
+      "acceptedAnswers": [
+        "Mark Viduka",
+        "Mark Antony Viduka"
+      ],
+      "difficulty": "medium",
+      "countryAz": "Avstraliya",
+      "countryEn": "Australia",
+      "positionAz": "Hücumçu",
+      "positionEn": "Forward",
+      "clubs": [
+        {
+          "name": "Melbourne Knights",
+          "fromYear": 1993,
+          "toYear": 1995,
+          "loan": false
+        },
+        {
+          "name": "Dinamo Zagreb",
+          "fromYear": 1995,
+          "toYear": 1998,
+          "loan": false
+        },
+        {
+          "name": "Celtic",
+          "fromYear": 1998,
+          "toYear": 2000,
+          "loan": false
+        },
+        {
+          "name": "Leeds United",
+          "fromYear": 2000,
+          "toYear": 2004,
+          "loan": false
+        },
+        {
+          "name": "Middlesbrough",
+          "fromYear": 2004,
+          "toYear": 2007,
+          "loan": false
+        },
+        {
+          "name": "Newcastle United",
+          "fromYear": 2007,
+          "toYear": 2009,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Mark_Viduka"
+      ]
+    },
+    {
+      "id": "harry-kewell",
+      "name": "Harry Kewell",
+      "acceptedAnswers": [
+        "Harry Kewell"
+      ],
+      "difficulty": "medium",
+      "countryAz": "Avstraliya",
+      "countryEn": "Australia",
+      "positionAz": "Yarımmüdafiəçi",
+      "positionEn": "Midfielder",
+      "clubs": [
+        {
+          "name": "Leeds United",
+          "fromYear": 1996,
+          "toYear": 2003,
+          "loan": false
+        },
+        {
+          "name": "Liverpool",
+          "fromYear": 2003,
+          "toYear": 2008,
+          "loan": false
+        },
+        {
+          "name": "Galatasaray",
+          "fromYear": 2008,
+          "toYear": 2011,
+          "loan": false
+        },
+        {
+          "name": "Melbourne Victory",
+          "fromYear": 2011,
+          "toYear": 2012,
+          "loan": false
+        },
+        {
+          "name": "Al-Gharafa",
+          "fromYear": 2013,
+          "toYear": 2013,
+          "loan": false
+        },
+        {
+          "name": "Melbourne Heart",
+          "fromYear": 2013,
+          "toYear": 2014,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Harry_Kewell"
+      ]
+    },
+    {
+      "id": "keisuke-honda",
+      "name": "Keisuke Honda",
+      "acceptedAnswers": [
+        "Keisuke Honda"
+      ],
+      "difficulty": "medium",
+      "countryAz": "Yaponiya",
+      "countryEn": "Japan",
+      "positionAz": "Yarımmüdafiəçi",
+      "positionEn": "Midfielder",
+      "clubs": [
+        {
+          "name": "Nagoya Grampus Eight",
+          "fromYear": 2004,
+          "toYear": 2008,
+          "loan": false
+        },
+        {
+          "name": "VVV-Venlo",
+          "fromYear": 2008,
+          "toYear": 2009,
+          "loan": false
+        },
+        {
+          "name": "CSKA Moscow",
+          "fromYear": 2010,
+          "toYear": 2013,
+          "loan": false
+        },
+        {
+          "name": "AC Milan",
+          "fromYear": 2014,
+          "toYear": 2017,
+          "loan": false
+        },
+        {
+          "name": "Pachuca",
+          "fromYear": 2017,
+          "toYear": 2018,
+          "loan": false
+        },
+        {
+          "name": "Melbourne Victory",
+          "fromYear": 2018,
+          "toYear": 2019,
+          "loan": false
+        },
+        {
+          "name": "Vitesse",
+          "fromYear": 2019,
+          "toYear": 2019,
+          "loan": false
+        },
+        {
+          "name": "Botafogo",
+          "fromYear": 2020,
+          "toYear": 2020,
+          "loan": false
+        },
+        {
+          "name": "Neftçi Baku",
+          "fromYear": 2021,
+          "toYear": 2021,
+          "loan": false
+        },
+        {
+          "name": "Sūduva",
+          "fromYear": 2021,
+          "toYear": 2021,
+          "loan": false
+        },
+        {
+          "name": "Paro",
+          "fromYear": 2024,
+          "toYear": 2024,
+          "loan": false
+        },
+        {
+          "name": "Jurong",
+          "fromYear": 2026,
+          "toYear": null,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Keisuke_Honda"
+      ]
+    },
+    {
+      "id": "shinji-okazaki",
+      "name": "Shinji Okazaki",
+      "acceptedAnswers": [
+        "Shinji Okazaki"
+      ],
+      "difficulty": "medium",
+      "countryAz": "Yaponiya",
+      "countryEn": "Japan",
+      "positionAz": "Hücumçu",
+      "positionEn": "Forward",
+      "clubs": [
+        {
+          "name": "Shimizu S-Pulse",
+          "fromYear": 2005,
+          "toYear": 2010,
+          "loan": false
+        },
+        {
+          "name": "VfB Stuttgart",
+          "fromYear": 2011,
+          "toYear": 2013,
+          "loan": false
+        },
+        {
+          "name": "Mainz 05",
+          "fromYear": 2013,
+          "toYear": 2015,
+          "loan": false
+        },
+        {
+          "name": "Leicester City",
+          "fromYear": 2015,
+          "toYear": 2019,
+          "loan": false
+        },
+        {
+          "name": "Málaga",
+          "fromYear": 2019,
+          "toYear": 2019,
+          "loan": false
+        },
+        {
+          "name": "Huesca",
+          "fromYear": 2019,
+          "toYear": 2021,
+          "loan": false
+        },
+        {
+          "name": "Cartagena",
+          "fromYear": 2021,
+          "toYear": 2022,
+          "loan": false
+        },
+        {
+          "name": "Sint-Truiden",
+          "fromYear": 2022,
+          "toYear": 2024,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Shinji_Okazaki"
+      ]
+    },
+    {
+      "id": "paolo-guerrero",
+      "name": "Paolo Guerrero",
+      "acceptedAnswers": [
+        "Paolo Guerrero",
+        "José Paolo Guerrero González",
+        "Jose Paolo Guerrero Gonzalez"
+      ],
+      "difficulty": "medium",
+      "countryAz": "Peru",
+      "countryEn": "Peru",
+      "positionAz": "Hücumçu",
+      "positionEn": "Forward",
+      "clubs": [
+        {
+          "name": "Bayern Munich",
+          "fromYear": 2004,
+          "toYear": 2006,
+          "loan": false
+        },
+        {
+          "name": "Hamburger SV",
+          "fromYear": 2006,
+          "toYear": 2012,
+          "loan": false
+        },
+        {
+          "name": "Corinthians",
+          "fromYear": 2012,
+          "toYear": 2015,
+          "loan": false
+        },
+        {
+          "name": "Flamengo",
+          "fromYear": 2015,
+          "toYear": 2018,
+          "loan": false
+        },
+        {
+          "name": "Internacional",
+          "fromYear": 2018,
+          "toYear": 2021,
+          "loan": false
+        },
+        {
+          "name": "Avaí",
+          "fromYear": 2022,
+          "toYear": 2023,
+          "loan": false
+        },
+        {
+          "name": "Racing Club",
+          "fromYear": 2023,
+          "toYear": 2023,
+          "loan": false
+        },
+        {
+          "name": "LDU Quito",
+          "fromYear": 2023,
+          "toYear": 2024,
+          "loan": false
+        },
+        {
+          "name": "Universidad César Vallejo",
+          "fromYear": 2024,
+          "toYear": 2024,
+          "loan": false
+        },
+        {
+          "name": "Alianza Lima",
+          "fromYear": 2024,
+          "toYear": null,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Paolo_Guerrero"
+      ]
+    },
+    {
+      "id": "gianluca-vialli",
+      "name": "Gianluca Vialli",
+      "acceptedAnswers": [
+        "Gianluca Vialli"
+      ],
+      "difficulty": "hard",
+      "countryAz": "İtaliya",
+      "countryEn": "Italy",
+      "positionAz": "Hücumçu",
+      "positionEn": "Forward",
+      "clubs": [
+        {
+          "name": "Cremonese",
+          "fromYear": 1980,
+          "toYear": 1984,
+          "loan": false
+        },
+        {
+          "name": "Sampdoria",
+          "fromYear": 1984,
+          "toYear": 1992,
+          "loan": false
+        },
+        {
+          "name": "Juventus",
+          "fromYear": 1992,
+          "toYear": 1996,
+          "loan": false
+        },
+        {
+          "name": "Chelsea",
+          "fromYear": 1996,
+          "toYear": 1999,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Gianluca_Vialli"
+      ]
+    },
+    {
+      "id": "gianfranco-zola",
+      "name": "Gianfranco Zola",
+      "acceptedAnswers": [
+        "Gianfranco Zola"
+      ],
+      "difficulty": "hard",
+      "countryAz": "İtaliya",
+      "countryEn": "Italy",
+      "positionAz": "Yarımmüdafiəçi",
+      "positionEn": "Midfielder",
+      "clubs": [
+        {
+          "name": "Nuorese",
+          "fromYear": 1984,
+          "toYear": 1986,
+          "loan": false
+        },
+        {
+          "name": "Torres",
+          "fromYear": 1986,
+          "toYear": 1989,
+          "loan": false
+        },
+        {
+          "name": "Napoli",
+          "fromYear": 1989,
+          "toYear": 1993,
+          "loan": false
+        },
+        {
+          "name": "Parma",
+          "fromYear": 1993,
+          "toYear": 1996,
+          "loan": false
+        },
+        {
+          "name": "Chelsea",
+          "fromYear": 1996,
+          "toYear": 2003,
+          "loan": false
+        },
+        {
+          "name": "Cagliari",
+          "fromYear": 2003,
+          "toYear": 2005,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Gianfranco_Zola"
+      ]
+    },
+    {
+      "id": "roberto-baggio",
+      "name": "Roberto Baggio",
+      "acceptedAnswers": [
+        "Roberto Baggio"
+      ],
+      "difficulty": "hard",
+      "countryAz": "İtaliya",
+      "countryEn": "Italy",
+      "positionAz": "Yarımmüdafiəçi",
+      "positionEn": "Midfielder",
+      "clubs": [
+        {
+          "name": "Vicenza",
+          "fromYear": 1982,
+          "toYear": 1985,
+          "loan": false
+        },
+        {
+          "name": "Fiorentina",
+          "fromYear": 1985,
+          "toYear": 1990,
+          "loan": false
+        },
+        {
+          "name": "Juventus",
+          "fromYear": 1990,
+          "toYear": 1995,
+          "loan": false
+        },
+        {
+          "name": "AC Milan",
+          "fromYear": 1995,
+          "toYear": 1997,
+          "loan": false
+        },
+        {
+          "name": "Bologna",
+          "fromYear": 1997,
+          "toYear": 1998,
+          "loan": false
+        },
+        {
+          "name": "Inter Milan",
+          "fromYear": 1998,
+          "toYear": 2000,
+          "loan": false
+        },
+        {
+          "name": "Brescia",
+          "fromYear": 2000,
+          "toYear": 2004,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Roberto_Baggio"
+      ]
+    },
+    {
+      "id": "gennaro-gattuso",
+      "name": "Gennaro Gattuso",
+      "acceptedAnswers": [
+        "Gennaro Gattuso",
+        "Gennaro Ivan Gattuso"
+      ],
+      "difficulty": "hard",
+      "countryAz": "İtaliya",
+      "countryEn": "Italy",
+      "positionAz": "Yarımmüdafiəçi",
+      "positionEn": "Midfielder",
+      "clubs": [
+        {
+          "name": "Perugia",
+          "fromYear": 1995,
+          "toYear": 1997,
+          "loan": false
+        },
+        {
+          "name": "Rangers",
+          "fromYear": 1997,
+          "toYear": 1998,
+          "loan": false
+        },
+        {
+          "name": "Salernitana",
+          "fromYear": 1998,
+          "toYear": 1999,
+          "loan": false
+        },
+        {
+          "name": "AC Milan",
+          "fromYear": 1999,
+          "toYear": 2012,
+          "loan": false
+        },
+        {
+          "name": "Sion",
+          "fromYear": 2012,
+          "toYear": 2013,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Gennaro_Gattuso"
+      ]
+    },
+    {
+      "id": "gianluca-pagliuca",
+      "name": "Gianluca Pagliuca",
+      "acceptedAnswers": [
+        "Gianluca Pagliuca"
+      ],
+      "difficulty": "hard",
+      "countryAz": "İtaliya",
+      "countryEn": "Italy",
+      "positionAz": "Qapıçı",
+      "positionEn": "Goalkeeper",
+      "clubs": [
+        {
+          "name": "Sampdoria",
+          "fromYear": 1987,
+          "toYear": 1994,
+          "loan": false
+        },
+        {
+          "name": "Inter Milan",
+          "fromYear": 1994,
+          "toYear": 1999,
+          "loan": false
+        },
+        {
+          "name": "Bologna",
+          "fromYear": 1999,
+          "toYear": 2006,
+          "loan": false
+        },
+        {
+          "name": "Ascoli",
+          "fromYear": 2006,
+          "toYear": 2007,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Gianluca_Pagliuca"
+      ]
+    },
+    {
+      "id": "pierluigi-casiraghi",
+      "name": "Pierluigi Casiraghi",
+      "acceptedAnswers": [
+        "Pierluigi Casiraghi"
+      ],
+      "difficulty": "hard",
+      "countryAz": "İtaliya",
+      "countryEn": "Italy",
+      "positionAz": "Hücumçu",
+      "positionEn": "Forward",
+      "clubs": [
+        {
+          "name": "Monza",
+          "fromYear": 1985,
+          "toYear": 1989,
+          "loan": false
+        },
+        {
+          "name": "Juventus",
+          "fromYear": 1989,
+          "toYear": 1993,
+          "loan": false
+        },
+        {
+          "name": "Lazio",
+          "fromYear": 1993,
+          "toYear": 1998,
+          "loan": false
+        },
+        {
+          "name": "Chelsea",
+          "fromYear": 1998,
+          "toYear": 2000,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Pierluigi_Casiraghi"
+      ]
+    },
+    {
+      "id": "riccardo-montolivo",
+      "name": "Riccardo Montolivo",
+      "acceptedAnswers": [
+        "Riccardo Montolivo"
+      ],
+      "difficulty": "hard",
+      "countryAz": "İtaliya",
+      "countryEn": "Italy",
+      "positionAz": "Yarımmüdafiəçi",
+      "positionEn": "Midfielder",
+      "clubs": [
+        {
+          "name": "Atalanta",
+          "fromYear": 2003,
+          "toYear": 2005,
+          "loan": false
+        },
+        {
+          "name": "Fiorentina",
+          "fromYear": 2005,
+          "toYear": 2012,
+          "loan": false
+        },
+        {
+          "name": "AC Milan",
+          "fromYear": 2012,
+          "toYear": 2019,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Riccardo_Montolivo"
+      ]
+    },
+    {
+      "id": "thiago-motta",
+      "name": "Thiago Motta",
+      "acceptedAnswers": [
+        "Thiago Motta"
+      ],
+      "difficulty": "hard",
+      "countryAz": "İtaliya",
+      "countryEn": "Italy",
+      "positionAz": "Yarımmüdafiəçi",
+      "positionEn": "Midfielder",
+      "clubs": [
+        {
+          "name": "Barcelona",
+          "fromYear": 2001,
+          "toYear": 2007,
+          "loan": false
+        },
+        {
+          "name": "Atlético Madrid",
+          "fromYear": 2007,
+          "toYear": 2008,
+          "loan": false
+        },
+        {
+          "name": "Genoa",
+          "fromYear": 2008,
+          "toYear": 2009,
+          "loan": false
+        },
+        {
+          "name": "Inter Milan",
+          "fromYear": 2009,
+          "toYear": 2012,
+          "loan": false
+        },
+        {
+          "name": "Paris Saint-Germain",
+          "fromYear": 2012,
+          "toYear": 2018,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Thiago_Motta"
+      ]
+    },
+    {
+      "id": "simone-perrotta",
+      "name": "Simone Perrotta",
+      "acceptedAnswers": [
+        "Simone Perrotta"
+      ],
+      "difficulty": "hard",
+      "countryAz": "İtaliya",
+      "countryEn": "Italy",
+      "positionAz": "Yarımmüdafiəçi",
+      "positionEn": "Midfielder",
+      "clubs": [
+        {
+          "name": "Reggina",
+          "fromYear": 1995,
+          "toYear": 1998,
+          "loan": false
+        },
+        {
+          "name": "Juventus",
+          "fromYear": 1998,
+          "toYear": 1999,
+          "loan": false
+        },
+        {
+          "name": "Bari",
+          "fromYear": 1999,
+          "toYear": 2001,
+          "loan": false
+        },
+        {
+          "name": "Chievo",
+          "fromYear": 2001,
+          "toYear": 2004,
+          "loan": false
+        },
+        {
+          "name": "Roma",
+          "fromYear": 2004,
+          "toYear": 2013,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Simone_Perrotta"
+      ]
+    },
+    {
+      "id": "mauro-camoranesi",
+      "name": "Mauro Camoranesi",
+      "acceptedAnswers": [
+        "Mauro Camoranesi",
+        "Mauro Germán Camoranesi Serra",
+        "Mauro German Camoranesi Serra"
+      ],
+      "difficulty": "hard",
+      "countryAz": "İtaliya",
+      "countryEn": "Italy",
+      "positionAz": "Yarımmüdafiəçi",
+      "positionEn": "Midfielder",
+      "clubs": [
+        {
+          "name": "Aldosivi",
+          "fromYear": 1995,
+          "toYear": 1996,
+          "loan": false
+        },
+        {
+          "name": "Santos Laguna",
+          "fromYear": 1996,
+          "toYear": 1997,
+          "loan": false
+        },
+        {
+          "name": "Wanderers",
+          "fromYear": 1997,
+          "toYear": 1997,
+          "loan": false
+        },
+        {
+          "name": "Banfield",
+          "fromYear": 1997,
+          "toYear": 1998,
+          "loan": false
+        },
+        {
+          "name": "Cruz Azul",
+          "fromYear": 1998,
+          "toYear": 2000,
+          "loan": false
+        },
+        {
+          "name": "Hellas Verona",
+          "fromYear": 2000,
+          "toYear": 2002,
+          "loan": false
+        },
+        {
+          "name": "Juventus",
+          "fromYear": 2002,
+          "toYear": 2010,
+          "loan": false
+        },
+        {
+          "name": "VfB Stuttgart",
+          "fromYear": 2010,
+          "toYear": 2011,
+          "loan": false
+        },
+        {
+          "name": "Lanús",
+          "fromYear": 2011,
+          "toYear": 2012,
+          "loan": false
+        },
+        {
+          "name": "Racing Club",
+          "fromYear": 2012,
+          "toYear": 2014,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Mauro_Camoranesi"
+      ]
+    },
+    {
+      "id": "alessandro-nesta",
+      "name": "Alessandro Nesta",
+      "acceptedAnswers": [
+        "Alessandro Nesta"
+      ],
+      "difficulty": "hard",
+      "countryAz": "İtaliya",
+      "countryEn": "Italy",
+      "positionAz": "Müdafiəçi",
+      "positionEn": "Defender",
+      "clubs": [
+        {
+          "name": "Lazio",
+          "fromYear": 1993,
+          "toYear": 2002,
+          "loan": false
+        },
+        {
+          "name": "AC Milan",
+          "fromYear": 2002,
+          "toYear": 2012,
+          "loan": false
+        },
+        {
+          "name": "Montreal Impact",
+          "fromYear": 2012,
+          "toYear": 2014,
+          "loan": false
+        },
+        {
+          "name": "Chennaiyin",
+          "fromYear": 2014,
+          "toYear": 2014,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Alessandro_Nesta"
+      ]
+    },
+    {
+      "id": "jaap-stam",
+      "name": "Jaap Stam",
+      "acceptedAnswers": [
+        "Jaap Stam",
+        "Jakob Stam"
+      ],
+      "difficulty": "hard",
+      "countryAz": "Niderland",
+      "countryEn": "Netherlands",
+      "positionAz": "Müdafiəçi",
+      "positionEn": "Defender",
+      "clubs": [
+        {
+          "name": "FC Zwolle",
+          "fromYear": 1992,
+          "toYear": 1993,
+          "loan": false
+        },
+        {
+          "name": "Cambuur",
+          "fromYear": 1993,
+          "toYear": 1995,
+          "loan": false
+        },
+        {
+          "name": "PSV Eindhoven",
+          "fromYear": 1996,
+          "toYear": 1998,
+          "loan": false
+        },
+        {
+          "name": "Manchester United",
+          "fromYear": 1998,
+          "toYear": 2001,
+          "loan": false
+        },
+        {
+          "name": "Lazio",
+          "fromYear": 2001,
+          "toYear": 2004,
+          "loan": false
+        },
+        {
+          "name": "Milan",
+          "fromYear": 2004,
+          "toYear": 2006,
+          "loan": false
+        },
+        {
+          "name": "Ajax",
+          "fromYear": 2006,
+          "toYear": 2007,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Jaap_Stam"
+      ]
+    },
+    {
+      "id": "ronald-koeman",
+      "name": "Ronald Koeman",
+      "acceptedAnswers": [
+        "Ronald Koeman"
+      ],
+      "difficulty": "hard",
+      "countryAz": "Niderland",
+      "countryEn": "Netherlands",
+      "positionAz": "Yarımmüdafiəçi",
+      "positionEn": "Midfielder",
+      "clubs": [
+        {
+          "name": "Groningen",
+          "fromYear": 1980,
+          "toYear": 1983,
+          "loan": false
+        },
+        {
+          "name": "Ajax",
+          "fromYear": 1983,
+          "toYear": 1986,
+          "loan": false
+        },
+        {
+          "name": "PSV",
+          "fromYear": 1986,
+          "toYear": 1989,
+          "loan": false
+        },
+        {
+          "name": "Barcelona",
+          "fromYear": 1989,
+          "toYear": 1995,
+          "loan": false
+        },
+        {
+          "name": "Feyenoord",
+          "fromYear": 1995,
+          "toYear": 1997,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Ronald_Koeman"
+      ]
+    },
+    {
+      "id": "frank-de-boer",
+      "name": "Frank de Boer",
+      "acceptedAnswers": [
+        "Frank de Boer",
+        "Franciscus de Boer"
+      ],
+      "difficulty": "hard",
+      "countryAz": "Niderland",
+      "countryEn": "Netherlands",
+      "positionAz": "Müdafiəçi",
+      "positionEn": "Defender",
+      "clubs": [
+        {
+          "name": "Ajax",
+          "fromYear": 1988,
+          "toYear": 1999,
+          "loan": false
+        },
+        {
+          "name": "Barcelona",
+          "fromYear": 1999,
+          "toYear": 2003,
+          "loan": false
+        },
+        {
+          "name": "Galatasaray",
+          "fromYear": 2003,
+          "toYear": 2004,
+          "loan": false
+        },
+        {
+          "name": "Rangers",
+          "fromYear": 2004,
+          "toYear": 2004,
+          "loan": false
+        },
+        {
+          "name": "Al-Rayyan",
+          "fromYear": 2004,
+          "toYear": 2005,
+          "loan": false
+        },
+        {
+          "name": "Al-Shamal",
+          "fromYear": 2005,
+          "toYear": 2006,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Frank_de_Boer"
+      ]
+    },
+    {
+      "id": "clarence-seedorf",
+      "name": "Clarence Seedorf",
+      "acceptedAnswers": [
+        "Clarence Seedorf",
+        "Clarence Clyde Seedorf"
+      ],
+      "difficulty": "hard",
+      "countryAz": "Niderland",
+      "countryEn": "Netherlands",
+      "positionAz": "Yarımmüdafiəçi",
+      "positionEn": "Midfielder",
+      "clubs": [
+        {
+          "name": "Ajax",
+          "fromYear": 1992,
+          "toYear": 1995,
+          "loan": false
+        },
+        {
+          "name": "Sampdoria",
+          "fromYear": 1995,
+          "toYear": 1996,
+          "loan": false
+        },
+        {
+          "name": "Real Madrid",
+          "fromYear": 1996,
+          "toYear": 2000,
+          "loan": false
+        },
+        {
+          "name": "Inter Milan",
+          "fromYear": 2000,
+          "toYear": 2002,
+          "loan": false
+        },
+        {
+          "name": "AC Milan",
+          "fromYear": 2002,
+          "toYear": 2012,
+          "loan": false
+        },
+        {
+          "name": "Botafogo",
+          "fromYear": 2012,
+          "toYear": 2014,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Clarence_Seedorf"
+      ]
+    },
+    {
+      "id": "patrick-kluivert",
+      "name": "Patrick Kluivert",
+      "acceptedAnswers": [
+        "Patrick Kluivert",
+        "Patrick Stephan Kluivert"
+      ],
+      "difficulty": "hard",
+      "countryAz": "Niderland",
+      "countryEn": "Netherlands",
+      "positionAz": "Hücumçu",
+      "positionEn": "Forward",
+      "clubs": [
+        {
+          "name": "Ajax",
+          "fromYear": 1994,
+          "toYear": 1997,
+          "loan": false
+        },
+        {
+          "name": "AC Milan",
+          "fromYear": 1997,
+          "toYear": 1998,
+          "loan": false
+        },
+        {
+          "name": "Barcelona",
+          "fromYear": 1998,
+          "toYear": 2004,
+          "loan": false
+        },
+        {
+          "name": "Newcastle United",
+          "fromYear": 2004,
+          "toYear": 2005,
+          "loan": false
+        },
+        {
+          "name": "Valencia",
+          "fromYear": 2005,
+          "toYear": 2006,
+          "loan": false
+        },
+        {
+          "name": "PSV",
+          "fromYear": 2006,
+          "toYear": 2007,
+          "loan": false
+        },
+        {
+          "name": "Lille",
+          "fromYear": 2007,
+          "toYear": 2008,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Patrick_Kluivert"
+      ]
+    },
+    {
+      "id": "roy-makaay",
+      "name": "Roy Makaay",
+      "acceptedAnswers": [
+        "Roy Makaay",
+        "Roy Rudolphus Antonius Makaay"
+      ],
+      "difficulty": "hard",
+      "countryAz": "Niderland",
+      "countryEn": "Netherlands",
+      "positionAz": "Hücumçu",
+      "positionEn": "Forward",
+      "clubs": [
+        {
+          "name": "Vitesse",
+          "fromYear": 1993,
+          "toYear": 1997,
+          "loan": false
+        },
+        {
+          "name": "Tenerife",
+          "fromYear": 1997,
+          "toYear": 1999,
+          "loan": false
+        },
+        {
+          "name": "Deportivo La Coruña",
+          "fromYear": 1999,
+          "toYear": 2003,
+          "loan": false
+        },
+        {
+          "name": "Bayern Munich",
+          "fromYear": 2003,
+          "toYear": 2007,
+          "loan": false
+        },
+        {
+          "name": "Feyenoord",
+          "fromYear": 2007,
+          "toYear": 2010,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Roy_Makaay"
+      ]
+    },
+    {
+      "id": "jimmy-floyd-hasselbaink",
+      "name": "Jimmy Floyd Hasselbaink",
+      "acceptedAnswers": [
+        "Jimmy Floyd Hasselbaink",
+        "Jerrel Floyd Hasselbaink"
+      ],
+      "difficulty": "hard",
+      "countryAz": "Niderland",
+      "countryEn": "Netherlands",
+      "positionAz": "Hücumçu",
+      "positionEn": "Forward",
+      "clubs": [
+        {
+          "name": "Telstar",
+          "fromYear": 1990,
+          "toYear": 1991,
+          "loan": false
+        },
+        {
+          "name": "AZ",
+          "fromYear": 1991,
+          "toYear": 1994,
+          "loan": false
+        },
+        {
+          "name": "Neerlandia",
+          "fromYear": 1994,
+          "toYear": 1995,
+          "loan": false
+        },
+        {
+          "name": "Campomaiorense",
+          "fromYear": 1995,
+          "toYear": 1996,
+          "loan": false
+        },
+        {
+          "name": "Boavista",
+          "fromYear": 1996,
+          "toYear": 1997,
+          "loan": false
+        },
+        {
+          "name": "Leeds United",
+          "fromYear": 1997,
+          "toYear": 1999,
+          "loan": false
+        },
+        {
+          "name": "Atlético Madrid",
+          "fromYear": 1999,
+          "toYear": 2000,
+          "loan": false
+        },
+        {
+          "name": "Chelsea",
+          "fromYear": 2000,
+          "toYear": 2004,
+          "loan": false
+        },
+        {
+          "name": "Middlesbrough",
+          "fromYear": 2004,
+          "toYear": 2006,
+          "loan": false
+        },
+        {
+          "name": "Charlton Athletic",
+          "fromYear": 2006,
+          "toYear": 2007,
+          "loan": false
+        },
+        {
+          "name": "Cardiff City",
+          "fromYear": 2007,
+          "toYear": 2008,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Jimmy_Floyd_Hasselbaink"
+      ]
+    },
+    {
+      "id": "david-trezeguet",
+      "name": "David Trezeguet",
+      "acceptedAnswers": [
+        "David Trezeguet",
+        "David Sergio Trezeguet"
+      ],
+      "difficulty": "hard",
+      "countryAz": "Fransa",
+      "countryEn": "France",
+      "positionAz": "Hücumçu",
+      "positionEn": "Forward",
+      "clubs": [
+        {
+          "name": "Platense",
+          "fromYear": 1994,
+          "toYear": 1995,
+          "loan": false
+        },
+        {
+          "name": "Monaco",
+          "fromYear": 1995,
+          "toYear": 2000,
+          "loan": false
+        },
+        {
+          "name": "Juventus",
+          "fromYear": 2000,
+          "toYear": 2010,
+          "loan": false
+        },
+        {
+          "name": "Hércules",
+          "fromYear": 2010,
+          "toYear": 2011,
+          "loan": false
+        },
+        {
+          "name": "Baniyas",
+          "fromYear": 2011,
+          "toYear": 2011,
+          "loan": false
+        },
+        {
+          "name": "River Plate",
+          "fromYear": 2012,
+          "toYear": 2013,
+          "loan": false
+        },
+        {
+          "name": "Newell's Old Boys",
+          "fromYear": 2013,
+          "toYear": 2014,
+          "loan": false
+        },
+        {
+          "name": "Pune City",
+          "fromYear": 2014,
+          "toYear": 2014,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/David_Trezeguet"
+      ]
+    },
+    {
+      "id": "youri-djorkaeff",
+      "name": "Youri Djorkaeff",
+      "acceptedAnswers": [
+        "Youri Djorkaeff",
+        "Youri Raffi Djorkaeff"
+      ],
+      "difficulty": "hard",
+      "countryAz": "Fransa",
+      "countryEn": "France",
+      "positionAz": "Yarımmüdafiəçi",
+      "positionEn": "Midfielder",
+      "clubs": [
+        {
+          "name": "Grenoble",
+          "fromYear": 1984,
+          "toYear": 1989,
+          "loan": false
+        },
+        {
+          "name": "Strasbourg",
+          "fromYear": 1989,
+          "toYear": 1990,
+          "loan": false
+        },
+        {
+          "name": "Monaco",
+          "fromYear": 1990,
+          "toYear": 1995,
+          "loan": false
+        },
+        {
+          "name": "Paris Saint-Germain",
+          "fromYear": 1995,
+          "toYear": 1996,
+          "loan": false
+        },
+        {
+          "name": "Inter Milan",
+          "fromYear": 1996,
+          "toYear": 1999,
+          "loan": false
+        },
+        {
+          "name": "Kaiserslautern",
+          "fromYear": 1999,
+          "toYear": 2002,
+          "loan": false
+        },
+        {
+          "name": "Bolton Wanderers",
+          "fromYear": 2002,
+          "toYear": 2004,
+          "loan": false
+        },
+        {
+          "name": "Blackburn Rovers",
+          "fromYear": 2004,
+          "toYear": 2004,
+          "loan": false
+        },
+        {
+          "name": "New York Red Bulls",
+          "fromYear": 2005,
+          "toYear": 2006,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Youri_Djorkaeff"
+      ]
+    },
+    {
+      "id": "robert-pires",
+      "name": "Robert Pires",
+      "acceptedAnswers": [
+        "Robert Pires",
+        "Robert Emmanuel Pires"
+      ],
+      "difficulty": "hard",
+      "countryAz": "Fransa",
+      "countryEn": "France",
+      "positionAz": "Yarımmüdafiəçi",
+      "positionEn": "Midfielder",
+      "clubs": [
+        {
+          "name": "Reims",
+          "fromYear": 1991,
+          "toYear": 1992,
+          "loan": false
+        },
+        {
+          "name": "Metz",
+          "fromYear": 1993,
+          "toYear": 1998,
+          "loan": false
+        },
+        {
+          "name": "Marseille",
+          "fromYear": 1998,
+          "toYear": 2000,
+          "loan": false
+        },
+        {
+          "name": "Arsenal",
+          "fromYear": 2000,
+          "toYear": 2006,
+          "loan": false
+        },
+        {
+          "name": "Villarreal",
+          "fromYear": 2006,
+          "toYear": 2010,
+          "loan": false
+        },
+        {
+          "name": "Aston Villa",
+          "fromYear": 2010,
+          "toYear": 2011,
+          "loan": false
+        },
+        {
+          "name": "Goa",
+          "fromYear": 2014,
+          "toYear": 2015,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Robert_Pires"
+      ]
+    },
+    {
+      "id": "emmanuel-petit",
+      "name": "Emmanuel Petit",
+      "acceptedAnswers": [
+        "Emmanuel Petit",
+        "Emmanuel Laurent Petit"
+      ],
+      "difficulty": "hard",
+      "countryAz": "Fransa",
+      "countryEn": "France",
+      "positionAz": "Yarımmüdafiəçi",
+      "positionEn": "Midfielder",
+      "clubs": [
+        {
+          "name": "Monaco",
+          "fromYear": 1988,
+          "toYear": 1997,
+          "loan": false
+        },
+        {
+          "name": "Arsenal",
+          "fromYear": 1997,
+          "toYear": 2000,
+          "loan": false
+        },
+        {
+          "name": "Barcelona",
+          "fromYear": 2000,
+          "toYear": 2001,
+          "loan": false
+        },
+        {
+          "name": "Chelsea",
+          "fromYear": 2001,
+          "toYear": 2004,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Emmanuel_Petit"
+      ]
+    },
+    {
+      "id": "marcel-desailly",
+      "name": "Marcel Desailly",
+      "acceptedAnswers": [
+        "Marcel Desailly",
+        "Marcel David Desailly"
+      ],
+      "difficulty": "hard",
+      "countryAz": "Fransa",
+      "countryEn": "France",
+      "positionAz": "Yarımmüdafiəçi",
+      "positionEn": "Midfielder",
+      "clubs": [
+        {
+          "name": "Nantes",
+          "fromYear": 1986,
+          "toYear": 1992,
+          "loan": false
+        },
+        {
+          "name": "Marseille",
+          "fromYear": 1992,
+          "toYear": 1993,
+          "loan": false
+        },
+        {
+          "name": "AC Milan",
+          "fromYear": 1993,
+          "toYear": 1998,
+          "loan": false
+        },
+        {
+          "name": "Chelsea",
+          "fromYear": 1998,
+          "toYear": 2004,
+          "loan": false
+        },
+        {
+          "name": "Al-Gharafa",
+          "fromYear": 2004,
+          "toYear": 2005,
+          "loan": false
+        },
+        {
+          "name": "Qatar SC",
+          "fromYear": 2005,
+          "toYear": 2006,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Marcel_Desailly"
+      ]
+    },
+    {
+      "id": "lilian-thuram",
+      "name": "Lilian Thuram",
+      "acceptedAnswers": [
+        "Lilian Thuram",
+        "Ruddy Lilian Thuram-Ulien"
+      ],
+      "difficulty": "hard",
+      "countryAz": "Fransa",
+      "countryEn": "France",
+      "positionAz": "Müdafiəçi",
+      "positionEn": "Defender",
+      "clubs": [
+        {
+          "name": "Monaco",
+          "fromYear": 1991,
+          "toYear": 1996,
+          "loan": false
+        },
+        {
+          "name": "Parma",
+          "fromYear": 1996,
+          "toYear": 2001,
+          "loan": false
+        },
+        {
+          "name": "Juventus",
+          "fromYear": 2001,
+          "toYear": 2006,
+          "loan": false
+        },
+        {
+          "name": "Barcelona",
+          "fromYear": 2006,
+          "toYear": 2008,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Lilian_Thuram"
+      ]
+    },
+    {
+      "id": "laurent-blanc",
+      "name": "Laurent Blanc",
+      "acceptedAnswers": [
+        "Laurent Blanc",
+        "Laurent Robert Blanc"
+      ],
+      "difficulty": "hard",
+      "countryAz": "Fransa",
+      "countryEn": "France",
+      "positionAz": "Müdafiəçi",
+      "positionEn": "Defender",
+      "clubs": [
+        {
+          "name": "Montpellier",
+          "fromYear": 1983,
+          "toYear": 1991,
+          "loan": false
+        },
+        {
+          "name": "Napoli",
+          "fromYear": 1991,
+          "toYear": 1992,
+          "loan": false
+        },
+        {
+          "name": "Nîmes",
+          "fromYear": 1992,
+          "toYear": 1993,
+          "loan": false
+        },
+        {
+          "name": "Saint-Étienne",
+          "fromYear": 1993,
+          "toYear": 1995,
+          "loan": false
+        },
+        {
+          "name": "Auxerre",
+          "fromYear": 1995,
+          "toYear": 1996,
+          "loan": false
+        },
+        {
+          "name": "Barcelona",
+          "fromYear": 1996,
+          "toYear": 1997,
+          "loan": false
+        },
+        {
+          "name": "Marseille",
+          "fromYear": 1997,
+          "toYear": 1999,
+          "loan": false
+        },
+        {
+          "name": "Inter Milan",
+          "fromYear": 1999,
+          "toYear": 2001,
+          "loan": false
+        },
+        {
+          "name": "Manchester United",
+          "fromYear": 2001,
+          "toYear": 2003,
+          "loan": false
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Laurent_Blanc"
+      ]
+    }
+  ]
+}
