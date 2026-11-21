@@ -47,3 +47,14 @@ nüsxənin formatını yoxlayır. Bərpa üçün təyinat backend-i bir dəfə b
 cədvəl yaransın, sonra həmin bazanın bağlantısı ilə
 `python -m matchiq.archive_backup restore <fayl>` işlədin. Mövcud matç qeydləri
 üzərinə yazılmır. Bu nüsxə proqnoz arxivini əhatə edir.
+
+Həftəlik GitHub Actions işi bazar günü Bakı vaxtı ilə 03:41-də arxivi ixrac
+edir və yalnız şifrələnmiş `prediction-history.json.gpg` faylını saxlayır.
+GitHub nüsxələri 90 gün saxlayır. İş yalnız `prediction_history` cədvəlini
+oxuyan hesabla qoşulur.
+
+Windows-da ilk bərpa açarı `Documents/MatchIQ Backups/Recovery Key`
+qovluğunda saxlanılır. Onu nüsxələrlə yanaşı etibarlı, ayrıca yerdə saxlayın.
+`gpg --homedir <açar-qovluğu> --output <bərpa.json> --decrypt <nüsxə.json.gpg>`
+əmri ilə faylı açın, sonra yuxarıdakı `verify` və `restore` əmrlərindən
+istifadə edin.
