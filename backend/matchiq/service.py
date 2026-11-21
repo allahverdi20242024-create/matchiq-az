@@ -5,6 +5,7 @@ from datetime import UTC, datetime, timedelta
 import psycopg
 
 from .domain import CompetitionFeed, Feed
+from .prediction_history import prepare
 from .providers import BAKU, COMPETITIONS, ProviderError
 
 logger = logging.getLogger("uvicorn.error")
@@ -50,6 +51,7 @@ class FixtureService:
     async def sync_competition(self, competition, snapshots, season, now):
         previous = snapshots.get(competition.code)
         if previous and now - previous.fetched_at < timedelta(seconds=self.interval):
+            await self.record_predictions(previous)
             return
         for provider in self.providers:
             if not provider.supports(competition):
@@ -64,9 +66,16 @@ class FixtureService:
                                competition.code, provider.name, reason)
                 continue
             await self.store.save(result)
+            await self.record_predictions(result)
             logger.info("event=fixture_sync_success competition=%s source=%s matches=%d",
                         competition.code, provider.name, len(result.matches))
             break
+
+    async def record_predictions(self, snapshot):
+        now = datetime.now(UTC)
+        existing = await self.store.load_predictions(snapshot.competition)
+        additions, results = await asyncio.to_thread(prepare, snapshot, now, existing)
+        await self.store.save_predictions(additions, results)
 
     async def run(self):
         while True:

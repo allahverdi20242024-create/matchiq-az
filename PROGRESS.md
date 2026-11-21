@@ -57,3 +57,10 @@ Cari mövsüm üçün Azərbaycan əhatəsini pulsuz açarla təsdiqləmək. Rə
 ## Növbəti addım
 
 Təsdiqlənmiş provayder çıxışı olduqda rəsmi liqa cədvəllərini əlavə etmək və PostgreSQL inteqrasiyasını yoxlamaq.
+
+## Oyunöncəsi proqnoz tarixçəsi
+
+- Planlı sinxronizasiya növbəti 48 saatın təsdiqlənmiş oyunları üçün ilk Puasson ehtimallarını qeydə alır. Faktiki hesab provayderdən gələndə eyni qeyd yenilənir.
+- Oyunöncəsi qeydlər və tarixi təkrar sınaqlar ayrı göstərilir. Oyunöncəsi göstəricilər 50 təsdiqlənmiş nəticədən sonra görünür.
+- Kalibrasiya modeli kifayət qədər qeydə alınmış nəticə toplandıqda onları xronoloji qaydada öyrənir. Yoxlama dövründə nəticəsi hələ məlum olmayan oyunlar təlimə daxil edilmir. Yeni kalibrasiya yalnız həm Brier, həm də loqarifmik itkidə baza modelini üstələdikdə tətbiq olunur.
+- Arxivi xidmət yenidən başladıqda saxlamaq üçün backend-də `DATABASE_URL` qurulmalıdır. Yaddaş rejimində qeydlər yalnız cari prosesdə qalır.

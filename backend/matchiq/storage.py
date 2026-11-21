@@ -4,16 +4,20 @@ import psycopg
 from psycopg.types.json import Jsonb
 
 from .domain import Snapshot
+from .prediction_history import LivePrediction
 
 
 class Store(Protocol):
     async def initialize(self) -> None: ...
     async def load(self, season: int) -> dict[str, Snapshot]: ...
     async def save(self, snapshot: Snapshot) -> None: ...
+    async def load_predictions(self, competition: str | None = None) -> list[LivePrediction]: ...
+    async def save_predictions(self, additions: list[LivePrediction], results: list[LivePrediction]) -> None: ...
 
 
 class MemoryStore:
     def __init__(self):
+        self.predictions: dict[tuple[str, str], LivePrediction] = {}
         self.snapshots: dict[tuple[int, str], Snapshot] = {}
 
     async def initialize(self):
@@ -24,6 +28,19 @@ class MemoryStore:
 
     async def save(self, snapshot):
         self.snapshots[snapshot.season, snapshot.competition] = snapshot
+
+
+    async def load_predictions(self, competition=None):
+        return [row for (code, _), row in self.predictions.items() if competition is None or code == competition]
+
+    async def save_predictions(self, additions, results):
+        for row in additions:
+            self.predictions.setdefault((row.competition, row.fixture_id), row)
+        for row in results:
+            key = row.competition, row.fixture_id
+            current = self.predictions.get(key)
+            if current and (current.settled_at is None or current.settled_at < row.settled_at):
+                self.predictions[key] = current.model_copy(update={"score": row.score, "settled_at": row.settled_at})
 
 
 class PostgresStore:
@@ -39,6 +56,16 @@ class PostgresStore:
                     fetched_at timestamptz NOT NULL,
                     payload jsonb NOT NULL,
                     PRIMARY KEY (season, competition)
+                )
+            """)
+
+            await conn.execute("""
+                CREATE TABLE IF NOT EXISTS prediction_history (
+                    competition text NOT NULL,
+                    fixture_id text NOT NULL,
+                    payload jsonb NOT NULL,
+                    settled_at timestamptz,
+                    PRIMARY KEY (competition, fixture_id)
                 )
             """)
 
@@ -59,3 +86,30 @@ class PostgresStore:
                 WHERE fixture_snapshots.fetched_at <= EXCLUDED.fetched_at
             """, (snapshot.season, snapshot.competition, snapshot.fetched_at,
                   Jsonb(snapshot.model_dump(mode="json"))))
+
+    async def load_predictions(self, competition=None):
+        async with await psycopg.AsyncConnection.connect(self.dsn, connect_timeout=5) as conn:
+            if competition is None:
+                cursor = await conn.execute("SELECT payload FROM prediction_history")
+            else:
+                cursor = await conn.execute("SELECT payload FROM prediction_history WHERE competition = %s", (competition,))
+            return [LivePrediction.model_validate(payload) async for (payload,) in cursor]
+
+    async def save_predictions(self, additions, results):
+        if not additions and not results:
+            return
+        async with await psycopg.AsyncConnection.connect(self.dsn, connect_timeout=5) as conn:
+            async with conn.cursor() as cursor:
+                if additions:
+                    await cursor.executemany("""
+                        INSERT INTO prediction_history (competition, fixture_id, payload)
+                        VALUES (%s, %s, %s) ON CONFLICT DO NOTHING
+                    """, [(row.competition, row.fixture_id, Jsonb(row.model_dump(mode="json"))) for row in additions])
+                if results:
+                    await cursor.executemany("""
+                        UPDATE prediction_history
+                        SET payload = payload || %s, settled_at = %s
+                        WHERE competition = %s AND fixture_id = %s
+                          AND (settled_at IS NULL OR settled_at < %s)
+                    """, [(Jsonb(row.model_dump(mode="json", include={"score", "settled_at"})),
+                           row.settled_at, row.competition, row.fixture_id, row.settled_at) for row in results])

@@ -6,7 +6,7 @@ type Forecast = {
   version: string;
   learned: number[];
   poisson: number[];
-  comparison: { count: number; start: string; end: string; learned: Metrics; poisson: Metrics };
+  comparison: { source?: "live" | "replay"; count: number; start: string; end: string; learned: Metrics; poisson: Metrics };
 };
 
 export async function AiForecast({ id, home, away }: { id: string; home: string; away: string }) {
@@ -43,7 +43,7 @@ export async function AiForecast({ id, home, away }: { id: string; home: string;
         </div>)}
       </dl>
       <details className="mt-3">
-        <summary>{en ? "Historical comparison" : "Tarixi müqayisə"}</summary>
+        <summary>{forecast.comparison.source === "live" ? (en ? "Pre-match forecast evaluation" : "Oyunöncəsi proqnozların yoxlanışı") : (en ? "Historical comparison" : "Tarixi müqayisə")}</summary>
         <p className="muted text-sm">{number.format(forecast.comparison.count)} {en ? "matches" : "oyun"}
           {" · "}{date.format(new Date(forecast.comparison.start))} – {date.format(new Date(forecast.comparison.end))}</p>
         <dl className="data-list">

@@ -16,6 +16,7 @@ from .domain import Feed
 from .evaluation import Evaluation, summarize
 from .fixture_detail import FixtureDetail, build_fixture_detail
 from .learning import LearnedForecast, forecast as learned_forecast
+from .prediction_history import LiveHistory, history
 from .providers import BAKU, ApiFootball, FootballData, OpenFootball, ProviderHttp
 from .season import TEAM_COUNTS, forecast_at
 from .service import FixtureService, current_season, is_upcoming
@@ -134,6 +135,14 @@ def create_app(*, service=None, synchronize=True, simulation_cache=None):
             raise HTTPException(503, "Məlumat bazası müvəqqəti əlçatan deyil.") from None
         return await asyncio.to_thread(summarize, list(snapshots.values()), now.astimezone(BAKU).date(), season)
 
+    @app.get("/v1/prediction-history", response_model=LiveHistory)
+    async def prediction_history():
+        try:
+            rows = await app.state.service.store.load_predictions()
+        except psycopg.Error:
+            raise HTTPException(503, "Prediction history is temporarily unavailable.") from None
+        return await run_in_threadpool(history, rows)
+
     @app.get("/v1/ai-forecast/{fixture_id}", response_model=LearnedForecast | None)
     async def ai_forecast(fixture_id: str):
         now = datetime.now(UTC)
@@ -146,7 +155,10 @@ def create_app(*, service=None, synchronize=True, simulation_cache=None):
                             if match.id == fixture_id and is_upcoming(match, now)), None)
             if fixture is not None:
                 try:
-                    return await run_in_threadpool(learned_forecast, snapshots, snapshot, fixture, now)
+                    archived = await app.state.service.store.load_predictions()
+                    return await run_in_threadpool(learned_forecast, snapshots, snapshot, fixture, now, archived)
+                except psycopg.Error:
+                    raise HTTPException(503, "Forecast is temporarily unavailable.") from None
                 except InsufficientResults:
                     return None
         raise HTTPException(404, "Qarşıdakı oyun tapılmadı.")

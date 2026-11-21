@@ -123,6 +123,13 @@ def summarize(snapshots: list[Snapshot], today: date, season: int) -> Evaluation
     actual = np.eye(3)[[row.outcome for row in predictions]]
     summary.model = metrics(probabilities, actual)
     summary.baseline = metrics(baseline, actual)
+    summary.calibration = calibration_bins(probabilities, actual)
+    summary.recent = sorted(predictions, key=lambda row: (row.date, row.fixture_id), reverse=True)[:10]
+    return summary
+
+
+def calibration_bins(probabilities, actual):
+    bins = []
     for index, name in enumerate(OUTCOMES):
         predicted = probabilities[:, index]
         realized = actual[:, index]
@@ -130,8 +137,7 @@ def summarize(snapshots: list[Snapshot], today: date, season: int) -> Evaluation
         for bin_index in range(5):
             mask = bucket == bin_index
             if mask.any():
-                summary.calibration.append(Bin(outcome=name, count=int(mask.sum()),
+                bins.append(Bin(outcome=name, count=int(mask.sum()),
                                                expected=float(predicted[mask].mean()),
                                                observed=float(realized[mask].mean())))
-    summary.recent = sorted(predictions, key=lambda row: (row.date, row.fixture_id), reverse=True)[:10]
-    return summary
+    return bins
