@@ -49,7 +49,7 @@ export default async function HistoryPage() {
   const labels = [t.homeWin, t.draw, t.awayWin];
   const data = await loadEvaluation();
   return <>
-    <div className="heading"><div><h1>{t.forecastHistory}</h1><p>{t.modelBacktesting}</p></div></div>
+    <div className="heading"><div><h1>{t.forecastHistory}</h1></div></div>
     {!data || !data.model || !data.baseline ? <section className="panel empty">
       <span className="stat-icon"><History size={24} /></span>
       <h2>{data ? t.tooFewMatchesForBacktesting : t.evaluationServiceUnavailable}</h2>

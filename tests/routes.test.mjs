@@ -46,7 +46,7 @@ const pages = [
   ["/real-komandalar", "Real komanda statistikası", "Real komanda statistikası"],
   ["/movsum-proqnozu", "Mövsüm proqnozu", 'name="say"'],
   ["/futbolcu-karyerasi", "Futbolçu karyerası", "Klub karyerasına baxıb futbolçunu tap."],
-  ["/tarixce", "Proqnoz tarixçəsi", "Modelin tarixi sınağı"],
+  ["/tarixce", "Proqnoz tarixçəsi", "<main id=\"main\""],
   ["/metodologiya", "Model metodologiyası", "100 000"],
 ];
 

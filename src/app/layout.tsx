@@ -25,9 +25,8 @@ export default async function Layout({ children }: Readonly<{ children: React.Re
         <Navigation />
         <div className="workspace">
           <header className="topbar">
-            <span>{t.footballAnalytics}</span>
+            <span className="timezone"><Clock3 size={15} aria-hidden="true" /> {t.bakuTime}</span>
             <div className="topbar-controls">
-              <span className="timezone"><Clock3 size={15} aria-hidden="true" /> {t.bakuTime}</span>
               <form action={changeLanguage} className="preference-group language-switch" aria-label={t.language}>
                 <button type="submit" name="language" value="az" lang="az" aria-label="Azərbaycan dili" aria-pressed={locale === "az"}>AZ</button>
                 <button type="submit" name="language" value="en" lang="en" aria-label="English" aria-pressed={locale === "en"}>EN</button>
@@ -41,7 +40,6 @@ export default async function Layout({ children }: Readonly<{ children: React.Re
           <main id="main" className="content">{children}</main>
           <footer>
             <div className="site-footer">
-              <strong>MatchIQ AZ</strong>
               <p>{t.dataSources}{" "}<a className="underline" href="https://www.football-data.org/">football-data.org</a>
                 {" · "}<a className="underline" href="https://github.com/openfootball/football.json">OpenFootball</a>
               </p>

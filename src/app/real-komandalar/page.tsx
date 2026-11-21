@@ -67,7 +67,7 @@ async function VenueRecord({ title, stats }: { title: string; stats: RecordLine 
 
 async function TeamDetails({ stats }: { stats: TeamStats }) {
   const { t, intlLocale } = await getPreferences();
-  return <section aria-labelledby="team-title" className="method-grid">
+  return <section aria-labelledby="team-title" className="team-profile">
     <h2 id="team-title" className="crest-label"><ClubCrest name={stats.team.name} />{stats.team.name}</h2>
     <div className="detail-grid">
       <VenueRecord title={t.homeMatches} stats={stats.home} />
@@ -104,8 +104,8 @@ async function LeagueTable({ league, season }: { league: Competition; season?: n
   const serieATie = league.competition === "SA" && row17 !== undefined && row18 !== undefined && row17.points === row18.points;
   const teamsWithResults = new Set(league.teams.map((row) => row.team.id));
   return <>
-    <div className="overflow-x-auto" tabIndex={0} role="region" aria-labelledby="competition-title">
-      <table className="w-full min-w-[32rem] border-collapse text-sm">
+    <div className="league-table-scroll" tabIndex={0} role="region" aria-labelledby="competition-title">
+      <table className="league-table w-full min-w-[32rem] border-collapse text-sm">
         <thead><tr className="border-b border-[var(--line)] text-right">
           {[t.team, t.played, t.win, t.draw, t.loss, t.goalDifference, t.points, ...(showZones ? [t.standingsZone] : [])].map((label, index) =>
             <th className={index === 0 ? "px-2 py-2 text-left" : "px-2 py-2"} scope="col" key={label}>{label}</th>)}

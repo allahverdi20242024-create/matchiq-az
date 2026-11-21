@@ -6,7 +6,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSyncExternalStore } from "react";
-import { BookOpen, Calendar, CalendarDays, Gamepad2, History, LayoutDashboard, Trophy, UsersRound } from "lucide-react";
+import type { MouseEvent } from "react";
+import { BookOpen, Calendar, CalendarDays, Gamepad2, History, LayoutDashboard, Menu, Trophy, UsersRound } from "lucide-react";
 
 const groups = [
   { title: "overview", links: [
@@ -27,24 +28,32 @@ const subscribeToHydration = () => () => {};
 const clientSnapshot = () => true;
 const serverSnapshot = () => false;
 
+function closeMobileMenu(event: MouseEvent<HTMLAnchorElement>) {
+  const menu = event.currentTarget.closest("details");
+  if (menu) menu.open = false;
+}
+
 export function Navigation() {
   const { t } = usePreferences();
   const pathname = usePathname();
   const hydrated = useSyncExternalStore(subscribeToHydration, clientSnapshot, serverSnapshot);
+  const menuLabel = t.mainNavigation;
+  const links = (onNavigate?: typeof closeMobileMenu) => groups.map((group) => <div key={group.title} className="nav-group">
+    {group.links.map(({ href, label, icon: Icon }) => {
+      const active = hydrated && (pathname === href || (href !== "/" && pathname.startsWith(href + "/")));
+      return <Link key={href} href={href} onClick={onNavigate} aria-current={active ? "page" : undefined} className="nav-link">
+        <Icon size={18} aria-hidden="true" />{t[label]}
+      </Link>;
+    })}
+  </div>);
   return <aside className="sidebar">
     <Link href="/" className="brand" aria-label={t.matchiqAzHome}>
       <span className="brand-clip"><Image src="/matchiq-az-logo.webp" alt="" width={940} height={513} unoptimized preload /></span>
     </Link>
-    <nav aria-label={t.mainNavigation}>
-      {groups.map((group) => <div key={group.title} className="nav-group">
-        <p>{t[group.title]}</p>
-        {group.links.map(({ href, label, icon: Icon }) => {
-          const active = hydrated && (pathname === href || (href !== "/" && pathname.startsWith(href + "/")));
-          return <Link key={href} href={href} aria-current={active ? "page" : undefined} className="nav-link">
-            <Icon size={17} aria-hidden="true" />{t[label]}
-          </Link>;
-        })}
-      </div>)}
-    </nav>
+    <nav className="desktop-nav" aria-label={menuLabel}>{links()}</nav>
+    <details className="mobile-nav">
+      <summary aria-label={menuLabel}><Menu size={21} aria-hidden="true" /></summary>
+      <nav aria-label={menuLabel}>{links(closeMobileMenu)}</nav>
+    </details>
   </aside>;
 }

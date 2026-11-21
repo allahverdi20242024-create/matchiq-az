@@ -89,7 +89,7 @@ function Bracket({ forecast, en }: { forecast: Forecast; en: boolean }) {
   }
   return <section className={styles.bracket} aria-labelledby="bracket-title">
     <h2 id="bracket-title">{en ? "Champions League bracket" : "Çempionlar Liqasının turnir ağacı"}</h2>
-    <p>{en ? "Simulated scores · Two-leg aggregate before the final" : "Simulyasiya hesabları · Finala qədər iki oyunun ümumi hesabı"}</p>
+    <p>{en ? "Simulated aggregate scores" : "Simulyasiya üzrə ümumi hesab"}</p>
     <div className={styles.scroll} tabIndex={0} role="region" aria-label={en ? "Knockout bracket" : "Pley-off ağacı"}>
       <div className={styles.tree}>
         <div className={styles.side}>{[0, 1, 2].map(round => stage(round))}</div>
@@ -170,7 +170,7 @@ export default async function SeasonForecast({ searchParams }: { searchParams: P
       </section>
     </> : data?.status === "syncing" || (!data && validTrials === undefined) ?
       <LiveRefresh key={code + ":" + day + ":" + validTrials}
-        label={en ? "Preparing the forecast. This page will update automatically." : "Proqnoz hazırlanır. Səhifə avtomatik yenilənəcək."}
+        label={en ? "Preparing forecast…" : "Proqnoz hazırlanır…"}
         timeoutLabel={en ? "The forecast is still unavailable. Refresh the page to try again." : "Proqnoz hələ əlçatan deyil. Yenidən yoxlamaq üçün səhifəni yenilə."} />
       : <p role="status" className="panel detail">{error}</p>}
   </div>;

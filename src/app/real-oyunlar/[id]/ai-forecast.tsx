@@ -1,6 +1,5 @@
 import { getPreferences } from "@/lib/preferences";
 import { aiSummary } from "@/lib/ai-summary";
-import { Sparkles } from "lucide-react";
 
 type Metrics = { brier: number; log_loss: number };
 type Forecast = {
@@ -30,14 +29,12 @@ export async function AiForecast({ id, home, away }: { id: string; home: string;
   const number = new Intl.NumberFormat(intlLocale, { maximumFractionDigits: 3 });
   const date = new Intl.DateTimeFormat(intlLocale, { dateStyle: "medium", timeZone: "UTC" });
   return <section className="panel detail" aria-labelledby="ai-forecast">
-    <h2 id="ai-forecast" className="flex items-center gap-2">
-      <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-linear-to-br from-sky-700 to-violet-700 text-white">
-        <Sparkles size={19} aria-hidden="true" />
-      </span>
-      {en ? "AI forecast" : "AI proqnozu"}
-    </h2>
+    <h2 id="ai-forecast">{en ? "Statistical forecast" : "Statistik proqnoz"}</h2>
     {forecast ? <>
-      <p className="mt-3 mb-2 leading-relaxed">{aiSummary(forecast.learned, home, away, intlLocale)}</p>
+      <details className="forecast-note">
+        <summary>{en ? "Match summary" : "Oyunun xülasəsi"}</summary>
+        <p>{aiSummary(forecast.learned, home, away, intlLocale)}</p>
+      </details>
       <dl className="data-list">
         <div><dt>{en ? "Outcome" : "Nəticə"}</dt><dd>AI / {en ? "Poisson" : "Puasson"}</dd></div>
         {[t.home, t.draw, t.away].map((label, index) => <div key={label}>
@@ -53,7 +50,7 @@ export async function AiForecast({ id, home, away }: { id: string; home: string;
           <div><dt>{en ? "Brier score" : "Brier göstəricisi"}</dt><dd>{number.format(forecast.comparison.learned.brier)} / {number.format(forecast.comparison.poisson.brier)}</dd></div>
           <div><dt>{en ? "Log loss" : "Loqarifmik itki"}</dt><dd>{number.format(forecast.comparison.learned.log_loss)} / {number.format(forecast.comparison.poisson.log_loss)}</dd></div>
         </dl>
-        <p className="muted text-sm">{en ? "Lower scores are better. The model learns to adjust Poisson probabilities using earlier results." : "Aşağı göstərici daha yaxşıdır. Model əvvəlki nəticələrdən öyrənərək Puasson ehtimallarını tənzimləyir."} · {forecast.version}</p>
+        <small className="muted">{forecast.version}</small>
       </details>
     </> : <p className="muted">{unavailable
       ? (en ? "Temporarily unavailable." : "Müvəqqəti əlçatan deyil.")

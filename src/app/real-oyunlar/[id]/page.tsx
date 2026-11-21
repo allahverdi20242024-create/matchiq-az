@@ -65,7 +65,7 @@ export default async function RealMatchPage({ params, searchParams }: {
   return <>
     <div className="heading"><div><h1>{t.realMatchAnalysis}</h1></div>
       <Link className="tabs px-3 py-2 text-sm" href="/real-oyunlar">{t.realFixtures}</Link></div>
-    <section className="panel detail-hero">
+    <section className="panel detail-hero match-header">
       <div className="fixture-meta">
         <LeagueLabel code={match.competition} />
         {(detail.stale || match.score) && <Badge>{detail.stale ? t.staleData : t.finished}</Badge>}
@@ -79,7 +79,7 @@ export default async function RealMatchPage({ params, searchParams }: {
         </div>
         <div><ClubCrest name={match.away.name} /><Link href={teamUrl(match.away.id)}>{match.away.name}</Link></div>
       </div>
-      <p className="muted text-sm">{t.updatedWithoutSeparator}{" "}<time dateTime={detail.fetched_at}>{fixtureDateTime(intlLocale).format(new Date(detail.fetched_at))}</time></p>
+      <p className="match-freshness muted text-xs">{t.updatedWithoutSeparator}{" "}<time dateTime={detail.fetched_at}>{fixtureDateTime(intlLocale).format(new Date(detail.fetched_at))}</time></p>
     </section>
     {detail.can_simulate ? <SimulationPanel showFixturePicker={false} action={realMatchPath(match.id)} matchId={match.id} rawTrials={sinaq}
       groups={[{ code: match.competition, label: competitionName(match.competition, t),

@@ -26,7 +26,7 @@ export default async function RealFixtures({ searchParams }: {
         <Link href="/real-oyunlar?nov=neticeler" aria-current={view === "results" ? "page" : undefined}>{t.recentResults}</Link>
       </nav>
     </div>
-    {feed === null ? <section className="panel empty"><h2>{t.dataServiceUnavailable}</h2><p>{t.refreshThePageInAMoment}</p></section> : <>
+    {feed === null ? <section className="panel empty"><h2>{t.dataServiceUnavailable}</h2></section> : <>
       {feed.unavailable.length > 0 && <p className="muted">{t.dataUnavailable}{" "}{feed.unavailable.map((code) => competitionName(code, t)).join(", ")}.</p>}
       {view === "upcoming" && <SimulationPanel matchId={params.oyun} rawTrials={params.sinaq} groups={feed.competitions
         .filter((group) => group.matches.length > 0)

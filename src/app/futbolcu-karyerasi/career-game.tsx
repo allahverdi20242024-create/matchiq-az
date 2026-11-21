@@ -146,7 +146,6 @@ export function CareerGame({ en }: { en: boolean }) {
     </> : <>
       {questions.length > 0 ? <h2 className={styles.score}><Trophy size={24} aria-hidden="true" /> {score}/{roundsPerGame * 3} {en ? "points" : "xal"}</h2>
         : <p>{en ? "Guess the player from their club career." : "Klub karyerasına baxıb futbolçunu tap."}</p>}
-      <p className="muted">{en ? "5 rounds · Earn 1–3 points per correct answer. Hints and wrong guesses reduce the score." : "5 raund · Düzgün cavaba 1–3 xal. İpucları və səhv cavablar xalı azaldır."}</p>
       <div className={styles.actions}>
         <label htmlFor="career-level">{en ? "Difficulty" : "Çətinlik"}</label>
         <select id="career-level" value={level} onChange={event => setLevel(event.target.value as Level)}>
