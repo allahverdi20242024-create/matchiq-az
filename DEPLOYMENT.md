@@ -34,3 +34,16 @@ Render Free xidməti boş qaldıqda yatıma keçir. Yatım ərzində planlı sin
 ## Liqa cədvəlləri
 
 `FOOTBALL_DATA_TOKEN` qoşulanda İngiltərə Premyer Liqası, La Liqa, A Seriyası, Bundesliqa və Liqa 1 üçün cədvəl football-data.org-un mövsüm üzrə ümumi cədvəlindən götürülür. Mənbə cədvəli təqdim etmədikdə komanda nəticələri görünür, xal cədvəli isə əlçatan kimi göstərilmir.
+
+## Proqnoz arxivinin ehtiyat nüsxəsi
+
+Backend qovluğunda PostgreSQL bağlantısı məxfi `DATABASE_URL` dəyişənində olduqda
+`python -m matchiq.archive_backup export <fayl>` əmri bütün oyunöncəsi proqnozları
+JSON faylına çıxarır. Hər ixrac üçün yeni fayl adı seçin və nüsxəni repozitoriyadan
+kənarda saxlayın. Faylda bağlantı məlumatı yoxdur.
+
+`python -m matchiq.archive_backup verify <fayl>` əmri baza bağlantısı olmadan
+nüsxənin formatını yoxlayır. Bərpa üçün təyinat backend-i bir dəfə başladın ki,
+cədvəl yaransın, sonra həmin bazanın bağlantısı ilə
+`python -m matchiq.archive_backup restore <fayl>` işlədin. Mövcud matç qeydləri
+üzərinə yazılmır. Bu nüsxə proqnoz arxivini əhatə edir.
