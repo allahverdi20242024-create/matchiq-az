@@ -56,11 +56,11 @@ jobs:
           }
           feed="$(fetch '/v1/fixtures?view=results')"
           archive="$(fetch /v1/prediction-history)"
-          report="$(jq -n --argjson feed "$feed" --argjson archive "$archive" '
+          report="$(jq -n --slurpfile feed <(printf '%s\n' "$feed") --slurpfile archive <(printf '%s\n' "$archive") '
             def fixture_key($competition; $id): [$competition, $id] | @json;
-            (reduce ($feed.competitions[] as $group | $group.matches[] | select(.score != null)) as $match
+            (reduce ($feed[0].competitions[] as $group | $group.matches[] | select(.score != null)) as $match
               ({}; .[fixture_key($match.competition; $match.id)] = $match.score)) as $scores
-            | [$archive.recent[] | . as $forecast
+            | [$archive[0].recent[]
               | $scores[fixture_key(.competition; .fixture_id)] as $expected
               | select($expected != null)
               | {fixture_id: .fixture_id, expected: $expected, recorded: .score}]
@@ -72,4 +72,3 @@ jobs:
             jq -r '.[] | select(.expected != .recorded) | "- Score mismatch: \(.fixture_id), provider \(.expected | @json), archive \(.recorded | @json)"' <<<"$report"
           } >> "$GITHUB_STEP_SUMMARY"
           jq -e 'all(.[]; .expected == .recorded)' <<<"$report" >/dev/null
-
