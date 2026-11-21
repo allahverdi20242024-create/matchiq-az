@@ -1,0 +1,48 @@
+name: Refresh football data
+
+on:
+  schedule:
+    - cron: '23 */4 * * *'
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: matchiq-production-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - name: Wake backend and verify fixture freshness
+        shell: bash
+        run: |
+          set -euo pipefail
+          api="https://matchiq-az-api.onrender.com"
+          fetch() {
+            curl --fail --silent --show-error --retry 2 --retry-delay 5 --retry-all-errors --max-time 65 "$api$1"
+          }
+          fetch /healthz | jq -e '.status == "ok"' >/dev/null
+          for attempt in {1..12}; do
+            if feed="$(fetch '/v1/fixtures?view=results')"; then
+              cutoff="$(date -u -d '5 hours ago' +%Y-%m-%dT%H:%M:%S)"
+              if jq -e --arg cutoff "$cutoff" '
+                (.competitions // []) as $groups
+                | ($groups | length > 0)
+                  and (($groups | map(.fetched_at[:19] < $cutoff) | any) | not)
+                  and ((.syncing // []) | length == 0)
+              ' <<<"$feed" >/dev/null; then
+                {
+                  echo '### MatchIQ AZ data freshness (UTC)'
+                  jq -r '.competitions[] | "- \(.competition): \(.fetched_at) (\(.source))"' <<<"$feed"
+                  jq -r '(.unavailable // [])[] | "- Unavailable: \(.)"' <<<"$feed"
+                } >> "$GITHUB_STEP_SUMMARY"
+                exit 0
+              fi
+            fi
+            if (( attempt < 12 )); then sleep 10; fi
+          done
+          echo "Fixture freshness could not be verified for all available competitions." >&2
+          exit 1
