@@ -9,6 +9,7 @@ import { dateKey, fixtureView, validDate } from "@/lib/fixture-date";
 import { bakuDate } from "@/lib/demo";
 import { fixtureDateOnly, loadFixtureFeed, realMatchPath } from "@/lib/real-fixtures";
 import styles from "./dashboard.module.css";
+import { FeaturedForm } from "./featured-form";
 
 const quickLinks = [
   { title: "monteCarloSimulation", href: "/real-oyunlar#simulation-title", icon: Activity },
@@ -114,6 +115,11 @@ async function DailyFixtures({ selected, today, now, calendarUrl }: {
           </div>
           <div className={styles.team}><ClubCrest name={featured.away.name} eager /><strong>{featured.away.name}</strong></div>
         </div>
+        <Suspense key={featured.id} fallback={<div className={styles.formPlaceholder} role="status">
+          <span className="sr-only">{t.loading}</span>
+        </div>}>
+          <FeaturedForm fixtureId={featured.id} />
+        </Suspense>
         <div className={styles.actions}>
           <Link className="primary" href={realMatchPath(featured.id)}>{t.matchAnalysis}</Link>
           <Link className={styles.allLink} href={calendarUrl}>{t.fixtureSchedule}</Link>
