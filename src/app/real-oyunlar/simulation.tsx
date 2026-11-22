@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { getPreferences } from "@/lib/preferences";
 import Form from "next/form";
 import { DeferredOutcomeChart } from "@/components/deferred-outcome-chart";
@@ -33,7 +34,7 @@ async function simulate(matchId: string, trials: number): Promise<Result | strin
     const apiUrl = process.env.MATCHIQ_API_URL || "http://127.0.0.1:8000";
     const url = new URL("/v1/simulations/" + encodeURIComponent(matchId), apiUrl);
     url.searchParams.set("trials", String(trials));
-    const response = await fetch(url, { cache: "no-store", signal: AbortSignal.timeout(4000) });
+    const response = await fetch(url, { cache: "no-store", signal: AbortSignal.timeout(10000) });
     if (response.status === 409) return t.simulationInsufficientResults;
     if (response.status === 404) return t.simulationUnavailableForMatch;
     if (response.ok) return await response.json() as Result;
@@ -50,18 +51,15 @@ export async function SimulationPanel({ groups, matchId, rawTrials, action = "/r
   matchId?: string | string[];
   rawTrials?: string | string[];
 }) {
-  const { t, intlLocale } = await getPreferences();
+  const { t } = await getPreferences();
   const group = groups.find((item) => item.choices.some((match) => match.id === matchId));
   const choice = group?.choices.find((match) => match.id === matchId);
   const trials = typeof rawTrials === "string" && /^\d{1,6}$/.test(rawTrials) ? Number(rawTrials) : 0;
   const validTrials = trials >= 1 && trials <= maxTrials;
   const submitted = rawTrials !== undefined;
-  let result: Result | string | undefined;
-  if (submitted) {
-    if (!choice) result = t.simulationMatchRequired;
-    else if (!validTrials) result = t.simulationInvalidTrialCount;
-    else result = await simulate(choice.id, trials);
-  }
+  const error = submitted
+    ? !choice ? t.simulationMatchRequired : !validTrials ? t.simulationInvalidTrialCount : undefined
+    : undefined;
 
   return <section className="panel detail source" aria-labelledby="simulation-title">
     <h2 id="simulation-title">{t.monteCarloSimulation}</h2>
@@ -73,9 +71,25 @@ export async function SimulationPanel({ groups, matchId, rawTrials, action = "/r
         </label>
         <button type="submit" className="primary justify-center">{t.runSimulation}</button>
       </Form>}
-    {typeof result === "string" && <p className="mt-4 text-[var(--warning)]" role="alert">{result}</p>}
-    {result && typeof result !== "string" && <div className="mt-5" aria-live="polite">
-      {showFixturePicker && group && choice && <div className="simulation-match">
+    {error && <p className="mt-4 text-[var(--warning)]" role="alert">{error}</p>}
+    {submitted && choice && validTrials && !error && <Suspense key={choice.id + ":" + trials} fallback={
+      <p className="muted mt-4" role="status">{t.loading}</p>
+    }>
+      <SimulationReport choice={choice} group={showFixturePicker ? group : undefined} trials={trials} />
+    </Suspense>}
+  </section>;
+}
+
+async function SimulationReport({ choice, group, trials }: {
+  choice: FixtureGroup["choices"][number];
+  group?: FixtureGroup;
+  trials: number;
+}) {
+  const { t, intlLocale } = await getPreferences();
+  const result = await simulate(choice.id, trials);
+  if (typeof result === "string") return <p className="mt-4 text-[var(--warning)]" role="alert">{result}</p>;
+  return <div className="mt-5" aria-live="polite">
+      {group && <div className="simulation-match">
         <LeagueLabel code={group.code} />
         <h3 className="text-lg font-bold"><ClubLabel name={choice.home} /> <span aria-hidden="true">–</span> <ClubLabel name={choice.away} /></h3>
       </div>}
@@ -96,6 +110,5 @@ export async function SimulationPanel({ groups, matchId, rawTrials, action = "/r
           {result.scores.map(([home, away, probability]) => <div key={home + ":" + away}><dt>{t.score}{" "}{home}:{away}</dt><dd>{percentFormatter(intlLocale).format(probability)}</dd></div>)}
         </dl>
       </div>
-    </div>}
-  </section>;
+  </div>;
 }
