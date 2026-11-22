@@ -44,7 +44,7 @@ async function ClubForm({ team, matches }: { team: RealMatch["home"]; matches: R
 
 export async function FeaturedForm({ fixtureId }: { fixtureId: string }) {
   const { t } = await getPreferences();
-  const detail = await loadFixtureDetail(fixtureId);
+  const detail = await loadFixtureDetail(fixtureId, 60);
 
   return <section className={styles.formSection} aria-labelledby="featured-form-title">
     <h3 id="featured-form-title">{t.formOverTheLastFiveMatches}</h3>

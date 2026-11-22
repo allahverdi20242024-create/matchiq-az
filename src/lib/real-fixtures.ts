@@ -65,11 +65,11 @@ export function realMatchPath(id: string) {
   return "/real-oyunlar/" + encodeURIComponent(id);
 }
 
-export async function loadFixtureDetail(id: string): Promise<FixtureDetail | "missing" | null> {
+export async function loadFixtureDetail(id: string, revalidate = 0): Promise<FixtureDetail | "missing" | null> {
   try {
     const base = process.env.MATCHIQ_API_URL || "http://127.0.0.1:8000";
     const response = await fetch(new URL("/v1/fixtures/" + encodeURIComponent(id), base), {
-      cache: "no-store", signal: AbortSignal.timeout(4000),
+      next: { revalidate }, signal: AbortSignal.timeout(4000),
     });
     if (response.status === 404) return "missing";
     return response.ok ? await response.json() as FixtureDetail : null;
