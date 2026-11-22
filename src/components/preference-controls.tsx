@@ -45,12 +45,12 @@ export function PreferenceControls({ locale, theme }: { locale: Locale; theme: T
   }
 
   return <div className="topbar-controls">
-    <form action={changeLanguage} onSubmit={submitLanguage} className="preference-group language-switch" aria-label={t.language} aria-busy={pending}>
+    <form action={changeLanguage} onSubmit={submitLanguage} className="preference-group language-switch" data-ball-side={selectedLocale === "az" ? "left" : "right"} aria-label={t.language} aria-busy={pending}>
       <button type="submit" name="language" value="az" lang="az" aria-label="Azərbaycan dili" aria-pressed={selectedLocale === "az"}><span>AZ</span></button>
       <button type="submit" name="language" value="en" lang="en" aria-label="English" aria-pressed={selectedLocale === "en"}><span>EN</span></button>
       {pending && <span className="sr-only" role="status">{t.loading}</span>}
     </form>
-    <form action={changeTheme} onSubmit={submitTheme} className="preference-group theme-switch" aria-label={t.appearance}>
+    <form action={changeTheme} onSubmit={submitTheme} className="preference-group theme-switch" data-ball-side={selectedTheme === "light" ? "left" : "right"} aria-label={t.appearance}>
       <button type="submit" name="theme" value="light" aria-label={t.light} title={t.light} aria-pressed={selectedTheme === "light"}><Sun size={16} aria-hidden="true" /></button>
       <button type="submit" name="theme" value="dark" aria-label={t.dark} title={t.dark} aria-pressed={selectedTheme === "dark"}><Moon size={16} aria-hidden="true" /></button>
     </form>

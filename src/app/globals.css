@@ -252,42 +252,54 @@ footer span { padding: 0 5px; color: var(--green); }
 
 .topbar { flex-wrap: wrap; }
 .topbar-controls { flex-wrap: wrap; justify-content: flex-end; }
-.preference-group { display: flex; gap: 4px; }
-.preference-group button {
-  --ball-panel: var(--line);
+.preference-group {
+  --slot: 44px;
+  --ball: 38px;
+  --roll: 0px;
+  --spin: 0deg;
+  --ball-panel: color-mix(in srgb, var(--button-ink) 35%, var(--green));
   position: relative;
   isolation: isolate;
+  display: flex;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--panel);
+}
+.preference-group[data-ball-side="right"] { --roll: var(--slot); --spin: 133deg; }
+.preference-group::before {
+  content: "";
+  position: absolute;
+  inset-block-start: calc((var(--slot) - var(--ball)) / 2);
+  inset-inline-start: calc((var(--slot) - var(--ball)) / 2);
+  z-index: -1;
+  width: var(--ball);
+  height: var(--ball);
+  border: 1px solid color-mix(in srgb, var(--green) 60%, var(--button-ink));
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 49% -9%, var(--ball-panel) 0 19%, transparent 20%),
+    radial-gradient(circle at -7% 33%, var(--ball-panel) 0 16%, transparent 17%),
+    radial-gradient(circle at 98% 28%, var(--ball-panel) 0 13%, transparent 14%),
+    radial-gradient(circle at 19% 104%, var(--ball-panel) 0 20%, transparent 21%),
+    radial-gradient(circle at 94% 83%, var(--ball-panel) 0 15%, transparent 16%),
+    var(--green);
+  transform: translateX(var(--roll)) rotate(var(--spin));
+  transition: transform 300ms cubic-bezier(.25, .65, .25, 1);
+  pointer-events: none;
+}
+.preference-group button {
   display: grid;
   place-items: center;
-  width: 44px;
-  height: 44px;
-  border: 1px solid var(--line);
+  width: var(--slot);
+  height: var(--slot);
   border-radius: 50%;
-  background: var(--panel);
   color: var(--ink);
   font-size: .72rem;
   font-weight: 800;
 }
-.preference-group button::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  inset: 2px;
-  border-radius: inherit;
-  background:
-    radial-gradient(circle at 50% 0%, var(--ball-panel) 0 17%, transparent 18%),
-    radial-gradient(circle at 0% 50%, var(--ball-panel) 0 17%, transparent 18%),
-    radial-gradient(circle at 100% 50%, var(--ball-panel) 0 17%, transparent 18%),
-    radial-gradient(circle at 50% 100%, var(--ball-panel) 0 17%, transparent 18%);
-}
-.preference-group button:hover { border-color: var(--green); }
-.preference-group button[aria-pressed="true"] {
-  --ball-panel: color-mix(in srgb, var(--button-ink) 28%, var(--green));
-  color: var(--button-ink);
-  background: var(--green);
-  border-color: var(--green);
-}
-.language-switch { margin-inline-end: 5px; }
+.preference-group button:hover:not([aria-pressed="true"]) { background: var(--accent-bg); }
+.preference-group button[aria-pressed="true"] { color: var(--button-ink); }
+.preference-group button:focus-visible { outline-offset: -2px; }
 :root[data-theme="light"] .brand-clip {
   background: #101722;
   border-radius: 9px;
@@ -297,10 +309,6 @@ footer span { padding: 0 5px; color: var(--green); }
 :root[data-theme="light"] .form-row li { background: #e3eaf4; color: #344d69; }
 :root[data-theme="light"] .form-row li[data-result="Q"] { background: #dcf4e5; color: #086744; }
 :root[data-theme="light"] .form-row li[data-result="M"] { background: #fce6ec; color: #962943; }
-
-@media (max-width: 760px) {
-  .preference-group button { min-width: 44px; min-height: 44px; }
-}
 
 .standings-zone {
   display: inline-block;
