@@ -41,7 +41,7 @@ export function Navigation() {
   const links = (onNavigate?: typeof closeMobileMenu) => groups.map((group) => <div key={group.title} className="nav-group">
     {group.links.map(({ href, label, icon: Icon }) => {
       const active = hydrated && (pathname === href || (href !== "/" && pathname.startsWith(href + "/")));
-      return <Link prefetch={false} key={href} href={href} onClick={onNavigate} aria-current={active ? "page" : undefined} className="nav-link">
+      return <Link key={href} href={href} onClick={onNavigate} aria-current={active ? "page" : undefined} className="nav-link">
         <Icon size={18} aria-hidden="true" />{t[label]}
       </Link>;
     })}

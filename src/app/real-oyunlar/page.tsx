@@ -1,3 +1,7 @@
+import { Suspense } from "react";
+import PageLoading from "@/components/page-loading";
+import { dateKey } from "@/lib/fixture-date";
+import { bakuDate } from "@/lib/demo";
 import { getPreferences } from "@/lib/preferences";
 import Link from "next/link";
 import { ClubLabel, LeagueLabel } from "@/components/club-crest";
@@ -11,13 +15,12 @@ export async function generateMetadata() {
   return { title: t.realFixtures };
 }
 
-export default async function RealFixtures({ searchParams }: {
-  searchParams: Promise<{ nov?: string | string[]; oyun?: string | string[]; sinaq?: string | string[] }>;
-}) {
-  const { t, intlLocale } = await getPreferences();
+type FixtureParams = { nov?: string | string[]; oyun?: string | string[]; sinaq?: string | string[] };
+
+export default async function RealFixtures({ searchParams }: { searchParams: Promise<FixtureParams> }) {
+  const { t } = await getPreferences();
   const params = await searchParams;
   const view = params.nov === "neticeler" ? "results" : "upcoming";
-  const feed = await loadFixtureFeed(view);
   return <>
     <div className="heading"><div><h1>{t.realFixtures}</h1></div></div>
     <div className="section-heading">
@@ -26,7 +29,16 @@ export default async function RealFixtures({ searchParams }: {
         <Link href="/real-oyunlar?nov=neticeler" aria-current={view === "results" ? "page" : undefined}>{t.recentResults}</Link>
       </nav>
     </div>
-    {feed === null ? <section className="panel empty"><h2>{t.dataServiceUnavailable}</h2></section> : <>
+    <Suspense key={view + ":" + params.oyun + ":" + params.sinaq} fallback={<PageLoading />}>
+      <FixtureResults params={params} view={view} />
+    </Suspense>
+  </>;
+}
+
+async function FixtureResults({ params, view }: { params: FixtureParams; view: "upcoming" | "results" }) {
+  const { t, intlLocale } = await getPreferences();
+  const feed = await loadFixtureFeed(view, dateKey(bakuDate(new Date())));
+  return feed === null ? <section className="panel empty"><h2>{t.dataServiceUnavailable}</h2></section> : <>
       {feed.unavailable.length > 0 && <p className="muted">{t.dataUnavailable}{" "}{feed.unavailable.map((code) => competitionName(code, t)).join(", ")}.</p>}
       {view === "upcoming" && <SimulationPanel matchId={params.oyun} rawTrials={params.sinaq} groups={feed.competitions
         .filter((group) => group.matches.length > 0)
@@ -51,6 +63,5 @@ export default async function RealFixtures({ searchParams }: {
           </dl>}
         </section>)}
       </div>
-    </>}
-  </>;
+    </>;
 }

@@ -50,7 +50,7 @@ export default async function Home({ searchParams }: {
     </section>
 
     <nav className={styles.quickLinks} aria-label={t.analyticsSections}>
-      {quickLinks.map(({ title, href, icon: Icon }) => <Link prefetch={false} className={styles.quickLink} key={href} href={href}>
+      {quickLinks.map(({ title, href, icon: Icon }) => <Link className={styles.quickLink} key={href} href={href}>
         <span className="stat-icon"><Icon size={19} aria-hidden="true" /></span>
         <strong>{t[title]}</strong><ArrowUpRight size={16} aria-hidden="true" />
       </Link>)}

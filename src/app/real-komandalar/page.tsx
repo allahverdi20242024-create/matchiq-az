@@ -43,7 +43,7 @@ async function loadStatistics(): Promise<Statistics | null> {
   try {
     const base = process.env.MATCHIQ_API_URL || "http://127.0.0.1:8000";
     const response = await fetch(new URL("/v1/team-stats", base), {
-      cache: "no-store", signal: AbortSignal.timeout(4000),
+      next: { revalidate: 30 }, signal: AbortSignal.timeout(4000),
     });
     return response.ok ? await response.json() as Statistics : null;
   } catch {
