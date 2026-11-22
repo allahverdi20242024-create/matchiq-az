@@ -3,7 +3,7 @@ from typing import Literal
 
 from pydantic import AwareDatetime, BaseModel, Field, NonNegativeInt, model_validator
 
-Source = Literal["football-data.org", "OpenFootball", "API-Football"]
+Source = Literal["football-data.org", "OpenFootball", "API-Football", "StatsBomb"]
 
 
 class Team(BaseModel):

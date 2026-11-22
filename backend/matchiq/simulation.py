@@ -41,11 +41,12 @@ def estimate_from_history(history: list[Match], fixture: Match) -> tuple[float, 
     return rate_estimator(history)(fixture.home.id, fixture.away.id)
 
 
-def rate_estimator(history: list[Match], *, minimum_matches=12, minimum_team_results=MIN_TEAM_RESULTS):
+def rate_estimator(history: list[Match], *, minimum_matches=12, minimum_team_results=MIN_TEAM_RESULTS,
+                   values: dict[str, tuple[float, float]] | None = None):
     if len(history) < minimum_matches:
         raise InsufficientResults
     history = sorted(history, key=lambda match: (match.date, match.id), reverse=True)
-    goals = np.asarray([match.score for match in history], dtype=float)
+    goals = np.asarray([match.score if values is None else values[match.id] for match in history], dtype=float)
     league_home, league_away = np.maximum(goals.mean(axis=0), 0.1)
 
     @lru_cache(maxsize=None)
