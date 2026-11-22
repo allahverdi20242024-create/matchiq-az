@@ -53,13 +53,13 @@ const catalogClubs = new Map(catalog.flatMap((item) => {
 const catalogLeagues = new Set(catalog.flatMap((item) => item.code ? [item.code] : []));
 const clubIndex = new Map(clubs.flatMap((club) => club.names.map((name) => [normalizeName(name), club] as const)));
 
-export function ClubCrest({ name, size = "large" }: { name: string; size?: "small" | "large" }) {
+export function ClubCrest({ name, size = "large", eager = false }: { name: string; size?: "small" | "large"; eager?: boolean }) {
   const normalized = normalizeName(name);
   const crest = clubIndex.get(normalized) ?? catalogClubs.get(normalized);
   const initials = name.split(/[^\p{L}\p{N}]+/u).filter(Boolean).slice(0, 3).map((word) => word[0]).join("").toLocaleUpperCase("az");
   const dimension = size === "large" ? 56 : 22;
   return <span className="club-crest" data-size={size} data-surface={crest?.light ? "light" : undefined} aria-hidden="true">
-    {crest ? <Image src={"/club-crests/" + crest.asset + ".webp"} width={dimension} height={dimension} unoptimized alt="" /> : <b>{initials}</b>}
+    {crest ? <Image src={"/club-crests/" + crest.asset + ".webp"} width={dimension} height={dimension} loading={eager ? "eager" : "lazy"} unoptimized alt="" /> : <b>{initials}</b>}
   </span>;
 }
 

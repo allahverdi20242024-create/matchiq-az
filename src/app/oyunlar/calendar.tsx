@@ -47,7 +47,7 @@ export async function Calendar({ period, date, league }: {
   const selected = validDate(date) ? date : period === "sabah" ? tomorrow : today;
   const upcoming = period === "gelecek" && date === undefined;
   const view = upcoming ? "upcoming" : fixtureView(selected, today, tomorrow);
-  const feed = await loadFixtureFeed(view);
+  const feed = await loadFixtureFeed(view, today);
   const competitions = feed?.competitions ?? [];
   const selectedLeague = competitions.find(({ competition }) => competition === league)?.competition ?? "";
   const through = dateKey(bakuDate(now, 6));

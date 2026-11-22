@@ -28,12 +28,16 @@ type CompetitionFeed = {
 
 type Feed = { competitions: CompetitionFeed[]; unavailable: string[] };
 
-export async function loadFixtureFeed(view: "upcoming" | "results" | "today" | "tomorrow"): Promise<Feed | null> {
+export async function loadFixtureFeed(view: "upcoming" | "results" | "today" | "tomorrow", cacheDay?: string): Promise<Feed | null> {
   try {
     const apiUrl = process.env.MATCHIQ_API_URL || "http://127.0.0.1:8000";
     const url = new URL("/v1/fixtures", apiUrl);
     url.searchParams.set("view", view);
-    const response = await fetch(url, { cache: "no-store", signal: AbortSignal.timeout(4000) });
+    if (cacheDay) url.searchParams.set("cacheDay", cacheDay);
+    const response = await fetch(url, {
+      ...(cacheDay ? { next: { revalidate: 60 } } : { cache: "no-store" as const }),
+      signal: AbortSignal.timeout(cacheDay ? 12_000 : 4_000),
+    });
     return response.ok ? await response.json() as Feed : null;
   } catch {
     return null;
