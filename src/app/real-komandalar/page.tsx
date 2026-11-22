@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+import { ChevronRight } from "lucide-react";
 import { MatchResult } from "@/components/match-result";
 import { getPreferences } from "@/lib/preferences";
 import Link from "next/link";
@@ -5,7 +7,9 @@ import { LiveRefresh } from "./live-refresh";
 import { TeamSearch } from "./team-search";
 import { championsLeagueZone, standingsRules, standingsZone } from "@/lib/standings-zones";
 import { ClubCrest, ClubLabel, LeagueLabel } from "@/components/club-crest";
-import { competitionName } from "@/lib/real-fixtures";
+import { competitionName, fixtureDateTime, loadFixtureFeed, realMatchPath } from "@/lib/real-fixtures";
+import { dateKey } from "@/lib/fixture-date";
+import { bakuDate } from "@/lib/demo";
 import { Badge } from "@/components/ui/badge";
 
 
@@ -73,16 +77,69 @@ async function TeamDetails({ stats }: { stats: TeamStats }) {
       <VenueRecord title={t.homeMatches} stats={stats.home} />
       <VenueRecord title={t.awayMatches} stats={stats.away} />
     </div>
-    <section className="panel detail">
-      <h3 className="mb-2 font-bold">{t.last}{" "}{stats.recent.length}{" "}{t.results}</h3>
-      <dl className="data-list">
-        {stats.recent.map((match) => <div key={match.match_id}>
-          <dt><ClubLabel name={match.opponent.name} /> · {match.venue === "home" ? t.home : t.away}<br />
-            <time dateTime={match.date}>{calendarDate(intlLocale).format(new Date(match.date))}</time></dt>
-          <MatchResult scored={match.scored} conceded={match.conceded} />
-        </div>)}
-      </dl>
-    </section>
+    <div className="detail-grid">
+      <section className="panel detail">
+        <h3 className="mb-2 font-bold">{t.recentResults}</h3>
+        <dl className="data-list">
+          {stats.recent.map((match) => <div key={match.match_id}>
+            <dt><ClubLabel name={match.opponent.name} /> · {match.venue === "home" ? t.home : t.away}<br />
+              <time dateTime={match.date}>{calendarDate(intlLocale).format(new Date(match.date))}</time></dt>
+            <MatchResult scored={match.scored} conceded={match.conceded} />
+          </div>)}
+        </dl>
+      </section>
+      <Suspense fallback={<section className="panel detail" aria-busy="true">
+        <h3 className="mb-2 font-bold">{t.upcomingMatches}</h3>
+        <div className="skeleton h-24"><span className="sr-only">{t.loading}</span></div>
+      </section>}>
+        <UpcomingTeamMatches team={stats.team} />
+      </Suspense>
+    </div>
+  </section>;
+}
+
+async function UpcomingTeamMatches({ team }: { team: Team }) {
+  const { t, intlLocale } = await getPreferences();
+  const now = new Date();
+  const today = dateKey(bakuDate(now));
+  const feed = await loadFixtureFeed("upcoming", today);
+  const upcoming = feed?.competitions.flatMap(group => group.matches
+    .filter(match => (match.home.id === team.id || match.away.id === team.id)
+      && !match.score && (match.kickoff ? Date.parse(match.kickoff) > now.getTime() : match.date > today))
+    .map(match => ({ match, stale: group.stale })))
+    .sort((a, b) => a.match.date.localeCompare(b.match.date)
+      || (a.match.kickoff ?? "~").localeCompare(b.match.kickoff ?? "~"))
+    .slice(0, 5) ?? [];
+  const dateTime = fixtureDateTime(intlLocale);
+  const dateOnly = calendarDate(intlLocale);
+
+  return <section className="panel detail">
+    <h3 className="mb-2 font-bold">{t.upcomingMatches}</h3>
+    {upcoming.length === 0
+      ? <p className="muted">{feed?.competitions.length ? t.noMatchesInThisSection : t.fixtureServiceUnavailable}</p>
+      : <ul className="divide-y divide-[var(--line)]">
+        {upcoming.map(({ match, stale }) => {
+          const atHome = match.home.id === team.id;
+          return <li key={match.competition + match.id}>
+            <Link prefetch={false} href={realMatchPath(match.id)} className="flex min-h-11 items-center justify-between gap-2 rounded-md py-2 hover:bg-[var(--accent-bg)]">
+              <span className="grid min-w-0 gap-1">
+                <ClubLabel name={(atHome ? match.away : match.home).name} />
+                <span className="muted flex flex-wrap items-center gap-2 text-xs">
+                  <LeagueLabel code={match.competition} />
+                  <span>{atHome ? t.home : t.away}</span>
+                  {stale && <Badge>{t.staleData}</Badge>}
+                </span>
+              </span>
+              <span className="muted flex shrink-0 items-center gap-1 text-right text-xs">
+                <time dateTime={match.kickoff ?? match.date}>
+                  {match.kickoff ? dateTime.format(new Date(match.kickoff)) : dateOnly.format(new Date(match.date))}
+                </time>
+                <ChevronRight size={15} aria-hidden="true" />
+              </span>
+            </Link>
+          </li>;
+        })}
+      </ul>}
   </section>;
 }
 
