@@ -3,8 +3,8 @@ import { az, en } from "./translations";
 export type Locale = "az" | "en";
 export type Theme = "dark" | "light";
 
-export const languageCookie = "matchiq-language";
-export const themeCookie = "matchiq-theme";
+export const languageCookie = "matchiq-language-v2";
+export const themeCookie = "matchiq-theme-v2";
 
 export function isLocale(value: unknown): value is Locale {
   return value === "az" || value === "en";

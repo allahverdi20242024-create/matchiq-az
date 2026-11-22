@@ -3,7 +3,7 @@
 import { cookies } from "next/headers";
 import { isLocale, isTheme, languageCookie, themeCookie } from "@/lib/language";
 
-const options = { path: "/", httpOnly: true, sameSite: "lax", maxAge: 365 * 24 * 60 * 60 } as const;
+const options = { path: "/", sameSite: "lax", maxAge: 365 * 24 * 60 * 60 } as const;
 
 export async function changeLanguage(form: FormData) {
   const value = form.get("language");

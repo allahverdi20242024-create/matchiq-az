@@ -5,7 +5,7 @@ import Form from "next/form";
 import { Activity, ArrowUpRight, CalendarDays, ChartNoAxesCombined, ChevronLeft, ChevronRight, UsersRound } from "lucide-react";
 import { ClubCrest, ClubLabel, LeagueLabel } from "@/components/club-crest";
 import { Badge } from "@/components/ui/badge";
-import { dateKey, fixtureView, validDate } from "@/lib/fixture-date";
+import { dateKey, fixtureView, isDashboardUpcoming, validDate } from "@/lib/fixture-date";
 import { bakuDate } from "@/lib/demo";
 import { fixtureDateOnly, loadFixtureFeed, realMatchPath } from "@/lib/real-fixtures";
 import styles from "./dashboard.module.css";
@@ -73,23 +73,22 @@ async function DailyFixtures({ selected, today, now, calendarUrl }: {
   calendarUrl: string;
 }) {
   const { t, intlLocale } = await getPreferences();
-  const feed = await loadFixtureFeed(fixtureView(selected, today, dateKey(bakuDate(now, 1))), today);
+  const feed = selected < today ? undefined
+    : await loadFixtureFeed(fixtureView(selected, today, dateKey(bakuDate(now, 1))), today);
   const fixtures = feed?.competitions.flatMap((group) => group.matches
-    .filter((match) => match.date === selected)
+    .filter((match) => match.date === selected && isDashboardUpcoming(match, now, today))
     .map((match) => {
       const rows = group.standings?.rows;
       const home = rows?.find(row => row.team.id === match.home.id);
       const away = rows?.find(row => row.team.id === match.away.id);
       const fixture = { ...match, competition: group.competition, stale: group.stale };
-      if (selected < today || match.score || group.stale || (match.kickoff && Date.parse(match.kickoff) <= now.getTime())
-        || !home || !away || Math.min(home.played, away.played) < 5) {
+      if (group.stale || !home || !away || Math.min(home.played, away.played) < 5) {
         return { ...fixture, priority: 0 };
       }
       const rank = Math.max(home.position, away.position);
       return { ...fixture, priority: rank <= 2 ? 2 : rank <= 4 ? 1 : 0 };
     }))
-    .sort((a, b) => Number(Boolean(a.score)) - Number(Boolean(b.score))
-      || b.priority - a.priority
+    .sort((a, b) => b.priority - a.priority
       || (a.kickoff ?? "~").localeCompare(b.kickoff ?? "~")) ?? [];
   const [featured, ...nextMatches] = fixtures.slice(0, 5);
   const dateOnly = fixtureDateOnly(intlLocale);
@@ -108,10 +107,9 @@ async function DailyFixtures({ selected, today, now, calendarUrl }: {
         <div className={styles.matchup}>
           <div className={styles.team}><ClubCrest name={featured.home.name} eager /><strong>{featured.home.name}</strong></div>
           <div className={styles.kickoff}>
-            {featured.score ? <strong className={styles.score}>{featured.score.join(" : ")}</strong>
-              : featured.kickoff && <time dateTime={featured.kickoff}>{kickoffTime.format(new Date(featured.kickoff))}</time>}
+            {featured.kickoff && <time dateTime={featured.kickoff}>{kickoffTime.format(new Date(featured.kickoff))}</time>}
             <small>{dateOnly.format(new Date(featured.date))}</small>
-            {!featured.kickoff && !featured.score && <small>{t.kickoffTimeUnconfirmed}</small>}
+            {!featured.kickoff && <small>{t.kickoffTimeUnconfirmed}</small>}
           </div>
           <div className={styles.team}><ClubCrest name={featured.away.name} eager /><strong>{featured.away.name}</strong></div>
         </div>
@@ -131,15 +129,14 @@ async function DailyFixtures({ selected, today, now, calendarUrl }: {
             <span className={styles.matchNames}><ClubLabel name={match.home.name} /><ClubLabel name={match.away.name} />
             </span>
             <span className={styles.rowTime}>
-              {match.score ? <strong className={styles.rowScore}>{match.score.join(" : ")}</strong>
-                : <time dateTime={match.kickoff ?? match.date}>{match.kickoff ? kickoffTime.format(new Date(match.kickoff)) : "—"}</time>}
-              {match.stale ? <small>{t.staleData}</small> : !match.kickoff && !match.score && <small>{t.kickoffTimeUnconfirmed}</small>}
+              {match.kickoff && <time dateTime={match.kickoff}>{kickoffTime.format(new Date(match.kickoff))}</time>}
+              {match.stale ? <small>{t.staleData}</small> : !match.kickoff && <small>{t.kickoffTimeUnconfirmed}</small>}
             </span>
           </Link>
         </li>)}
       </ul>}
     </div> : <section className="panel empty">
-      <h2>{feed ? t.noMatchesFoundForThisDate : t.fixtureServiceUnavailable}</h2>
+      <h2>{feed === null ? t.fixtureServiceUnavailable : t.noUpcomingMatchesForDate}</h2>
       <Link className={styles.allLink} href={calendarUrl}>{t.fixtureSchedule}</Link>
     </section>}
     {fixtures.length > 5 && <Link className={styles.fullDay} href={calendarUrl}>{t.fullDayFixtures}</Link>}

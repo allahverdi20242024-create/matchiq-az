@@ -252,31 +252,42 @@ footer span { padding: 0 5px; color: var(--green); }
 
 .topbar { flex-wrap: wrap; }
 .topbar-controls { flex-wrap: wrap; justify-content: flex-end; }
-.preference-group {
-  display: flex;
-  align-items: center;
-  gap: 3px;
-  padding: 3px;
-  border: 1px solid var(--line);
-  border-radius: 9px;
-  background: var(--panel);
-  color: var(--muted);
-}
-.preference-group > svg { margin-inline: 5px 2px; }
+.preference-group { display: flex; gap: 4px; }
 .preference-group button {
+  --ball-panel: var(--line);
+  position: relative;
+  isolation: isolate;
   display: grid;
   place-items: center;
-  min-width: 38px;
-  min-height: 36px;
-  padding: 0 6px;
-  border-radius: 6px;
-  font-size: .75rem;
-  font-weight: 750;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--panel);
+  color: var(--ink);
+  font-size: .72rem;
+  font-weight: 800;
 }
-.preference-group button:hover, .preference-group button[aria-pressed="true"] {
-  background: var(--accent-bg);
-  color: var(--accent-link);
+.preference-group button::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 2px;
+  border-radius: inherit;
+  background:
+    radial-gradient(circle at 50% 0%, var(--ball-panel) 0 17%, transparent 18%),
+    radial-gradient(circle at 0% 50%, var(--ball-panel) 0 17%, transparent 18%),
+    radial-gradient(circle at 100% 50%, var(--ball-panel) 0 17%, transparent 18%),
+    radial-gradient(circle at 50% 100%, var(--ball-panel) 0 17%, transparent 18%);
 }
+.preference-group button:hover { border-color: var(--green); }
+.preference-group button[aria-pressed="true"] {
+  --ball-panel: color-mix(in srgb, var(--button-ink) 28%, var(--green));
+  color: var(--button-ink);
+  background: var(--green);
+  border-color: var(--green);
+}
+.language-switch { margin-inline-end: 5px; }
 :root[data-theme="light"] .brand-clip {
   background: #101722;
   border-radius: 9px;
@@ -340,21 +351,6 @@ footer span { padding: 0 5px; color: var(--green); }
 [data-theme="light"] .result-badge[data-outcome="win"] { --result-ink: #086744; }
 [data-theme="light"] .result-badge[data-outcome="draw"] { --result-ink: #795006; }
 [data-theme="light"] .result-badge[data-outcome="loss"] { --result-ink: #a22649; }
-
-.preference-group {
-  padding: 3px;
-  gap: 2px;
-  border-radius: 999px;
-  background: var(--bg);
-}
-.preference-group button { border-radius: 999px; }
-.preference-group button[aria-pressed="true"] {
-  color: var(--button-ink);
-  background: var(--green);
-  box-shadow: 0 1px 4px #0a201c22;
-}
-.language-switch button { letter-spacing: .035em; padding-inline: 10px; }
-.theme-switch svg { width: 17px; height: 17px; }
 
 /* Shared analytics and match surfaces */
 .team-profile, .method-list { display: grid; gap: 12px; }

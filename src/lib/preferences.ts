@@ -4,8 +4,8 @@ import { getLanguage, isLocale, isTheme, languageCookie, themeCookie } from "./l
 
 export const getPreferences = cache(async () => {
   const store = await cookies();
-  const language = store.get(languageCookie)?.value;
-  const appearance = store.get(themeCookie)?.value;
+  const language = store.get(languageCookie)?.value ?? store.get("matchiq-language")?.value;
+  const appearance = store.get(themeCookie)?.value ?? store.get("matchiq-theme")?.value;
   const locale = isLocale(language) ? language : "az";
   const theme = isTheme(appearance) ? appearance : "dark";
   return { locale, theme, ...getLanguage(locale) };

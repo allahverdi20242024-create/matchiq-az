@@ -9,3 +9,12 @@ export function validDate(value: string | string[] | undefined): value is string
 export function fixtureView(date: string, today: string, tomorrow: string) {
   return date === today ? "today" : date === tomorrow ? "tomorrow" : date > today ? "upcoming" : "results";
 }
+
+
+export function isDashboardUpcoming(
+  match: { date: string; kickoff: string | null; score: readonly [number, number] | null },
+  now: Date,
+  today: string,
+) {
+  return match.score === null && (match.kickoff ? Date.parse(match.kickoff) > now.getTime() : match.date > today);
+}

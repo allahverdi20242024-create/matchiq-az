@@ -85,9 +85,6 @@
   background: var(--panel);
 }
 .dateArrow:hover { color: var(--accent-link); background: var(--accent-bg); }
-.score, .rowScore { color: var(--ink); font-weight: 800; font-variant-numeric: tabular-nums; }
-.score { color: #f3fff8; font-size: clamp(1.35rem, 3vw, 2rem); }
-.rowScore { font-size: .9rem; }
 .fullDay { display: inline-block; margin-top: 10px; color: var(--accent-link); font-size: .85rem; font-weight: 700; }
 .fullDay:hover { text-decoration: underline; }
 .quickLink strong { flex: 1; }
