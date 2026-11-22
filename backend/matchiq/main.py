@@ -11,6 +11,7 @@ import httpx
 import psycopg
 from fastapi import FastAPI, HTTPException, Query
 from starlette.concurrency import run_in_threadpool
+from starlette.middleware.gzip import GZipMiddleware
 
 from .domain import Feed
 from .evaluation import Evaluation, summarize
@@ -69,6 +70,7 @@ def create_app(*, service=None, synchronize=True, simulation_cache=None):
                         await task
 
     app = FastAPI(title="MatchIQ AZ", lifespan=lifespan)
+    app.add_middleware(GZipMiddleware, minimum_size=2048, compresslevel=3)
 
     @app.get("/healthz")
     async def health():

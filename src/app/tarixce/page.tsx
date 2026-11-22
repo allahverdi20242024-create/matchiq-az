@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { getPreferences } from "@/lib/preferences";
 import { History } from "lucide-react";
 import { ClubLabel, LeagueLabel } from "@/components/club-crest";
@@ -50,7 +51,7 @@ async function loadReport<T>(path: string): Promise<T | null> {
   try {
     const base = process.env.MATCHIQ_API_URL || "http://127.0.0.1:8000";
     const response = await fetch(new URL(path, base), {
-      cache: "no-store",
+      next: { revalidate: 60 },
       signal: AbortSignal.timeout(4000),
     });
     return response.ok ? await response.json() as T : null;
@@ -60,15 +61,27 @@ async function loadReport<T>(path: string): Promise<T | null> {
 }
 
 export default async function HistoryPage() {
+  const { t } = await getPreferences();
+  return <>
+    <div className="heading"><div><h1>{t.forecastHistory}</h1></div></div>
+    <Suspense fallback={<div className="skeleton skeleton-card" role="status"><span className="sr-only">{t.loading}</span></div>}>
+      <SavedForecasts />
+    </Suspense>
+    <details className="panel detail source">
+      <summary>{t.modelBacktesting}</summary>
+      <Suspense fallback={<div className="skeleton skeleton-card" role="status"><span className="sr-only">{t.loading}</span></div>}>
+        <BacktestResults />
+      </Suspense>
+    </details>
+  </>;
+}
+
+async function SavedForecasts() {
   const { t, intlLocale } = await getPreferences();
   const labels = [t.homeWin, t.draw, t.awayWin];
   const en = intlLocale.toLowerCase().startsWith("en");
-  const [data, saved] = await Promise.all([
-    loadReport<Evaluation>("/v1/evaluation"),
-    loadReport<SavedHistory>("/v1/prediction-history"),
-  ]);
+  const saved = await loadReport<SavedHistory>("/v1/prediction-history");
   return <>
-    <div className="heading"><div><h1>{t.forecastHistory}</h1></div></div>
     <section className="panel detail">
       <h2>{en ? "Pre-match forecasts" : "Oyunöncəsi proqnozlar"}</h2>
       {!saved ? <p className="muted">{en ? "History is temporarily unavailable." : "Tarixçə müvəqqəti əlçatan deyil."}</p>
@@ -106,8 +119,14 @@ export default async function HistoryPage() {
         </div>)}
       </dl>}
     </section>}
-    <details className="panel detail source">
-      <summary>{t.modelBacktesting}</summary>
+  </>;
+}
+
+async function BacktestResults() {
+  const { t, intlLocale } = await getPreferences();
+  const labels = [t.homeWin, t.draw, t.awayWin];
+  const data = await loadReport<Evaluation>("/v1/evaluation");
+  return <>
     {!data || !data.model || !data.baseline ? <section className="panel empty">
       <span className="stat-icon"><History size={24} /></span>
       <h2>{data ? t.tooFewMatchesForBacktesting : t.evaluationServiceUnavailable}</h2>
@@ -143,6 +162,5 @@ export default async function HistoryPage() {
         </dl>
       </section>
     </div>}
-    </details>
   </>;
 }

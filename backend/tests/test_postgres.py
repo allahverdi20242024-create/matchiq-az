@@ -80,3 +80,30 @@ def test_archive_export_and_restore_preserve_settlement(tmp_path):
             assert settled_at == now
         finally:
             connection.rollback()
+
+
+def test_snapshot_cache_coalesces_loads_and_invalidates_after_save(monkeypatch):
+    store = PostgresStore("unused")
+    calls = []
+
+    async def read(season):
+        calls.append(season)
+        return {"PL": season}
+
+    async def write(_snapshot):
+        pass
+
+    monkeypatch.setattr(store, "_read_snapshots", read)
+    monkeypatch.setattr(store, "_write_snapshot", write)
+
+    async def verify():
+        first, second = await asyncio.gather(store.load(2026), store.load(2026))
+        assert calls == [2026]
+        first.clear()
+        assert second == {"PL": 2026}
+        await store.save(None)
+        assert await store.load(2026) == second
+        assert await store.load(2027) == {"PL": 2027}
+        assert calls == [2026, 2026, 2027]
+
+    asyncio.run(verify())

@@ -1,3 +1,5 @@
+from asyncio import Lock
+from time import monotonic
 from typing import Protocol
 
 import psycopg
@@ -44,8 +46,12 @@ class MemoryStore:
 
 
 class PostgresStore:
+    SNAPSHOT_CACHE_SECONDS = 30
+
     def __init__(self, dsn):
         self.dsn = dsn
+        self._snapshot_lock = Lock()
+        self._snapshot_cache: tuple[int, float, dict[str, Snapshot]] | None = None
 
     async def initialize(self):
         async with await psycopg.AsyncConnection.connect(self.dsn, connect_timeout=5) as conn:
@@ -70,6 +76,15 @@ class PostgresStore:
             """)
 
     async def load(self, season):
+        async with self._snapshot_lock:
+            cached = self._snapshot_cache
+            if cached is not None and cached[0] == season and cached[1] > monotonic():
+                return cached[2].copy()
+            snapshots = await self._read_snapshots(season)
+            self._snapshot_cache = (season, monotonic() + self.SNAPSHOT_CACHE_SECONDS, snapshots)
+            return snapshots.copy()
+
+    async def _read_snapshots(self, season):
         async with await psycopg.AsyncConnection.connect(self.dsn, connect_timeout=5) as conn:
             cursor = await conn.execute(
                 "SELECT competition, payload FROM fixture_snapshots WHERE season = %s", (season,)
@@ -77,6 +92,11 @@ class PostgresStore:
             return {code: Snapshot.model_validate(payload) async for code, payload in cursor}
 
     async def save(self, snapshot):
+        async with self._snapshot_lock:
+            await self._write_snapshot(snapshot)
+            self._snapshot_cache = None
+
+    async def _write_snapshot(self, snapshot):
         async with await psycopg.AsyncConnection.connect(self.dsn, connect_timeout=5) as conn:
             await conn.execute("""
                 INSERT INTO fixture_snapshots (season, competition, fetched_at, payload)

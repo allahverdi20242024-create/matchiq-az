@@ -1,6 +1,6 @@
 import { getPreferences } from "@/lib/preferences";
 import Form from "next/form";
-import { OutcomeChart } from "@/components/outcome-chart";
+import { DeferredOutcomeChart } from "@/components/deferred-outcome-chart";
 import { fixtureDateTime } from "@/lib/real-fixtures";
 import { ClubLabel, LeagueLabel } from "@/components/club-crest";
 
@@ -80,7 +80,7 @@ export async function SimulationPanel({ groups, matchId, rawTrials, action = "/r
         <h3 className="text-lg font-bold"><ClubLabel name={choice.home} /> <span aria-hidden="true">–</span> <ClubLabel name={choice.away} /></h3>
       </div>}
       <p className="muted">{countFormatter(intlLocale).format(result.trials)}{" " + t.trialsModel + " "}{result.model_version} · <time dateTime={result.calculated_at}>{fixtureDateTime(intlLocale).format(new Date(result.calculated_at))}</time></p>
-      <OutcomeChart values={[result.home_win * 100, result.draw * 100, result.away_win * 100]} />
+      <DeferredOutcomeChart values={[result.home_win * 100, result.draw * 100, result.away_win * 100]} />
       <div className="detail-grid mt-3">
         <dl className="data-list">
           {[

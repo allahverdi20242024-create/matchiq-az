@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { BarChart, Bar, Cell, LabelList, ResponsiveContainer, XAxis, YAxis } from "recharts";
 import { usePreferences } from "@/components/preferences-context";
 import { outcomeColors } from "@/lib/demo";
@@ -22,10 +22,14 @@ function AnimatedOutcomeChart({ values }: { values: readonly number[] }) {
     const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
     let frame = 0;
     let start: number | undefined;
+    let lastPaint = -Infinity;
     const animate = (now: number) => {
       start ??= now;
       const elapsed = Math.min((now - start) / duration, 1);
-      setProgress(motion.matches ? 1 : 1 - (1 - elapsed) ** 3);
+      if (motion.matches || elapsed === 1 || now - lastPaint >= 1000 / 30) {
+        lastPaint = now;
+        setProgress(motion.matches ? 1 : 1 - (1 - elapsed) ** 3);
+      }
       if (elapsed < 1 && !motion.matches) frame = requestAnimationFrame(animate);
     };
     const observer = new IntersectionObserver(([entry]) => {
@@ -40,7 +44,9 @@ function AnimatedOutcomeChart({ values }: { values: readonly number[] }) {
     };
   }, []);
 
-  const format = new Intl.NumberFormat(intlLocale, { style: "percent", maximumFractionDigits: 2 });
+  const format = useMemo(() => new Intl.NumberFormat(intlLocale, {
+    style: "percent", maximumFractionDigits: 2,
+  }), [intlLocale]);
   const data = [t.home, t.draw, t.away].map((name, index) => {
     const value = values[index] * progress;
     return { name, value, label: format.format(value / 100) };
