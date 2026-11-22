@@ -72,7 +72,10 @@ def compare(rows):
         weeks.append(week)
 
     results = {}
-    for label, mask in (("all", np.ones(len(weeks), dtype=bool)), ("matchweeks_20_38", np.asarray(weeks) >= 20)):
+    later = np.array([week is not None and week >= 20 for week in weeks], dtype=bool)
+    for label, mask in (("all", np.ones(len(weeks), dtype=bool)), ("matchweeks_20_38", later)):
+        if not mask.any():
+            continue
         actual = np.eye(3)[np.asarray(observed)[mask]]
         results[label] = {"matches": len(actual),
                           "goals": metrics(np.asarray(baseline)[mask], actual).model_dump(),

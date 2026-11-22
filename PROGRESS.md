@@ -64,3 +64,16 @@ Təsdiqlənmiş provayder çıxışı olduqda rəsmi liqa cədvəllərini əlav�
 - Oyunöncəsi qeydlər və tarixi təkrar sınaqlar ayrı göstərilir. Oyunöncəsi göstəricilər 50 təsdiqlənmiş nəticədən sonra görünür.
 - Kalibrasiya modeli kifayət qədər qeydə alınmış nəticə toplandıqda onları xronoloji qaydada öyrənir. Yoxlama dövründə nəticəsi hələ məlum olmayan oyunlar təlimə daxil edilmir. Yeni kalibrasiya yalnız həm Brier, həm də loqarifmik itkidə baza modelini üstələdikdə tətbiq olunur.
 - Arxivi xidmət yenidən başladıqda saxlamaq üçün backend-də `DATABASE_URL` qurulmalıdır. Yaddaş rejimində qeydlər yalnız cari prosesdə qalır.
+
+## Premyer Liqa xG sınağı
+
+`backend/research/footy_xg_backtest.py` 11footy-nin Premyer Liqa SQLite
+buraxılışını yerli, yalnız oxunan rejimdə yoxlayır. Mənbə 11footy-dir
+(CC BY-NC 4.0). Buraxılış faylını `SHA256SUMS` ilə yoxlayıb açın, sonra
+repozitoriyanın kökündə `PYTHONPATH=backend` ilə
+`python backend/research/footy_xg_backtest.py <baza.db> 2024 2025 2026`
+işlədin. Hesabat hər mövsüm üzrə hər iki tərəfin xG əhatəsini, son tam
+xG tarixini, son on oyunda boşluqları və xronoloji model müqayisəsini göstərir.
+
+Cari mövsüm məlumatı üçün təsdiqlənmiş və vaxtında yenilənən mənbə tələb olunur.
+Bu tədqiqat yolu istehsal proqnozlarına qoşulmayıb.
