@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { Globe2, Lightbulb, RotateCcw, Trophy } from "lucide-react";
+import { Check, Globe2, Lightbulb, RotateCcw, Trophy, X } from "lucide-react";
 import { ClubLabel } from "@/components/crest-icons";
 import careerArt from "@/lib/career-art.json";
 import archiveArt from "@/lib/career-archive-crests.json";
@@ -70,16 +70,20 @@ function Round({ question, en, next }: { question: Question; en: boolean; next: 
   const [wrong, setWrong] = useState<string[]>([]);
   const [hintCount, setHintCount] = useState(0);
   const [points, setPoints] = useState<number | null>(null);
+  const continueButton = useRef<HTMLButtonElement>(null);
   const possible = Math.max(1, 3 - wrong.length - hintCount);
+
+  useEffect(() => {
+    if (points !== null) continueButton.current?.focus();
+  }, [points]);
 
   function check(id: string) {
     if (points !== null || wrong.includes(id)) return;
     if (id === player.id) {
       setPoints(possible);
-    } else if (wrong.length >= 2) {
-      setPoints(0);
     } else {
       setWrong([...wrong, id]);
+      if (wrong.length >= 2) setPoints(0);
     }
   }
 
@@ -90,11 +94,18 @@ function Round({ question, en, next }: { question: Question; en: boolean; next: 
         <small>{club.fromYear}{club.toYear !== club.fromYear && `–${club.toYear ?? (en ? "present" : "indi")}`}{club.loan && (en ? " · Loan" : " · İcarə")}</small>
       </li>)}
     </ol>
+    <div className={styles.options} role="group" aria-label={en ? "Answer choices" : "Cavab variantları"}>
+      {options.map(option => {
+        const result = points !== null && option.id === player.id ? "correct" : wrong.includes(option.id) ? "wrong" : undefined;
+        return <button type="button" key={option.id} data-result={result}
+          disabled={points !== null || result === "wrong"} onClick={() => check(option.id)}>
+          <span>{option.name}</span>
+          {result === "correct" && <><Check size={17} aria-hidden="true" /><span className="sr-only">{en ? "Correct answer" : "Düzgün cavab"}</span></>}
+          {result === "wrong" && <><X size={17} aria-hidden="true" /><span className="sr-only">{en ? "Incorrect answer" : "Yanlış cavab"}</span></>}
+        </button>;
+      })}
+    </div>
     {points === null ? <>
-      <div className={styles.options} role="group" aria-label={en ? "Answer choices" : "Cavab variantları"}>
-        {options.map(option => <button type="button" key={option.id} disabled={wrong.includes(option.id)}
-          onClick={() => check(option.id)}>{option.name}</button>)}
-      </div>
       <div className={styles.actions}>
         <button type="button" onClick={() => setHintCount(hintCount + 1)} disabled={hintCount === 2}>
           <Lightbulb size={16} aria-hidden="true" />{en ? "Hint" : "İpucu"}
@@ -109,7 +120,7 @@ function Round({ question, en, next }: { question: Question; en: boolean; next: 
     </> : <div className={styles.reveal}>
       <p role="status"><strong>{player.name}</strong> · +{points} {en ? "pts" : "xal"}</p>
       <div className={styles.actions}>
-        <button type="button" className="primary" onClick={() => next(points)}>{en ? "Continue" : "Davam et"}</button>
+        <button ref={continueButton} type="button" className="primary" onClick={() => next(points)}>{en ? "Continue" : "Davam et"}</button>
         {player.sources.map((url, index) => <a key={url} href={url} target="_blank" rel="noreferrer">
           {en ? "Source" : "Mənbə"}{player.sources.length > 1 && ` ${index + 1}`}
         </a>)}
@@ -129,6 +140,12 @@ export function CareerGame({ en }: { en: boolean }) {
   const [score, setScore] = useState(0);
   const names = en ? ["Easy", "Medium", "Hard", "Mixed"] : ["Asan", "Orta", "Çətin", "Qarışıq"];
   const question = questions[round];
+  const roundHeading = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    if (questions.length > 0) roundHeading.current?.focus();
+  }, [questions, round]);
+
   function start() {
     setQuestions(drawQuestions(level));
     setRound(0);
@@ -137,14 +154,15 @@ export function CareerGame({ en }: { en: boolean }) {
 
   return <section className={`panel detail ${styles.game}`} aria-label={en ? "Player career quiz" : "Futbolçu karyerası oyunu"}>
     {question ? <>
-      <div className={styles.top}><h2>{en ? "Who is the player?" : "Bu futbolçu kimdir?"}</h2>
+      <div className={styles.top}><h2 ref={roundHeading} tabIndex={-1}>{en ? "Who is the player?" : "Bu futbolçu kimdir?"}</h2>
         <span>{round + 1}/{roundsPerGame} · {score} {en ? "pts" : "xal"}</span></div>
+      <progress className={styles.progress} value={round + 1} max={roundsPerGame} aria-label={en ? "Quiz round" : "Oyun mərhələsi"} />
       <Round key={question.player.id} question={question} en={en} next={points => {
         setScore(score + points);
         setRound(round + 1);
       }} />
     </> : <>
-      {questions.length > 0 ? <h2 className={styles.score}><Trophy size={24} aria-hidden="true" /> {score}/{roundsPerGame * 3} {en ? "points" : "xal"}</h2>
+      {questions.length > 0 ? <h2 ref={roundHeading} tabIndex={-1} className={styles.score}><Trophy size={24} aria-hidden="true" /> {score}/{roundsPerGame * 3} {en ? "points" : "xal"}</h2>
         : <p>{en ? "Guess the player from their club career." : "Klub karyerasına baxıb futbolçunu tap."}</p>}
       <div className={styles.actions}>
         <label htmlFor="career-level">{en ? "Difficulty" : "Çətinlik"}</label>

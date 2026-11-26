@@ -6,9 +6,15 @@
 .clubs li { display: grid; gap: .35rem; padding: .65rem .8rem; border: 1px solid var(--line); border-radius: .65rem; }
 .actions select, .actions button:not(:global(.primary)), .options button { border: 1px solid var(--line); border-radius: .55rem; padding: .55rem .75rem; background: var(--panel); color: inherit; }
 .options { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr)); gap: .6rem; }
-.options button { min-height: 3rem; text-align: left; font-weight: 600; }
+.options button { display: flex; justify-content: space-between; align-items: center; gap: .5rem; min-height: 3rem; text-align: left; font-weight: 600; }
+.options button > svg { flex: none; }
 .options button:hover:not(:disabled) { border-color: var(--green); }
-.options button:disabled { opacity: .6; text-decoration: line-through; }
+.options button:disabled { cursor: default; color: var(--muted); }
+.options button[data-result="correct"] { color: var(--accent-link); border-color: var(--accent-border); background: var(--accent-bg); }
+.options button[data-result="wrong"] { color: var(--muted); }
+.options button[data-result="wrong"] > span:first-child { text-decoration: line-through; }
+.options button[data-result="wrong"] > svg { color: var(--warning); }
+.progress { width: 100%; height: .35rem; accent-color: var(--green); }
 .actions button { display: inline-flex; align-items: center; gap: .4rem; }
 .actions button:disabled { opacity: .45; }
 .feedback:empty { display: none; }
