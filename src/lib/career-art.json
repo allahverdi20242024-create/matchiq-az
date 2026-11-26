@@ -1,0 +1,1146 @@
+{
+  "flags": {
+    "Algeria": {
+      "source": "https://www.countryflags.com/flag-of-algeria/",
+      "index": 0
+    },
+    "Argentina": {
+      "source": "https://www.countryflags.com/flag-of-argentina/",
+      "index": 1
+    },
+    "Australia": {
+      "source": "https://www.countryflags.com/flag-of-australia/",
+      "index": 2
+    },
+    "Belgium": {
+      "source": "https://www.countryflags.com/flag-of-belgium/",
+      "index": 3
+    },
+    "Brazil": {
+      "source": "https://www.countryflags.com/flag-of-brazil/",
+      "index": 4
+    },
+    "Bulgaria": {
+      "source": "https://www.countryflags.com/flag-of-bulgaria/",
+      "index": 5
+    },
+    "Denmark": {
+      "source": "https://www.countryflags.com/flag-of-denmark/",
+      "index": 6
+    },
+    "Egypt": {
+      "source": "https://www.countryflags.com/flag-of-egypt/",
+      "index": 7
+    },
+    "England": {
+      "source": "https://www.countryflags.com/flag-of-england/",
+      "index": 8
+    },
+    "Finland": {
+      "source": "https://www.countryflags.com/flag-of-finland/",
+      "index": 9
+    },
+    "France": {
+      "source": "https://www.countryflags.com/flag-of-france/",
+      "index": 10
+    },
+    "Gabon": {
+      "source": "https://www.countryflags.com/flag-of-gabon/",
+      "index": 11
+    },
+    "Germany": {
+      "source": "https://www.countryflags.com/flag-of-germany/",
+      "index": 12
+    },
+    "Ghana": {
+      "source": "https://www.countryflags.com/flag-of-ghana/",
+      "index": 13
+    },
+    "Italy": {
+      "source": "https://www.countryflags.com/flag-of-italy/",
+      "index": 14
+    },
+    "Ivory Coast": {
+      "source": "https://www.countryflags.com/flag-of-ivory-coast/",
+      "index": 15
+    },
+    "Japan": {
+      "source": "https://www.countryflags.com/flag-of-japan/",
+      "index": 16
+    },
+    "Morocco": {
+      "source": "https://www.countryflags.com/flag-of-morocco/",
+      "index": 17
+    },
+    "Netherlands": {
+      "source": "https://www.countryflags.com/flag-of-netherlands/",
+      "index": 18
+    },
+    "Nigeria": {
+      "source": "https://www.countryflags.com/flag-of-nigeria/",
+      "index": 19
+    },
+    "Norway": {
+      "source": "https://www.countryflags.com/flag-of-norway/",
+      "index": 20
+    },
+    "Peru": {
+      "source": "https://www.countryflags.com/flag-of-peru/",
+      "index": 21
+    },
+    "Poland": {
+      "source": "https://www.countryflags.com/flag-of-poland/",
+      "index": 22
+    },
+    "Portugal": {
+      "source": "https://www.countryflags.com/flag-of-portugal/",
+      "index": 23
+    },
+    "Romania": {
+      "source": "https://www.countryflags.com/flag-of-romania/",
+      "index": 24
+    },
+    "Senegal": {
+      "source": "https://www.countryflags.com/flag-of-senegal/",
+      "index": 25
+    },
+    "Serbia": {
+      "source": "https://www.countryflags.com/flag-of-serbia/",
+      "index": 26
+    },
+    "South Korea": {
+      "source": "https://www.countryflags.com/flag-of-south-korea/",
+      "index": 27
+    },
+    "Spain": {
+      "source": "https://www.countryflags.com/flag-of-spain/",
+      "index": 28
+    },
+    "United States": {
+      "source": "https://www.countryflags.com/flag-of-united-states/",
+      "index": 29
+    },
+    "Uruguay": {
+      "source": "https://www.countryflags.com/flag-of-uruguay/",
+      "index": 30
+    },
+    "Wales": {
+      "source": "https://www.countryflags.com/flag-of-wales/",
+      "index": 31
+    }
+  },
+  "clubs": {
+    "1. FC Kaiserslautern": {
+      "source": "https://football-logos.cc/germany/fc-kaiserslautern/",
+      "src": "https://assets.football-logos.cc/logos/germany/700x700/fc-kaiserslautern.810f9984.png"
+    },
+    "AC Milan": {
+      "source": "https://football-logos.cc/italy/milan/",
+      "src": "https://assets.football-logos.cc/logos/italy/700x700/milan.23ad6174.png"
+    },
+    "AZ": {
+      "source": "https://football-logos.cc/netherlands/az-alkmaar/",
+      "src": "https://assets.football-logos.cc/logos/netherlands/700x700/az-alkmaar.68b9dc18.png"
+    },
+    "Ajax": {
+      "source": "https://football-logos.cc/netherlands/ajax/",
+      "src": "https://assets.football-logos.cc/logos/netherlands/700x700/ajax.c59b8b0d.png"
+    },
+    "Al Ahli Dubai": {
+      "source": "https://football-logos.cc/uae/shabab-al-ahli/",
+      "src": "https://assets.football-logos.cc/logos/uae/700x700/shabab-al-ahli.bb380f18.png"
+    },
+    "Al Sadd": {
+      "source": "https://football-logos.cc/qatar/al-sadd/",
+      "src": "https://assets.football-logos.cc/logos/qatar/700x700/al-sadd.a638a064.png"
+    },
+    "Al-Ahli": {
+      "source": "https://football-logos.cc/saudi-arabia/al-ahli/",
+      "src": "https://assets.football-logos.cc/logos/saudi-arabia/700x700/al-ahli.9c18364c.png"
+    },
+    "Al-Duhail": {
+      "source": "https://football-logos.cc/qatar/al-duhail/",
+      "src": "https://assets.football-logos.cc/logos/qatar/700x700/al-duhail.4e2cff48.png"
+    },
+    "Al-Gharafa": {
+      "source": "https://football-logos.cc/qatar/al-gharafa/",
+      "src": "https://assets.football-logos.cc/logos/qatar/700x700/al-gharafa.7edc6595.png"
+    },
+    "Al-Hilal": {
+      "source": "https://football-logos.cc/saudi-arabia/al-hilal/",
+      "src": "https://assets.football-logos.cc/logos/saudi-arabia/700x700/al-hilal.8048d91c.png"
+    },
+    "Al-Ittihad": {
+      "source": "https://football-logos.cc/saudi-arabia/al-ittihad/",
+      "src": "https://assets.football-logos.cc/logos/saudi-arabia/700x700/al-ittihad.31cfeda9.png"
+    },
+    "Al-Mokawloon": {
+      "source": "https://football-logos.cc/egypt/al-mokawloon-al-arab/",
+      "src": "https://assets.football-logos.cc/logos/egypt/700x700/al-mokawloon-al-arab.f725351c.png"
+    },
+    "Al-Nassr": {
+      "source": "https://football-logos.cc/saudi-arabia/al-nassr/",
+      "src": "https://assets.football-logos.cc/logos/saudi-arabia/700x700/al-nassr.364981c5.png"
+    },
+    "Al-Qadsiah": {
+      "source": "https://football-logos.cc/saudi-arabia/al-qadsiah/",
+      "src": "https://assets.football-logos.cc/logos/saudi-arabia/700x700/al-qadsiah.e7233df3.png"
+    },
+    "Al-Rayyan": {
+      "source": "https://football-logos.cc/qatar/al-rayyan/",
+      "src": "https://assets.football-logos.cc/logos/qatar/700x700/al-rayyan.e017fbe5.png"
+    },
+    "Al-Shamal": {
+      "source": "https://football-logos.cc/qatar/al-shamal/",
+      "src": "https://assets.football-logos.cc/logos/qatar/700x700/al-shamal.ebed65bb.png"
+    },
+    "Aldosivi": {
+      "source": "https://football-logos.cc/argentina/aldosivi/",
+      "src": "https://assets.football-logos.cc/logos/argentina/700x700/aldosivi.ec2d204f.png"
+    },
+    "Alianza Lima": {
+      "source": "https://football-logos.cc/peru/alianza-lima/",
+      "src": "https://assets.football-logos.cc/logos/peru/700x700/alianza-lima.40382b44.png"
+    },
+    "Argentinos Juniors": {
+      "source": "https://football-logos.cc/argentina/argentinos-juniors/",
+      "src": "https://assets.football-logos.cc/logos/argentina/700x700/argentinos-juniors.ffd1e6f9.png"
+    },
+    "Arsenal": {
+      "source": "https://football-logos.cc/england/arsenal/",
+      "src": "https://assets.football-logos.cc/logos/england/700x700/arsenal.cfdaf053.png"
+    },
+    "Ascoli": {
+      "source": "https://football-logos.cc/italy/ascoli/",
+      "src": "https://assets.football-logos.cc/logos/italy/700x700/ascoli.8dfea86e.png"
+    },
+    "Aston Villa": {
+      "source": "https://football-logos.cc/england/aston-villa/",
+      "src": "https://assets.football-logos.cc/logos/england/700x700/aston-villa.1c2803fb.png"
+    },
+    "Atalanta": {
+      "source": "https://football-logos.cc/italy/atalanta/",
+      "src": "https://assets.football-logos.cc/logos/italy/700x700/atalanta.55d9b635.png"
+    },
+    "Atlético Madrid": {
+      "source": "https://football-logos.cc/spain/atletico-madrid/",
+      "src": "https://assets.football-logos.cc/logos/spain/700x700/atletico-madrid.2bb560a3.png"
+    },
+    "Atlético Mineiro": {
+      "source": "https://football-logos.cc/brazil/atletico-mineiro/",
+      "src": "https://assets.football-logos.cc/logos/brazil/700x700/atletico-mineiro.b23bb8a6.png"
+    },
+    "Auxerre": {
+      "source": "https://football-logos.cc/france/auxerre/",
+      "src": "https://assets.football-logos.cc/logos/france/700x700/auxerre.17dfcd8d.png"
+    },
+    "Avaí": {
+      "source": "https://football-logos.cc/brazil/avai/",
+      "src": "https://assets.football-logos.cc/logos/brazil/700x700/avai.61137d55.png"
+    },
+    "Banfield": {
+      "source": "https://football-logos.cc/argentina/banfield/",
+      "src": "https://assets.football-logos.cc/logos/argentina/700x700/banfield.f17d9e4b.png"
+    },
+    "Baniyas": {
+      "source": "https://football-logos.cc/uae/baniyas/",
+      "src": "https://assets.football-logos.cc/logos/uae/700x700/baniyas.7c7d0f03.png"
+    },
+    "Barcelona": {
+      "source": "https://football-logos.cc/spain/barcelona/",
+      "src": "https://assets.football-logos.cc/logos/spain/700x700/barcelona.470254ee.png"
+    },
+    "Bari": {
+      "source": "https://football-logos.cc/italy/bari/",
+      "src": "https://assets.football-logos.cc/logos/italy/700x700/bari.2d0935eb.png"
+    },
+    "Basel": {
+      "source": "https://football-logos.cc/switzerland/basel/",
+      "src": "https://assets.football-logos.cc/logos/switzerland/700x700/basel.b8f6b64d.png"
+    },
+    "Bastia": {
+      "source": "https://football-logos.cc/france/bastia/",
+      "src": "https://assets.football-logos.cc/logos/france/700x700/bastia.f9134bdd.png"
+    },
+    "Bayer Leverkusen": {
+      "source": "https://football-logos.cc/germany/bayer-leverkusen/",
+      "src": "https://assets.football-logos.cc/logos/germany/700x700/bayer-leverkusen.7c4c95f5.png"
+    },
+    "Bayer Uerdingen": {
+      "source": "https://football-logos.cc/germany/kfc-uerdingen-05/",
+      "src": "https://assets.football-logos.cc/logos/germany/700x700/kfc-uerdingen-05.cae9b75b.png"
+    },
+    "Bayern Munich": {
+      "source": "https://football-logos.cc/germany/bayern-munchen/",
+      "src": "https://assets.football-logos.cc/logos/germany/700x700/bayern-munchen.90b9d770.png"
+    },
+    "Benfica": {
+      "source": "https://football-logos.cc/portugal/benfica/",
+      "src": "https://assets.football-logos.cc/logos/portugal/700x700/benfica.373a95ac.png"
+    },
+    "Beveren": {
+      "source": "https://football-logos.cc/belgium/beveren/",
+      "src": "https://assets.football-logos.cc/logos/belgium/700x700/beveren.0004a58e.png"
+    },
+    "Blackburn Rovers": {
+      "source": "https://football-logos.cc/england/blackburn-rovers/",
+      "src": "https://assets.football-logos.cc/logos/england/700x700/blackburn-rovers.dd1f6b6b.png"
+    },
+    "Boavista": {
+      "source": "https://football-logos.cc/portugal/boavista/",
+      "src": "https://assets.football-logos.cc/logos/portugal/700x700/boavista.fdc38923.png"
+    },
+    "Boca Juniors": {
+      "source": "https://football-logos.cc/argentina/boca-juniors/",
+      "src": "https://assets.football-logos.cc/logos/argentina/700x700/boca-juniors.71c098ad.png"
+    },
+    "Bologna": {
+      "source": "https://football-logos.cc/italy/bologna/",
+      "src": "https://assets.football-logos.cc/logos/italy/700x700/bologna.577e3847.png"
+    },
+    "Bolton Wanderers": {
+      "source": "https://football-logos.cc/england/bolton/",
+      "src": "https://assets.football-logos.cc/logos/england/700x700/bolton.ef0a1fe7.png"
+    },
+    "Bordeaux": {
+      "source": "https://football-logos.cc/france/bordeaux/",
+      "src": "https://assets.football-logos.cc/logos/france/700x700/bordeaux.dfc8c9fe.png"
+    },
+    "Borussia Dortmund": {
+      "source": "https://football-logos.cc/germany/borussia-dortmund/",
+      "src": "https://assets.football-logos.cc/logos/germany/700x700/borussia-dortmund.c2e456ab.png"
+    },
+    "Borussia Neunkirchen": {
+      "source": "https://football-logos.cc/germany/borussia-neunkirchen/",
+      "src": "https://assets.football-logos.cc/logos/germany/700x700/borussia-neunkirchen.3828f5fb.png"
+    },
+    "Botafogo": {
+      "source": "https://football-logos.cc/brazil/botafogo/",
+      "src": "https://assets.football-logos.cc/logos/brazil/700x700/botafogo.c4e2a3c5.png"
+    },
+    "Boulogne": {
+      "source": "https://football-logos.cc/france/boulogne/",
+      "src": "https://assets.football-logos.cc/logos/france/700x700/boulogne.7f7c6c66.png"
+    },
+    "Brescia": {
+      "source": "https://football-logos.cc/italy/brescia/",
+      "src": "https://assets.football-logos.cc/logos/italy/700x700/brescia.5bca74a6.png"
+    },
+    "Brest": {
+      "source": "https://football-logos.cc/france/brest/",
+      "src": "https://assets.football-logos.cc/logos/france/700x700/brest.c2e08828.png"
+    },
+    "Bryne": {
+      "source": "https://football-logos.cc/norway/bryne/",
+      "src": "https://assets.football-logos.cc/logos/norway/700x700/bryne.501d25aa.png"
+    },
+    "Brøndby": {
+      "source": "https://football-logos.cc/denmark/brondby/",
+      "src": "https://assets.football-logos.cc/logos/denmark/700x700/brondby.3c6f82b0.png"
+    },
+    "Budućnost Titograd": {
+      "source": "https://football-logos.cc/montenegro/buducnost-podgorica/",
+      "src": "https://assets.football-logos.cc/logos/montenegro/700x700/buducnost-podgorica.f0f49f87.png"
+    },
+    "CSKA Moscow": {
+      "source": "https://football-logos.cc/russia/cska-moskva/",
+      "src": "https://assets.football-logos.cc/logos/russia/700x700/cska-moskva.74a438d4.png"
+    },
+    "CSKA Sofia": {
+      "source": "https://football-logos.cc/bulgaria/cska-sofia/",
+      "src": "https://assets.football-logos.cc/logos/bulgaria/700x700/cska-sofia.04789141.png"
+    },
+    "Cagliari": {
+      "source": "https://football-logos.cc/italy/cagliari/",
+      "src": "https://assets.football-logos.cc/logos/italy/700x700/cagliari.36b537b2.png"
+    },
+    "Cambuur": {
+      "source": "https://football-logos.cc/netherlands/sc-cambuur/",
+      "src": "https://assets.football-logos.cc/logos/netherlands/700x700/sc-cambuur.726c5491.png"
+    },
+    "Cannes": {
+      "source": "https://football-logos.cc/france/as-cannes/",
+      "src": "https://assets.football-logos.cc/logos/france/700x700/as-cannes.541c377a.png"
+    },
+    "Cardiff City": {
+      "source": "https://football-logos.cc/england/cardiff-city/",
+      "src": "https://assets.football-logos.cc/logos/england/700x700/cardiff-city.651749dc.png"
+    },
+    "Cartagena": {
+      "source": "https://football-logos.cc/spain/fc-cartagena/",
+      "src": "https://assets.football-logos.cc/logos/spain/700x700/fc-cartagena.bae00491.png"
+    },
+    "Celta Vigo": {
+      "source": "https://football-logos.cc/spain/celta/",
+      "src": "https://assets.football-logos.cc/logos/spain/700x700/celta.7c11481f.png"
+    },
+    "Celtic": {
+      "source": "https://football-logos.cc/scotland/celtic/",
+      "src": "https://assets.football-logos.cc/logos/scotland/700x700/celtic.fd08309e.png"
+    },
+    "Cerezo Osaka": {
+      "source": "https://football-logos.cc/japan/cerezo-osaka/",
+      "src": "https://assets.football-logos.cc/logos/japan/700x700/cerezo-osaka.9bb1ad73.png"
+    },
+    "Charlton Athletic": {
+      "source": "https://football-logos.cc/england/charlton/",
+      "src": "https://assets.football-logos.cc/logos/england/700x700/charlton.84523257.png"
+    },
+    "Chelsea": {
+      "source": "https://football-logos.cc/england/chelsea/",
+      "src": "https://assets.football-logos.cc/logos/england/700x700/chelsea.a22ea19b.png"
+    },
+    "Chennaiyin": {
+      "source": "https://football-logos.cc/india/chennaiyin-fc/",
+      "src": "https://assets.football-logos.cc/logos/india/700x700/chennaiyin-fc.c9e99cf6.png"
+    },
+    "Chicago Fire": {
+      "source": "https://football-logos.cc/usa/chicago-fire-fc/",
+      "src": "https://assets.football-logos.cc/logos/usa/700x700/chicago-fire-fc.a4b8ace1.png"
+    },
+    "Chievo": {
+      "source": "https://football-logos.cc/italy/chievo/",
+      "src": "https://assets.football-logos.cc/logos/italy/700x700/chievo.b82cdebd.png"
+    },
+    "Clermont": {
+      "source": "https://football-logos.cc/france/clermont-foot/",
+      "src": "https://assets.football-logos.cc/logos/france/700x700/clermont-foot.1127f5ab.png"
+    },
+    "Columbus Crew": {
+      "source": "https://football-logos.cc/usa/columbus-crew/",
+      "src": "https://assets.football-logos.cc/logos/usa/700x700/columbus-crew.2e45314b.png"
+    },
+    "Como": {
+      "source": "https://football-logos.cc/italy/como-1907/",
+      "src": "https://assets.football-logos.cc/logos/italy/700x700/como-1907.9113270a.png"
+    },
+    "Copenhagen": {
+      "source": "https://football-logos.cc/denmark/copenhagen/",
+      "src": "https://assets.football-logos.cc/logos/denmark/700x700/copenhagen.3bf78938.png"
+    },
+    "Corinthians": {
+      "source": "https://football-logos.cc/brazil/corinthians/",
+      "src": "https://assets.football-logos.cc/logos/brazil/700x700/corinthians.0227677d.png"
+    },
+    "Coventry City": {
+      "source": "https://football-logos.cc/england/coventry-city/",
+      "src": "https://assets.football-logos.cc/logos/england/700x700/coventry-city.cd363daa.png"
+    },
+    "Cremonese": {
+      "source": "https://football-logos.cc/italy/cremonese/",
+      "src": "https://assets.football-logos.cc/logos/italy/700x700/cremonese.d1134526.png"
+    },
+    "Cruz Azul": {
+      "source": "https://football-logos.cc/mexico/cruz-azul/",
+      "src": "https://assets.football-logos.cc/logos/mexico/700x700/cruz-azul.ac83a1f7.png"
+    },
+    "Cruzeiro": {
+      "source": "https://football-logos.cc/brazil/cruzeiro/",
+      "src": "https://assets.football-logos.cc/logos/brazil/700x700/cruzeiro.d6af93b5.png"
+    },
+    "D.C. United": {
+      "source": "https://football-logos.cc/usa/dc-united/",
+      "src": "https://assets.football-logos.cc/logos/usa/700x700/dc-united.65fe8c99.png"
+    },
+    "Den Bosch": {
+      "source": "https://football-logos.cc/netherlands/fc-den-bosch/",
+      "src": "https://assets.football-logos.cc/logos/netherlands/700x700/fc-den-bosch.bd452d11.png"
+    },
+    "Deportivo A Coruña": {
+      "source": "https://football-logos.cc/spain/deportivo-la-coruna/",
+      "src": "https://assets.football-logos.cc/logos/spain/700x700/deportivo-la-coruna.f221c9cc.png"
+    },
+    "Deportivo La Coruña": {
+      "source": "https://football-logos.cc/spain/deportivo-la-coruna/",
+      "src": "https://assets.football-logos.cc/logos/spain/700x700/deportivo-la-coruna.f221c9cc.png"
+    },
+    "Derby County": {
+      "source": "https://football-logos.cc/england/derby-county/",
+      "src": "https://assets.football-logos.cc/logos/england/700x700/derby-county.707fb42c.png"
+    },
+    "Dijon": {
+      "source": "https://football-logos.cc/france/dijon/",
+      "src": "https://assets.football-logos.cc/logos/france/700x700/dijon.85c77ca1.png"
+    },
+    "Dinamo Zagreb": {
+      "source": "https://football-logos.cc/croatia/dinamo-zagreb/",
+      "src": "https://assets.football-logos.cc/logos/croatia/700x700/dinamo-zagreb.75127779.png"
+    },
+    "Eintracht Frankfurt": {
+      "source": "https://football-logos.cc/germany/eintracht-frankfurt/",
+      "src": "https://assets.football-logos.cc/logos/germany/700x700/eintracht-frankfurt.28da30fd.png"
+    },
+    "Estudiantes": {
+      "source": "https://football-logos.cc/argentina/estudiantes-de-la-plata/",
+      "src": "https://assets.football-logos.cc/logos/argentina/700x700/estudiantes-de-la-plata.b5d59477.png"
+    },
+    "Estudiantes Río Cuarto": {
+      "source": "https://football-logos.cc/argentina/estudiantes-de-rio-cuarto/",
+      "src": "https://assets.football-logos.cc/logos/argentina/700x700/estudiantes-de-rio-cuarto.060a70e4.png"
+    },
+    "Everton": {
+      "source": "https://football-logos.cc/england/everton/",
+      "src": "https://assets.football-logos.cc/logos/england/700x700/everton.05c044b8.png"
+    },
+    "FC 08 Homburg": {
+      "source": "https://football-logos.cc/germany/fc-08-homburg/",
+      "src": "https://assets.football-logos.cc/logos/germany/700x700/fc-08-homburg.fc66c6a6.png"
+    },
+    "FC Zwolle": {
+      "source": "https://football-logos.cc/netherlands/pec-zwolle/",
+      "src": "https://assets.football-logos.cc/logos/netherlands/700x700/pec-zwolle.c01fb7b9.png"
+    },
+    "Fatih Karagümrük": {
+      "source": "https://football-logos.cc/turkey/fatih-karagumruk/",
+      "src": "https://assets.football-logos.cc/logos/turkey/700x700/fatih-karagumruk.c670fefd.png"
+    },
+    "Fenerbahçe": {
+      "source": "https://football-logos.cc/turkey/fenerbahce/",
+      "src": "https://assets.football-logos.cc/logos/turkey/700x700/fenerbahce.623eae5c.png"
+    },
+    "Ferro Carril Oeste": {
+      "source": "https://football-logos.cc/argentina/ferro-carril-oeste/",
+      "src": "https://assets.football-logos.cc/logos/argentina/700x700/ferro-carril-oeste.5edc1cc7.png"
+    },
+    "Feyenoord": {
+      "source": "https://football-logos.cc/netherlands/feyenoord/",
+      "src": "https://assets.football-logos.cc/logos/netherlands/700x700/feyenoord.c90273fe.png"
+    },
+    "Fiorentina": {
+      "source": "https://football-logos.cc/italy/fiorentina/",
+      "src": "https://assets.football-logos.cc/logos/italy/700x700/fiorentina.a4632b82.png"
+    },
+    "Flamengo": {
+      "source": "https://football-logos.cc/brazil/flamengo/",
+      "src": "https://assets.football-logos.cc/logos/brazil/700x700/flamengo.776b574d.png"
+    },
+    "Fluminense": {
+      "source": "https://football-logos.cc/brazil/fluminense/",
+      "src": "https://assets.football-logos.cc/logos/brazil/700x700/fluminense.25435daf.png"
+    },
+    "Fulham": {
+      "source": "https://football-logos.cc/england/fulham/",
+      "src": "https://assets.football-logos.cc/logos/england/700x700/fulham.328af448.png"
+    },
+    "Galatasaray": {
+      "source": "https://football-logos.cc/turkey/galatasaray/",
+      "src": "https://assets.football-logos.cc/logos/turkey/700x700/galatasaray.27c56d4e.png"
+    },
+    "Genk": {
+      "source": "https://football-logos.cc/belgium/genk/",
+      "src": "https://assets.football-logos.cc/logos/belgium/700x700/genk.c1ec310d.png"
+    },
+    "Genoa": {
+      "source": "https://football-logos.cc/italy/genoa/",
+      "src": "https://assets.football-logos.cc/logos/italy/700x700/genoa.e9e4cc28.png"
+    },
+    "Goa": {
+      "source": "https://football-logos.cc/india/fc-goa/",
+      "src": "https://assets.football-logos.cc/logos/india/700x700/fc-goa.26c3f9bf.png"
+    },
+    "Grenoble": {
+      "source": "https://football-logos.cc/france/grenoble-foot-38/",
+      "src": "https://assets.football-logos.cc/logos/france/700x700/grenoble-foot-38.f7fb1255.png"
+    },
+    "Groningen": {
+      "source": "https://football-logos.cc/netherlands/fc-groningen/",
+      "src": "https://assets.football-logos.cc/logos/netherlands/700x700/fc-groningen.aa28c722.png"
+    },
+    "Grêmio": {
+      "source": "https://football-logos.cc/brazil/gremio/",
+      "src": "https://assets.football-logos.cc/logos/brazil/700x700/gremio.615cef98.png"
+    },
+    "Guingamp": {
+      "source": "https://football-logos.cc/france/guingamp/",
+      "src": "https://assets.football-logos.cc/logos/france/700x700/guingamp.2a1deabe.png"
+    },
+    "HJK": {
+      "source": "https://football-logos.cc/finland/hjk/",
+      "src": "https://assets.football-logos.cc/logos/finland/700x700/hjk.7686581a.png"
+    },
+    "Hamburger SV": {
+      "source": "https://football-logos.cc/germany/hamburger-sv/",
+      "src": "https://assets.football-logos.cc/logos/germany/700x700/hamburger-sv.761202ca.png"
+    },
+    "Hansa Rostock": {
+      "source": "https://football-logos.cc/germany/hansa-rostock/",
+      "src": "https://assets.football-logos.cc/logos/germany/700x700/hansa-rostock.7fb30c10.png"
+    },
+    "Hapoel Kfar Saba": {
+      "source": "https://football-logos.cc/israel/hapoel-kfar-saba/",
+      "src": "https://assets.football-logos.cc/logos/israel/700x700/hapoel-kfar-saba.945af711.png"
+    },
+    "Heerenveen": {
+      "source": "https://football-logos.cc/netherlands/sc-heerenveen/",
+      "src": "https://assets.football-logos.cc/logos/netherlands/700x700/sc-heerenveen.744b5e07.png"
+    },
+    "Hellas Verona": {
+      "source": "https://football-logos.cc/italy/verona/",
+      "src": "https://assets.football-logos.cc/logos/italy/700x700/verona.c7fac3dd.png"
+    },
+    "Huesca": {
+      "source": "https://football-logos.cc/spain/huesca/",
+      "src": "https://assets.football-logos.cc/logos/spain/700x700/huesca.7fa36b5d.png"
+    },
+    "Hull City": {
+      "source": "https://football-logos.cc/england/hull-city/",
+      "src": "https://assets.football-logos.cc/logos/england/700x700/hull-city.ca756d94.png"
+    },
+    "Hércules": {
+      "source": "https://football-logos.cc/spain/hercules/",
+      "src": "https://assets.football-logos.cc/logos/spain/700x700/hercules.ecddde13.png"
+    },
+    "Independiente": {
+      "source": "https://football-logos.cc/argentina/independiente/",
+      "src": "https://assets.football-logos.cc/logos/argentina/700x700/independiente.8cbf6d9d.png"
+    },
+    "Instituto": {
+      "source": "https://football-logos.cc/argentina/instituto-cordoba/",
+      "src": "https://assets.football-logos.cc/logos/argentina/700x700/instituto-cordoba.2eae5d0a.png"
+    },
+    "Inter Miami": {
+      "source": "https://football-logos.cc/usa/inter-miami-cf/",
+      "src": "https://assets.football-logos.cc/logos/usa/700x700/inter-miami-cf.aeb3f125.png"
+    },
+    "Inter Milan": {
+      "source": "https://football-logos.cc/italy/inter/",
+      "src": "https://assets.football-logos.cc/logos/italy/700x700/inter.305ef900.png"
+    },
+    "Internacional": {
+      "source": "https://football-logos.cc/brazil/internacional/",
+      "src": "https://assets.football-logos.cc/logos/brazil/700x700/internacional.3585d508.png"
+    },
+    "Johor Darul Ta'zim": {
+      "source": "https://football-logos.cc/malaysia/johor-darul-tazim/",
+      "src": "https://assets.football-logos.cc/logos/malaysia/700x700/johor-darul-tazim.eaa9bb73.png"
+    },
+    "Jurong": {
+      "source": "https://football-logos.cc/singapore/fc-jurong/",
+      "src": "https://assets.football-logos.cc/logos/singapore/700x700/fc-jurong.cbb71245.png"
+    },
+    "Juventus": {
+      "source": "https://football-logos.cc/italy/juventus/",
+      "src": "https://assets.football-logos.cc/logos/italy/700x700/juventus.35f443cb.png"
+    },
+    "Kaiserslautern": {
+      "source": "https://football-logos.cc/germany/fc-kaiserslautern/",
+      "src": "https://assets.football-logos.cc/logos/germany/700x700/fc-kaiserslautern.810f9984.png"
+    },
+    "Kayserispor": {
+      "source": "https://football-logos.cc/turkey/kayserispor/",
+      "src": "https://assets.football-logos.cc/logos/turkey/700x700/kayserispor.29497e24.png"
+    },
+    "Kerala Blasters": {
+      "source": "https://football-logos.cc/india/kerala-blasters-fc/",
+      "src": "https://assets.football-logos.cc/logos/india/700x700/kerala-blasters-fc.3d41d4d4.png"
+    },
+    "Kitchee": {
+      "source": "https://football-logos.cc/hong-kong/kitchee/",
+      "src": "https://assets.football-logos.cc/logos/hong-kong/700x700/kitchee.fd7aee57.png"
+    },
+    "LDU Quito": {
+      "source": "https://football-logos.cc/ecuador/liga-de-quito/",
+      "src": "https://assets.football-logos.cc/logos/ecuador/700x700/liga-de-quito.367e7369.png"
+    },
+    "Lahti": {
+      "source": "https://football-logos.cc/finland/lahti/",
+      "src": "https://assets.football-logos.cc/logos/finland/700x700/lahti.6685ab7a.png"
+    },
+    "Lanús": {
+      "source": "https://football-logos.cc/argentina/lanus/",
+      "src": "https://assets.football-logos.cc/logos/argentina/700x700/lanus.d7276bc2.png"
+    },
+    "Lazio": {
+      "source": "https://football-logos.cc/italy/lazio/",
+      "src": "https://assets.football-logos.cc/logos/italy/700x700/lazio.0926bd10.png"
+    },
+    "Le Havre": {
+      "source": "https://football-logos.cc/france/le-havre-ac/",
+      "src": "https://assets.football-logos.cc/logos/france/700x700/le-havre-ac.a6e1edbd.png"
+    },
+    "Le Mans": {
+      "source": "https://football-logos.cc/france/le-mans/",
+      "src": "https://assets.football-logos.cc/logos/france/700x700/le-mans.98e1d785.png"
+    },
+    "Lech Poznań": {
+      "source": "https://football-logos.cc/poland/lech-poznan/",
+      "src": "https://assets.football-logos.cc/logos/poland/700x700/lech-poznan.0d72e30f.png"
+    },
+    "Leeds United": {
+      "source": "https://football-logos.cc/england/leeds-united/",
+      "src": "https://assets.football-logos.cc/logos/england/700x700/leeds-united.38e6a1e3.png"
+    },
+    "Leicester City": {
+      "source": "https://football-logos.cc/england/leicester/",
+      "src": "https://assets.football-logos.cc/logos/england/700x700/leicester.89779459.png"
+    },
+    "Levante": {
+      "source": "https://football-logos.cc/spain/levante/",
+      "src": "https://assets.football-logos.cc/logos/spain/700x700/levante.6db495dc.png"
+    },
+    "Lille": {
+      "source": "https://football-logos.cc/france/lille/",
+      "src": "https://assets.football-logos.cc/logos/france/700x700/lille.3695616f.png"
+    },
+    "Liverpool": {
+      "source": "https://football-logos.cc/england/liverpool/",
+      "src": "https://assets.football-logos.cc/logos/england/700x700/liverpool.868c28cb.png"
+    },
+    "Lokomotiv Moscow": {
+      "source": "https://football-logos.cc/russia/lokomotiv-moskva/",
+      "src": "https://assets.football-logos.cc/logos/russia/700x700/lokomotiv-moskva.c09809e8.png"
+    },
+    "Lorient": {
+      "source": "https://football-logos.cc/france/lorient/",
+      "src": "https://assets.football-logos.cc/logos/france/700x700/lorient.c3bd35bd.png"
+    },
+    "Los Angeles FC": {
+      "source": "https://football-logos.cc/usa/los-angeles-fc/",
+      "src": "https://assets.football-logos.cc/logos/usa/700x700/los-angeles-fc.450ed13c.png"
+    },
+    "Lyon": {
+      "source": "https://football-logos.cc/france/lyon/",
+      "src": "https://assets.football-logos.cc/logos/france/700x700/lyon.7a2d5809.png"
+    },
+    "Maccabi Haifa": {
+      "source": "https://football-logos.cc/israel/maccabi-haifa/",
+      "src": "https://assets.football-logos.cc/logos/israel/700x700/maccabi-haifa.4fe01f1f.png"
+    },
+    "Mainz 05": {
+      "source": "https://football-logos.cc/germany/mainz-05/",
+      "src": "https://assets.football-logos.cc/logos/germany/700x700/mainz-05.7a2b4739.png"
+    },
+    "Malmö FF": {
+      "source": "https://football-logos.cc/sweden/malmo/",
+      "src": "https://assets.football-logos.cc/logos/sweden/700x700/malmo.c72f044c.png"
+    },
+    "Manchester City": {
+      "source": "https://football-logos.cc/england/manchester-city/",
+      "src": "https://assets.football-logos.cc/logos/england/700x700/manchester-city.73ad38e1.png"
+    },
+    "Manchester United": {
+      "source": "https://football-logos.cc/england/manchester-united/",
+      "src": "https://assets.football-logos.cc/logos/england/700x700/manchester-united.7e7044cd.png"
+    },
+    "Marseille": {
+      "source": "https://football-logos.cc/france/marseille/",
+      "src": "https://assets.football-logos.cc/logos/france/700x700/marseille.1a8c6990.png"
+    },
+    "Melbourne Heart": {
+      "source": "https://football-logos.cc/australia/melbourne-city/",
+      "src": "https://assets.football-logos.cc/logos/australia/700x700/melbourne-city.9de842bc.png"
+    },
+    "Melbourne Victory": {
+      "source": "https://football-logos.cc/australia/melbourne-victory/",
+      "src": "https://assets.football-logos.cc/logos/australia/700x700/melbourne-victory.e101e7da.png"
+    },
+    "Metz": {
+      "source": "https://football-logos.cc/france/fc-metz/",
+      "src": "https://assets.football-logos.cc/logos/france/700x700/fc-metz.32e4cd92.png"
+    },
+    "Middlesbrough": {
+      "source": "https://football-logos.cc/england/middlesbrough/",
+      "src": "https://assets.football-logos.cc/logos/england/700x700/middlesbrough.8e803a82.png"
+    },
+    "Milan": {
+      "source": "https://football-logos.cc/italy/milan/",
+      "src": "https://assets.football-logos.cc/logos/italy/700x700/milan.23ad6174.png"
+    },
+    "Molde": {
+      "source": "https://football-logos.cc/norway/molde/",
+      "src": "https://assets.football-logos.cc/logos/norway/700x700/molde.9925c281.png"
+    },
+    "Monaco": {
+      "source": "https://football-logos.cc/france/as-monaco/",
+      "src": "https://assets.football-logos.cc/logos/france/700x700/as-monaco.b63e9cff.png"
+    },
+    "Monterrey": {
+      "source": "https://football-logos.cc/mexico/monterrey/",
+      "src": "https://assets.football-logos.cc/logos/mexico/700x700/monterrey.67ceb369.png"
+    },
+    "Montpellier": {
+      "source": "https://football-logos.cc/france/montpellier/",
+      "src": "https://assets.football-logos.cc/logos/france/700x700/montpellier.5ee70e10.png"
+    },
+    "Montreal Impact": {
+      "source": "https://football-logos.cc/usa/cf-montreal/",
+      "src": "https://assets.football-logos.cc/logos/usa/700x700/cf-montreal.3abdd8c8.png"
+    },
+    "Monza": {
+      "source": "https://football-logos.cc/italy/monza/",
+      "src": "https://assets.football-logos.cc/logos/italy/700x700/monza.6ecda2cb.png"
+    },
+    "Mumbai City": {
+      "source": "https://football-logos.cc/india/mumbai-city-fc/",
+      "src": "https://assets.football-logos.cc/logos/india/700x700/mumbai-city-fc.a48843b7.png"
+    },
+    "MyPa": {
+      "source": "https://football-logos.cc/finland/mypa/",
+      "src": "https://assets.football-logos.cc/logos/finland/700x700/mypa.e05e5699.png"
+    },
+    "Málaga": {
+      "source": "https://football-logos.cc/spain/malaga/",
+      "src": "https://assets.football-logos.cc/logos/spain/700x700/malaga.4a2e3e7e.png"
+    },
+    "Nagoya Grampus Eight": {
+      "source": "https://football-logos.cc/japan/nagoya-grampus/",
+      "src": "https://assets.football-logos.cc/logos/japan/700x700/nagoya-grampus.54cb7a88.png"
+    },
+    "Nantes": {
+      "source": "https://football-logos.cc/france/nantes/",
+      "src": "https://assets.football-logos.cc/logos/france/700x700/nantes.c9ad5637.png"
+    },
+    "Napoli": {
+      "source": "https://football-logos.cc/italy/napoli/",
+      "src": "https://assets.football-logos.cc/logos/italy/700x700/napoli.8b5410b2.png"
+    },
+    "Neftçi Baku": {
+      "source": "https://football-logos.cc/azerbaijan/neftci/",
+      "src": "https://assets.football-logos.cc/logos/azerbaijan/700x700/neftci.cd196811.png"
+    },
+    "New York City FC": {
+      "source": "https://football-logos.cc/usa/new-york-city-fc/",
+      "src": "https://assets.football-logos.cc/logos/usa/700x700/new-york-city-fc.77068063.png"
+    },
+    "New York Cosmos": {
+      "source": "https://football-logos.cc/usa/new-york-cosmos/",
+      "src": "https://assets.football-logos.cc/logos/usa/700x700/new-york-cosmos.4aab3f6d.png"
+    },
+    "New York Red Bulls": {
+      "source": "https://football-logos.cc/usa/new-york-red-bulls/",
+      "src": "https://assets.football-logos.cc/logos/usa/700x700/new-york-red-bulls.60412ddd.png"
+    },
+    "Newcastle United": {
+      "source": "https://football-logos.cc/england/newcastle/",
+      "src": "https://assets.football-logos.cc/logos/england/700x700/newcastle.02a86b26.png"
+    },
+    "Newell's Old Boys": {
+      "source": "https://football-logos.cc/argentina/newells-old-boys/",
+      "src": "https://assets.football-logos.cc/logos/argentina/700x700/newells-old-boys.00b4b79c.png"
+    },
+    "OFK Beograd": {
+      "source": "https://football-logos.cc/serbia/ofk-beograd/",
+      "src": "https://assets.football-logos.cc/logos/serbia/700x700/ofk-beograd.acc55fd0.png"
+    },
+    "Olympiacos": {
+      "source": "https://football-logos.cc/greece/olympiacos/",
+      "src": "https://assets.football-logos.cc/logos/greece/700x700/olympiacos.1cb90996.png"
+    },
+    "PAOK": {
+      "source": "https://football-logos.cc/greece/paok/",
+      "src": "https://assets.football-logos.cc/logos/greece/700x700/paok.c2e02e69.png"
+    },
+    "PSV": {
+      "source": "https://football-logos.cc/netherlands/psv/",
+      "src": "https://assets.football-logos.cc/logos/netherlands/700x700/psv.c5b68aa1.png"
+    },
+    "PSV Eindhoven": {
+      "source": "https://football-logos.cc/netherlands/psv/",
+      "src": "https://assets.football-logos.cc/logos/netherlands/700x700/psv.c5b68aa1.png"
+    },
+    "Pachuca": {
+      "source": "https://football-logos.cc/mexico/pachuca/",
+      "src": "https://assets.football-logos.cc/logos/mexico/700x700/pachuca.7a69e5e1.png"
+    },
+    "Palermo": {
+      "source": "https://football-logos.cc/italy/palermo/",
+      "src": "https://assets.football-logos.cc/logos/italy/700x700/palermo.cff80c30.png"
+    },
+    "Palmeiras": {
+      "source": "https://football-logos.cc/brazil/palmeiras/",
+      "src": "https://assets.football-logos.cc/logos/brazil/700x700/palmeiras.2e8b6843.png"
+    },
+    "Panathinaikos": {
+      "source": "https://football-logos.cc/greece/panathinaikos/",
+      "src": "https://assets.football-logos.cc/logos/greece/700x700/panathinaikos.9f987cc8.png"
+    },
+    "Paris Saint-Germain": {
+      "source": "https://football-logos.cc/france/paris-saint-germain/",
+      "src": "https://assets.football-logos.cc/logos/france/700x700/paris-saint-germain.a1c91d55.png"
+    },
+    "Parma": {
+      "source": "https://football-logos.cc/italy/parma/",
+      "src": "https://assets.football-logos.cc/logos/italy/700x700/parma.34d9667a.png"
+    },
+    "Partizan": {
+      "source": "https://football-logos.cc/serbia/partizan/",
+      "src": "https://assets.football-logos.cc/logos/serbia/700x700/partizan.75e87f74.png"
+    },
+    "Persib Bandung": {
+      "source": "https://football-logos.cc/indonesia/persib-bandung/",
+      "src": "https://assets.football-logos.cc/logos/indonesia/700x700/persib-bandung.0772cf1b.png"
+    },
+    "Perugia": {
+      "source": "https://football-logos.cc/italy/perugia/",
+      "src": "https://assets.football-logos.cc/logos/italy/700x700/perugia.76020a07.png"
+    },
+    "Peñarol": {
+      "source": "https://football-logos.cc/uruguay/penarol/",
+      "src": "https://assets.football-logos.cc/logos/uruguay/700x700/penarol.54a4e22b.png"
+    },
+    "Phoenix Rising": {
+      "source": "https://football-logos.cc/usa/phoenix-rising-fc/",
+      "src": "https://assets.football-logos.cc/logos/usa/700x700/phoenix-rising-fc.e04e284f.png"
+    },
+    "Platense": {
+      "source": "https://football-logos.cc/argentina/platense/",
+      "src": "https://assets.football-logos.cc/logos/argentina/700x700/platense.9f8df115.png"
+    },
+    "Portsmouth": {
+      "source": "https://football-logos.cc/england/portsmouth/",
+      "src": "https://assets.football-logos.cc/logos/england/700x700/portsmouth.c0660ba1.png"
+    },
+    "Qatar SC": {
+      "source": "https://football-logos.cc/qatar/qatar-sc/",
+      "src": "https://assets.football-logos.cc/logos/qatar/700x700/qatar-sc.50bc919d.png"
+    },
+    "Querétaro": {
+      "source": "https://football-logos.cc/mexico/queretaro-fc/",
+      "src": "https://assets.football-logos.cc/logos/mexico/700x700/queretaro-fc.26e23f1e.png"
+    },
+    "Racing Club": {
+      "source": "https://football-logos.cc/argentina/racing-club/",
+      "src": "https://assets.football-logos.cc/logos/argentina/700x700/racing-club.7c146807.png"
+    },
+    "Rangers": {
+      "source": "https://football-logos.cc/scotland/rangers/",
+      "src": "https://assets.football-logos.cc/logos/scotland/700x700/rangers.d9d63b89.png"
+    },
+    "Ravenna": {
+      "source": "https://football-logos.cc/italy/ravenna/",
+      "src": "https://assets.football-logos.cc/logos/italy/700x700/ravenna.2c84a78b.png"
+    },
+    "Reading": {
+      "source": "https://football-logos.cc/england/reading/",
+      "src": "https://assets.football-logos.cc/logos/england/700x700/reading.905092d0.png"
+    },
+    "Real Madrid": {
+      "source": "https://football-logos.cc/spain/real-madrid/",
+      "src": "https://assets.football-logos.cc/logos/spain/700x700/real-madrid.81d3d699.png"
+    },
+    "Real Zaragoza": {
+      "source": "https://football-logos.cc/spain/zaragoza/",
+      "src": "https://assets.football-logos.cc/logos/spain/700x700/zaragoza.e5f827cd.png"
+    },
+    "Red Bull Salzburg": {
+      "source": "https://football-logos.cc/austria/salzburg/",
+      "src": "https://assets.football-logos.cc/logos/austria/700x700/salzburg.132f2a54.png"
+    },
+    "Red Star Belgrade": {
+      "source": "https://football-logos.cc/serbia/crvena-zvezda/",
+      "src": "https://assets.football-logos.cc/logos/serbia/700x700/crvena-zvezda.ef1327d5.png"
+    },
+    "Reggina": {
+      "source": "https://football-logos.cc/italy/reggina/",
+      "src": "https://assets.football-logos.cc/logos/italy/700x700/reggina.edd9138d.png"
+    },
+    "Reims": {
+      "source": "https://football-logos.cc/france/stade-de-reims/",
+      "src": "https://assets.football-logos.cc/logos/france/700x700/stade-de-reims.5276b3bc.png"
+    },
+    "River Plate": {
+      "source": "https://football-logos.cc/argentina/river-plate/",
+      "src": "https://assets.football-logos.cc/logos/argentina/700x700/river-plate.ba9a37c8.png"
+    },
+    "Roma": {
+      "source": "https://football-logos.cc/italy/roma/",
+      "src": "https://assets.football-logos.cc/logos/italy/700x700/roma.00288a7d.png"
+    },
+    "Sabail": {
+      "source": "https://football-logos.cc/azerbaijan/sabail/",
+      "src": "https://assets.football-logos.cc/logos/azerbaijan/700x700/sabail.c8dc3664.png"
+    },
+    "Sagan Tosu": {
+      "source": "https://football-logos.cc/japan/sagan-tosu/",
+      "src": "https://assets.football-logos.cc/logos/japan/700x700/sagan-tosu.bda547a7.png"
+    },
+    "Saint-Étienne": {
+      "source": "https://football-logos.cc/france/as-saint-etienne/",
+      "src": "https://assets.football-logos.cc/logos/france/700x700/as-saint-etienne.7db0202f.png"
+    },
+    "Salernitana": {
+      "source": "https://football-logos.cc/italy/salernitana/",
+      "src": "https://assets.football-logos.cc/logos/italy/700x700/salernitana.08f0c4cc.png"
+    },
+    "Sampdoria": {
+      "source": "https://football-logos.cc/italy/sampdoria/",
+      "src": "https://assets.football-logos.cc/logos/italy/700x700/sampdoria.ec919bdb.png"
+    },
+    "Santos": {
+      "source": "https://football-logos.cc/brazil/santos/",
+      "src": "https://assets.football-logos.cc/logos/brazil/700x700/santos.68fbee41.png"
+    },
+    "Santos Laguna": {
+      "source": "https://football-logos.cc/mexico/santos-laguna/",
+      "src": "https://assets.football-logos.cc/logos/mexico/700x700/santos-laguna.284f3575.png"
+    },
+    "Schalke 04": {
+      "source": "https://football-logos.cc/germany/schalke-04/",
+      "src": "https://assets.football-logos.cc/logos/germany/700x700/schalke-04.a2412c18.png"
+    },
+    "Sevilla": {
+      "source": "https://football-logos.cc/spain/sevilla/",
+      "src": "https://assets.football-logos.cc/logos/spain/700x700/sevilla.1e74eafa.png"
+    },
+    "Sevilla Atlético": {
+      "source": "https://football-logos.cc/spain/sevilla-atletico/",
+      "src": "https://assets.football-logos.cc/logos/spain/700x700/sevilla-atletico.ad9bf13e.png"
+    },
+    "Shanghai Shenhua": {
+      "source": "https://football-logos.cc/china/shanghai-shenhua/",
+      "src": "https://assets.football-logos.cc/logos/china/700x700/shanghai-shenhua.7b35d278.png"
+    },
+    "Shimizu S-Pulse": {
+      "source": "https://football-logos.cc/japan/shimizu-s-pulse/",
+      "src": "https://assets.football-logos.cc/logos/japan/700x700/shimizu-s-pulse.1a4f7e4d.png"
+    },
+    "Sint-Truiden": {
+      "source": "https://football-logos.cc/belgium/sint-truidense/",
+      "src": "https://assets.football-logos.cc/logos/belgium/700x700/sint-truidense.87c68c5d.png"
+    },
+    "Sion": {
+      "source": "https://football-logos.cc/switzerland/sion/",
+      "src": "https://assets.football-logos.cc/logos/switzerland/700x700/sion.850a581b.png"
+    },
+    "Southampton": {
+      "source": "https://football-logos.cc/england/southampton/",
+      "src": "https://assets.football-logos.cc/logos/england/700x700/southampton.8661fcd8.png"
+    },
+    "Spartak Moscow": {
+      "source": "https://football-logos.cc/russia/spartak-moskva/",
+      "src": "https://assets.football-logos.cc/logos/russia/700x700/spartak-moskva.bc599cf1.png"
+    },
+    "Spartak Subotica": {
+      "source": "https://football-logos.cc/serbia/spartak-subotica/",
+      "src": "https://assets.football-logos.cc/logos/serbia/700x700/spartak-subotica.0ff73c0f.png"
+    },
+    "Sporting CP": {
+      "source": "https://football-logos.cc/portugal/sporting-cp/",
+      "src": "https://assets.football-logos.cc/logos/portugal/700x700/sporting-cp.6d17a40c.png"
+    },
+    "Steaua București": {
+      "source": "https://football-logos.cc/romania/fcsb/",
+      "src": "https://assets.football-logos.cc/logos/romania/700x700/fcsb.de3bdd93.png"
+    },
+    "Stoke City": {
+      "source": "https://football-logos.cc/england/stoke-city/",
+      "src": "https://assets.football-logos.cc/logos/england/700x700/stoke-city.4e291497.png"
+    },
+    "Strasbourg": {
+      "source": "https://football-logos.cc/france/rc-strasbourg-alsace/",
+      "src": "https://assets.football-logos.cc/logos/france/700x700/rc-strasbourg-alsace.a0e7954b.png"
+    },
+    "Swansea City": {
+      "source": "https://football-logos.cc/england/swansea-city/",
+      "src": "https://assets.football-logos.cc/logos/england/700x700/swansea-city.9faadb0e.png"
+    },
+    "Sūduva": {
+      "source": "https://football-logos.cc/lithuania/suduva/",
+      "src": "https://assets.football-logos.cc/logos/lithuania/700x700/suduva.9ed42813.png"
+    },
+    "Talleres": {
+      "source": "https://football-logos.cc/argentina/talleres/",
+      "src": "https://assets.football-logos.cc/logos/argentina/700x700/talleres.3c2c2930.png"
+    },
+    "Telstar": {
+      "source": "https://football-logos.cc/netherlands/telstar/",
+      "src": "https://assets.football-logos.cc/logos/netherlands/700x700/telstar.e0e3c673.png"
+    },
+    "Tenerife": {
+      "source": "https://football-logos.cc/spain/tenerife/",
+      "src": "https://assets.football-logos.cc/logos/spain/700x700/tenerife.a8c9cf24.png"
+    },
+    "Torres": {
+      "source": "https://football-logos.cc/italy/torres/",
+      "src": "https://assets.football-logos.cc/logos/italy/700x700/torres.009a89fd.png"
+    },
+    "Tottenham Hotspur": {
+      "source": "https://football-logos.cc/england/tottenham/",
+      "src": "https://assets.football-logos.cc/logos/england/700x700/tottenham.7a59c601.png"
+    },
+    "Trabzonspor": {
+      "source": "https://football-logos.cc/turkey/trabzonspor/",
+      "src": "https://assets.football-logos.cc/logos/turkey/700x700/trabzonspor.6bb4a75a.png"
+    },
+    "Twente": {
+      "source": "https://football-logos.cc/netherlands/twente/",
+      "src": "https://assets.football-logos.cc/logos/netherlands/700x700/twente.807d68df.png"
+    },
+    "Udinese": {
+      "source": "https://football-logos.cc/italy/udinese/",
+      "src": "https://assets.football-logos.cc/logos/italy/700x700/udinese.dc92d43c.png"
+    },
+    "Universidad César Vallejo": {
+      "source": "https://football-logos.cc/peru/universidad-cesar-vallejo/",
+      "src": "https://assets.football-logos.cc/logos/peru/700x700/universidad-cesar-vallejo.f37a95c8.png"
+    },
+    "União São João": {
+      "source": "https://football-logos.cc/brazil/uniao-sao-joao/",
+      "src": "https://assets.football-logos.cc/logos/brazil/700x700/uniao-sao-joao.79817cb4.png"
+    },
+    "VVV-Venlo": {
+      "source": "https://football-logos.cc/netherlands/vvv-venlo/",
+      "src": "https://assets.football-logos.cc/logos/netherlands/700x700/vvv-venlo.4e4300e2.png"
+    },
+    "Valencia": {
+      "source": "https://football-logos.cc/spain/valencia/",
+      "src": "https://assets.football-logos.cc/logos/spain/700x700/valencia.b55bb96d.png"
+    },
+    "Verona": {
+      "source": "https://football-logos.cc/italy/verona/",
+      "src": "https://assets.football-logos.cc/logos/italy/700x700/verona.c7fac3dd.png"
+    },
+    "VfB Stuttgart": {
+      "source": "https://football-logos.cc/germany/vfb-stuttgart/",
+      "src": "https://assets.football-logos.cc/logos/germany/700x700/vfb-stuttgart.384702b0.png"
+    },
+    "Vicenza": {
+      "source": "https://football-logos.cc/italy/vicenza/",
+      "src": "https://assets.football-logos.cc/logos/italy/700x700/vicenza.f256a311.png"
+    },
+    "Villarreal": {
+      "source": "https://football-logos.cc/spain/villarreal/",
+      "src": "https://assets.football-logos.cc/logos/spain/700x700/villarreal.f47fae64.png"
+    },
+    "Vissel Kobe": {
+      "source": "https://football-logos.cc/japan/vissel-kobe/",
+      "src": "https://assets.football-logos.cc/logos/japan/700x700/vissel-kobe.120262d1.png"
+    },
+    "Vitesse": {
+      "source": "https://football-logos.cc/netherlands/vitesse/",
+      "src": "https://assets.football-logos.cc/logos/netherlands/700x700/vitesse.05cf14a8.png"
+    },
+    "Vojvodina": {
+      "source": "https://football-logos.cc/serbia/vojvodina/",
+      "src": "https://assets.football-logos.cc/logos/serbia/700x700/vojvodina.7d4bef07.png"
+    },
+    "Werder Bremen": {
+      "source": "https://football-logos.cc/germany/werder-bremen/",
+      "src": "https://assets.football-logos.cc/logos/germany/700x700/werder-bremen.cf26bff4.png"
+    },
+    "West Bromwich Albion": {
+      "source": "https://football-logos.cc/england/west-bromwich-albion/",
+      "src": "https://assets.football-logos.cc/logos/england/700x700/west-bromwich-albion.239d8196.png"
+    },
+    "West Ham United": {
+      "source": "https://football-logos.cc/england/west-ham/",
+      "src": "https://assets.football-logos.cc/logos/england/700x700/west-ham.f5e80dff.png"
+    },
+    "Wydad": {
+      "source": "https://football-logos.cc/morocco/wydad-ac/",
+      "src": "https://assets.football-logos.cc/logos/morocco/700x700/wydad-ac.c8979910.png"
+    },
+    "Zaragoza": {
+      "source": "https://football-logos.cc/spain/zaragoza/",
+      "src": "https://assets.football-logos.cc/logos/spain/700x700/zaragoza.e5f827cd.png"
+    },
+    "Zenit Saint Petersburg": {
+      "source": "https://football-logos.cc/russia/zenit/",
+      "src": "https://assets.football-logos.cc/logos/russia/700x700/zenit.46c8a736.png"
+    },
+    "Znicz Pruszków": {
+      "source": "https://football-logos.cc/poland/znicz-pruszkow/",
+      "src": "https://assets.football-logos.cc/logos/poland/700x700/znicz-pruszkow.8d40bcaf.png"
+    }
+  }
+}

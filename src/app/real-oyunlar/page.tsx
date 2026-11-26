@@ -1,0 +1,67 @@
+import { Suspense } from "react";
+import PageLoading from "@/components/page-loading";
+import { dateKey } from "@/lib/fixture-date";
+import { bakuDate } from "@/lib/demo";
+import { getPreferences } from "@/lib/preferences";
+import Link from "next/link";
+import { ClubLabel, LeagueLabel } from "@/components/club-crest";
+import { competitionName, fixtureDateOnly as dateOnly, fixtureDateTime as dateTime, loadFixtureFeed, realMatchPath } from "@/lib/real-fixtures";
+import { SimulationPanel } from "./simulation";
+import { Badge } from "@/components/ui/badge";
+
+
+export async function generateMetadata() {
+  const { t } = await getPreferences();
+  return { title: t.realFixtures };
+}
+
+type FixtureParams = { nov?: string | string[]; oyun?: string | string[]; sinaq?: string | string[] };
+
+export default async function RealFixtures({ searchParams }: { searchParams: Promise<FixtureParams> }) {
+  const { t } = await getPreferences();
+  const params = await searchParams;
+  const view = params.nov === "neticeler" ? "results" : "upcoming";
+  return <>
+    <div className="heading"><div><h1>{t.realFixtures}</h1></div></div>
+    <div className="section-heading">
+      <nav className="tabs" aria-label={t.fixtureView}>
+        <Link href="/real-oyunlar" aria-current={view === "upcoming" ? "page" : undefined}>{t.upcomingMatches}</Link>
+        <Link href="/real-oyunlar?nov=neticeler" aria-current={view === "results" ? "page" : undefined}>{t.recentResults}</Link>
+      </nav>
+    </div>
+    <Suspense key={view + ":" + params.oyun + ":" + params.sinaq} fallback={<PageLoading />}>
+      <FixtureResults params={params} view={view} />
+    </Suspense>
+  </>;
+}
+
+async function FixtureResults({ params, view }: { params: FixtureParams; view: "upcoming" | "results" }) {
+  const { t, intlLocale } = await getPreferences();
+  const feed = await loadFixtureFeed(view, dateKey(bakuDate(new Date())));
+  return feed === null ? <section className="panel empty"><h2>{t.dataServiceUnavailable}</h2></section> : <>
+      {feed.unavailable.length > 0 && <p className="muted">{t.dataUnavailable}{" "}{feed.unavailable.map((code) => competitionName(code, t)).join(", ")}.</p>}
+      {view === "upcoming" && <SimulationPanel matchId={params.oyun} rawTrials={params.sinaq} groups={feed.competitions
+        .filter((group) => group.matches.length > 0)
+        .map((group) => ({
+          code: group.competition,
+          label: competitionName(group.competition, t),
+          choices: group.matches.map((match) => ({ id: match.id, home: match.home.name, away: match.away.name })),
+        }))} />}
+      <div className="method-grid source">
+        {feed.competitions.map((group) => <section className="panel detail" key={group.competition}>
+          <div className="fixture-meta"><h2><LeagueLabel code={group.competition} /></h2>
+            {group.stale && <Badge>{t.staleData}</Badge>}</div>
+          {group.matches.length === 0 ? <p className="muted">{t.noMatchesInThisSection}</p> : <dl className="data-list">
+            {group.matches.slice(0, 8).map((match) => <div key={match.id}>
+              <dt><Link className="flex flex-wrap items-center gap-1.5" href={realMatchPath(match.id)}><ClubLabel name={match.home.name} /> <span aria-hidden="true">–</span> <ClubLabel name={match.away.name} /></Link></dt>
+              <dd>
+                {match.score && <strong>{match.score.join(" : ")} · </strong>}
+                {match.kickoff ? <time dateTime={match.kickoff}>{dateTime(intlLocale).format(new Date(match.kickoff))}</time>
+                  : <><time dateTime={match.date}>{dateOnly(intlLocale).format(new Date(match.date))}</time>{!match.score && " " + t.kickoffUnconfirmedSuffix}</>}
+              </dd>
+            </div>)}
+          </dl>}
+        </section>)}
+      </div>
+    </>;
+}
