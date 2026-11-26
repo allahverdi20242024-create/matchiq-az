@@ -37,7 +37,7 @@ after(async () => {
 });
 
 const pages = [
-  ["/", "İdarə paneli", "Günün oyunları"],
+  ["/", "Oyunlar", 'id="dashboard-date"'],
   ["/oyunlar/bu-gun", "Bu günün oyunları", 'name="tarix"'],
   ["/oyunlar/sabah", "Sabahın oyunları", 'name="tarix"'],
   ["/oyunlar/gelecek", "Qarşıdakı oyunlar", 'name="tarix"'],
@@ -56,10 +56,10 @@ for (const [path, heading, expected] of pages) {
     assert.equal(response.status, 200);
     const html = await response.text();
     assert.ok(html.includes('<html lang="az"'));
-    assert.ok(html.includes("<h1>" + heading + "</h1>"));
+    assert.match(html, new RegExp("<h1(?: [^>]*)?>" + heading + "</h1>"));
     if (path === "/") {
       assert.doesNotMatch(html, /Nümayiş məlumatları|href="\/oyun\/xezer-zirve"/);
-      assert.ok(html.includes("Günün oyunları"));
+      assert.match(html, /aria-current="date"[^>]*>Bu gün<\/a>/);
       assert.ok(html.includes('name="tarix"'));
     }
     assert.ok(html.includes(expected));
@@ -133,7 +133,7 @@ test("language and theme changes persist across routes and support switching bac
 
   const home = await request("/");
   assert.match(home, /<html lang="en" data-theme="light"/);
-  assert.match(home, /<h1>Dashboard<\/h1>/);
+  assert.match(home, /<h1\b[^>]*>Matches<\/h1>/);
   assert.match(await request("/oyun/xezer-zirve"), /Most likely scores/);
 
   html = await choose(html, "language", "az");
