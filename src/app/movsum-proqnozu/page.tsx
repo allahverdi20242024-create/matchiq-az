@@ -25,13 +25,16 @@ type Forecast = {
   scenario_champion: Team;
 };
 
-async function loadForecast(code: string, day: number, trials?: number): Promise<Forecast | null> {
+type ForecastResult = Forecast | "rate_limited" | null;
+
+async function loadForecast(code: string, day: number, trials?: number): Promise<ForecastResult> {
   try {
     const url = new URL("/v1/season-forecast/" + code, process.env.MATCHIQ_API_URL || "http://127.0.0.1:8000");
     url.searchParams.set("matchday", String(day));
     if (trials !== undefined) url.searchParams.set("trials", String(trials));
     const timeout = trials !== undefined && trials > 10_000 ? 25_000 : 10_000;
     const response = await fetch(url, { cache: "no-store", signal: AbortSignal.timeout(timeout) });
+    if (response.status === 429) return "rate_limited";
     return response.ok ? await response.json() : null;
   } catch {
     return null;
@@ -39,14 +42,14 @@ async function loadForecast(code: string, day: number, trials?: number): Promise
 }
 
 class ForecastUnavailable extends Error {
-  constructor(readonly forecast: Forecast | null) {
+  constructor(readonly forecast: ForecastResult) {
     super("Season forecast unavailable");
   }
 }
 
 const cachedLatestForecast = unstable_cache(async (code: string, season: number) => {
   const result = await loadForecast(code, 0);
-  if (result?.season !== season || !["ok", "draw_available"].includes(result.status)) {
+  if (result === "rate_limited" || result?.season !== season || !["ok", "draw_available"].includes(result.status)) {
     throw new ForecastUnavailable(result);
   }
   return result;
@@ -112,12 +115,13 @@ export default async function SeasonForecast({ searchParams }: { searchParams: P
   const day = typeof tur === "string" && /^(?:[1-9]|[1-3][0-9])$/.test(tur) ? Math.min(38, Number(tur)) : 0;
   const trials = typeof say === "string" && /^[1-9]\d{0,5}$/.test(say) ? Number(say) : undefined;
   const validTrials = trials !== undefined && trials <= 100_000 ? trials : undefined;
-  const [{ t, intlLocale }, data] = await Promise.all([getPreferences(), getForecast(code, day, validTrials)]);
+  const [{ t, intlLocale }, forecast] = await Promise.all([getPreferences(), getForecast(code, day, validTrials)]);
+  const data = forecast === "rate_limited" ? null : forecast;
   const en = intlLocale.toLowerCase().startsWith("en");
   const percent = new Intl.NumberFormat(intlLocale, { style: "percent", maximumFractionDigits: 2 });
   const decimal = new Intl.NumberFormat(intlLocale, { maximumFractionDigits: 1 });
   const stale = isStaleForecast(data);
-  const error = data?.status === "results_unavailable"
+  const error = forecast === "rate_limited" ? t.simulationRateLimited : data?.status === "results_unavailable"
     ? (en ? "More completed matches are needed." : "Proqnoz üçün daha çox tamamlanmış oyun lazımdır.")
     : data?.status === "round_unavailable"
       ? (en ? "Select a completed matchday." : "Tamamlanmış tur seçin.")
@@ -168,7 +172,7 @@ export default async function SeasonForecast({ searchParams }: { searchParams: P
           {data.schedule_sources?.map((url, index) => <span key={url}> · <a href={url}>LALIGA{data.schedule_sources!.length > 1 ? " " + (index + 1) : ""}</a></span>)}
         </p>
       </section>
-    </> : data?.status === "syncing" || (!data && validTrials === undefined) ?
+    </> : data?.status === "syncing" || (!forecast && validTrials === undefined) ?
       <LiveRefresh key={code + ":" + day + ":" + validTrials}
         label={en ? "Preparing forecast…" : "Proqnoz hazırlanır…"}
         timeoutLabel={en ? "The forecast is still unavailable. Refresh the page to try again." : "Proqnoz hələ əlçatan deyil. Yenidən yoxlamaq üçün səhifəni yenilə."} />

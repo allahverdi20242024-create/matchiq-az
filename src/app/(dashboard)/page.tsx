@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import { getPreferences } from "@/lib/preferences";
 import Link from "next/link";
 import Form from "next/form";
-import { Activity, ArrowUpRight, CalendarDays, ChartNoAxesCombined, ChevronLeft, ChevronRight, UsersRound } from "lucide-react";
+import { Activity, ArrowUpRight, ChartNoAxesCombined, ChevronLeft, ChevronRight, UsersRound } from "lucide-react";
 import { ClubCrest, ClubLabel, LeagueLabel } from "@/components/club-crest";
 import { Badge } from "@/components/ui/badge";
 import { dateKey, fixtureView, isDashboardUpcoming, validDate } from "@/lib/fixture-date";
@@ -23,58 +23,55 @@ export default async function Home({ searchParams }: {
   const [{ t }, { tarix }] = await Promise.all([getPreferences(), searchParams]);
   const now = new Date();
   const today = dateKey(bakuDate(now));
+  const tomorrow = dateKey(bakuDate(now, 1));
   const selected = validDate(tarix) ? tarix : today;
   const date = new Date(selected);
   const adjacentDate = (offset: number) => dateKey(new Date(date.getTime() + offset * 86_400_000));
   const calendarUrl = "/oyunlar?tarix=" + selected;
   return <>
-    <div className="heading calendar-heading">
-      <h1>{t.dashboard}</h1>
+    <h1 id="real-preview" className={styles.title}>{t.dailyFixtures}</h1>
+    <div className={styles.toolbar}>
+      <div className={styles.dateShortcuts}>
+        <Link prefetch={false} href="/" aria-current={selected === today ? "date" : undefined}>{t.today}</Link>
+        <Link prefetch={false} href={"/?tarix=" + tomorrow} aria-current={selected === tomorrow ? "date" : undefined}>{t.tomorrow}</Link>
+      </div>
       <div className={styles.dateControls}>
         <Link prefetch={false} aria-label={t.previousDay} className={styles.dateArrow} href={"/?tarix=" + adjacentDate(-1)}><ChevronLeft size={17} aria-hidden="true" /></Link>
         <Form action="/" className="calendar-filter" key={selected}>
           <label className="sr-only" htmlFor="dashboard-date">{t.fixtureDate}</label>
-          <input id="dashboard-date" type="date" name="tarix" required defaultValue={selected} />
-          <button type="submit" className="primary">{t.showFixtures}</button>
+          <input id="dashboard-date" type="date" name="tarix" autoComplete="off" required defaultValue={selected} />
+          <button type="submit" className={styles.dateSubmit}>{t.showFixtures}</button>
         </Form>
         <Link prefetch={false} aria-label={t.nextDay} className={styles.dateArrow} href={"/?tarix=" + adjacentDate(1)}><ChevronRight size={17} aria-hidden="true" /></Link>
-        {selected !== today && <Link className={styles.allLink} href="/">{t.today}</Link>}
       </div>
     </div>
     <section aria-labelledby="real-preview">
       <Suspense key={selected} fallback={<>
-        <DailyHeading title={t.dailyFixtures} />
         <div role="status" className="skeleton skeleton-hero"><span className="sr-only">{t.loading}</span></div>
       </>}>
-        <DailyFixtures selected={selected} today={today} now={now} calendarUrl={calendarUrl} />
+        <DailyFixtures selected={selected} today={today} tomorrow={tomorrow} now={now} calendarUrl={calendarUrl} />
       </Suspense>
     </section>
 
     <nav className={styles.quickLinks} aria-label={t.analyticsSections}>
       {quickLinks.map(({ title, href, icon: Icon }) => <Link className={styles.quickLink} key={href} href={href}>
-        <span className="stat-icon"><Icon size={19} aria-hidden="true" /></span>
+        <Icon size={17} aria-hidden="true" />
         <strong>{t[title]}</strong><ArrowUpRight size={16} aria-hidden="true" />
       </Link>)}
     </nav>
   </>;
 }
 
-function DailyHeading({ title, count }: { title: string; count?: string }) {
-  return <div className="section-heading">
-    <h2 id="real-preview"><CalendarDays size={22} aria-hidden="true" />{title}</h2>
-    {count && <span className="muted text-sm">{count}</span>}
-  </div>;
-}
-
-async function DailyFixtures({ selected, today, now, calendarUrl }: {
+async function DailyFixtures({ selected, today, tomorrow, now, calendarUrl }: {
   selected: string;
   today: string;
+  tomorrow: string;
   now: Date;
   calendarUrl: string;
 }) {
   const { t, intlLocale } = await getPreferences();
   const feed = selected < today ? undefined
-    : await loadFixtureFeed(fixtureView(selected, today, dateKey(bakuDate(now, 1))), today);
+    : await loadFixtureFeed(fixtureView(selected, today, tomorrow), today);
   const fixtures = feed?.competitions.flatMap((group) => group.matches
     .filter((match) => match.date === selected && isDashboardUpcoming(match, now, today))
     .map((match) => {
@@ -97,10 +94,27 @@ async function DailyFixtures({ selected, today, now, calendarUrl }: {
   });
 
   return <>
-    <DailyHeading title={t.dailyFixtures} count={feed ? fixtures.length + " " + t.matches : undefined} />
     {featured ? <div className={styles.board} data-has-list={nextMatches.length > 0}>
+      {nextMatches.length > 0 && <div className={styles.schedule}>
+        <div className={styles.scheduleHeader}>
+          <h2>{new Intl.NumberFormat(intlLocale).format(fixtures.length)} {t.matches}</h2>
+          <Link className={styles.allLink} href={calendarUrl}>{t.fullDayFixtures}</Link>
+        </div>
+        <ul className={styles.matchList}>
+          {nextMatches.map((match) => <li key={match.competition + match.id}>
+            <Link prefetch={false} href={realMatchPath(match.id)} className={styles.matchRow}>
+              <span className={styles.rowTime}>
+                {match.kickoff && <time dateTime={match.kickoff}>{kickoffTime.format(new Date(match.kickoff))}</time>}
+                {match.stale ? <small>{t.staleData}</small> : !match.kickoff && <small>{t.kickoffTimeUnconfirmed}</small>}
+              </span>
+              <span className={styles.matchNames}><ClubLabel name={match.home.name} /><ClubLabel name={match.away.name} /></span>
+              <span className={styles.rowLeague}><LeagueLabel code={match.competition} /></span>
+              <ChevronRight className={styles.rowChevron} size={15} aria-hidden="true" />
+            </Link>
+          </li>)}
+        </ul>
+      </div>}
       <article className={styles.feature}>
-        <div className={styles.pitch} aria-hidden="true"><span /></div>
         <div className={styles.meta}><LeagueLabel code={featured.competition} />
           {featured.stale && <Badge>{t.staleData}</Badge>}
         </div>
@@ -120,25 +134,12 @@ async function DailyFixtures({ selected, today, now, calendarUrl }: {
         </Suspense>
         <div className={styles.actions}>
           <Link className="primary" href={realMatchPath(featured.id)}>{t.matchAnalysis}</Link>
-          <Link className={styles.allLink} href={calendarUrl}>{t.fixtureSchedule}</Link>
+          {!nextMatches.length && <Link className={styles.allLink} href={calendarUrl}>{t.fixtureSchedule}</Link>}
         </div>
       </article>
-      {nextMatches.length > 0 && <ul className={styles.matchList}>
-        {nextMatches.map((match) => <li key={match.competition + match.id}>
-          <Link prefetch={false} href={realMatchPath(match.id)} className={styles.matchRow}>
-            <span className={styles.matchNames}><ClubLabel name={match.home.name} /><ClubLabel name={match.away.name} />
-            </span>
-            <span className={styles.rowTime}>
-              {match.kickoff && <time dateTime={match.kickoff}>{kickoffTime.format(new Date(match.kickoff))}</time>}
-              {match.stale ? <small>{t.staleData}</small> : !match.kickoff && <small>{t.kickoffTimeUnconfirmed}</small>}
-            </span>
-          </Link>
-        </li>)}
-      </ul>}
     </div> : <section className="panel empty">
       <h2>{feed === null ? t.fixtureServiceUnavailable : t.noUpcomingMatchesForDate}</h2>
       <Link className={styles.allLink} href={calendarUrl}>{t.fixtureSchedule}</Link>
     </section>}
-    {fixtures.length > 5 && <Link className={styles.fullDay} href={calendarUrl}>{t.fullDayFixtures}</Link>}
     </>;
 }

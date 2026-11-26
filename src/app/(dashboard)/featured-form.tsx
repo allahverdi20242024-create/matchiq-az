@@ -47,7 +47,7 @@ export async function FeaturedForm({ fixtureId }: { fixtureId: string }) {
   const detail = await loadFixtureDetail(fixtureId, 60);
 
   return <section className={styles.formSection} aria-labelledby="featured-form-title">
-    <h3 id="featured-form-title">{t.formOverTheLastFiveMatches}</h3>
+    <h2 id="featured-form-title">{t.formOverTheLastFiveMatches}</h2>
     {detail && detail !== "missing" ? <div className={styles.formGrid}>
       <ClubForm team={detail.match.home} matches={detail.recent_home} />
       <ClubForm team={detail.match.away} matches={detail.recent_away} />

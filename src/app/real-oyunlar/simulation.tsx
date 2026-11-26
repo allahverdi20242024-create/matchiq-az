@@ -35,6 +35,7 @@ async function simulate(matchId: string, trials: number): Promise<Result | strin
     const url = new URL("/v1/simulations/" + encodeURIComponent(matchId), apiUrl);
     url.searchParams.set("trials", String(trials));
     const response = await fetch(url, { cache: "no-store", signal: AbortSignal.timeout(10000) });
+    if (response.status === 429) return t.simulationRateLimited;
     if (response.status === 409) return t.simulationInsufficientResults;
     if (response.status === 404) return t.simulationUnavailableForMatch;
     if (response.ok) return await response.json() as Result;

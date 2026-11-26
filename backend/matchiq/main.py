@@ -5,11 +5,12 @@ import os
 from contextlib import asynccontextmanager, suppress
 from datetime import UTC, datetime
 from pathlib import Path
+from time import monotonic
 from typing import Literal
 
 import httpx
 import psycopg
-from fastapi import FastAPI, HTTPException, Query
+from fastapi import Depends, FastAPI, HTTPException, Query, Request
 from starlette.concurrency import run_in_threadpool
 
 from .domain import Feed
@@ -31,6 +32,29 @@ DEFAULT_CACHE_PATH = Path(__file__).resolve().parents[1] / ".matchiq-cache" / "s
 
 
 def create_app(*, service=None, synchronize=True, simulation_cache=None):
+    window_seconds = 60
+    window = -1
+    total_requests = 0
+    requests_by_client: dict[str, int] = {}
+
+    async def limit_simulation_requests(request: Request):
+        nonlocal window, total_requests
+        now = int(monotonic())
+        current_window = now // window_seconds
+        if current_window != window:
+            window = current_window
+            total_requests = 0
+            requests_by_client.clear()
+        client = request.client.host if request.client else "unknown"
+        count = requests_by_client.get(client, 0)
+        if count >= 30 or total_requests >= 120:
+            raise HTTPException(429, "Simulyasiya sorğusu limiti dolub.", headers={
+                "Retry-After": str(window_seconds - now % window_seconds),
+                "Cache-Control": "no-store",
+            })
+        requests_by_client[client] = count + 1
+        total_requests += 1
+
     @asynccontextmanager
     async def lifespan(app):
         async with httpx.AsyncClient(timeout=12) as client:
@@ -95,7 +119,8 @@ def create_app(*, service=None, synchronize=True, simulation_cache=None):
                 return build_fixture_detail(snapshot, fixture, now)
         raise HTTPException(404, "Oyun tapılmadı.")
 
-    @app.get("/v1/simulations/{fixture_id}", response_model=Simulation)
+    @app.get("/v1/simulations/{fixture_id}", response_model=Simulation,
+             dependencies=[Depends(limit_simulation_requests)])
     async def simulation(fixture_id: str, trials: int = Query(100_000, ge=1, le=MAX_TRIALS)):
         now = datetime.now(UTC)
         try:
@@ -163,7 +188,7 @@ def create_app(*, service=None, synchronize=True, simulation_cache=None):
                     return None
         raise HTTPException(404, "Qarşıdakı oyun tapılmadı.")
 
-    @app.get("/v1/season-forecast/{competition}")
+    @app.get("/v1/season-forecast/{competition}", dependencies=[Depends(limit_simulation_requests)])
     async def season_forecast(competition: str, matchday: int = Query(0, ge=0, le=38),
                               trials: int | None = Query(None, ge=1, le=MAX_TRIALS)):
         if competition not in TEAM_COUNTS:
