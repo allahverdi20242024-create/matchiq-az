@@ -19,7 +19,6 @@ type Forecast = {
   schedule_sources?: string[];
   trials: number;
   remaining: number;
-  matchdays: number[];
   teams: { team: Team; champion: number; position: number; points: number }[];
   bracket: Tie[][];
   scenario_champion: Team;
@@ -27,10 +26,9 @@ type Forecast = {
 
 type ForecastResult = Forecast | "rate_limited" | null;
 
-async function loadForecast(code: string, day: number, trials?: number): Promise<ForecastResult> {
+async function loadForecast(code: string, trials?: number): Promise<ForecastResult> {
   try {
     const url = new URL("/v1/season-forecast/" + code, process.env.MATCHIQ_API_URL || "http://127.0.0.1:8000");
-    url.searchParams.set("matchday", String(day));
     if (trials !== undefined) url.searchParams.set("trials", String(trials));
     const timeout = trials !== undefined && trials > 10_000 ? 25_000 : 10_000;
     const response = await fetch(url, { cache: "no-store", signal: AbortSignal.timeout(timeout) });
@@ -48,21 +46,21 @@ class ForecastUnavailable extends Error {
 }
 
 const cachedLatestForecast = unstable_cache(async (code: string, season: number) => {
-  const result = await loadForecast(code, 0);
+  const result = await loadForecast(code);
   if (result === "rate_limited" || result?.season !== season || !["ok", "draw_available"].includes(result.status)) {
     throw new ForecastUnavailable(result);
   }
   return result;
 }, ["season-forecast-latest-v1"], { revalidate: 60 });
 
-async function getForecast(code: string, day: number, trials?: number) {
-  if (day || trials !== undefined) return loadForecast(code, day, trials);
+async function getForecast(code: string, trials?: number) {
+  if (trials !== undefined) return loadForecast(code, trials);
   const baku = new Date(Date.now() + 4 * 3600_000);
   const season = baku.getUTCFullYear() - Number(baku.getUTCMonth() < 6);
   try {
     return await cachedLatestForecast(code, season);
   } catch (error) {
-    return error instanceof ForecastUnavailable ? error.forecast : loadForecast(code, day);
+    return error instanceof ForecastUnavailable ? error.forecast : loadForecast(code);
   }
 }
 
@@ -109,13 +107,12 @@ function Bracket({ forecast, en }: { forecast: Forecast; en: boolean }) {
   </section>;
 }
 
-export default async function SeasonForecast({ searchParams }: { searchParams: Promise<{ liqa?: string; tur?: string; say?: string }> }) {
-  const { liqa, tur, say } = await searchParams;
+export default async function SeasonForecast({ searchParams }: { searchParams: Promise<{ liqa?: string; say?: string }> }) {
+  const { liqa, say } = await searchParams;
   const code = leagues.find(item => item === liqa) ?? "PL";
-  const day = typeof tur === "string" && /^(?:[1-9]|[1-3][0-9])$/.test(tur) ? Math.min(38, Number(tur)) : 0;
   const trials = typeof say === "string" && /^[1-9]\d{0,5}$/.test(say) ? Number(say) : undefined;
   const validTrials = trials !== undefined && trials <= 100_000 ? trials : undefined;
-  const [{ t, intlLocale }, forecast] = await Promise.all([getPreferences(), getForecast(code, day, validTrials)]);
+  const [{ t, intlLocale }, forecast] = await Promise.all([getPreferences(), getForecast(code, validTrials)]);
   const data = forecast === "rate_limited" ? null : forecast;
   const en = intlLocale.toLowerCase().startsWith("en");
   const percent = new Intl.NumberFormat(intlLocale, { style: "percent", maximumFractionDigits: 2 });
@@ -123,10 +120,8 @@ export default async function SeasonForecast({ searchParams }: { searchParams: P
   const stale = isStaleForecast(data);
   const error = forecast === "rate_limited" ? t.simulationRateLimited : data?.status === "results_unavailable"
     ? (en ? "More completed matches are needed." : "Proqnoz üçün daha çox tamamlanmış oyun lazımdır.")
-    : data?.status === "round_unavailable"
-      ? (en ? "Select a completed matchday." : "Tamamlanmış tur seçin.")
-      : data?.status === "draw_available"
-        ? (en ? "Select a league-phase matchday to simulate the bracket from that point." : "Ağacı həmin tarixdən simulyasiya etmək üçün liqa mərhələsindən bir tur seçin.")
+    : data?.status === "draw_available"
+        ? (en ? "A forecast based on the official knockout draw is unavailable." : "Rəsmi pley-off püşkü üzrə proqnoz əlçatan deyil.")
         : data ? (en ? "A complete fixture list is unavailable." : "Tam oyun təqvimi əlçatan deyil.")
           : (en ? "Forecasts are temporarily unavailable." : "Proqnozlar müvəqqəti əlçatan deyil.");
 
@@ -144,11 +139,6 @@ export default async function SeasonForecast({ searchParams }: { searchParams: P
     </nav>
     <SeasonForm submit={en ? "Simulate" : "Simulyasiya et"} pendingLabel={en ? "Simulating…" : "Hesablanır…"}>
       <input type="hidden" name="liqa" value={code} />
-      <label htmlFor="matchday">{en ? "Matchday" : "Tur"}</label>
-      <select id="matchday" name="tur" key={code + day} defaultValue={day}>
-        <option value="0">{en ? "Latest results" : "Son nəticələr"}</option>
-        {data?.matchdays.map(round => <option value={round} key={round}>{en ? `After matchday ${round}` : `${round}-ci turdan sonra`}</option>)}
-      </select>
       <label htmlFor="season-trials">{en ? "Simulation count" : "Sınaq sayı"}</label>
       <input id="season-trials" name="say" type="number" min="1" max="100000" step="1" required
         key={code + ":" + (validTrials ?? "")} defaultValue={validTrials ?? 10_000} />
@@ -178,7 +168,7 @@ export default async function SeasonForecast({ searchParams }: { searchParams: P
         </p>
       </section>
     </> : data?.status === "syncing" || (!forecast && validTrials === undefined) ?
-      <LiveRefresh key={code + ":" + day + ":" + validTrials}
+      <LiveRefresh key={code + ":" + validTrials}
         label={en ? "Preparing forecast…" : "Proqnoz hazırlanır…"}
         timeoutLabel={en ? "The forecast is still unavailable. Refresh the page to try again." : "Proqnoz hələ əlçatan deyil. Yenidən yoxlamaq üçün səhifəni yenilə."} />
       : <p role="status" className="panel detail">{error}</p>}
