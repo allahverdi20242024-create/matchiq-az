@@ -6,6 +6,7 @@ import re
 import unicodedata
 from collections import defaultdict
 from datetime import date, timedelta
+from pathlib import Path
 from time import monotonic
 
 import httpx
@@ -94,6 +95,14 @@ def ratings_before(mapped, histories, cutoff):
     return ratings
 
 
+def bundled_history(year):
+    path = Path(__file__).with_name("data") / f"sport-eden-{year}.csv"
+    if not path.is_file():
+        return {}, {}
+    with path.open(encoding="utf-8-sig", newline="") as lines:
+        return read_history(lines)
+
+
 class SportEden:
     def __init__(self, client: httpx.AsyncClient):
         self.client = client
@@ -103,7 +112,7 @@ class SportEden:
     async def history(self, year):
         async with self.lock:
             now = monotonic()
-            expires, previous = self.cached.get(year, (0, ({}, {})))
+            expires, previous = self.cached.get(year, (0, None))
             if now < expires:
                 return previous
             try:
@@ -119,6 +128,8 @@ class SportEden:
                     raise ValueError("Empty Elo file")
             except (httpx.HTTPError, KeyError, TypeError, ValueError):
                 logger.warning("event=sport_eden_elo_unavailable year=%s", year)
+                if previous is None:
+                    previous = await asyncio.to_thread(bundled_history, year)
                 self.cached[year] = (now + 900, previous)
                 return previous
             self.cached[year] = (now + 6 * 3600, parsed)
