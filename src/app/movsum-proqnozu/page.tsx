@@ -131,7 +131,12 @@ export default async function SeasonForecast({ searchParams }: { searchParams: P
           : (en ? "Forecasts are temporarily unavailable." : "Proqnozlar müvəqqəti əlçatan deyil.");
 
   return <div className={styles.page}>
-    <h1>{t.seasonForecast}</h1>
+    <div className="heading flex-wrap">
+      <h1>{t.seasonForecast}</h1>
+      <Link href="/elo" className="text-sm font-semibold text-[var(--accent-link)] hover:underline">
+        {en ? "Elo rankings" : "Elo sıralaması"}
+      </Link>
+    </div>
     <nav className={styles.leagues} aria-label={en ? "Competitions" : "Turnirlər"}>
       {leagues.map(league => <Link href={`/movsum-proqnozu?liqa=${league}`} key={league} aria-current={code === league ? "page" : undefined}>
         <LeagueLabel code={league} />
