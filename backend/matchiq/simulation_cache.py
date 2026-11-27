@@ -18,8 +18,8 @@ POSTGRES_WRITE_LOCK = 0x4D415443484951
 SimulationFactory = Callable[[], Simulation]
 
 
-def simulation_cache_key(fixture: Match, rates: tuple[float, float], trials: int) -> str:
-    fields = (MODEL_VERSION, fixture.id, fixture.home.id, fixture.away.id, fixture.date.isoformat(),
+def simulation_cache_key(fixture: Match, rates: tuple[float, float], trials: int, model_version: str = MODEL_VERSION) -> str:
+    fields = (model_version, fixture.id, fixture.home.id, fixture.away.id, fixture.date.isoformat(),
               fixture.kickoff.isoformat() if fixture.kickoff else "",
               rates[0].hex(), rates[1].hex(), str(trials))
     return sha256("\0".join(fields).encode()).hexdigest()

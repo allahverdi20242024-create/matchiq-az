@@ -19,6 +19,7 @@ type Forecast = {
   schedule_sources?: string[];
   trials: number;
   remaining: number;
+  external_elo_teams?: number;
   teams: { team: Team; champion: number; position: number; points: number }[];
   bracket: Tie[][];
   scenario_champion: Team;
@@ -164,6 +165,7 @@ export default async function SeasonForecast({ searchParams }: { searchParams: P
         </div>
         <p className={styles.meta}>{en ? "Tiebreakers are approximated." : "Bərabər xal qaydaları təqribi tətbiq olunur."}{code === "CL" && (en ? " Tied knockout scores are resolved randomly." : "Pley-offda bərabər hesabın qalibi təsadüfi seçilir.")}</p>
         <p className={styles.meta}>{data.source} · {fixtureDateTime(intlLocale).format(new Date(data.fetched_at))}
+          {!!data.external_elo_teams && <> · <a href="https://sporteden.com/rankings/elo/football/download">Sport Eden Elo</a> (CC BY 4.0)</>}
           {data.schedule_sources?.map((url, index) => <span key={url}> · <a href={url}>LALIGA{data.schedule_sources!.length > 1 ? " " + (index + 1) : ""}</a></span>)}
         </p>
       </section>

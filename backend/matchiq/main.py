@@ -21,9 +21,10 @@ from .prediction_history import LiveHistory, history
 from .providers import BAKU, ApiFootball, FootballData, OpenFootball, ProviderHttp
 from .season import TEAM_COUNTS, forecast_at
 from .service import FixtureService, current_season, is_upcoming
-from .simulation import MAX_TRIALS, InsufficientResults, Simulation, estimate, sample
+from .simulation import EXTERNAL_MODEL_VERSION, MAX_TRIALS, MODEL_VERSION, InsufficientResults, Simulation, estimate, sample
 from .simulation_cache import PostgresSimulationCache, SQLiteSimulationCache, simulation_cache_key
 from .storage import MemoryStore, PostgresStore
+from .sport_eden import SportEden
 from .team_stats import Statistics, summarize_teams
 
 
@@ -58,6 +59,7 @@ def create_app(*, service=None, synchronize=True, simulation_cache=None):
     @asynccontextmanager
     async def lifespan(app):
         async with httpx.AsyncClient(timeout=12) as client:
+            app.state.sport_eden = SportEden(client) if service is None else None
             app.state.simulation_cache = simulation_cache
             app.state.season_slot = asyncio.Semaphore(1)
             if service is None:
@@ -132,14 +134,19 @@ def create_app(*, service=None, synchronize=True, simulation_cache=None):
                             if match.id == fixture_id and is_upcoming(match, now)), None)
             if fixture is None:
                 continue
+            today = now.astimezone(BAKU).date()
+            provider = app.state.sport_eden
+            external = await provider.ratings(snapshot, min(today, fixture.date)) if provider else {}
+            version = (EXTERNAL_MODEL_VERSION if fixture.home.id in external and fixture.away.id in external
+                       else MODEL_VERSION)
             try:
-                rates = estimate(snapshot, fixture, now, now.astimezone(BAKU).date())
+                rates = estimate(snapshot, fixture, now, today, external_elo=external)
             except InsufficientResults:
                 raise HTTPException(409, "Bu oyun üçün kifayət qədər real nəticə yoxdur.") from None
-            key = simulation_cache_key(fixture, rates, trials)
+            key = simulation_cache_key(fixture, rates, trials, version)
 
             def calculate():
-                return sample(fixture.id, *rates, trials, cache_revision=key)
+                return sample(fixture.id, *rates, trials, cache_revision=key, model_version=version)
 
             cache = app.state.simulation_cache
             if cache is not None:
@@ -202,8 +209,11 @@ def create_app(*, service=None, synchronize=True, simulation_cache=None):
         if snapshot is None:
             pending = competition in app.state.service.pending_competitions
             return {"status": "syncing" if pending else "calendar_unavailable", "matchdays": []}
+        provider = app.state.sport_eden
+        cutoff = min(now, snapshot.fetched_at).astimezone(BAKU).date()
+        external = await provider.ratings(snapshot, cutoff) if provider and not matchday else {}
         async with app.state.season_slot:
-            return await run_in_threadpool(forecast_at, snapshot, matchday, now, trials)
+            return await run_in_threadpool(forecast_at, snapshot, matchday, now, trials, external_elo=external)
 
     @app.get("/v1/team-stats", response_model=Statistics)
     async def team_stats():

@@ -1,5 +1,11 @@
 # Layihənin vəziyyəti
 
+- Canlı Monte Karlo və cari mövsüm proqnozları uyğun klub cütləri üçün tarixli Sport Eden Elo ay sonu reytinqlərindən istifadə edir. Mənbə və lisenziya səhifələrdə göstərilir. Reytinq çatışmadıqda MatchIQ Elo tətbiq olunur. Tarixi qiymətləndirmə və arxiv modelinin versiyası ayrıca qalır.
+
+## Xarici Elo sınağı — 28 noyabr 2026
+
+`backend/research/elo_backtest.py` cari nəticələrdəki altı turnirin klublarını Sport Eden Elo klub identifikatorlarına uyğunlaşdırdı. Eyni 438 matç üzrə hazırkı Elo modelinin Brier xətası 0,60858, loqarifmik itkisi 1,01648 oldu. Oyun tarixindən əvvəlki və ən çox 62 günlük Sport Eden ay sonu xalları ilə nəticələr müvafiq olaraq 0,59098 və 0,99281 oldu. Çempionlar Liqasının 36 matçında göstəricilər 0,62763-dən 0,58587-yə və 1,02499-dan 0,97665-ə düşdü. Hər iki xarici reytinqi tapılan matçlar müqayisəyə daxil edildi. Bu, matç ehtimalları üçün retrospektiv sınaqdır. Xarici Elo canlı modelə qoşulmayıb.
+
 ## Elo ilə matç və mövsüm proqnozları
 
 `poisson-elo-1` tamamlanmış oyunlardan turnir daxilində hesablanan Elo fərqini gözlənilən qollara tətbiq edir. Hər iki komanda üçün ən azı üç nəticə tələb olunur. 440 oyunlu eyni xronoloji müqayisədə Brier 0,60975-dən 0,60796-ya, loqarifmik itki 1,01772-dən 1,01557-yə düşdü.

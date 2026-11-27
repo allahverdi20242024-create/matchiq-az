@@ -9,6 +9,7 @@ from pydantic import BaseModel
 from .domain import Match, Snapshot
 
 MODEL_VERSION = "poisson-elo-1"
+EXTERNAL_MODEL_VERSION = "poisson-sport-eden-1"
 MAX_TRIALS = 100_000
 MIN_TEAM_RESULTS = 3
 
@@ -31,11 +32,11 @@ class InsufficientResults(ValueError):
     pass
 
 
-def estimate(snapshot: Snapshot, fixture: Match, now: datetime, today) -> tuple[float, float]:
+def estimate(snapshot: Snapshot, fixture: Match, now: datetime, today, *, external_elo=None) -> tuple[float, float]:
     # Date-only results from the current day cannot be ordered against the request.
     history = [match for match in snapshot.matches if match.score is not None and match.date < fixture.date
                and (match.kickoff < now if match.kickoff else match.date < today)]
-    return estimate_from_history(history, fixture)
+    return rate_estimator(history, external_elo=external_elo)(fixture.home.id, fixture.away.id)
 
 
 def estimate_from_history(history: list[Match], fixture: Match) -> tuple[float, float]:
@@ -65,7 +66,7 @@ def elo_ratings(history: list[Match]) -> dict[str, float]:
 
 def rate_estimator(history: list[Match], *, minimum_matches=12, minimum_team_results=MIN_TEAM_RESULTS,
                    values: dict[str, tuple[float, float]] | None = None,
-                   use_elo: bool = True, adjust_for_opponents: bool = False):
+                   use_elo: bool = True, adjust_for_opponents: bool = False, external_elo=None):
     if len(history) < minimum_matches:
         raise InsufficientResults
     history = sorted(history, key=lambda match: (match.date, match.id), reverse=True)
@@ -106,7 +107,8 @@ def rate_estimator(history: list[Match], *, minimum_matches=12, minimum_team_res
         home_attack, home_defense = strength(home_id, True, adjust_for_opponents, True)
         away_attack, away_defense = strength(away_id, False, adjust_for_opponents, True)
         # Home advantage is already in the goal rates. Use the neutral Elo difference here.
-        gap = ratings[home_id] - ratings[away_id] if home_id in ratings and away_id in ratings else 0
+        selected_ratings = external_elo if external_elo and home_id in external_elo and away_id in external_elo else ratings
+        gap = selected_ratings[home_id] - selected_ratings[away_id] if home_id in selected_ratings and away_id in selected_ratings else 0
         multiplier = 10 ** (np.clip(gap, -300, 300) / 3200)
         return (float(np.clip(league_home * home_attack * away_defense * multiplier, 0.05, 8)),
                 float(np.clip(league_away * away_attack * home_defense / multiplier, 0.05, 8)))
@@ -115,11 +117,12 @@ def rate_estimator(history: list[Match], *, minimum_matches=12, minimum_team_res
 
 
 @lru_cache(maxsize=512)
-def sample(match_id: str, home_rate: float, away_rate: float, trials: int, *, cache_revision: str = "") -> Simulation:
+def sample(match_id: str, home_rate: float, away_rate: float, trials: int, *,
+           cache_revision: str = "", model_version: str = MODEL_VERSION) -> Simulation:
     # The revision scopes the in-process cache without changing the deterministic random stream.
     if not 1 <= trials <= MAX_TRIALS:
         raise ValueError("trial count is outside the supported range")
-    seed_material = f"{MODEL_VERSION}:{match_id}:{home_rate.hex()}:{away_rate.hex()}"
+    seed_material = f"{model_version}:{match_id}:{home_rate.hex()}:{away_rate.hex()}"
     seed = int.from_bytes(sha256(seed_material.encode()).digest()[:16], "big")
     rng = np.random.default_rng(seed)
     goals = rng.poisson([home_rate, away_rate], size=(trials, 2))
@@ -129,7 +132,7 @@ def sample(match_id: str, home_rate: float, away_rate: float, trials: int, *, ca
     frequencies = np.bincount(home * width + away)
     ranked = sorted(np.flatnonzero(frequencies), key=lambda index: (-frequencies[index], index))[:5]
     return Simulation(
-        trials=trials, model_version=MODEL_VERSION, calculated_at=datetime.now(UTC),
+        trials=trials, model_version=model_version, calculated_at=datetime.now(UTC),
         expected_home=home_rate, expected_away=away_rate,
         home_win=float(np.mean(home > away)), draw=float(np.mean(home == away)),
         away_win=float(np.mean(away > home)), both_score=float(np.mean((home > 0) & (away > 0))),

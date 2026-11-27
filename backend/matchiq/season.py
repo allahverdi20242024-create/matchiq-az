@@ -74,7 +74,7 @@ def knockout(order, matrix, rng):
     return final[0][-1], [ordered_16, quarters, semis, final]
 
 
-def forecast(serialized: str, day: int, as_of: datetime, trials: int, seed: int):
+def forecast(serialized: str, day: int, as_of: datetime, trials: int, seed: int, external_elo=()):
     snapshot = Snapshot.model_validate_json(serialized)
     code = snapshot.competition
     european = code == "CL"
@@ -123,7 +123,9 @@ def forecast(serialized: str, day: int, as_of: datetime, trials: int, seed: int)
     away_wins = np.zeros_like(points)
     rng = np.random.default_rng(seed)
     try:
-        rates = rate_estimator(history, minimum_matches=count // 2, minimum_team_results=0) if remaining or european else None
+        ratings = {team_id: rating for team_id, rating in external_elo if team_id in index}
+        rates = rate_estimator(history, minimum_matches=count // 2, minimum_team_results=0,
+                               external_elo=ratings) if remaining or european else None
         for match in history:
             home, away = index[match.home.id], index[match.away.id]
             scored, allowed = match.score
@@ -199,18 +201,20 @@ def forecast(serialized: str, day: int, as_of: datetime, trials: int, seed: int)
         for stage in stages
     ]
     return {**response, "status": "ok", "remaining": len(remaining), "teams": rows, "bracket": bracket,
+            "external_elo_teams": len(ratings) if rates and len(ratings) >= 2 else 0,
             "scenario_champion": teams[ids[champion[0]]] if european else None}
 
 
 @lru_cache(maxsize=24)
-def default_forecast(serialized: str, day: int, as_of: datetime):
-    return forecast(serialized, day, as_of, DEFAULT_TRIALS, 173 + day)
+def default_forecast(serialized: str, day: int, as_of: datetime, external_elo=()):
+    return forecast(serialized, day, as_of, DEFAULT_TRIALS, 173 + day, external_elo)
 
 
-def forecast_at(snapshot: Snapshot, day: int, now: datetime, trials: int | None = None):
+def forecast_at(snapshot: Snapshot, day: int, now: datetime, trials: int | None = None, *, external_elo=None):
     # Completed results can only come from this snapshot. Reject impossible future kickoffs.
     serialized = snapshot.model_dump_json()
     as_of = min(now, snapshot.fetched_at + timedelta(seconds=1))
+    rating_items = tuple(sorted(external_elo.items())) if external_elo and not day else ()
     if trials is None:
-        return default_forecast(serialized, day, as_of)
-    return forecast(serialized, day, as_of, trials, randbits(64))
+        return default_forecast(serialized, day, as_of, rating_items)
+    return forecast(serialized, day, as_of, trials, randbits(64), rating_items)
