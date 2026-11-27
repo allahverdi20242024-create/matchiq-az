@@ -49,3 +49,32 @@ def test_sparse_venue_uses_other_real_results_without_using_future_matches():
     future = history[-1].model_copy(update={"date": date(2026, 11, 22)})
     with pytest.raises(InsufficientResults):
         estimate(snapshot.model_copy(update={"matches": history[:-1] + [future]}), fixture, now, now.date())
+
+
+def test_equal_scores_against_different_opponents_produce_different_strengths():
+    from datetime import date, timedelta
+
+    from matchiq.domain import Match, Team
+    from matchiq.simulation import rate_estimator
+
+    first, second, strong, weak, reference = [
+        Team(id=name, name=name) for name in ("First", "Second", "Strong", "Weak", "Reference")
+    ]
+    games = [(first, strong, (1, 1)), (second, weak, (1, 1)),
+             (reference, strong, (0, 3)), (reference, weak, (3, 0))] * 4
+    history = [
+        Match(id=str(index), competition="PL", home=home, away=away, score=score,
+              date=date(2026, 11, 1) - timedelta(days=index), status="finished", source="OpenFootball")
+        for index, (home, away, score) in enumerate(games)
+    ]
+    rates = rate_estimator(history, use_elo=False, adjust_for_opponents=True)
+    first_attack, goals_against_first = rates(first.id, reference.id)
+    second_attack, goals_against_second = rates(second.id, reference.id)
+
+    assert first_attack > second_attack
+    assert goals_against_first < goals_against_second
+
+    elo_rates = rate_estimator(history)
+    baseline = rate_estimator(history, use_elo=False)
+    assert elo_rates(strong.id, weak.id)[0] > baseline(strong.id, weak.id)[0]
+    assert elo_rates(strong.id, weak.id)[1] < baseline(strong.id, weak.id)[1]

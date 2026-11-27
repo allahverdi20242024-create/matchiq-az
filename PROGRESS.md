@@ -1,5 +1,15 @@
 # Layihənin vəziyyəti
 
+## Elo ilə matç və mövsüm proqnozları
+
+`poisson-elo-1` tamamlanmış oyunlardan turnir daxilində hesablanan Elo fərqini gözlənilən qollara tətbiq edir. Hər iki komanda üçün ən azı üç nəticə tələb olunur. 440 oyunlu eyni xronoloji müqayisədə Brier 0,60975-dən 0,60796-ya, loqarifmik itki 1,01772-dən 1,01557-yə düşdü.
+
+## Rəqib gücü sınağı — 28 noyabr 2026
+
+Yerli `poisson-3` namizədi və əvvəlki `poisson-2` modeli 2026/27 mövsümünün eyni 440 real oyunu üzrə xronoloji müqayisə edildi. Hər proqnoz yalnız əvvəlki günlərin nəticələrindən hesablandı. Brier göstəricisi 0,60975-dən 0,61097-yə, loqarifmik itki 1,01772-dən 1,01921-ə yüksəldi. Hər iki göstəricidə aşağı qiymət daha yaxşıdır. İngiltərə Premyer Liqası, Bundesliqa və Çempionlar Liqasında nəticə yaxşılaşdı. La Liqa, A Seriyası və Liqa 1-də zəiflədi. Namizəd canlıya çıxarılmayıb.
+
+OpenFootball-un Çempionlar Liqası liqa mərhələsi arxivində hər mövsümdən 90 uyğun oyun eyni qayda ilə müqayisə edildi. 2024/25-də Brier 0,53327-dən 0,53740-a və loqarifmik itki 0,91081-dən 0,91596-ya yüksəldi. 2025/26-da Brier 0,63036-dan 0,62306-ya və loqarifmik itki 1,05233-dən 1,04049-a düşdü. Sınaq Elo sıralamasının təsirini ölçmür.
+
 ## Tamamlanmış işlər
 
 - Oyun səhifəsində əvvəlki real nəticələrlə avtomatik öyrənən modelin və Puassonun oyunöncəsi ehtimalları yanaşı göstərilir. Xronoloji sınaq üçün ayrılmış oyunlarda hər iki model eyni nəticələrlə Brier göstəricisi və loqarifmik itki üzrə müqayisə olunur.
